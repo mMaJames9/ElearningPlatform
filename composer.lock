@@ -6898,16 +6898,16 @@
         },
         {
             "name": "kitloong/laravel-migrations-generator",
-            "version": "v5.2.0",
+            "version": "v5.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kitloong/laravel-migrations-generator.git",
-                "reference": "434237eeab043c13ab7657b3fd704b43cf5bf39e"
+                "reference": "425f43d57cee464c588b2a33b43479eff463c02c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kitloong/laravel-migrations-generator/zipball/434237eeab043c13ab7657b3fd704b43cf5bf39e",
-                "reference": "434237eeab043c13ab7657b3fd704b43cf5bf39e",
+                "url": "https://api.github.com/repos/kitloong/laravel-migrations-generator/zipball/425f43d57cee464c588b2a33b43479eff463c02c",
+                "reference": "425f43d57cee464c588b2a33b43479eff463c02c",
                 "shasum": ""
             },
             "require": {
@@ -6958,7 +6958,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kitloong/laravel-migrations-generator/issues",
-                "source": "https://github.com/kitloong/laravel-migrations-generator/tree/v5.2.0"
+                "source": "https://github.com/kitloong/laravel-migrations-generator/tree/v5.2.2"
             },
             "funding": [
                 {

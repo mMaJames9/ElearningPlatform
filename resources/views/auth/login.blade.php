@@ -1,51 +1,84 @@
 <x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="content-wrapper d-flex align-items-stretch auth auth-img-bg">
+                <div class="row flex-grow">
+                    <div class="col-lg-6 d-flex align-items-center justify-content-center">
+                        <div class="auth-form-transparent text-left p-3">
+                            <div class="brand-logo">
+                                <img src="{{ asset('images/logo.svg') }}" alt="logo">
+                            </div>
+                            <h4>{{__('Welcome Back!')}}</h4>
+                            <h6 class="fw-light">{{__('Happy to see you again!')}}</h6>
 
-        <x-jet-validation-errors class="mb-4" />
+                            <form class="pt-3" method="POST" action="{{ route('login') }}">
+                                @csrf
 
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
+                                <div class="form-group">
+                                    <label for="login">{{ __('Login') }}</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend bg-transparent">
+                                            <span class="input-group-text bg-transparent border-right-0">
+                                                <i class="ti-user text-primary"></i>
+                                            </span>
+                                        </div>
+                                        <input type="text" class="@error('login') is-invalid @enderror form-control form-control-lg border-left-0" id="login" placeholder="{{ __('Login') }}" name="login" :value="old('login')" required autofocus>
+
+                                        @error('login')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password">{{ __('Password') }}</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend bg-transparent">
+                                            <span class="input-group-text bg-transparent border-right-0">
+                                                <i class="ti-lock text-primary"></i>
+                                            </span>
+                                        </div>
+                                        <input type="password" class="@error('password') is-invalid @enderror form-control form-control-lg border-left-0" id="password" placeholder="{{ __('Password') }}" name="password" autocomplete="current-password" required>
+
+                                        @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row my-2 align-items-center">
+                                    <div class="col-6 form-check">
+                                        <label for="remember_me" class="form-check-label text-muted">
+                                            <input id="remember_me" type="checkbox" class="form-check-input" name="remember">
+                                            {{ __('Remember me') }}
+                                        </label>
+                                    </div>
+                                    <div class="col-6 form-check text-end">
+                                        @if (Route::has('password.request'))
+                                        <a href="{{ route('password.request') }}" class="auth-link text-black">{{ __('Forgot your password?') }}</a>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="my-3">
+                                    <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">{{ __('Log In') }}</button>
+                                </div>
+                                <div class="text-center mt-4 fw-light">
+                                    {{__('Don\'t have an account?')}}
+                                    <a href="{{ route('register') }}" class="text-primary">{{__('Create')}}</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 login-half-bg d-flex flex-row">
+                        <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2022  All rights reserved.</p>
+                    </div>
+                </div>
             </div>
-        @endif
-
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <div>
-                <x-jet-label for="login" value="{{ __('Login') }}" />
-                <x-jet-input id="login" class="block mt-1 w-full" type="text" name="login" :value="old('login')" required autofocus />
-                <span id="loginHelpInline" class="form-text">
-                    You can Sign In with your Phone Number, your Username or your Email Address.
-                </span>
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-            </div>
-
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-jet-checkbox id="remember_me" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-jet-button class="ml-4">
-                    {{ __('Log in') }}
-                </x-jet-button>
-            </div>
-        </form>
-    </x-jet-authentication-card>
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
 </x-guest-layout>
