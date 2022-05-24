@@ -31,17 +31,18 @@
 <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 
 <!-- plugins:js -->
+<script src="{{ asset('js/jquery-3.5.1.js') }}" defer></script>
 <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}" defer></script>
 <script src="{{ asset('vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}" defer></script>
 <!-- endinject -->
 
- <!-- Plugin js for this page -->
- <script src="{{ asset('vendors/chart.js/Chart.min.js') }}" defer></script>
- <script src="{{ asset('vendors/progressbar.js/progressbar.min.js') }}" defer></script>
- <!-- End plugin js for this page -->
+<!-- Plugin js for this page -->
+<script src="{{ asset('vendors/chart.js/Chart.min.js') }}" defer></script>
+<script src="{{ asset('vendors/progressbar.js/progressbar.min.js') }}" defer></script>
+<!-- End plugin js for this page -->
 
 <!-- inject:js -->
-<script src="{{ mix('js/app.js') }}" defer></script>
+{{-- <script src="{{ mix('js/app.js') }}" defer></script> --}}
 <script src="{{ asset('js/off-canvas.js') }}" defer></script>
 <script src="{{ asset('js/hoverable-collapse.js') }}" defer></script>
 <script src="{{ asset('js/template.js') }}" defer></script>
@@ -54,31 +55,25 @@
 <script src="{{ asset('js/dashboard.js') }}" defer></script>
 <script src="{{ asset('js/Chart.roundedBarCharts.js') }}" defer></script>
 <!-- End custom js for this page-->
-
 </head>
-    <body class="font-sans antialiased">
-        <x-jet-banner />
+<body class="with-welcome-text">
+    <div class="container-scroller">
 
-        <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
+    @livewire('navigation-menu')
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+    <div class="container-fluid page-body-wrapper">
+        @include('partials._settings-panel')
+        @include('partials._rightbar')
+        @include('partials._sidebar')
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
+        <!-- Page Content -->
+        {{ $slot }}
 
         @stack('modals')
 
-        @livewireScripts
-    </body>
+    </div>
+
+
+@livewireScripts
+</body>
 </html>
