@@ -1,4 +1,12 @@
 <x-app-layout>
+
+@section('navbar-info')
+<li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
+    <h1 class="welcome-text mb-0">{{__('Hello')}}, <span class="text-black fw-bold">{{ Auth::user()->name }}</span></h1>
+    <h3 class="welcome-sub-text">{{__('Your performance summary this week')}} </h3>
+</li>
+@endsection
+
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row">

@@ -16,10 +16,7 @@
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-top">
         <ul class="navbar-nav">
-            <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                <h1 class="welcome-text">{{__('Good Morning')}}, <span class="text-black fw-bold">{{ Auth::user()->name }}</span></h1>
-                <h3 class="welcome-sub-text">{{__('Your performance summary this week')}} </h3>
-            </li>
+            @yield('navbar-info')
         </ul>
         <ul class="navbar-nav ms-auto">
             <li class="nav-item d-none d-lg-block">
@@ -30,28 +27,24 @@
                     <input type="text" class="form-control">
                 </div>
             </li>
-            <li class="nav-item">
-                <form class="search-form" action="#">
-                    <i class="icon-search"></i>
-                    <input type="search" class="form-control" placeholder="{{__('Search here...')}}" title="{{__('Search here...')}}">
-                </form>
-            </li>
 
             <li class="nav-item dropdown d-none d-lg-block user-dropdown">
                 <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img class="img-xs rounded-circle" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}">
+                    <img class="rounded-full h-8 w-8 object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                     <div class="dropdown-header text-center">
-                        <img class="img-md rounded-circle mx-auto" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}">
+                        <img class="rounded-full h-20 w-20 object-cover mx-auto" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}">
                         <p class="mb-1 mt-3 font-weight-semibold">{{ Auth::user()->name }}</p>
                         <p class="fw-light text-muted mb-0">{{ Auth::user()->phone_number }}</p>
                     </div>
                     <a href="{{ route('profile.show') }}" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> {{ __('My Profile') }}</a>
 
-                    <form method="POST" action="{{ route('logout') }}" x-data>
+                    <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i> {{ __('Log Out') }}
+                    </a>
+                    <form method="POST" id="logout-form" action="{{ route('logout') }}">
                         @csrf
-                        <a href="{{ route('logout') }}" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2" onclick="$root.submit();"></i> {{ __('Log Out') }}</a>
                     </form>
                 </div>
             </li>

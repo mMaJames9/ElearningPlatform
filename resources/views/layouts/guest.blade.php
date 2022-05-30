@@ -22,17 +22,19 @@
 <!-- End plugin css for this page -->
 
 <!-- inject:css -->
-{{-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
+<link rel="stylesheet" href="{{ mix('css/app.css') }}">
 <link rel="stylesheet" href="{{ asset('css/vertical-layout-light/style.css') }}">
 <!-- endinject -->
 
 <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 
 <!-- plugins:js -->
+<script src="{{ asset('vendors/js/vendor.bundle.base.js') }}" defer></script>
 <script src="{{ asset('vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}" defer></script>
 <!-- endinject -->
 
 <!-- Plugin js for this page -->
+<script src="{{ asset('vendors/inputmask/jquery.inputmask.bundle.js') }}" defer></script>
 <!-- End plugin js for this page -->
 
 <!-- inject:js -->
@@ -41,7 +43,7 @@
 <script src="{{ asset('js/hoverable-collapse.js') }}" defer></script>
 <script src="{{ asset('js/template.js') }}" defer></script>
 <script src="{{ asset('js/settings.js') }}" defer></script>
-<script src="{{ asset('js/todolist.js') }}" defer></script>
+<script src="{{ asset('js/inputmask.js') }}" defer></script>
 <!-- endinject -->
 
 <!-- Custom js for this page-->

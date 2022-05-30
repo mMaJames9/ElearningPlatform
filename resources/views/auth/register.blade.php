@@ -76,7 +76,7 @@
                                                 <i class="ti-mobile text-primary"></i>
                                             </span>
                                         </div>
-                                        <input type="text" class="@error('phone_number') is-invalid @enderror form-control form-control-lg border-left-0" id="phone_number" placeholder="{{ __('Phone Number') }}" name="phone_number" :value="old('phone_number')" required autofocus>
+                                        <input type="text" class="@error('phone_number') is-invalid @enderror form-control form-control-lg border-left-0" id="phone_number" placeholder="{{ __('Phone Number') }}" name="phone_number" :value="old('phone_number')" required autofocus data-inputmask-alias="+237 699 999 999">
 
                                         @error('phone_number')
                                         <span class="invalid-feedback" role="alert">

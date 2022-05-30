@@ -1,71 +1,92 @@
 <x-jet-form-section submit="updateProfileInformation">
-    <x-slot name="title">
-        {{ __('Profile Information') }}
-    </x-slot>
-
-    <x-slot name="description">
-        {{ __('Update your account\'s profile information and email address.') }}
-    </x-slot>
 
     <x-slot name="form">
         <!-- Profile Photo -->
         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-            <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
-                <!-- Profile Photo File Input -->
-                <input type="file" class="hidden"
-                            wire:model="photo"
-                            x-ref="photo"
-                            x-on:change="
-                                    photoName = $refs.photo.files[0].name;
-                                    const reader = new FileReader();
-                                    reader.onload = (e) => {
-                                        photoPreview = e.target.result;
-                                    };
-                                    reader.readAsDataURL($refs.photo.files[0]);
-                            " />
+        <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
 
-                <x-jet-label for="photo" value="{{ __('Photo') }}" />
+            <!-- Profile Photo File Input -->
+            <input type="file" class="hidden"
+            wire:model="photo"
+            x-ref="photo"
+            x-on:change="
+            photoName = $refs.photo.files[0].name;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                photoPreview = e.target.result;
+            };
+            reader.readAsDataURL($refs.photo.files[0]);
+            " />
 
-                <!-- Current Profile Photo -->
-                <div class="mt-2" x-show="! photoPreview">
-                    <img src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover">
-                </div>
+            <!-- Current Profile Photo -->
+            <div class="mt-2" x-show="! photoPreview">
+                <img src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}" class="mx-auto mb-3 rounded-full w-20 h-20 bg-cover">
+            </div>
 
-                <!-- New Profile Photo Preview -->
-                <div class="mt-2" x-show="photoPreview" style="display: none;">
-                    <span class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center"
-                          x-bind:style="'background-image: url(\'' + photoPreview + '\');'">
-                    </span>
-                </div>
+            <!-- New Profile Photo Preview -->
+            <div class="mt-2" x-show="photoPreview" style="display: none;">
+                <span class="mx-auto mb-3 block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center"
+                x-bind:style="'background-image: url(\'' + photoPreview + '\');'">
+                </span>
+            </div>
 
-                <x-jet-secondary-button class="mt-2 mr-2" type="button" x-on:click.prevent="$refs.photo.click()">
+            <div class="d-flex justify-content-center">
+                <x-jet-button x-on:click.prevent="$refs.photo.click()">
                     {{ __('Select A New Photo') }}
-                </x-jet-secondary-button>
+                </x-jet-button>
 
                 @if ($this->user->profile_photo_path)
-                    <x-jet-secondary-button type="button" class="mt-2" wire:click="deleteProfilePhoto">
-                        {{ __('Remove Photo') }}
-                    </x-jet-secondary-button>
+                <x-jet-button wire:click="deleteProfilePhoto">
+                    {{ __('Remove Photo') }}
+                </x-jet-button>
                 @endif
-
-                <x-jet-input-error for="photo" class="mt-2" />
             </div>
+
+            <x-jet-input-error for="photo" class="mt-2" />
+        </div>
         @endif
 
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="name" value="{{ __('Name') }}" />
-            <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
-            <x-jet-input-error for="name" class="mt-2" />
+            <div class="form-group">
+                <label for="name">{{ __('Name') }}</label>
+                <div class="input-group">
+                    <div class="input-group-prepend bg-transparent">
+                        <span class="input-group-text bg-transparent border-right-0" style="padding: 1.1rem .75rem;">
+                            <i class="ti-user text-primary"></i>
+                        </span>
+                    </div>
+                    <input type="text" class="{{ $errors->has('name') ? 'is-invalid' : '' }} form-control form-control-lg border-left-0" id="name" placeholder="{{ __('Name') }}" name="name" :value="old('name')" required autofocus wire:model.defer="state.name">
+
+                    @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+            </div>
         </div>
 
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="email" value="{{ __('Email') }}" />
-            <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
-            <x-jet-input-error for="email" class="mt-2" />
+            <div class="form-group">
+                <label for="email">{{ __('Email') }}</label>
+                <div class="input-group">
+                    <div class="input-group-prepend bg-transparent">
+                        <span class="input-group-text bg-transparent border-right-0" style="padding: 1.1rem .75rem;">
+                            <i class="ti-email text-primary"></i>
+                        </span>
+                    </div>
+                    <input type="email" class="{{ $errors->has('email') ? 'is-invalid' : '' }}  form-control form-control-lg border-left-0" id="email" placeholder="{{ __('Email') }}" name="email" :value="old('email')" required autofocus wire:model.defer="state.email">
 
-            @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::emailVerification()) && ! $this->user->hasVerifiedEmail())
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::emailVerification()) && ! $this->user->hasVerifiedEmail())
                 <p class="text-sm mt-2">
                     {{ __('Your email address is unverified.') }}
 
@@ -75,25 +96,54 @@
                 </p>
 
                 @if ($this->verificationLinkSent)
-                    <p v-show="verificationLinkSent" class="mt-2 font-medium text-sm text-green-600">
-                        {{ __('A new verification link has been sent to your email address.') }}
-                    </p>
+                <p v-show="verificationLinkSent" class="mt-2 font-medium text-sm text-green-600">
+                    {{ __('A new verification link has been sent to your email address.') }}
+                </p>
                 @endif
-            @endif
+                @endif
+            </div>
         </div>
 
         <!-- Username -->
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="username" value="{{ __('Username') }}" />
-            <x-jet-input id="username" type="text" class="mt-1 block w-full" wire:model.defer="state.username" autocomplete="username" />
-            <x-jet-input-error for="username" class="mt-2" />
+            <div class="form-group">
+                <label for="username">{{ __('Username') }}</label>
+                <div class="input-group">
+                    <div class="input-group-prepend bg-transparent">
+                        <span class="input-group-text bg-transparent border-right-0" style="padding: 1.1rem .75rem;">
+                            <i class="ti-user text-primary"></i>
+                        </span>
+                    </div>
+                    <input type="text" class="{{ $errors->has('username') ? 'is-invalid' : '' }} form-control form-control-lg border-left-0" id="username" placeholder="{{ __('Username') }}" name="username" :value="old('username')" required autofocus wire:model.defer="state.username">
+
+                    @error('username')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+            </div>
         </div>
 
         <!-- Phone Number -->
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="phone_number" value="{{ __('Phone Number') }}" />
-            <x-jet-input id="phone_number" type="text" class="mt-1 block w-full" wire:model.defer="state.phone_number" autocomplete="phone_number" />
-            <x-jet-input-error for="phone_number" class="mt-2" />
+            <div class="form-group">
+                <label for="phone_number">{{ __('Phone Number') }}</label>
+                <div class="input-group">
+                    <div class="input-group-prepend bg-transparent">
+                        <span class="input-group-text bg-transparent border-right-0" style="padding: 1.1rem .75rem;">
+                            <i class="ti-mobile text-primary"></i>
+                        </span>
+                    </div>
+                    <input type="text" class="{{ $errors->has('phone_number') ? 'is-invalid' : '' }} form-control form-control-lg border-left-0" id="phone_number" placeholder="{{ __('Phone Number') }}" name="phone_number" :value="old('phone_number')" required autofocus data-inputmask-alias="+237 699 999 999" wire:model.defer="state.phone_number">
+
+                    @error('phone_number')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+            </div>
         </div>
 
     </x-slot>
@@ -107,4 +157,5 @@
             {{ __('Save') }}
         </x-jet-button>
     </x-slot>
-</x-jet-form-section> 
+
+</x-jet-form-section>
