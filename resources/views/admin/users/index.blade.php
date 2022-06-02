@@ -3,7 +3,7 @@
     @section('navbar-info')
     <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
         <h1 class="welcome-text mb-0">{{__('Users')}}</h1>
-        <h3 class="welcome-sub-text">{{$data}} {{__('users')}} </h3>
+        <h3 class="welcome-sub-text">{{$data}} {{__('user(s)')}} </h3>
     </li>
     @endsection
 
@@ -32,7 +32,7 @@
                                             <th>{{__('Phone Number')}}</th>
                                             <th>{{__('Role')}}</th>
                                             <th>{{__('Created at')}}</th>
-                                            <th></th>
+                                            <th>{{__('Actions')}}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -51,7 +51,9 @@
                                             <td class="">{{ $user->email ?? '' }}</td>
                                             <td class="">{{ $user->phone_number ?? '' }}</td>
                                             <td class="">
-                                                1
+                                            @foreach($user->roles as $key => $item)
+                                                {{ $item->name }}
+                                            @endforeach
                                             </td>
                                             <td class="">{{ $user->created_at ?? '' }}</td>
                                             <td class="text-center">

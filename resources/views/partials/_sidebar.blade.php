@@ -9,20 +9,28 @@
             </a>
         </li>
 
+        @can('user_management_access')
         <li class="nav-item nav-category">{{__('User Management')}}</li>
+        @can('role_access')
         <li class="nav-item">
             <a class="nav-link" href="#">
                 <i class="mdi mdi-account-check menu-icon"></i>
                 <span class="menu-title">{{__('Roles')}}</span>
             </a>
         </li>
+        @endcan
+
+        @can('user_access')
         <li class="nav-item">
             <a class="nav-link" href="{{ route("users.index") }}">
                 <i class="mdi mdi-account-multiple menu-icon"></i>
                 <span class="menu-title">{{__('Users')}}</span>
             </a>
         </li>
+        @endcan
+        @endcan
 
+        @can('exam_access')
         <li class="nav-item nav-category">{{__('Paper Management')}}</li>
         <li class="nav-item">
             <a class="nav-link" href="#">
@@ -30,12 +38,16 @@
                 <span class="menu-title">{{__('Examinations')}}</span>
             </a>
         </li>
+        @endcan
+        @can('subject_access')
         <li class="nav-item">
             <a class="nav-link" href="#">
                 <i class="mdi mdi-book-open-page-variant menu-icon"></i>
                 <span class="menu-title">{{__('Subjects')}}</span>
             </a>
         </li>
+        @endcan
+        @can('document_access')
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#exam-doc" aria-expanded="false" aria-controls="exam-doc">
                 <i class="mdi mdi-file-document menu-icon"></i>
@@ -49,7 +61,9 @@
                 </ul>
             </div>
         </li>
+        @endcan
 
+        @can('transaction_access')
         <li class="nav-item nav-category">{{__('Ressources')}}</li>
         <li class="nav-item">
             <a class="nav-link" href="#">
@@ -57,6 +71,7 @@
                 <span class="menu-title">{{__('Transactions')}}</span>
             </a>
         </li>
+        @endcan
     </ul>
 
 </nav>
