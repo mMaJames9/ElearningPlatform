@@ -50,9 +50,11 @@
                                             <td>{{ Auth::user()->email }}</td>
                                             <td>{{ Auth::user()->phone_number }}</td>
                                             <td>
-                                            @foreach(Auth::user()->roles as $key => $item)
-                                                {{ $item->name }}
-                                            @endforeach
+                                                <button class="btn-success btn-rounded btn-sm">
+                                                    @foreach(Auth::user()->roles as $key => $item)
+                                                    {{ $item->name }}
+                                                    @endforeach
+                                                </button>
                                             </td>
                                             <td>{{ Auth::user()->created_at }}</td>
                                             <td></td>
@@ -72,26 +74,28 @@
                                             <td class="">{{ $user->email ?? '' }}</td>
                                             <td class="">{{ $user->phone_number ?? '' }}</td>
                                             <td class="">
-                                            @foreach($user->roles as $key => $item)
-                                                {{ $item->name }}
-                                            @endforeach
+                                                <button class="btn-success btn-rounded btn-sm">
+                                                    @foreach($user->roles as $key => $item)
+                                                    {{ $item->name }}
+                                                    @endforeach
+                                                </button>
                                             </td>
                                             <td class="">{{ $user->created_at ?? '' }}</td>
                                             <td class="text-center">
                                                 @can('user_show')
-                                                <a type="button" class="btn btn-inverse-secondary btn-icon" href="{{ route('users.show', $user->id) }}">
+                                                <a type="button" class="btn btn-inverse-secondary" href="{{ route('users.show', $user->id) }}">
                                                     <i class="mdi mdi-eye"></i>
                                                 </a>
                                                 @endcan
 
                                                 @can('user_edit')
-                                                <a type="button" class="btn btn-inverse-success btn-icon" href="{{ route('users.edit', $user->id) }}">
+                                                <a type="button" class="btn btn-inverse-success" href="{{ route('users.edit', $user->id) }}">
                                                     <i class="mdi mdi-grease-pencil"></i>
                                                 </a>
                                                 @endcan
 
                                                 @can('user_delete')
-                                                <a type="button" class="btn btn-inverse-danger btn-icon" data-bs-toggle="modal" data-bs-target="#modal{{ $user->id }}">
+                                                <a type="button" class="btn btn-inverse-danger" data-bs-toggle="modal" data-bs-target="#modal{{ $user->id }}">
                                                     <i class="mdi mdi-delete"></i>
                                                 </a>
 
