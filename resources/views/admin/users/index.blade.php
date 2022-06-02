@@ -36,6 +36,27 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <tr>
+                                            <td>0</td>
+                                            <td class="text-left">
+                                                <div class="d-flex ">
+                                                    <img src="{{ Auth::user()->profile_photo_url }}" alt="">
+                                                    <div>
+                                                        <h6>{{ Auth::user()->name ?? '' }}</h6>
+                                                        <p>{{ Auth::user()->username ?? '' }}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>{{ Auth::user()->email }}</td>
+                                            <td>{{ Auth::user()->phone_number }}</td>
+                                            <td>
+                                            @foreach(Auth::user()->roles as $key => $item)
+                                                {{ $item->name }}
+                                            @endforeach
+                                            </td>
+                                            <td>{{ Auth::user()->created_at }}</td>
+                                            <td></td>
+                                        </tr>
                                         @foreach($users as $key => $user)
                                         <tr class="">
                                             <td>{{ $loop->iteration }}</td>
