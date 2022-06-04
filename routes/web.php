@@ -25,4 +25,5 @@ Route::middleware([
     })->name('dashboard');
 
     Route::resource('/admin/usermanagement/users', 'App\Http\Controllers\UserController');
+    Route::resource('/admin/usermanagement/roles', 'App\Http\Controllers\RoleController');
 });

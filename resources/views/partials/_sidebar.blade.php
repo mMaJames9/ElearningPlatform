@@ -13,7 +13,7 @@
         <li class="nav-item nav-category">{{__('User Management')}}</li>
         @can('role_access')
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{ route("roles.index") }}">
                 <i class="mdi mdi-account-check menu-icon"></i>
                 <span class="menu-title">{{__('Roles')}}</span>
             </a>

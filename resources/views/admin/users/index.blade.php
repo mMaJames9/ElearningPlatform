@@ -50,11 +50,9 @@
                                             <td>{{ Auth::user()->email }}</td>
                                             <td>{{ Auth::user()->phone_number }}</td>
                                             <td>
-                                                <button class="btn-success btn-rounded btn-sm">
-                                                    @foreach(Auth::user()->roles as $key => $item)
-                                                    {{ $item->name }}
-                                                    @endforeach
-                                                </button>
+                                                @foreach(Auth::user()->roles as $key => $item)
+                                                <div class="badge badge-opacity-warning">{{ $item->name }}</div>
+                                                @endforeach
                                             </td>
                                             <td>{{ Auth::user()->created_at }}</td>
                                             <td></td>
@@ -74,11 +72,15 @@
                                             <td class="">{{ $user->email ?? '' }}</td>
                                             <td class="">{{ $user->phone_number ?? '' }}</td>
                                             <td class="">
-                                                <button class="btn-success btn-rounded btn-sm">
-                                                    @foreach($user->roles as $key => $item)
-                                                    {{ $item->name }}
-                                                    @endforeach
-                                                </button>
+                                                @foreach($user->roles as $key => $item)
+                                                @if($item == "Super Admin")
+                                                <div class="badge badge-opacity-warning">{{ $item->name }}</div>
+                                                @elseif ($item == "Admin")
+                                                <div class="badge badge-opacity-success">{{ $item->name }}</div>
+                                                @else
+                                                <div class="badge badge-opacity-info">{{ $item->name }}</div>
+                                                @endif
+                                                @endforeach
                                             </td>
                                             <td class="">{{ $user->created_at ?? '' }}</td>
                                             <td class="text-center">
@@ -88,11 +90,13 @@
                                                 </a>
                                                 @endcan
 
+                                                @if($user->roles == "Member")
                                                 @can('user_edit')
                                                 <a type="button" class="btn btn-inverse-success" href="{{ route('users.edit', $user->id) }}">
                                                     <i class="mdi mdi-grease-pencil"></i>
                                                 </a>
                                                 @endcan
+
 
                                                 @can('user_delete')
                                                 <a type="button" class="btn btn-inverse-danger" data-bs-toggle="modal" data-bs-target="#modal{{ $user->id }}">
@@ -127,7 +131,7 @@
                                                     </div>
                                                 </div>
                                                 @endcan
-
+                                                @endif
                                             </td>
                                         </tr>
                                         @endforeach
