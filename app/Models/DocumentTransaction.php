@@ -12,8 +12,8 @@ class DocumentTransaction extends Model
 {
     /**
      * The table associated with the model.
-     * 
-     * @var string
+     *
+     * @var stringgit 
      */
     protected $table = 'document_transaction';
 
