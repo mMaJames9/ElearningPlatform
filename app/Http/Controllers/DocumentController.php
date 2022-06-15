@@ -110,9 +110,33 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDocumentRequest $request, $id)
+    public function update(UpdateDocumentRequest $request,Document $document)
     {
-        //
+        $document_serie = $request->document_serie;
+        $document_serie = implode(', ', $document_serie);
+
+        $documentPath = $request['document_path']->store('uploads/documents', 'public');
+
+        if( ! empty($request['correction_path']))
+        {
+            $correctionPath = $request['correction_path']->store('uploads/corrections', 'public');
+        }
+
+        $document->exam_id                = $request->exam_id;
+        $document->document_serie         = $request->$document_serie;
+        $document->document_session       = $request->document_session;
+        $document->document_title         = $request->document_title;
+        $document->document_type          = $request->document_type;
+        $document->document_description   = $request->document_description;
+        $document->document_price         = $request->document_price;
+        $document->document_path          = $request->$documentPath;
+        $document->correction_path        = $request->$correctionPath;
+
+        $status = 'The Document was updated successfully.';
+
+        return redirect()->route('document.index')->with([
+            'status' => $status,
+        ]);
     }
 
     /**
