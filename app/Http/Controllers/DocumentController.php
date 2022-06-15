@@ -132,6 +132,8 @@ class DocumentController extends Controller
         $document->document_path          = $request->$documentPath;
         $document->correction_path        = $request->$correctionPath;
 
+        $document->save();
+
         $status = 'The Document was updated successfully.';
 
         return redirect()->route('document.index')->with([
