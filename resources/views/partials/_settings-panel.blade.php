@@ -1,25 +1,24 @@
-{{-- partials/_settings-panel --}}
-<div class="theme-setting-wrapper">
-    <div id="settings-trigger"><i class="ti-settings"></i></div>
-    <div id="theme-settings" class="settings-panel">
-    <i class="settings-close ti-close"></i>
-    <p class="settings-heading">{{__('SIDEBAR SKINS')}}</p>
-    <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border me-3"></div>{{__('Light')}}</div>
-    <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border me-3"></div>{{__('Dark')}}</div>
-    <p class="settings-heading mt-2">{{__('HEADER SKINS')}}</p>
-    <div class="color-tiles mx-0 px-4">
-        <div class="tiles success"></div>
-        <div class="tiles warning"></div>
-        <div class="tiles danger"></div>
-        <div class="tiles info"></div>
-        <div class="tiles dark"></div>
-        <div class="tiles default"></div>
+{{-- partial:partials/_setting-sidebar --}}
+<nav class="settings-sidebar">
+    <div class="sidebar-body">
+        <a href="#" class="settings-sidebar-toggler">
+            <i data-feather="settings"></i>
+        </a>
+        <h6 class="text-muted mb-2">Sidebar:</h6>
+        <div class="mb-3 pb-3">
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="sidebarThemeSettings" id="sidebarLight" value="sidebar-light" checked>
+                <label class="form-check-label" for="sidebarLight">
+                    Light
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="sidebarThemeSettings" id="sidebarDark" value="sidebar-dark">
+                <label class="form-check-label" for="sidebarDark">
+                    Dark
+                </label>
+            </div>
+        </div>
     </div>
-    <p class="settings-heading mt-2">{{__('THEMES')}}</p>
-    <div class="color-themes mx-0 px-4">
-        <a href="#" class="color-theme default"></a>
-        <a href="#" class="color-theme dark"></a>
-        <a href="#" class="color-theme brown"></a>
-    </div>
-    </div>
-</div>
+</nav>
+{{-- partial --}}

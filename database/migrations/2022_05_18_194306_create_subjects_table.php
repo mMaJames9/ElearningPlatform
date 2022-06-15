@@ -14,10 +14,10 @@ class CreateSubjectsTable extends Migration
     public function up()
     {
         Schema::create('subjects', function (Blueprint $table) {
-            $table->integer('id', true);
-            $table->integer('exam_id');
+            $table->id();
             $table->string('subject_name')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

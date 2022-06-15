@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @property int $id
@@ -13,13 +14,16 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Role extends Model
 {
+    use HasFactory;
+
     /**
      * @var array
      */
     protected $fillable = [
-        'name', 'guard_name',
+        'name',
+        'guard_name',
         'created_at',
-        'updated_at'
+        'updated_at',
     ];
 
     public function permissions()

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -16,6 +17,7 @@ class User extends Authenticatable
 {
     use HasApiTokens;
     use HasFactory;
+    use SoftDeletes;
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
@@ -26,6 +28,14 @@ class User extends Authenticatable
      *
      * @var string[]
      */
+
+    protected $dates = [
+        'updated_at',
+        'created_at',
+        'deleted_at',
+        'email_verified_at',
+    ];
+
     protected $fillable = [
         'name',
         'email',
@@ -68,6 +78,12 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class, 'model_has_roles', 'model_id', 'role_id')
         ->withPivot('model_type');
+    }
 
+    public function documents()
+    {
+        return $this->belongsToMany(Document::class, DocumentUser::class)
+            ->withPivot('transaction_amount')
+            ->withTimestamps();
     }
 }

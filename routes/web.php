@@ -24,6 +24,15 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
+    // User Management
     Route::resource('/admin/usermanagement/users', 'App\Http\Controllers\UserController');
     Route::resource('/admin/usermanagement/roles', 'App\Http\Controllers\RoleController');
+
+    // Paper Management
+    Route::resource('/admin/papermanagement/exams', 'App\Http\Controllers\ExamController');
+    Route::resource('/admin/papermanagement/subjects', 'App\Http\Controllers\SubjectController');
+    Route::resource('/admin/papermanagement/documents', 'App\Http\Controllers\DocumentController');
+
+    // Ressources
+    Route::resource('/admin/ressources/transactions', 'App\Http\Controllers\TransactionController');
 });
