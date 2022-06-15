@@ -4,55 +4,62 @@
 
 <head>
 <!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="description" content="Responsive HTML Admin Dashboard Template based on Bootstrap 5">
+<meta name="author" content="NobleUI">
+<meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <title>{{ config('app.name', 'Laravel') }}</title>
 
-<!-- plugins:css -->
-<link rel="stylesheet" href="{{ asset('vendors/feather/feather.css') }}">
-<link rel="stylesheet" href="{{ asset('vendors/mdi/css/materialdesignicons.min.css') }}">
-<link rel="stylesheet" href="{{ asset('vendors/ti-icons/css/themify-icons.css') }}">
-<link rel="stylesheet" href="{{ asset('vendors/typicons/typicons.css') }}">
-<link rel="stylesheet" href="{{ asset('vendors/simple-line-icons/css/simple-line-icons.css') }}">
-<link rel="stylesheet" href="{{ asset('vendors/css/vendor.bundle.base.css') }}">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<!-- End fonts -->
+
+<!-- core:css -->
+<link rel="stylesheet" href="{{ asset('assets/vendors/core/core.css') }}">
 <!-- endinject -->
 
 <!-- Plugin css for this page -->
 <!-- End plugin css for this page -->
 
 <!-- inject:css -->
-<link rel="stylesheet" href="{{ mix('css/app.css') }}">
-<link rel="stylesheet" href="{{ asset('css/vertical-layout-light/style.css') }}">
+{{-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
+<link rel="stylesheet" href="{{ asset('assets/fonts/feather-font/css/iconfont.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
 <!-- endinject -->
+
+<!-- Layout styles -->
+<link rel="stylesheet" href="{{ asset('assets/css/demo1/style.min.css') }}">
+<!-- End layout styles -->
 
 <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 
-<!-- plugins:js -->
-<script src="{{ asset('vendors/js/vendor.bundle.base.js') }}" defer></script>
-<script src="{{ asset('vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}" defer></script>
+<!-- core:js -->
+{{-- <script src="{{ mix('js/app.js') }}" defer></script> --}}
+<script src="{{ asset('assets/vendors/core/core.js') }}" defer></script>
+<script src="{{ asset('assets/vendors/inputmask/jquery.inputmask.bundle.js') }}" defer></script>
 <!-- endinject -->
 
 <!-- Plugin js for this page -->
-<script src="{{ asset('vendors/inputmask/jquery.inputmask.bundle.js') }}" defer></script>
 <!-- End plugin js for this page -->
 
 <!-- inject:js -->
-<script src="{{ mix('js/app.js') }}" defer></script>
-<script src="{{ asset('js/off-canvas.js') }}" defer></script>
-<script src="{{ asset('js/hoverable-collapse.js') }}" defer></script>
-<script src="{{ asset('js/template.js') }}" defer></script>
-<script src="{{ asset('js/settings.js') }}" defer></script>
-<script src="{{ asset('js/inputmask.js') }}" defer></script>
+<script src="{{ asset('assets/vendors/feather-icons/feather.min.js') }}" defer></script>
+<script src="{{ asset('assets/js/template.js') }}" defer></script>
 <!-- endinject -->
 
-<!-- Custom js for this page-->
-<script src="{{ asset('js/jquery-3.5.1.js') }}" defer></script>
-<!-- End custom js for this page-->
+<!-- Custom js for this page -->
+<script src="{{ asset('assets/js/inputmask.js') }}" defer></script>
+<!-- End custom js for this page -->
+
 </head>
 
 <body>
-    {{ $slot }}
+{{ $slot }}
 <!-- container-scroller -->
 </body>
 

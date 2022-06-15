@@ -6,9 +6,10 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Laravel\Jetstream\Jetstream;
 use Illuminate\Support\Facades\Gate;
+use Symfony\Component\HttpFoundation\Response;
+use App\Http\Requests\StoreUserRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Symfony\Component\HttpFoundation\Response;
 use Spatie\Permission\Models\Role;
 use App\Actions\Fortify\PasswordValidationRules;
 
@@ -45,30 +46,21 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        Validator::make($request, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'username' => ['required', 'string', 'max:255', 'unique:users'],
-            'phone_number' => ['required', 'string', 'max:255', 'unique:users'],
-            'password' => $this->passwordRules(),
-            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
-        ])->validate();
-
         $user = User::create([
             'name' => $request['name'],
+            'username' => $request['name'],
             'email' => $request['email'],
-            'username' => $request['username'],
             'phone_number' => $request['phone_number'],
-            'password' => Hash::make($request['password']),
+            'password' => Hash::make('examsucces2022'),
         ]);
 
         $user->assignRole("Admin");
 
         $status = 'A new user was created successfully.';
 
-        return redirect()->route('admin.users.index')->with([
+        return redirect()->route('users.index')->with([
             'status' => $status,
         ]);
     }
@@ -115,6 +107,15 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        abort_if(Gate::denies('user_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        User::find($id)->delete();
+
+        $status = 'The user was deleted successfully.';
+
+        return redirect()->route('users.index')->with([
+            'status' => $status,
+        ]);
+
     }
 }

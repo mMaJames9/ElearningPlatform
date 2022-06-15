@@ -16,6 +16,8 @@ class CreateDocumentUserTable extends Migration
         Schema::create('document_user', function (Blueprint $table) {
             $table->integer('user_id');
             $table->integer('document_id');
+            $table->integer('transaction_amount')->nullable();
+            $table->timestamps();
 
             $table->primary(['user_id', 'document_id']);
         });

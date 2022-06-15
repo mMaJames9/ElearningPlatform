@@ -14,14 +14,18 @@ class CreateDocumentsTable extends Migration
     public function up()
     {
         Schema::create('documents', function (Blueprint $table) {
-            $table->integer('id', true);
-            $table->integer('subject_id');
+            $table->id();
+            $table->integer('exam_id');
+            $table->string('document_session')->nullable();
+            $table->string('document_serie')->nullable();
             $table->string('document_title')->nullable();
             $table->string('document_type')->nullable();
-            $table->string('document_description')->nullable();
+            $table->text('document_description')->nullable();
             $table->integer('document_price')->nullable();
             $table->string('document_path')->nullable();
+            $table->string('correction_path')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

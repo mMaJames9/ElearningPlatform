@@ -1,84 +1,75 @@
 <x-guest-layout>
-    <div class="container-scroller">
-        <div class="container-fluid page-body-wrapper full-page-wrapper">
-            <div class="content-wrapper d-flex align-items-stretch auth auth-img-bg">
-                <div class="row flex-grow">
-                    <div class="col-lg-6 d-flex align-items-center justify-content-center">
-                        <div class="auth-form-transparent text-left p-3">
-                            <div class="brand-logo">
-                                <img src="{{ asset('images/logo.svg') }}" alt="logo">
+    <div class="main-wrapper">
+        <div class="page-wrapper full-page">
+            <div class="page-content d-flex align-items-center justify-content-center">
+                
+                <div class="row w-100 mx-0 auth-page">
+                    <div class="col-md-8 col-xl-6 mx-auto">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-md-4 pe-md-0">
+                                    <div class="auth-side-wrapper">
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-8 ps-md-0">
+                                    <div class="auth-form-wrapper px-4 py-5">
+                                        <img class="mb-5" src="{{ asset('assets/images/logo.svg') }}" alt="logo" width="40%">
+                                        <h5 class="text-muted fw-normal mb-4">{{__('Welcome Back! Happy to see you again!')}}</h5>
+                                        <form class="forms-sample" method="POST" action="{{ route('login') }}">
+                                            @csrf
+
+                                            <div class="mb-4">
+                                                <label for="login" class="form-label">{{ __('Login') }}</label>
+                                                <input type="text" class="@error('login') is-invalid @enderror form-control" id="login" placeholder="{{ __('Login') }}" name="login" :value="old('login')" required autofocus>
+                                                
+                                                @error('login')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <label for="password" class="form-label">{{ __('Password') }}</label>
+                                                    </div>
+                                                    <div class="col text-end">
+                                                        @if (Route::has('password.request'))
+                                                        <a href="{{ route('password.request') }}" class="auth-link text-black form-text">{{ __('Forgot your password?') }}</a>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <input type="password" class="@error('password') is-invalid @enderror form-control" id="password" placeholder="{{ __('Password') }}" name="password" autocomplete="current-password" required>
+
+                                                @error('password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <input id="remember_me" type="checkbox" class="form-check-input" name="remember">
+                                                <label class="form-check-label" for="remember_me">
+                                                    {{ __('Remember me') }}
+                                                </label>
+                                            </div>
+
+                                            <div>
+                                                <button class="btn btn-primary me-2 mb-2 mb-md-0 text-white">{{ __('Log In') }}</button>
+                                            </div>
+                                            <a href="{{ route('register') }}" class="d-block mt-3 text-muted">{{__('Don\'t have an account? Create')}}</a>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
-                            <h4>{{__('Welcome Back!')}}</h4>
-                            <h6 class="fw-light">{{__('Happy to see you again!')}}</h6>
-
-                            <form class="pt-3" method="POST" action="{{ route('login') }}">
-                                @csrf
-
-                                <div class="form-group">
-                                    <label for="login">{{ __('Login') }}</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend bg-transparent">
-                                            <span class="input-group-text bg-transparent border-right-0">
-                                                <i class="ti-user text-primary"></i>
-                                            </span>
-                                        </div>
-                                        <input type="text" class="@error('login') is-invalid @enderror form-control form-control-lg border-left-0" id="login" placeholder="{{ __('Login') }}" name="login" :value="old('login')" required autofocus>
-
-                                        @error('login')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="password">{{ __('Password') }}</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend bg-transparent">
-                                            <span class="input-group-text bg-transparent border-right-0">
-                                                <i class="ti-lock text-primary"></i>
-                                            </span>
-                                        </div>
-                                        <input type="password" class="@error('password') is-invalid @enderror form-control form-control-lg border-left-0" id="password" placeholder="{{ __('Password') }}" name="password" autocomplete="current-password" required>
-
-                                        @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="row my-2 align-items-center">
-                                    <div class="col-6 form-check">
-                                        <label for="remember_me" class="form-check-label text-muted">
-                                            <input id="remember_me" type="checkbox" class="form-check-input" name="remember">
-                                            {{ __('Remember me') }}
-                                        </label>
-                                    </div>
-                                    <div class="col-6 form-check text-end">
-                                        @if (Route::has('password.request'))
-                                        <a href="{{ route('password.request') }}" class="auth-link text-black">{{ __('Forgot your password?') }}</a>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="my-3">
-                                    <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">{{ __('Log In') }}</button>
-                                </div>
-                                <div class="text-center mt-4 fw-light">
-                                    {{__('Don\'t have an account?')}}
-                                    <a href="{{ route('register') }}" class="text-primary">{{__('Create')}}</a>
-                                </div>
-                            </form>
                         </div>
                     </div>
-                    <div class="col-lg-6 login-half-bg d-flex flex-row">
-                        <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2022  All rights reserved.</p>
-                    </div>
                 </div>
+                
             </div>
-            <!-- content-wrapper ends -->
         </div>
-        <!-- page-body-wrapper ends -->
     </div>
 </x-guest-layout>

@@ -4,84 +4,107 @@
 
 <head>
 <!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="description" content="Responsive HTML Admin Dashboard Template based on Bootstrap 5">
+<meta name="author" content="NobleUI">
+<meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <title>{{ config('app.name', 'Laravel') }}</title>
 
-<!-- plugins:css -->
-<link rel="stylesheet" href="{{ asset('vendors/feather/feather.css') }}">
-<link rel="stylesheet" href="{{ asset('vendors/mdi/css/materialdesignicons.min.css') }}">
-<link rel="stylesheet" href="{{ asset('vendors/ti-icons/css/themify-icons.css') }}">
-<link rel="stylesheet" href="{{ asset('vendors/font-awesome/css/font-awesome.min.css') }}">
-<link rel="stylesheet" href="{{ asset('vendors/simple-line-icons/css/simple-line-icons.css') }}">
-<link rel="stylesheet" href="{{ asset('vendors/typicons/typicons.css') }}">
-<link rel="stylesheet" href="{{ asset('vendors/css/vendor.bundle.base.css') }}">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<!-- End fonts -->
+
+<!-- core:css -->
+<link rel="stylesheet" href="{{ mix('css/app.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendors/core/core.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendors/perfect-scrollbar/perfect-scrollbar.css') }}">
 <!-- endinject -->
 
 <!-- Plugin css for this page -->
-<link rel="stylesheet" href="{{ asset('css/select.dataTables.min.css') }}">
-<link rel="stylesheet" href="{{ asset('vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendors/mdi/css/materialdesignicons.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendors/select2/select2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendors/dropify/dist/dropify.min.css') }}">
 <!-- End plugin css for this page -->
 
 <!-- inject:css -->
-<link rel="stylesheet" href="{{ mix('css/app.css') }}">
-<link rel="stylesheet" href="{{ asset('css/vertical-layout-light/style.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/fonts/feather-font/css/iconfont.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
 <!-- endinject -->
+
+<!-- Layout styles -->
+<link rel="stylesheet" href="{{ asset('assets/css/demo1/style.min.css') }}">
+<!-- End layout styles -->
 
 <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 
-<!-- plugins:js -->
-{{-- <script src="{{ asset('js/jquery-3.5.1.js') }}" defer></script> --}}
-<script src="{{ asset('vendors/js/vendor.bundle.base.js') }}" defer></script>
-<script src="{{ asset('vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}" defer></script>
-<script src="{{ asset('vendors/datatables.net/jquery.dataTables.js') }}" defer></script>
-<script src="{{ asset('vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}" defer></script>
+<!-- base:js -->
+<script src="{{ mix('js/app.js') }}"></script>
+<script src="{{ asset('assets/vendors/core/core.js') }}"></script>
+<script src="{{ asset('assets/vendors/feather-icons/feather.min.js') }}" defer></script>
+<script src="{{ asset('assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js') }}" defer></script>
+<script src="{{ asset('assets/vendors/inputmask/jquery.inputmask.bundle.js') }}" defer></script>
 <!-- endinject -->
 
 <!-- Plugin js for this page -->
-<script src="{{ asset('vendors/chart.js/Chart.min.js') }}" defer></script>
-<script src="{{ asset('vendors/progressbar.js/progressbar.min.js') }}" defer></script>
-<script src="{{ asset('vendors/jquery-bar-rating/jquery.barrating.min.js') }}" defer></script>
-<script src="{{ asset('vendors/inputmask/jquery.inputmask.bundle.js') }}" defer></script>
+<script src="{{ asset('assets/vendors/chartjs/Chart.min.js') }}" defer></script>
+<script src="{{ asset('assets/vendors/jquery.flot/jquery.flot.js') }}" defer></script>
+<script src="{{ asset('assets/vendors/jquery.flot/jquery.flot.resize.js') }}" defer></script>
+<script src="{{ asset('assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}" defer></script>
+<script src="{{ asset('assets/vendors/apexcharts/apexcharts.min.js') }}" defer></script>
+<script src="{{ asset('assets/vendors/datatables.net/jquery.dataTables.js') }}" defer></script>
+<script src="{{ asset('assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js') }}" defer></script>
+<script src="{{ asset('assets/vendors/select2/select2.min.js') }}" defer></script>
+<script src="{{ asset('assets/vendors/dropify/dist/dropify.min.js') }}" defer></script>
 <!-- End plugin js for this page -->
 
 <!-- inject:js -->
-{{-- <script src="{{ mix('js/app.js') }}" defer></script> --}}
-<script src="{{ asset('js/off-canvas.js') }}" defer></script>
-<script src="{{ asset('js/hoverable-collapse.js') }}" defer></script>
-<script src="{{ asset('js/template.js') }}" defer></script>
-<script src="{{ asset('js/settings.js') }}" defer></script>
-<script src="{{ asset('js/todolist.js') }}" defer></script>
-<script src="{{ asset('js/inputmask.js') }}" defer></script>
-<!-- end-->
+<script src="{{ asset('assets/js/template.js') }}" defer></script>
+<!-- endinject -->
 
-<!-- Custom js for this page-->
-<script src="{{ asset('js/jquery.cookie.js') }}" defer></script>
-<script src="{{ asset('js/dashboard.js') }}" defer></script>
-<script src="{{ asset('js/Chart.roundedBarCharts.js') }}" defer></script>
-<script src="{{ asset('js/profile-demo.js') }}" defer></script>
-<script src="{{ asset('js/data-table.js') }}" defer></script>
-<!-- End custom js for this page-->
+<!-- Custom js for this page -->
+<script src="{{ asset('assets/js/inputmask.js') }}" defer></script>
+<script src="{{ asset('assets/js/dashboard-light.js') }}" defer></script>
+<script src="{{ asset('assets/js/datepicker.js') }}" defer></script>
+<script src="{{ asset('assets/js/data-table.js') }}" defer></script>
+<script src="{{ asset('assets/js/select2.js') }}" defer></script>
+<script src="{{ asset('assets/js/dropify.js') }}" defer></script>
+<!-- End custom js for this page -->
+
 </head>
-<body class="with-welcome-text">
-    <div class="container-scroller">
 
-    @livewire('navigation-menu')
-
-    <div class="container-fluid page-body-wrapper">
-        {{-- @include('partials._settings-panel') --}}
-        @include('partials._rightbar')
+<body>
+    <div class="main-wrapper">
+        
         @include('partials._sidebar')
+        {{-- @include('partials._settings-panel') --}}
 
-        <!-- Page Content -->
-        {{ $slot }}
+        <div class="page-wrapper">
+            @livewire('navigation-menu')
 
-        @stack('modals')
+            <div class="page-content">
+            
+                <!-- Page Content -->
+                {{ $slot }}
+                
+                @stack('modals')
+            </div>
 
+            @include('partials._footer')
+
+        </div>
     </div>
+    
+    @yield('scripts')
 
-
-@livewireScripts
+    @livewireScripts
 </body>
+
 </html>
+

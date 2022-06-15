@@ -1,66 +1,30 @@
 <x-jet-form-section submit="updatePassword">
+    <x-slot name="title">
+        {{ __('Update Password') }}
+    </x-slot>
+
+    <x-slot name="description">
+        {{ __('Ensure your account is using a long, random password to stay secure.') }}
+    </x-slot>
 
     <x-slot name="form">
         <div class="col-span-6 sm:col-span-4">
-            <div class="form-group">
-                <label for="current_password">{{ __('Current Password') }}</label>
-                <div class="input-group">
-                    <div class="input-group-prepend bg-transparent">
-                        <span class="input-group-text bg-transparent border-right-0" style="padding: 1.1rem .75rem;">
-                            <i class="ti-lock text-primary"></i>
-                        </span>
-                    </div>
-                    <input type="password" class="@error('password') is-invalid @enderror form-control form-control-lg border-left-0" id="current_password" placeholder="{{ __('Current Password') }}" name="current_password" required autofocus wire:model.defer="state.current_password">
-
-                    @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-            </div>
+            <x-jet-label for="current_password" value="{{ __('Current Password') }}" />
+            <x-jet-input id="current_password" type="password" class="mt-1 block w-full" wire:model.defer="state.current_password" autocomplete="current-password" />
+            <x-jet-input-error for="current_password" class="mt-2" />
         </div>
 
         <div class="col-span-6 sm:col-span-4">
-            <div class="form-group">
-                <label for="password">{{ __('Password') }}</label>
-                <div class="input-group">
-                    <div class="input-group-prepend bg-transparent">
-                        <span class="input-group-text bg-transparent border-right-0" style="padding: 1.1rem .75rem;">
-                            <i class="ti-lock text-primary"></i>
-                        </span>
-                    </div>
-                    <input type="password" class="@error('password') is-invalid @enderror form-control form-control-lg border-left-0" id="password" placeholder="{{ __('Password') }}" name="password" :value="old('password')" required autofocus wire:model.defer="state.password">
-
-                    @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-            </div>
+            <x-jet-label for="password" value="{{ __('New Password') }}" />
+            <x-jet-input id="password" type="password" class="mt-1 block w-full" wire:model.defer="state.password" autocomplete="new-password" />
+            <x-jet-input-error for="password" class="mt-2" />
         </div>
 
         <div class="col-span-6 sm:col-span-4">
-            <div class="form-group">
-                <label for="password_confirmation">{{ __('Confirm Password') }}</label>
-                <div class="input-group">
-                    <div class="input-group-prepend bg-transparent">
-                        <span class="input-group-text bg-transparent border-right-0" style="padding: 1.1rem .75rem;">
-                            <i class="ti-lock text-primary"></i>
-                        </span>
-                    </div>
-                    <input type="password" class="@error('password_confirmation') is-invalid @enderror form-control form-control-lg border-left-0" id="password_confirmation" placeholder="{{ __('Confirm Password') }}" name="password_confirmation" :value="old('password_confirmation')" required autofocus wire:model.defer="state.password_confirmation">
-
-                    @error('password_confirmation')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-            </div>
+            <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+            <x-jet-input id="password_confirmation" type="password" class="mt-1 block w-full" wire:model.defer="state.password_confirmation" autocomplete="new-password" />
+            <x-jet-input-error for="password_confirmation" class="mt-2" />
         </div>
-
     </x-slot>
 
     <x-slot name="actions">
