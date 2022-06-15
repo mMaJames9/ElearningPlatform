@@ -270,7 +270,7 @@
                         </a>
                         <a href="javascript:;" class="d-flex align-items-center border-bottom py-3">
                             <div class="me-3">
-                                <img src="../assets/images/faces/face3.jpg" class="rounded-circle wd-35" alt="user">
+                                <img src="../images/faces/face3.jpg" class="rounded-circle wd-35" alt="user">
                             </div>
                             <div class="w-100">
                                 <div class="d-flex justify-content-between">
@@ -282,7 +282,7 @@
                         </a>
                         <a href="javascript:;" class="d-flex align-items-center border-bottom py-3">
                             <div class="me-3">
-                                <img src="../assets/images/faces/face4.jpg" class="rounded-circle wd-35" alt="user">
+                                <img src="../images/faces/face4.jpg" class="rounded-circle wd-35" alt="user">
                             </div>
                             <div class="w-100">
                                 <div class="d-flex justify-content-between">
@@ -294,7 +294,7 @@
                         </a>
                         <a href="javascript:;" class="d-flex align-items-center border-bottom py-3">
                             <div class="me-3">
-                                <img src="../assets/images/faces/face5.jpg" class="rounded-circle wd-35" alt="user">
+                                <img src="../images/faces/face5.jpg" class="rounded-circle wd-35" alt="user">
                             </div>
                             <div class="w-100">
                                 <div class="d-flex justify-content-between">
@@ -306,7 +306,7 @@
                         </a>
                         <a href="javascript:;" class="d-flex align-items-center border-bottom py-3">
                             <div class="me-3">
-                                <img src="../assets/images/faces/face6.jpg" class="rounded-circle wd-35" alt="user">
+                                <img src="../images/faces/face6.jpg" class="rounded-circle wd-35" alt="user">
                             </div>
                             <div class="w-100">
                                 <div class="d-flex justify-content-between">

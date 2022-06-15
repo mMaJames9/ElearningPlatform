@@ -14,7 +14,7 @@
                                 </div>
                                 <div class="col-md-8 ps-md-0">
                                     <div class="auth-form-wrapper px-4 py-5">
-                                        <img class="mb-5" src="{{ asset('assets/images/logo.svg') }}" alt="logo" width="40%">
+                                        <img class="mb-5" src="{{ asset('images/logo.png') }}" alt="logo" width="40%">
                                         <h5 class="text-muted fw-normal mb-4">{{__('Welcome Back! Happy to see you again!')}}</h5>
                                         <form class="forms-sample" method="POST" action="{{ route('login') }}">
                                             @csrf
