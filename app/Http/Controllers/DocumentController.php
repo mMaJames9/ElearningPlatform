@@ -136,7 +136,7 @@ class DocumentController extends Controller
         if ($request->hasFile('document_path'))
         {
             $request->validate([
-                'document_path' => ['required', 'mimes:pdf', 'max:2048'],
+                'document_path' => ['required', 'mimes:pdf', 'max:12288'],
             ]);
 
             if ($oldDocumentPath = $document->document_path)
@@ -156,7 +156,7 @@ class DocumentController extends Controller
         if ($request->hasFile('correction_path'))
         {
             $request->validate([
-                'correction_path' => ['required', 'mimes:pdf', 'max:2048'],
+                'correction_path' => ['required', 'mimes:pdf', 'max:12288'],
             ]);
 
             if ($oldCorrectionPath = $document->correction_path)

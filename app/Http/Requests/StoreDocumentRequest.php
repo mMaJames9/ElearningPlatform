@@ -37,8 +37,8 @@ class StoreDocumentRequest extends FormRequest
             'document_type' => ['required', 'string', 'max:255'],
             'document_description' => ['nullable', 'string', 'max:1000'],
             'document_price' => ['required', 'string', 'max:255'],
-            'document_path' => ['required', 'mimes:pdf', 'max:2048'],
-            'correction_path' => ['nullable', 'mimes:pdf', 'max:2048'],
+            'document_path' => ['required', 'mimes:pdf', 'max:12288'],
+            'correction_path' => ['nullable', 'mimes:pdf', 'max:12288'],
         ];
     }
 }

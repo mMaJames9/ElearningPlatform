@@ -18,7 +18,7 @@ class ExamSeeder extends Seeder
         DB::table('exams')->insert([
             [
                 'id' => 1,
-                'exam_section' => 'Francophone',
+                'exam_section' => 'Fr',
                 'exam_name' => 'BEPC',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -26,7 +26,7 @@ class ExamSeeder extends Seeder
             ],
             [
                 'id' => 2,
-                'exam_section' => 'Francophone',
+                'exam_section' => 'Fr',
                 'exam_name' => 'Probatoire',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -34,7 +34,7 @@ class ExamSeeder extends Seeder
             ],
             [
                 'id' => 3,
-                'exam_section' => 'Baccalauréat',
+                'exam_section' => 'Fr',
                 'exam_name' => 'Probatoire',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
