@@ -16,17 +16,25 @@
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @if (app()->getLocale() == 'en')
                     <i class="flag-icon flag-icon-us mt-1" title="us"></i> <span class="ms-1 me-1 d-none d-md-inline-block">{{__('English')}}</span>
-                </a>
+                    @else
+                    <i class="flag-icon flag-icon-fr mt-1" title="fr"></i> <span class="ms-1 me-1 d-none d-md-inline-block">{{__('French')}}</span>
+                    @endif
                 <div class="dropdown-menu" aria-labelledby="languageDropdown">
-                    <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-us" title="us" id="us"></i> <span class="ms-1"> {{__('English')}} </span></a>
-                    <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-fr" title="fr" id="fr"></i> <span class="ms-1"> {{__('French')}} </span></a>
+                    @foreach (config('app.available_locales') as $locale)
+                    @if($locale == 'fr')
+                    <a href="{{ route(\Illuminate\Support\Facades\Route::currentRouteName(), $locale) }}" class="dropdown-item py-2"><i class="flag-icon flag-icon-fr" title="fr" id="fr"></i> <span class="ms-1"> {{__('French')}} </span></a>
+                    @else
+                    <a href="{{ route(\Illuminate\Support\Facades\Route::currentRouteName(), $locale) }}" class="dropdown-item py-2"><i class="flag-icon flag-icon-us" title="us" id="us"></i> <span class="ms-1"> {{__('English')}} </span></a>
+                    @endif
+                    @endforeach
                 </div>
             </li>
-                
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i data-feather="bell"></i>
+
+            {{-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="link-icon" data-feather="bell"></i>
                     <div class="indicator">
                         <div class="circle"></div>
                     </div>
@@ -44,7 +52,7 @@
                             <div class="flex-grow-1 me-2">
                                 <p>New Order Recieved</p>
                                 <p class="tx-12 text-muted">30 min ago</p>
-                            </div>	
+                            </div>
                         </a>
                         <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
                             <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
@@ -53,16 +61,16 @@
                             <div class="flex-grow-1 me-2">
                                 <p>Server Limit Reached!</p>
                                 <p class="tx-12 text-muted">1 hrs ago</p>
-                            </div>	
+                            </div>
                         </a>
                         <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
                             <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-                                <img class="wd-30 ht-30 rounded-circle" src="{{ Auth::user()->profile_photo_url }}" alt="user">
+                                <img class="wd-30 ht-30 rounded-circle" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}">
                             </div>
                             <div class="flex-grow-1 me-2">
                                 <p>New customer registered</p>
                                 <p class="tx-12 text-muted">2 sec ago</p>
-                            </div>	
+                            </div>
                         </a>
                         <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
                             <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
@@ -71,7 +79,7 @@
                             <div class="flex-grow-1 me-2">
                                 <p>Apps are ready for update</p>
                                 <p class="tx-12 text-muted">5 hrs ago</p>
-                            </div>	
+                            </div>
                         </a>
                         <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
                             <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
@@ -80,14 +88,14 @@
                             <div class="flex-grow-1 me-2">
                                 <p>Download completed</p>
                                 <p class="tx-12 text-muted">6 hrs ago</p>
-                            </div>	
+                            </div>
                         </a>
                     </div>
                     <div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
                         <a href="javascript:;">View all</a>
                     </div>
                 </div>
-            </li>
+            </li> --}}
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

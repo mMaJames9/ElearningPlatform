@@ -1,6 +1,22 @@
 <x-app-layout>
 
     <div class="row">
+
+        @if(session('status'))
+            <script>
+                window.addEventListener("load", function () {
+                    Toastify({
+                        text: "{{ session('status') }}",
+                        duration: 5000,
+                        close: true,
+                        gravity: "top",
+                        position: "right",
+                        backgroundColor: "#198754",
+                    }).showToast();
+                });
+            </script>
+        @endif
+
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
@@ -18,7 +34,7 @@
                             @endcan
                         </div>
                     </div>
-                    
+
                     <div class="table-responsive">
                         <table id="dataTableExample" class="table table-hover text-center">
                             <thead>
@@ -31,7 +47,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                
+
                                 @foreach($exams as $key => $exam)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
@@ -39,7 +55,7 @@
                                         @if ($exam->exam_section == 'Fr')
                                         {{__('Francophone')}}
                                         @else
-                                        {{__('Anglophone')}}  
+                                        {{__('Anglophone')}}
                                         @endif
                                     </td>
                                     <td>{{ $exam->exam_name ?? '' }}</td>
@@ -99,5 +115,5 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 </x-app-layout>

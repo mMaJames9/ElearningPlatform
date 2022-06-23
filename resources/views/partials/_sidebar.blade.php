@@ -12,19 +12,19 @@
     </div>
     <div class="sidebar-body">
         <ul class="nav">
-            
+
             <li class="nav-item nav-category">{{__('Main')}}</li>
-            <li class="nav-item">
+            <li class="nav-item {{ request()->is('dashboard') ? 'active' : '' }}">
                 <a href="{{ route('dashboard') }}" class="nav-link">
                     <i class="link-icon" data-feather="box"></i>
                     <span class="link-title">{{__('Dashboard')}}</span>
                 </a>
             </li>
-            
+
             @can('user_management_access')
             <li class="nav-item nav-category">{{__('User Management')}}</li>
             @can('role_access')
-            <li class="nav-item">
+            <li class="nav-item {{ request()->is('admin/usermanagement/roles') || request()->is('admin/usermanagement/roles/*') ? 'active' : '' }}">
                 <a href="{{ route('roles.index') }}" class="nav-link">
                     <i class="link-icon" data-feather="user-check"></i>
                     <span class="link-title">{{__('Roles')}}</span>
@@ -32,7 +32,7 @@
             </li>
             @endcan
             @can('user_access')
-            <li class="nav-item">
+            <li class="nav-item {{ request()->is('admin/usermanagement/users') || request()->is('admin/usermanagement/users/*') ? 'active' : '' }}">
                 <a href="{{ route('users.index') }}" class="nav-link">
                     <i class="link-icon" data-feather="user"></i>
                     <span class="link-title">{{__('Users')}}</span>
@@ -40,17 +40,17 @@
             </li>
             @endcan
             @endcan
-            
+
             @can('exam_access')
             <li class="nav-item nav-category">{{__('Exam Management')}}</li>
-            <li class="nav-item">
+            <li class="nav-item {{ request()->is('admin/exammanagement/exams') || request()->is('admin/exammanagement/exams/*') ? 'active' : '' }}">
                 <a href="{{ route('exams.index') }}" class="nav-link">
                     <i class="link-icon" data-feather="folder"></i>
                     <span class="link-title">{{__('Exams')}}</span>
                 </a>
             </li>
             @can('subject_access')
-            <li class="nav-item">
+            <li class="nav-item {{ request()->is('admin/exammanagement/subjects') || request()->is('admin/exammanagement/subjects/*') ? 'active' : '' }}">
                 <a href="{{ route('subjects.index') }}" class="nav-link">
                     <i class="link-icon" data-feather="book-open"></i>
                     <span class="link-title">{{__('Subjects')}}</span>
@@ -58,7 +58,7 @@
             </li>
             @endcan
             @can('document_access')
-            <li class="nav-item">
+            <li class="nav-item {{ request()->is('admin/exammanagement/documents') || request()->is('admin/exammanagement/documents/*') ? 'active' : '' }}">
                 <a href="{{ route('documents.index') }}" class="nav-link">
                     <i class="link-icon" data-feather="file-text"></i>
                     <span class="link-title">{{__('Documents')}}</span>
@@ -66,10 +66,10 @@
             </li>
             @endcan
             @endcan
-            
+
             @can('transaction_access')
             <li class="nav-item nav-category">{{__('Ressources')}}</li>
-            <li class="nav-item">
+            <li class="nav-item {{ request()->is('admin/ressources/transactions') || request()->is('admin/ressources/transactions/*') ? 'active' : '' }}">
                 <a href="{{ route('transactions.index') }}" class="nav-link">
                     <i class="link-icon" data-feather="dollar-sign"></i>
                     <span class="link-title">{{__('Transactions')}}</span>

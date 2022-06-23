@@ -1,6 +1,22 @@
 <x-app-layout>
 
     <div class="row">
+
+        @if(session('status'))
+            <script>
+                window.addEventListener("load", function () {
+                    Toastify({
+                        text: "{{ session('status') }}",
+                        duration: 5000,
+                        close: true,
+                        gravity: "top",
+                        position: "right",
+                        backgroundColor: "#198754",
+                    }).showToast();
+                });
+            </script>
+        @endif
+
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
@@ -18,7 +34,7 @@
                             @endcan
                         </div>
                     </div>
-                    
+
                     <div class="table-responsive">
                         <table id="dataTableExample" class="table table-hover text-center">
                             <thead>
@@ -26,6 +42,7 @@
                                     <th>#</th>
                                     <th>{{__('Type')}}</th>
                                     <th>{{__('Exam')}}</th>
+                                    <th>{{__('Subject')}}</th>
                                     <th>{{__('Title')}}</th>
                                     <th>{{__('Serie')}}</th>
                                     <th>{{__('Price')}}</th>
@@ -34,15 +51,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                
+
                                 @foreach($documents as $key => $document)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $document->document_type ?? '' }}</td>
                                     <td>{{ $document->exam->exam_name ?? '' }}</td>
-                                    <td class="text-wrap" width="30%">{{ $document->document_title ?? '' }}</td>
-                                    <td class="text-wrap" width="20%">
-                                        @foreach(explode(', ', $document->document_serie) as $serie) 
+                                    <td lass="text-wrap" width="10%">
+                                        @foreach ($document->subjects as $key => $item)
+                                        {{ $item->subject_name ?? '' }}
+                                        @endforeach
+                                    </td>
+                                    <td class="text-wrap" width="15%">{{ $document->document_title ?? '' }}</td>
+                                    <td class="text-wrap" width="15%">
+                                        @foreach(explode(', ', $document->document_serie) as $serie)
                                         <span class="badge bg-dark">{{ $serie }}</span>
                                         @endforeach
                                     </td>
@@ -81,7 +103,7 @@
                                         <div class="modal fade" id="modal{{ $document->id }}" tabindex="-1" aria-labelledby="ModalDeleteUser" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
-                                                    <form action="{{ route('documents.destroy', $document->id) }}" method="POST">
+                                                    <form action="{{ route( 'documents.destroy', $document->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <div class="modal-header">

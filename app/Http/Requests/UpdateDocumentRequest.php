@@ -29,15 +29,13 @@ class UpdateDocumentRequest extends FormRequest
     {
         return [
             'exam_id' => ['required'],
-            'subject_id' => ['required'],
-            'document_serie' => ['required', 'string', 'max:255'],
+            'subjects' => ['required', 'array'],
+            'subjects.*' => ['integer'],
+            'document_serie' => ['required', 'max:255'],
             'document_session' => ['nullable', 'string', 'max:255'],
-            'document_title' => ['nullable', 'string', 'max:255', 'unique:documents, document_title' . request()->route('document')->id],
-            'document_type' => ['required', 'string', 'max:255'],
+            'document_title' => ['nullable', 'string', 'max:255', 'unique:documents,document_title,' . request()->route('document')->id],
             'document_description' => ['nullable', 'string', 'max:1000'],
             'document_price' => ['required', 'string', 'max:255'],
-            'document_path' => ['required', 'mimes:pdf', 'max:2048'],
-            'correction_path' => ['nullable', 'mimes:pdf', 'max:2048'],
         ];
     }
 }

@@ -1,6 +1,22 @@
 <x-app-layout>
 
     <div class="row">
+
+        @if(session('status'))
+            <script>
+                window.addEventListener("load", function () {
+                    Toastify({
+                        text: "{{ session('status') }}",
+                        duration: 5000,
+                        close: true,
+                        gravity: "top",
+                        position: "right",
+                        backgroundColor: "#198754",
+                    }).showToast();
+                });
+            </script>
+        @endif
+
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
@@ -11,14 +27,14 @@
                         </div>
                         <div class="col text-end">
                             @can('user_create')
-                            <a class="btn btn-outline-primary" href="{{ route('users.create')}}" role="button">
+                            <a class="btn btn-outline-primary" href="{{ route('users.create') }}" role="button">
                                 <i class="link-icon" data-feather="plus"></i>
                                 {{__('Add new user')}}
                             </a>
                             @endcan
                         </div>
                     </div>
-                    
+
                     <div class="table-responsive">
                         <table id="dataTableExample" class="table table-hover">
                             <thead>
@@ -104,7 +120,7 @@
                                                 @endcan
                                                 @endif
                                                 @endforeach
-                                    
+
                                                 @foreach($user->roles as $key => $item)
                                                 @if($item->name == "Admin")
                                                 @can('user_delete')
@@ -117,7 +133,7 @@
                                                 @endforeach
                                             </div>
                                         </div>
-                                    
+
                                         <!-- Modal -->
                                         <div class="modal fade" id="modal{{ $user->id }}" tabindex="-1" aria-labelledby="ModalDeleteUser" aria-hidden="true">
                                             <div class="modal-dialog">
@@ -151,5 +167,5 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 </x-app-layout>

@@ -15,24 +15,27 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', 'login');
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])
+    ->group(function() {
 
-    // User Management
-    Route::resource('/admin/usermanagement/users', 'App\Http\Controllers\UserController');
-    Route::resource('/admin/usermanagement/roles', 'App\Http\Controllers\RoleController');
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
 
-    // Paper Management
-    Route::resource('/admin/papermanagement/exams', 'App\Http\Controllers\ExamController');
-    Route::resource('/admin/papermanagement/subjects', 'App\Http\Controllers\SubjectController');
-    Route::resource('/admin/papermanagement/documents', 'App\Http\Controllers\DocumentController');
+        Route::get('/admin/ressources/transactions/transactionsDay', 'App\Http\Controllers\TransactionController@indexDay')->name('transactionsDay');
+        Route::get('/admin/ressources/transactions/transactionsMonth', 'App\Http\Controllers\TransactionController@indexMonth')->name('transactionsMonth');
+        Route::get('/admin/ressources/transactions/transactionsYear', 'App\Http\Controllers\TransactionController@indexYear')->name('transactionsYear');
 
-    // Ressources
-    Route::resource('/admin/ressources/transactions', 'App\Http\Controllers\TransactionController');
+        // User Management
+        Route::resource('/admin/usermanagement/users', 'App\Http\Controllers\UserController');
+        Route::resource('/admin/usermanagement/roles', 'App\Http\Controllers\RoleController');
+
+        // Paper Management
+        Route::resource('/admin/exammanagement/exams', 'App\Http\Controllers\ExamController');
+        Route::resource('/admin/exammanagement/subjects', 'App\Http\Controllers\SubjectController');
+        Route::resource('/admin/exammanagement/documents', 'App\Http\Controllers\DocumentController');
+
+        // Ressources
+        Route::resource('/admin/ressources/transactions', 'App\Http\Controllers\TransactionController');
+
 });

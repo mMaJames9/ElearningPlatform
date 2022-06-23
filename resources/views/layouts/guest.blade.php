@@ -20,14 +20,15 @@
 <!-- End fonts -->
 
 <!-- core:css -->
+<link rel="stylesheet" href="{{ mix('css/app.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendors/core/core.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendors/perfect-scrollbar/perfect-scrollbar.css') }}">
 <!-- endinject -->
 
 <!-- Plugin css for this page -->
 <!-- End plugin css for this page -->
 
 <!-- inject:css -->
-{{-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
 <link rel="stylesheet" href="{{ asset('assets/fonts/feather-font/css/iconfont.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
 <!-- endinject -->
@@ -39,7 +40,7 @@
 <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 
 <!-- core:js -->
-{{-- <script src="{{ mix('js/app.js') }}" defer></script> --}}
+<script src="{{ mix('js/app.js') }}" defer></script>
 <script src="{{ asset('assets/vendors/core/core.js') }}" defer></script>
 <script src="{{ asset('assets/vendors/inputmask/jquery.inputmask.bundle.js') }}" defer></script>
 <!-- endinject -->

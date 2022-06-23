@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DocumentUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Symfony\Component\HttpFoundation\Response;
 
 class TransactionController extends Controller
 {
@@ -13,7 +16,51 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        abort_if(Gate::denies('transaction_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $transactions = DocumentUser::all()->sortByDesc("created_at");
+        $data = DocumentUser::all()->count();
+
+        $status = null;
+
+        return view('admin.transactions.index', compact( 'transactions', 'data', 'status'));
+    }
+
+    public function indexDay()
+    {
+        abort_if(Gate::denies('transaction_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $transactions = DocumentUser::where('created_at', '>',now()->subDay(1))->orderBy('created_at', 'desc')->get();
+        $data = DocumentUser::where('created_at', '>',now()->subDay(1))->count();
+
+        $status = 'today';
+
+
+       return view('admin.transactions.index', compact( 'transactions', 'data', 'status'));
+    }
+
+    public function indexMonth()
+    {
+        abort_if(Gate::denies('transaction_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $transactions = DocumentUser::where('created_at', '>',now()->subMonth(1))->orderBy('created_at', 'desc')->get();
+        $data = DocumentUser::where('created_at', '>',now()->subDay(1))->count();
+
+        $status = 'this month';
+
+       return view('admin.transactions.index', compact( 'transactions', 'data', 'status'));
+    }
+
+    public function indexYear()
+    {
+        abort_if(Gate::denies('transaction_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $transactions = DocumentUser::where('created_at', '>',now()->subYear(1))->orderBy('created_at', 'desc', 'status')->get();
+        $data = DocumentUser::where('created_at', '>',now()->subDay(1))->count();
+
+        $status = 'this year';
+
+       return view('admin.transactions.index', compact( 'transactions', 'data', 'status'));
     }
 
     /**

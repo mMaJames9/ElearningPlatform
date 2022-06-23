@@ -18,7 +18,7 @@
                             @endcan
                         </div> -->
                     </div>
-                    
+
                     <div class="table-responsive">
                         <table id="dataTableExample" class="table table-hover text-center">
                             <thead>
@@ -30,7 +30,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                
+
                                 @foreach($roles as $key => $role)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
@@ -49,5 +49,5 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 </x-app-layout>

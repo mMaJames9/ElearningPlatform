@@ -104,7 +104,8 @@ class SubjectController extends Controller
     {
         abort_if(Gate::denies('subject_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        Subject::find($id)->delete();
+        $subject = Subject::FindOrFail($id);
+        $subject->delete();
 
         $status = 'The subject was deleted successfully.';
 

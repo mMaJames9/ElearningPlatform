@@ -109,7 +109,8 @@ class ExamController extends Controller
     {
         abort_if(Gate::denies('exam_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        Exam::find($id)->delete();
+        $exam = Exam::FindOrFail($id);
+        $exam->delete();
 
         $status = 'The exam was deleted successfully.';
 

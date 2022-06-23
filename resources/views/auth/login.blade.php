@@ -2,14 +2,14 @@
     <div class="main-wrapper">
         <div class="page-wrapper full-page">
             <div class="page-content d-flex align-items-center justify-content-center">
-                
+
                 <div class="row w-100 mx-0 auth-page">
                     <div class="col-md-8 col-xl-6 mx-auto">
                         <div class="card">
                             <div class="row">
                                 <div class="col-md-4 pe-md-0">
                                     <div class="auth-side-wrapper">
-                                        
+
                                     </div>
                                 </div>
                                 <div class="col-md-8 ps-md-0">
@@ -22,7 +22,7 @@
                                             <div class="mb-4">
                                                 <label for="login" class="form-label">{{ __('Login') }}</label>
                                                 <input type="text" class="@error('login') is-invalid @enderror form-control" id="login" placeholder="{{ __('Login') }}" name="login" :value="old('login')" required autofocus>
-                                                
+
                                                 @error('login')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>

@@ -109,7 +109,8 @@ class UserController extends Controller
     {
         abort_if(Gate::denies('user_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        User::find($id)->delete();
+        $user = User::FindOrFail($id);
+        $user->delete();
 
         $status = 'The user was deleted successfully.';
 
