@@ -14,7 +14,8 @@ class AddForeignKeysToDocumentUserTable extends Migration
     public function up()
     {
         Schema::table('document_user', function (Blueprint $table) {
-            $table->foreign(['document_id', 'user_id'], 'FK_document_user')->references(['id'])->on('documents')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign(['user_id'], 'FK_document_user_user')->references(['id'])->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign(['document_id'], 'FK_document_user_document')->references(['id'])->on('documents')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 
@@ -26,7 +27,8 @@ class AddForeignKeysToDocumentUserTable extends Migration
     public function down()
     {
         Schema::table('document_user', function (Blueprint $table) {
-            $table->dropForeign('FK_document_user');
+            $table->dropForeign('FK_document_user_user');
+            $table->dropForeign('FK_document_user_document');
         });
     }
 }
