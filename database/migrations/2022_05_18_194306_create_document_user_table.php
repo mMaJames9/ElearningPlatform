@@ -14,8 +14,8 @@ class CreateDocumentUserTable extends Migration
     public function up()
     {
         Schema::create('document_user', function (Blueprint $table) {
-            $table->integer('user_id');
-            $table->integer('document_id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('document_id');
             $table->integer('transaction_amount')->nullable();
             $table->timestamps();
 

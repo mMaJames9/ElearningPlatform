@@ -14,8 +14,8 @@ class CreateDocumentSubjectTable extends Migration
     public function up()
     {
         Schema::create('document_subject', function (Blueprint $table) {
-            $table->integer('document_id');
-            $table->integer('subject_id');
+            $table->unsignedInteger('document_id');
+            $table->unsignedInteger('subject_id');
             $table->timestamps();
 
             $table->primary(['document_id', 'subject_id']);
