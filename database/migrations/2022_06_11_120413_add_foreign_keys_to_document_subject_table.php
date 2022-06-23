@@ -14,8 +14,8 @@ class AddForeignKeysToDocumentSubjectTable extends Migration
     public function up()
     {
         Schema::table('document_subject', function (Blueprint $table) {
-            $table->foreign(['document_id'], 'FK_document_subject_document')->references(['id'])->on('documents')->onUpdate('CASCADE')->onDelete('CASCADE');
-            $table->foreign(['subject_id'], 'FK_document_subject_subject')->references(['id'])->on('subjects')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('document_id', 'FK_document_subject_document')->references('id')->on('documents')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('subject_id', 'FK_document_subject_subject')->references('id')->on('subjects')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
