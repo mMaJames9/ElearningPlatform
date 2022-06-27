@@ -35,16 +35,16 @@
             <div class="col-md-6 grid-margin stretch-card">
                 <div class="card-body">
 
-                    <h6 class="card-title mb-5">{{__('Create a New Subject')}}</h6>
+                    <h6 class="card-title mb-5">{{__('Create a New Classroom')}}</h6>
 
-                    <form class="forms-sample" method="POST" action="{{ route('subjects.store') }}" enctype="multipart/form-data">
+                    <form class="forms-sample" method="POST" action="{{ route('classrooms.store') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="mb-3">
-                            <label class="form-label" for="subject_name">{{ __('Name') }}</label>
-                            <input type="subject_name" class="@error('subject_name') is-invalid @enderror form-control" id="subject_name" placeholder="{{ __('Name of the subject') }}" name="subject_name" :value="old('subject_name')" required autofocus>
+                            <label class="form-label" for="classroom_name">{{ __('Name') }}</label>
+                            <input type="classroom_name" class="@error('classroom_name') is-invalid @enderror form-control" id="classroom_name" placeholder="{{ __('Name of the classroom') }}" name="classroom_name" :value="old('classroom_name')" required autofocus>
 
-                            @error('subject_name')
+                            @error('classroom_name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -53,7 +53,7 @@
 
                         <div class="mt-5">
                             <button type="submit" class="btn btn-primary me-2">{{ __('Submit') }}</button>
-                            <a role="button" class="btn btn-dark" href="{{ route('subjects.index') }}">
+                            <a role="button" class="btn btn-dark" href="{{ route('classrooms.index') }}">
                                 {{ __('Back to the Table') }}
                             </a>
                         </div>

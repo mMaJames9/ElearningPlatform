@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\StoreDocumentRequest;
 use App\Http\Requests\UpdateDocumentRequest;
+use App\Models\Classroom;
 use App\Models\Document;
 use App\Models\Exam;
 use App\Models\Subject;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
+use Spatie\PdfToImage\Pdf;
 
 class DocumentController extends Controller
 {
@@ -40,9 +40,12 @@ class DocumentController extends Controller
     public function create()
     {
         abort_if(Gate::denies('document_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         $subjects = Subject::all()->pluck('subject_name', 'id');
+        $classrooms = Classroom::all()->pluck('classroom_name', 'id');
         $exams = Exam::all()->pluck('exam_name', 'id');
-        return view('admin.documents.create', compact('subjects', 'exams'));
+
+        return view('admin.documents.create', compact('subjects', 'classrooms', 'exams'));
     }
 
     /**
@@ -53,37 +56,44 @@ class DocumentController extends Controller
      */
     public function store(StoreDocumentRequest $request)
     {
-        $document_serie = $request->document_serie;
-        $document_serie = implode(', ', $document_serie);
+        if ($request->hasFile('document_path'))
+        {
+            $documentPath =  $request->document_path;
+            $nameDocument = $documentPath->getClientOriginalName();
+            $docPath = public_path('storage/uploads/documents');
+            $documentPath->move($docPath, $nameDocument);
 
-        $documentPath =  $request->document_path;
-        $nameDocument = $documentPath->getClientOriginalName();
-        $documentPath->move(public_path('storage/uploads/documents'),$nameDocument);
-
-        // $documentPath = $request->file('document_path')->store('uploads/documents', 'public');
+            $pdfThumb = new Pdf($docPath . '/' . $nameDocument);
+            $thumbnailPath = public_path('storage/uploads/documents/thumbnails');
+            $thumbName = "thumb-" . strtolower(str_replace(['.pdf', ''], ['', '-'], $nameDocument)) . ".png";
+            $thumbnail = $pdfThumb->setPage(1)
+            ->setOutputFormat('png')
+            ->setResolution(32)
+            ->saveImage($thumbnailPath . '/' . "$thumbName");
+        }
 
         if ($request->hasFile('correction_path'))
         {
             $correctionPath =  $request->correction_path;
             $nameCorrection = $correctionPath->getClientOriginalName();
-            $correctionPath->move(public_path('storage/uploads/corrections'),$nameCorrection);
-
-            // $correctionPath = $request->file('correction_path')->store('uploads/corrections', 'public');
+            $corrPath = public_path('storage/uploads/corrections');
+            $correctionPath->move($corrPath, $nameCorrection);
         }
 
         $document = Document::create([
             'exam_id' => $request['exam_id'],
-            'document_serie' => $document_serie ?? null,
             'document_session' => $request['document_session'] ?? null,
             'document_title' => $request['document_title'] ?? null,
             'document_type' => $request['document_type'],
             'document_description' => $request['document_description'] ?? null,
             'document_price' => $request['document_price'],
             'document_path' => $nameDocument,
+            'document_thumbnail' => $thumbName,
             'correction_path' => $nameCorrection ?? null,
         ]);
 
         $document->subjects()->sync($request->input('subjects', []));
+        $document->classrooms()->sync($request->input('classrooms', []));
 
         $status = 'A new document was added successfully.';
 
@@ -98,9 +108,16 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Document $document)
     {
-        //
+        abort_if(Gate::denies('document_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $document->load('subjects');
+        $document->load('classrooms');
+
+        $exams = Exam::all()->pluck('exam_name', 'id');
+
+        return view('admin.documents.show', compact('document', 'exams'));
     }
 
     /**
@@ -114,11 +131,14 @@ class DocumentController extends Controller
         abort_if(Gate::denies('document_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $subjects = Subject::all()->pluck('subject_name', 'id');
+        $classrooms = Classroom::all()->pluck('classroom_name', 'id');
+
         $exams = Exam::all()->pluck('exam_name', 'id');
 
         $document->load('subjects');
+        $document->load('classrooms');
 
-        return view('admin.documents.edit', compact('subjects', 'document', 'exams'));
+        return view('admin.documents.edit', compact('subjects', 'classrooms', 'document', 'exams'));
     }
 
     /**
@@ -130,8 +150,6 @@ class DocumentController extends Controller
      */
     public function update(UpdateDocumentRequest $request, Document $document)
     {
-        $document_serie = $request->document_serie;
-        $document_serie = implode(', ', $document_serie);
 
         if ($request->hasFile('document_path'))
         {
@@ -141,16 +159,27 @@ class DocumentController extends Controller
 
             if ($oldDocumentPath = $document->document_path)
             {
+                $oldThumbFile = $document->document_thumbnail;
                 unlink(public_path('storage/uploads/documents/') . $oldDocumentPath);
+                unlink(public_path('storage/uploads/documents/thumbnails/') . $oldThumbFile);
             }
 
             $documentPath =  $request->document_path;
             $nameDocument = $documentPath->getClientOriginalName();
-            $documentPath->move(public_path('storage/uploads/documents'),$nameDocument);
+            $docPath = public_path('storage/uploads/documents');
+            $documentPath->move($docPath, $nameDocument);
 
-            // $documentPath = $request->file('document_path')->store('uploads/documents', 'public');
+            $pdfThumb = new Pdf($docPath . '/' . $nameDocument);
+            $thumbnailPath = public_path('storage/uploads/documents/thumbnails');
+            $thumbName = "thumb-" . strtolower(str_replace(['.pdf', ''], ['', '-'], $nameDocument)) . ".png";
+            $thumbnail = $pdfThumb
+            ->setPage(1)
+            ->setOutputFormat('png')
+            ->setResolution(32)
+            ->saveImage($thumbnailPath . '/' . "$thumbName");
 
             $document->document_path = $nameDocument;
+            $document->document_thumbnail = $thumbName;
         }
 
         if ($request->hasFile('correction_path'))
@@ -165,16 +194,14 @@ class DocumentController extends Controller
             }
 
             $correctionPath =  $request->correction_path;
-            $nameCorrrection = $correctionPath->getClientOriginalName();
-            $correctionPath->move(public_path('storage/uploads/corrections'),$nameCorrrection);
+            $nameCorrection = $correctionPath->getClientOriginalName();
+            $corrPath = public_path('storage/uploads/corrections');
+            $correctionPath->move($corrPath, $nameCorrection);
 
-            // $correctionPath = $request->file('correction_path')->store('uploads/corrections', 'public');
-
-            $document->correction_path = $nameCorrrection;
+            $document->correction_path = $nameCorrection;
         }
 
         $document->exam_id = $request->exam_id;
-        $document->document_serie = $document_serie;
         $document->document_session = $request->document_session ?? null;
         $document->document_title = $request->document_title ?? null;
         $document->document_description = $request->document_description ?? null;
@@ -183,6 +210,7 @@ class DocumentController extends Controller
         $document->save();
 
         $document->subjects()->sync($request->input('subjects', []));
+        $document->classrooms()->sync($request->input('classrooms', []));
 
 
         $status = 'A new document was added successfully.';

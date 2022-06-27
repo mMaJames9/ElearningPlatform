@@ -60,7 +60,7 @@
                                             <div>
                                                 <button class="btn btn-primary me-2 mb-2 mb-md-0 text-white">{{ __('Log In') }}</button>
                                             </div>
-                                            <a href="{{ route('register') }}" class="d-block mt-3 text-muted">{{__('Don\'t have an account? Create')}}</a>
+                                            <a href="{{ route('register') }}" class="d-block mt-3">{{__('Don\'t have an account? Create')}}</a>
                                         </form>
                                     </div>
                                 </div>

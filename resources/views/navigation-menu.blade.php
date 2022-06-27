@@ -6,10 +6,10 @@
 
         <form class="search-form">
             <div class="input-group">
-                <div class="input-group-text">
+                {{-- <div class="input-group-text">
                     <i data-feather="search"></i>
                 </div>
-                <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
+                <input type="text" class="form-control" id="navbarForm" placeholder="Search here..."> --}}
             </div>
         </form>
 

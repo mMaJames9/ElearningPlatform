@@ -17,34 +17,16 @@
         @endif
 
         <div class="card">
-            <div class="col-md-6 grid-margin stretch-card">
+            <div class="col-md-8 grid-margin stretch-card">
                 <div class="card-body">
 
                     <h6 class="card-title mb-5">{{__('Update the Document')}}</h6>
                     <form class="forms-sample" method="POST" action="{{ route("documents.update", [$document->id]) }}" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
-                        {{-- <div class="mb-3">
-                            <label class="form-label" for="document_type">{{ __('Type') }}</label>
-                            <select class="js-example-basic-single form-select @error('document_type') is-invalid @enderror" data-width="100%" id="document_type" name="document_type" autofocus>
-                                @if ($document->document_type == "Paper")
-                                <option value="Paper" selected>Paper</option>
-                                <option value="Book">Book</option>
-                                @else
-                                <option value="Paper">Paper</option>
-                                <option value="Book" selected>Book</option>
-                                @endif
-                            </select>
-
-                            @error('document_type')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div> --}}
 
                         <div class="mb-3">
-                            <label class="form-label" for="subjects">{{ __('Subject') }}</label>
+                            <label class="form-label" for="subjects">{{ __('Subject(s)') }}</label>
                             <select class="js-example-basic-single form-select @error('subjects') is-invalid @enderror" multiple="multiple" data-width="100%" id="subjects" name="subjects[]" autofocus>
                                 @foreach($subjects as $id => $subjects)
                                 <option value="{{ $id }}" {{ (in_array($id, old('subjects', [])) || $document->subjects->contains($id)) ? 'selected' : '' }}>{{ $subjects }}</option>
@@ -102,26 +84,14 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label" for="document_serie">{{ __('Serie') }}</label>
-                            <select class="js-example-basic-multiple form-select @error('document_serie') is-invalid @enderror" multiple="multiple" data-width="100%" id="document_serie" name="document_serie[]" autofocus>
-                                <option value="3ième ALL" @if( Str::contains($document->document_serie, '3ième ALL')) selected @endif >3ième ALL</option>
-                                <option value="3ième ESP" @if( Str::contains($document->document_serie, '3ième ESP')) selected @endif >3ième ESP</option>
-                                <option value="Première A4 ALL" @if( Str::contains($document->document_serie, 'Première A4 ALL')) selected @endif >Première A4 ALL</option>
-                                <option value="Première A4 ESP" @if( Str::contains($document->document_serie, 'Première A4 ESP')) selected @endif >Première A4 ESP</option>
-                                <option value="Première C" @if( Str::contains($document->document_serie, 'Première C')) selected @endif >Première C</option>
-                                <option value="Première D" @if( Str::contains($document->document_serie, 'Première D')) selected @endif >Première D</option>
-                                <option value="Première E" @if( Str::contains($document->document_serie, 'Première E')) selected @endif >Première E</option>
-                                <option value="Première TI" @if( Str::contains($document->document_serie, 'Première TI')) selected @endif >Première TI</option>
-                                <option value="Tle A4 ALL" @if( Str::contains($document->document_serie, 'Tle A4 ALL')) selected @endif >Tle A4 ALL</option>
-                                <option value="Tle A4 ESP" @if( Str::contains($document->document_serie, 'Tle A4 ESP')) selected @endif >Tle A4 ESP</option>
-                                <option value="Tle ABI (A Bilingue)" @if( Str::contains($document->document_serie, 'Tle ABI (A Bilingue)')) selected @endif >Tle ABI (A Bilingue)</option>
-                                <option value="Tle C" @if( Str::contains($document->document_serie, 'Tle C')) selected @endif >Tle C</option>
-                                <option value="Tle D" @if( Str::contains($document->document_serie, 'Tle D')) selected @endif >Tle D</option>
-                                <option value="Tle E" @if( Str::contains($document->document_serie, 'Tle E')) selected @endif >Tle E</option>
-                                <option value="Tle TI" @if( Str::contains($document->document_serie, 'Tle TI')) selected @endif >Tle TI</option>
+                            <label class="form-label" for="classrooms">{{ __('Serie(s)') }}</label>
+                            <select class="js-example-basic-single form-select @error('classrooms') is-invalid @enderror" multiple="multiple" data-width="100%" id="classrooms" name="classrooms[]" autofocus>
+                                @foreach($classrooms as $id => $classrooms)
+                                <option value="{{ $id }}" {{ (in_array($id, old('classrooms', [])) || $document->classrooms->contains($id)) ? 'selected' : '' }}>{{ $classrooms }}</option>
+                                @endforeach
                             </select>
 
-                            @error('document_serie')
+                            @error('classrooms')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -131,7 +101,7 @@
                         @if ($document->document_type == "Book")
                         <div id="docDescr" class="mb-3">
                             <label class="form-label" for="document_description">{{ __('Description') }}</label>
-                            <textarea class="@error('document_description') is-invalid @enderror form-control" rows="5" id="document_description" placeholder="{{ __('Description of the document') }}" name="document_description" autofocus> {{$document->document_description}}</textarea>
+                            <textarea class="@error('document_description') is-invalid @enderror form-control" id="tinymceExample" rows="15" placeholder="{{ __('Description of the document') }}" name="document_description" autofocus> {{$document->document_description}}</textarea>
 
                             @error('document_description')
                             <span class="invalid-feedback" role="alert">

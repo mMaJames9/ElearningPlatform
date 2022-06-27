@@ -35,7 +35,7 @@ class ExamSeeder extends Seeder
             [
                 'id' => 3,
                 'exam_section' => 'Fr',
-                'exam_name' => 'Probatoire',
+                'exam_name' => 'Baccalauréat',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
                 'deleted_at' => null,

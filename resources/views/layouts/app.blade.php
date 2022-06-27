@@ -66,6 +66,7 @@
 <script src="{{ asset('assets/vendors/dropify/dist/dropify.min.js') }}" defer></script>
 <script src="{{ asset('assets/vendors/sweetalert2/sweetalert2.min.js') }}" defer></script>
 <script src="{{ asset('assets/vendors/toastify/toastify.js') }}" defer></script>
+<script src="{{ asset('assets/vendors/tinymce/tinymce.min.js') }}" defer></script>
 <!-- End plugin js for this page -->
 
 <!-- inject:js -->
@@ -81,6 +82,7 @@
 <script src="{{ asset('assets/js/dropify.js') }}" defer></script>
 <script src="{{ asset('assets/js/sweet-alert.js') }}" defer></script>
 <script src="{{ asset('assets/js/toastify.js') }}" defer></script>
+<script src="{{ asset('assets/js/tinymce.js') }}" defer></script>
 <!-- End custom js for this page -->
 
 </head>

@@ -49,6 +49,16 @@
                     <span class="link-title">{{__('Exams')}}</span>
                 </a>
             </li>
+
+            @can('classroom_access')
+            <li class="nav-item {{ request()->is('admin/exammanagement/classrooms') || request()->is('admin/exammanagement/classrooms/*') ? 'active' : '' }}">
+                <a href="{{ route('classrooms.index') }}" class="nav-link">
+                    <i class="link-icon" data-feather="grid"></i>
+                    <span class="link-title">{{__('Classroom')}}</span>
+                </a>
+            </li>
+            @endcan
+
             @can('subject_access')
             <li class="nav-item {{ request()->is('admin/exammanagement/subjects') || request()->is('admin/exammanagement/subjects/*') ? 'active' : '' }}">
                 <a href="{{ route('subjects.index') }}" class="nav-link">

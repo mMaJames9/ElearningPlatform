@@ -21,6 +21,12 @@ class ModelHasRoles extends Seeder
                 'model_type' => null,
                 'model_id' => 1,
             ],
+
+            [
+                'role_id' => 3,
+                'model_type' => null,
+                'model_id' => 2,
+            ],
         ]);
     }
 }

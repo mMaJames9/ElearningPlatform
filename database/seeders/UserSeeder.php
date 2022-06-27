@@ -34,6 +34,24 @@ class UserSeeder extends Seeder
                 'two_factor_secret' => null,
                 'two_factor_recovery_codes' => null,
             ],
+
+            [
+                'id' => 2,
+                'name' => 'Anthony MISSE',
+                'email' => 'anthonymisse85@gmail.com',
+                'username' => 'm.maj9',
+                'phone_number' => '+237 696 638 725',
+                'email_verified_at' => null,
+                'password' => Hash::make('anthonyjames'),
+                'remember_token' => null,
+                'current_team_id' => null,
+                'profile_photo_path' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'deleted_at' => null,
+                'two_factor_secret' => null,
+                'two_factor_recovery_codes' => null,
+            ],
         ]);
     }
 }

@@ -14,7 +14,11 @@ class AddForeignKeysToDocumentsTable extends Migration
     public function up()
     {
         Schema::table('documents', function (Blueprint $table) {
-            $table->foreign('exam_id', 'FK_exam_document')->references('id')->on('exams')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('exam_id')
+            ->nullable()
+            ->constrained('exams')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
         });
     }
 
@@ -26,7 +30,7 @@ class AddForeignKeysToDocumentsTable extends Migration
     public function down()
     {
         Schema::table('documents', function (Blueprint $table) {
-            $table->dropForeign('FK_exam_document');
+            $table->dropForeign(['exam_id']);
         });
     }
 }

@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
 use App\Actions\Fortify\PasswordValidationRules;
+use App\Models\DocumentUser;
+use App\Models\Exam;
 
 class UserController extends Controller
 {
@@ -71,9 +73,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $transactions = DocumentUser::where('user_id', $user->id)->get();
+        $data = DocumentUser::where('user_id', $user->id)->count();
+        $user->load('documents');
+
+        return view('admin.users.show', compact('user', 'data', 'transactions'));
     }
 
     /**

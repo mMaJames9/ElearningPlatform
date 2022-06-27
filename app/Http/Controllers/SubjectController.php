@@ -46,9 +46,9 @@ class SubjectController extends Controller
     {
         $subject = Subject::create($request->all());
 
-        $status = 'A new exam was added successfully.';
+        $status = 'A new subject was added successfully.';
 
-        return redirect()->route('subjects.index')->with([
+        return redirect()->route('subjects.create')->with([
             'status' => $status,
         ]);
     }

@@ -15,14 +15,13 @@ class CreateDocumentsTable extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('exam_id');
             $table->string('document_session')->nullable();
-            $table->string('document_serie')->nullable();
             $table->string('document_title')->nullable();
             $table->string('document_type')->nullable();
-            $table->text('document_description')->nullable();
+            $table->longText('document_description')->nullable();
             $table->integer('document_price')->nullable();
             $table->string('document_path')->nullable();
+            $table->string('document_thumbnail', 2048)->nullable();
             $table->string('correction_path')->nullable();
             $table->timestamps();
             $table->softDeletes();

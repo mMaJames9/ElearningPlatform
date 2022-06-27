@@ -43,7 +43,6 @@
                                     <th>{{__('Type')}}</th>
                                     <th>{{__('Exam')}}</th>
                                     <th>{{__('Subject')}}</th>
-                                    <th>{{__('Title')}}</th>
                                     <th>{{__('Serie')}}</th>
                                     <th>{{__('Price')}}</th>
                                     <th>{{__('Updated at')}}</th>
@@ -62,10 +61,9 @@
                                         {{ $item->subject_name ?? '' }}
                                         @endforeach
                                     </td>
-                                    <td class="text-wrap" width="15%">{{ $document->document_title ?? '' }}</td>
                                     <td class="text-wrap" width="15%">
-                                        @foreach(explode(', ', $document->document_serie) as $serie)
-                                        <span class="badge bg-dark">{{ $serie }}</span>
+                                        @foreach ($document->classrooms as $key => $item)
+                                        {{ $item->classroom_name ?? '' }}
                                         @endforeach
                                     </td>
                                     <td>{{ $document->document_price ?? '' }}</td>

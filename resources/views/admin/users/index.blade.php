@@ -105,6 +105,8 @@
                                     </td>
                                     <td class="text-center">{{ $user->created_at }}</td>
                                     <td class="text-center">
+                                        @foreach($user->roles as $key => $item)
+                                        @if($item->name != "Super Admin")
                                         <div class="dropdown mb-2">
                                             <button class="btn p-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
@@ -158,6 +160,8 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @endif
+                                        @endforeach
                                     </td>
                                 </tr>
                                 @endforeach

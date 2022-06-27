@@ -32,6 +32,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 
         // Paper Management
         Route::resource('/admin/exammanagement/exams', 'App\Http\Controllers\ExamController');
+        Route::resource('/admin/exammanagement/classrooms', 'App\Http\Controllers\ClassroomController');
         Route::resource('/admin/exammanagement/subjects', 'App\Http\Controllers\SubjectController');
         Route::resource('/admin/exammanagement/documents', 'App\Http\Controllers\DocumentController');
 

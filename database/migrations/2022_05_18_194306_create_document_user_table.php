@@ -14,12 +14,8 @@ class CreateDocumentUserTable extends Migration
     public function up()
     {
         Schema::create('document_user', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('document_id');
             $table->integer('transaction_amount')->nullable();
             $table->timestamps();
-
-            $table->primary(['user_id', 'document_id']);
         });
     }
 

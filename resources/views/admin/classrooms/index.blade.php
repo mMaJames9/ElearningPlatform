@@ -22,14 +22,14 @@
                 <div class="card-body">
                     <div class="row mb-5">
                         <div class="col">
-                            <h6 class="card-title">Table of Exams</h6>
-                            <p class="text-muted mb-3">{{$data}} {{__('exam(s)')}}</p>
+                            <h6 class="card-title">Table of Classrooms</h6>
+                            <p class="text-muted mb-3">{{$data}} {{__('classroom(s)')}}</p>
                         </div>
                         <div class="col text-end">
-                            @can('exam_create')
-                            <a class="btn btn-outline-primary" href="{{ route('exams.create')}}" role="button">
+                            @can('classroom_create')
+                            <a class="btn btn-outline-primary" href="{{ route('classrooms.create')}}" classroom="button">
                                 <i class="link-icon" data-feather="plus"></i>
-                                {{__('Add new exam')}}
+                                {{__('Add new classroom')}}
                             </a>
                             @endcan
                         </div>
@@ -40,7 +40,6 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>{{__('Section')}}</th>
                                     <th>{{__('Name')}}</th>
                                     <th>{{__('Updated at')}}</th>
                                     <th>{{__('Actions')}}</th>
@@ -48,33 +47,26 @@
                             </thead>
                             <tbody>
 
-                                @foreach($exams as $key => $exam)
+                                @foreach($classrooms as $key => $classroom)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>
-                                        @if ($exam->exam_section == 'Fr')
-                                        {{__('Francophone')}}
-                                        @else
-                                        {{__('Anglophone')}}
-                                        @endif
-                                    </td>
-                                    <td>{{ $exam->exam_name ?? '' }}</td>
-                                    <td>{{ $exam->updated_at }}</td>
+                                    <td>{{ $classroom->classroom_name ?? '' }}</td>
+                                    <td>{{ $classroom->updated_at }}</td>
                                     <td>
                                         <div class="dropdown mb-2">
                                             <button class="btn p-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                @can('exam_edit')
-                                                <a class="dropdown-item d-flex align-items-center" href="{{ route('exams.edit', $exam->id) }}">
+                                                @can('classroom_edit')
+                                                <a class="dropdown-item d-flex align-items-center" href="{{ route('classrooms.edit', $classroom->id) }}">
                                                     <i data-feather="edit-2" class="icon-sm me-2"></i>
                                                     <span class="">{{__(' Edit')}}</span>
                                                 </a>
                                                 @endcan
 
-                                                @can('exam_delete')
-                                                <a role="button" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#modal{{ $exam->id }}">
+                                                @can('classroom_delete')
+                                                <a role="button" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#modal{{ $classroom->id }}">
                                                     <i data-feather="trash" class="icon-sm me-2"></i>
                                                     <span class="">{{__(' Delete')}}</span>
                                                 </a>
@@ -83,10 +75,10 @@
                                         </div>
 
                                         <!-- Modal -->
-                                        <div class="modal fade" id="modal{{ $exam->id }}" tabindex="-1" aria-labelledby="ModalDeleteUser" aria-hidden="true">
+                                        <div class="modal fade" id="modal{{ $classroom->id }}" tabindex="-1" aria-labelledby="ModalDeleteUser" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
-                                                    <form action="{{ route('exams.destroy', $exam->id) }}" method="POST">
+                                                    <form action="{{ route('classrooms.destroy', $classroom->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <div class="modal-header">
@@ -94,7 +86,7 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            {{__('Do you want to delete exam ')}}<span class="fw-bold">{{ $exam->exam_name }}</span> ?
+                                                            {{__('Do you want to delete classroom ')}}<span class="fw-bold">{{ $classroom->classroom_name }}</span> ?
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('Close')}}</button>

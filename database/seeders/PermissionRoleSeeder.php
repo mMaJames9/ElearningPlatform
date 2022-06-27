@@ -34,6 +34,13 @@ class PermissionRoleSeeder extends Seeder
         Permission::create(['name' => 'exam_delete']);
         Permission::create(['name' => 'exam_access']);
 
+        // create permissions (classroom)
+        Permission::create(['name' => 'classroom_create']);
+        Permission::create(['name' => 'classroom_edit']);
+        Permission::create(['name' => 'classroom_show']);
+        Permission::create(['name' => 'classroom_delete']);
+        Permission::create(['name' => 'classroom_access']);
+
         // create permissions (subject)
         Permission::create(['name' => 'subject_create']);
         Permission::create(['name' => 'subject_edit']);
@@ -70,6 +77,13 @@ class PermissionRoleSeeder extends Seeder
         $role1->givePermissionTo('exam_delete');
         $role1->givePermissionTo('exam_access');
 
+        // create permissions (classroom)
+        $role1->givePermissionTo('classroom_create');
+        $role1->givePermissionTo('classroom_edit');
+        $role1->givePermissionTo('classroom_show');
+        $role1->givePermissionTo('classroom_delete');
+        $role1->givePermissionTo('classroom_access');
+
         // create permissions (subject)
         $role1->givePermissionTo('subject_create');
         $role1->givePermissionTo('subject_edit');
@@ -94,6 +108,9 @@ class PermissionRoleSeeder extends Seeder
 
         // create permissions (exam)
         $role2->givePermissionTo('exam_access');
+
+        // create permissions (classroom)
+        $role2->givePermissionTo('classroom_access');
 
         // create permissions (subject)
         $role2->givePermissionTo('subject_access');

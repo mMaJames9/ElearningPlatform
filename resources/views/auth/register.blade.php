@@ -99,7 +99,7 @@
                                             <div>
                                                 <button class="btn btn-primary text-white me-2 mb-2 mb-md-0">{{ __('Sign Up') }}</button>
                                             </div>
-                                            <a href="{{ route('login') }}" class="d-block mt-3 text-muted">{{__('Already have an account? Log In')}}</a>
+                                            <a href="{{ route('login') }}" class="d-block mt-3">{{__('Already have an account? Log In')}}</a>
                                         </form>
                                     </div>
                                 </div>

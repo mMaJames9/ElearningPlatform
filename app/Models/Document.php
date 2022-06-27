@@ -10,12 +10,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int $id
  * @property int $exam_id
  * @property string $document_session
- * @property string $document_serie
  * @property string $document_title
  * @property string $document_type
  * @property string $document_description
  * @property int $document_price
  * @property string $document_path
+ * @property string $document_thumbnail
  * @property string $correction_path
  * @property string $created_at
  * @property string $updated_at
@@ -32,12 +32,12 @@ class Document extends Model
     protected $fillable = [
         'exam_id',
         'document_session',
-        'document_serie',
         'document_title',
         'document_type',
         'document_description',
         'document_price',
         'document_path',
+        'document_thumbnail',
         'correction_path',
         'created_at',
         'updated_at',
@@ -47,6 +47,12 @@ class Document extends Model
     public function exam()
     {
         return $this->belongsTo(Exam::class, 'exam_id', 'id');
+    }
+
+    public function classrooms()
+    {
+        return $this->belongsToMany(Classroom::class, ClassroomDocument::class)
+            ->withTimestamps();
     }
 
     public function subjects()

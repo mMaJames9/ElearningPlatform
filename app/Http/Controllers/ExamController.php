@@ -52,7 +52,7 @@ class ExamController extends Controller
 
         $status = 'A new exam was added successfully.';
 
-        return redirect()->route('exams.index')->with([
+        return redirect()->route('exams.create')->with([
             'status' => $status,
         ]);
     }

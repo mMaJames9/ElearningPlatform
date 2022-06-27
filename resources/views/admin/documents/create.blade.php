@@ -17,7 +17,7 @@
         @endif
 
         <div class="card">
-            <div class="col-md-6 grid-margin stretch-card">
+            <div class="col-md-8 grid-margin stretch-card">
                 <div class="card-body">
 
                     <h6 class="card-title mb-5">{{__('Create a New Document')}}</h6>
@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label" for="subjects">{{ __('Subject') }}</label>
+                            <label class="form-label" for="subjects">{{ __('Subject(s)') }}</label>
                             <select class="js-example-basic-single form-select @error('subjects') is-invalid @enderror" multiple="multiple" data-width="100%" id="subjects" name="subjects[]" :value="old('subjects')" required autofocus>
                                 @foreach($subjects as $id => $subjects)
                                 <option value="{{ $id }}" {{ in_array($id, old('subjects', [])) ? 'selected' : '' }}>{{ $subjects }}</option>
@@ -94,27 +94,14 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label" for="document_serie">{{ __('Serie') }}</label>
-                            <select class="js-example-basic-multiple form-select @error('document_serie') is-invalid @enderror" multiple="multiple" data-width="100%" id="document_serie" name="document_serie[]" :value="old('document_serie')" required autofocus>
-                                <option disabled hidden>{{ __('--- Select the concerned class(es) ---') }}</option>
-                                <option value="3ième ALL">3ième ALL</option>
-                                <option value="3ième ESP">3ième ESP</option>
-                                <option value="Première A4 ALL">Première A4 ALL</option>
-                                <option value="Première A4 ESP">Première A4 ESP</option>
-                                <option value="Première C">Première C</option>
-                                <option value="Première D">Première D</option>
-                                <option value="Première E">Première E</option>
-                                <option value="Première TI">Première TI</option>
-                                <option value="Tle A4 ALL">Tle A4 ALL</option>
-                                <option value="Tle A4 ESP">Tle A4 ESP</option>
-                                <option value="Tle ABI (A Bilingue)">Tle ABI (A Bilingue)</option>
-                                <option value="Tle C">Tle C</option>
-                                <option value="Tle D">Tle D</option>
-                                <option value="Tle E">Tle E</option>
-                                <option value="Tle TI">Tle TI</option>
+                            <label class="form-label" for="classrooms">{{ __('Serie(s)') }}</label>
+                            <select class="js-example-basic-single form-select @error('classrooms') is-invalid @enderror" multiple="multiple" data-width="100%" id="classrooms" name="classrooms[]" :value="old('classrooms')" required autofocus>
+                                @foreach($classrooms as $id => $classrooms)
+                                <option value="{{ $id }}" {{ in_array($id, old('classrooms', [])) ? 'selected' : '' }}>{{ $classrooms }}</option>
+                                @endforeach
                             </select>
 
-                            @error('document_serie')
+                            @error('classrooms')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -123,7 +110,7 @@
 
                         <div id="docDescr" class="mb-3">
                             <label class="form-label" for="document_description">{{ __('Description') }}</label>
-                            <textarea class="@error('document_description') is-invalid @enderror form-control" rows="5" id="document_description" placeholder="{{ __('Description of the document') }}" name="document_description" :value="old('document_description')" autofocus></textarea>
+                            <textarea class="@error('document_description') is-invalid @enderror form-control" id="tinymceExample" rows="10" placeholder="{{ __('Description of the document') }}" name="document_description" :value="old('document_description')" autofocus></textarea>
 
                             @error('document_description')
                             <span class="invalid-feedback" role="alert">

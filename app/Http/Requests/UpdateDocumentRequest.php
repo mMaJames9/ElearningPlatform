@@ -31,10 +31,11 @@ class UpdateDocumentRequest extends FormRequest
             'exam_id' => ['required'],
             'subjects' => ['required', 'array'],
             'subjects.*' => ['integer'],
-            'document_serie' => ['required', 'max:255'],
+            'classrooms' => ['required', 'array'],
+            'classrooms.*' => ['integer'],
             'document_session' => ['nullable', 'string', 'max:255'],
             'document_title' => ['nullable', 'string', 'max:255', 'unique:documents,document_title,' . request()->route('document')->id],
-            'document_description' => ['nullable', 'string', 'max:1000'],
+            'document_description' => ['nullable', 'string', 'max:10000'],
             'document_price' => ['required', 'string', 'max:255'],
         ];
     }

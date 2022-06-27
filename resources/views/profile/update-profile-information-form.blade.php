@@ -53,9 +53,9 @@
                             </div>
                             @endif
                         </div>
+                        <x-jet-input-error for="photo" class="mt-2" />
                     </div>
 
-                    <x-jet-input-error for="photo" class="mt-2" />
 
                 </div>
             </div>

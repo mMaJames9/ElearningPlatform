@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignKeysToDocumentSubjectTable extends Migration
+class AddForeignKeysToClassroomDocumentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class AddForeignKeysToDocumentSubjectTable extends Migration
      */
     public function up()
     {
-        Schema::table('document_subject', function (Blueprint $table) {
+        Schema::table('classroom_document', function (Blueprint $table) {
             $table->foreignId('document_id')
             ->nullable()
             ->constrained('documents')
             ->onUpdate('cascade')
             ->onDelete('cascade');
 
-            $table->foreignId('subject_id')
+            $table->foreignId('classroom_id')
             ->nullable()
-            ->constrained('subjects')
+            ->constrained('classrooms')
             ->onUpdate('cascade')
             ->onDelete('cascade');
         });
@@ -35,9 +35,9 @@ class AddForeignKeysToDocumentSubjectTable extends Migration
      */
     public function down()
     {
-        Schema::table('document_subject', function (Blueprint $table) {
+        Schema::table('classroom_document', function (Blueprint $table) {
             $table->dropForeign(['document_id']);
-            $table->dropForeign(['subject_id']);
+            $table->dropForeign(['classroom_id']);
         });
     }
 }
