@@ -43,7 +43,7 @@
                             <label class="form-label" for="subjects">{{ __('Subject(s)') }}</label>
                             <select class="js-example-basic-single form-select @error('subjects') is-invalid @enderror" multiple="multiple" data-width="100%" id="subjects" name="subjects[]" :value="old('subjects')" required autofocus>
                                 @foreach($subjects as $id => $subjects)
-                                <option value="{{ $id }}" {{ in_array($id, old('subjects', [])) ? 'selected' : '' }}>{{ $subjects }}</option>
+                                <option value="{{ $id }}" {{ in_array($id, old('subjects', [])) ? 'selected' : '' }}>{{ ucwords($subjects) }}</option>
                                 @endforeach
                             </select>
 
@@ -71,7 +71,7 @@
                                 <select class="js-example-basic-single form-select @error('exam_id') is-invalid @enderror" data-width="100%" id="exam_id" name="exam_id" :value="old('exam_id')" required autofocus>
                                     <option disabled selected hidden>{{ __('--- Select the corresponding exam ---') }}</option>
                                     @foreach($exams as $id => $exam)
-                                    <option value="{{ $id }}">{{ $exam }}</option>
+                                    <option value="{{ $id }}">{{ ucwords($exam) }}</option>
                                     @endforeach
                                 </select>
 
@@ -97,7 +97,7 @@
                             <label class="form-label" for="classrooms">{{ __('Serie(s)') }}</label>
                             <select class="js-example-basic-single form-select @error('classrooms') is-invalid @enderror" multiple="multiple" data-width="100%" id="classrooms" name="classrooms[]" :value="old('classrooms')" required autofocus>
                                 @foreach($classrooms as $id => $classrooms)
-                                <option value="{{ $id }}" {{ in_array($id, old('classrooms', [])) ? 'selected' : '' }}>{{ $classrooms }}</option>
+                                <option value="{{ $id }}" {{ in_array($id, old('classrooms', [])) ? 'selected' : '' }}>{{ ucwords($classrooms) }}</option>
                                 @endforeach
                             </select>
 

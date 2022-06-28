@@ -50,7 +50,7 @@
                                 @foreach($subjects as $key => $subject)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $subject->subject_name ?? '' }}</td>
+                                    <td>{{ ucwords($subject->subject_name) ?? '' }}</td>
                                     <td>{{ $subject->updated_at }}</td>
                                     <td>
                                         <div class="dropdown mb-2">
@@ -86,7 +86,7 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            {{__('Do you want to delete subject ')}}<span class="fw-bold">{{ $subject->subject_name }}</span> ?
+                                                            {{__('Do you want to delete subject ')}}<span class="fw-bold">{{ ucwords($subject->subject_name) }}</span> ?
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('Close')}}</button>

@@ -50,7 +50,7 @@
                                 @foreach($classrooms as $key => $classroom)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $classroom->classroom_name ?? '' }}</td>
+                                    <td>{{ ucwords($classroom->classroom_name) ?? '' }}</td>
                                     <td>{{ $classroom->updated_at }}</td>
                                     <td>
                                         <div class="dropdown mb-2">
@@ -86,7 +86,7 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            {{__('Do you want to delete classroom ')}}<span class="fw-bold">{{ $classroom->classroom_name }}</span> ?
+                                                            {{__('Do you want to delete classroom ')}}<span class="fw-bold">{{ ucwords($classroom->classroom_name) }}</span> ?
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('Close')}}</button>

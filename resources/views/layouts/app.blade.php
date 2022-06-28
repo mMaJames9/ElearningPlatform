@@ -41,7 +41,7 @@
 <!-- endinject -->
 
 <!-- Layout styles -->
-<link rel="stylesheet" href="{{ asset('assets/css/demo1/style.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/demo1/style.min.scss') }}">
 <!-- End layout styles -->
 
 <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
@@ -96,7 +96,7 @@
         <div class="page-wrapper">
             @livewire('navigation-menu')
 
-            <div class="page-content">
+            <div class="page-content" id="page-content">
 
                 @if(session('message'))
                     <script>

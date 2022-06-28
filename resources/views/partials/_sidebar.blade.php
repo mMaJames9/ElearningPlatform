@@ -34,7 +34,7 @@
             @can('user_access')
             <li class="nav-item {{ request()->is('admin/usermanagement/users') || request()->is('admin/usermanagement/users/*') ? 'active' : '' }}">
                 <a href="{{ route('users.index') }}" class="nav-link">
-                    <i class="link-icon" data-feather="user"></i>
+                    <i class="link-icon" data-feather="users"></i>
                     <span class="link-title">{{__('Users')}}</span>
                 </a>
             </li>

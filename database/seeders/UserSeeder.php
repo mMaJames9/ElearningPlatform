@@ -42,7 +42,7 @@ class UserSeeder extends Seeder
                 'username' => 'm.maj9',
                 'phone_number' => '+237 696 638 725',
                 'email_verified_at' => null,
-                'password' => Hash::make('anthonyjames'),
+                'password' => Hash::make('anthonyjames@1234'),
                 'remember_token' => null,
                 'current_team_id' => null,
                 'profile_photo_path' => null,

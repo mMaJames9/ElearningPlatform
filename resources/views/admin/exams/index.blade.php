@@ -58,7 +58,7 @@
                                         {{__('Anglophone')}}
                                         @endif
                                     </td>
-                                    <td>{{ $exam->exam_name ?? '' }}</td>
+                                    <td>{{ ucwords($exam->exam_name) ?? '' }}</td>
                                     <td>{{ $exam->updated_at }}</td>
                                     <td>
                                         <div class="dropdown mb-2">
@@ -94,7 +94,7 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            {{__('Do you want to delete exam ')}}<span class="fw-bold">{{ $exam->exam_name }}</span> ?
+                                                            {{__('Do you want to delete exam ')}}<span class="fw-bold">{{ ucwords($exam->exam_name) }}</span> ?
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('Close')}}</button>

@@ -51,7 +51,7 @@
                             <tbody>
                                 <tr>
                                     <td class="text-center">0</td>
-                                    <td class="text-left">
+                                    <td class="text-left text-wrap" width="30%">
                                         <div class="d-flex align-items-center">
                                             <div class="me-3">
                                                 <img src="{{ Auth::user()->profile_photo_url }}" class="rounded-circle wd-35" alt="">
@@ -84,7 +84,7 @@
                                             </div>
                                             <div>
                                                 <div class="d-flex justify-content-between">
-                                                    <h6 class="text-body mb-2">{{ $user->name ?? '' }}</h6>
+                                                    <h6 class="text-body mb-2">{{ ucwords($user->name) ?? '' }}</h6>
                                                 </div>
                                                 <p class="text-muted tx-13">{{ $user->username ?? '' }}</p>
                                             </div>
@@ -148,7 +148,7 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            {{__('Do you want to delete user ')}}<span class="fw-bold">{{ $user->name }}</span> ?
+                                                            {{__('Do you want to delete user ')}}<span class="fw-bold">{{ ucwords($user->name) }}</span> ?
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('Close')}}</button>

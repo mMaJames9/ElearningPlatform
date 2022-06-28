@@ -29,7 +29,7 @@
                             <label class="form-label" for="subjects">{{ __('Subject(s)') }}</label>
                             <select class="js-example-basic-single form-select @error('subjects') is-invalid @enderror" multiple="multiple" data-width="100%" id="subjects" name="subjects[]" autofocus>
                                 @foreach($subjects as $id => $subjects)
-                                <option value="{{ $id }}" {{ (in_array($id, old('subjects', [])) || $document->subjects->contains($id)) ? 'selected' : '' }}>{{ $subjects }}</option>
+                                <option value="{{ $id }}" {{ (in_array($id, old('subjects', [])) || $document->subjects->contains($id)) ? 'selected' : '' }}>{{ ucwords($subjects) }}</option>
                                 @endforeach
                             </select>
 
@@ -58,7 +58,7 @@
                                 <label class="form-label" for="exam_id">{{ __('Exam') }}</label>
                                 <select class="js-example-basic-single form-select @error('exam_id') is-invalid @enderror" data-width="100%" id="exam_id" name="exam_id" value="{{ old('exam_id', $document->exam_id) }}" autofocus>
                                     @foreach($exams as $id => $exam)
-                                    <option value="{{ $id }}" {{ ($document->exam ? $document->exam->id : old('exam_id')) == $id ? 'selected' : '' }}>{{ $exam }}</option>
+                                    <option value="{{ $id }}" {{ ($document->exam ? $document->exam->id : old('exam_id')) == $id ? 'selected' : '' }}>{{ ucwords($exam) }}</option>
                                     @endforeach
                                 </select>
 
@@ -87,7 +87,7 @@
                             <label class="form-label" for="classrooms">{{ __('Serie(s)') }}</label>
                             <select class="js-example-basic-single form-select @error('classrooms') is-invalid @enderror" multiple="multiple" data-width="100%" id="classrooms" name="classrooms[]" autofocus>
                                 @foreach($classrooms as $id => $classrooms)
-                                <option value="{{ $id }}" {{ (in_array($id, old('classrooms', [])) || $document->classrooms->contains($id)) ? 'selected' : '' }}>{{ $classrooms }}</option>
+                                <option value="{{ $id }}" {{ (in_array($id, old('classrooms', [])) || $document->classrooms->contains($id)) ? 'selected' : '' }}>{{ ucwords($classrooms) }}</option>
                                 @endforeach
                             </select>
 

@@ -17,35 +17,35 @@
         @endif
 
         <div class="card">
-            <div class="col-md-6 grid-margin stretch-card">
+            <div class="col-md-6 grid-margin stretch-card" id="stretch-card">
                 <div class="card-body">
 
                     @if ($document->document_type == "Book")
-                    <h6 class="card-title fw-bolder fs-3 mb-5">{{ $document->document_title ?? '' }}</h6>
+                    <h6 class="card-title fw-bolder fs-3 mb-5">{{ ucwords($document->document_title) ?? '' }}</h6>
                     @else
                     <h6 class="card-title fw-bolder fs-4 mb-5">
                         {{__(' Exam of')}}
                         @foreach ($document->subjects as $key => $item)
-                        {{ $item->subject_name ?? '' }}
+                        {{ ucwords($item->subject_name) ?? '' }}
                         @endforeach
                     </h6>
                     @endif
 
                     <div class="row">
                         <div class="col-md mb-4 text-center">
-                            <img class="align-middle rounded img-fluid border-1 w-100" src="{{url("/storage/uploads/documents/thumbnails/$document->document_thumbnail")}}" alt="{{ $document->document_type ?? '' }}">
+                            <img class="align-middle rounded img-fluid border-1 w-100" src="{{url("/storage/uploads/documents/thumbnails/$document->document_thumbnail")}}" alt="{{ ucwords($document->document_type) ?? '' }}">
                         </div>
                         <div class="col-md-8 d-flex flex-column justify">
 
                             <div class="mt-3">
                                 <label class="tx-11 fw-bolder mb-0 text-uppercase">{{__('Document Type')}}:</label>
-                                <p class="text-muted">{{ $document->document_type }}</p>
+                                <p class="text-muted">{{ ucwords($document->document_type) }}</p>
                             </div>
 
                             @if (isset($document->exam_id))
                             <div class="mt-3">
                                 <label class="tx-11 fw-bolder mb-0 text-uppercase">{{__('Exam')}}:</label>
-                                <p class="text-muted">{{ $document->exam->exam_name }}</p>
+                                <p class="text-muted">{{ ucwords($document->exam->exam_name) }}</p>
                             </div>
                             @endif
 
@@ -54,7 +54,7 @@
                                 <label class="tx-11 fw-bolder mb-0 text-uppercase">{{__('Subject(s)')}}:</label>
                                 <p class="text-muted">
                                     @foreach ($document->subjects as $key => $item)
-                                    <span class="badge bg-secondary">{{ $item->subject_name ?? '' }}</span>
+                                    <span class="badge bg-secondary">{{ ucwords($item->subject_name) ?? '' }}</span>
                                     @endforeach
                                 </p>
                             </div>
@@ -63,7 +63,7 @@
                             @if (isset($document->document_description))
                             <div class="mt-3">
                                 <label class="tx-11 fw-bolder mb-0 text-uppercase">{{__('Description')}}:</label>
-                                <p class="text-muted">{!! $document->document_description !!}</p>
+                                <p class="text-muted">{!! ucwords($document->document_description) !!}</p>
                             </div>
                             @endif
 
@@ -79,7 +79,7 @@
                                 <label class="tx-11 fw-bolder mb-0 text-uppercase">{{__('Serie(s)')}}:</label>
                                 <p class="text-muted">
                                     @foreach ($document->classrooms as $key => $item)
-                                    <span class="badge bg-secondary">{{ $item->classroom_name ?? '' }}</span>
+                                    <span class="badge bg-secondary">{{ ucwords($item->classroom_name) ?? '' }}</span>
                                     @endforeach
                                 </p>
                             </div>

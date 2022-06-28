@@ -54,16 +54,16 @@
                                 @foreach($documents as $key => $document)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $document->document_type ?? '' }}</td>
-                                    <td>{{ $document->exam->exam_name ?? '' }}</td>
+                                    <td>{{ ucwords($document->document_type) ?? '' }}</td>
+                                    <td>{{ ucwords($document->exam->exam_name) ?? '' }}</td>
                                     <td lass="text-wrap" width="10%">
                                         @foreach ($document->subjects as $key => $item)
-                                        {{ $item->subject_name ?? '' }}
+                                        {{ ucwords($item->subject_name) ?? '' }}
                                         @endforeach
                                     </td>
                                     <td class="text-wrap" width="15%">
                                         @foreach ($document->classrooms as $key => $item)
-                                        {{ $item->classroom_name ?? '' }}
+                                        {{ ucwords($item->classroom_name) ?? '' }}
                                         @endforeach
                                     </td>
                                     <td>{{ $document->document_price ?? '' }}</td>
@@ -109,7 +109,7 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            {{__('Do you want to delete the document ')}}<span class="fw-bold">{{ $document->document_title }}</span> ?
+                                                            {{__('Do you want to delete the document ')}}<span class="fw-bold">{{ ucwords($document->document_title ?? $document->document_type) }}</span> ?
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('Close')}}</button>
