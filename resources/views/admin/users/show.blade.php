@@ -101,7 +101,12 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $transaction->user->name ?? '' }}</td>
-                                            <td>{{ $transaction->document->document_type ?? '' }}</td>
+                                            <td>
+                                                <a class="preview_hover">
+                                                    {{ ucwords($transaction->document->document_type) ?? '' }}
+                                                    <iframe onload="hideNavbar()" id="description_frame" class="description_frame" src="{{ route('documents.show', $transaction->document->id) }}" scrolling="no" frameborder="0" marginheight="0%" marginwidth="0%" width="100%" height="100%"></iframe>
+                                                </a>
+                                            </td>
                                             <td>{{ $transaction->transaction_amount ?? '' }}</td>
                                             <td>{{ $transaction->updated_at ?? '' }}</td>
                                         </tr>
@@ -123,5 +128,23 @@
 
     </div>
 
+    @section('scripts')
+    <script>
+        $(".preview_hover").mouseover(function() {
+        $(this).children(".description_frame").show();
+        }).mouseout(function() {
+        $(this).children(".description_frame").hide();
+        });
+
+        function hideNavbar() {
+            $("#description_frame").contents().find("#navbar").remove();
+            $("#description_frame").contents().find("#page-content").removeClass("page-content");
+            $("#description_frame").contents().find("#stretch-card").removeClass("col-md-6");
+            $("#description_frame").contents().find("#document_thumbnail").removeClass("col-md-4");
+            $("#description_frame").contents().find("#document_text").removeClass("col-md-8");
+        }
+
+    </script>
+    @endsection
 
 </x-app-layout>

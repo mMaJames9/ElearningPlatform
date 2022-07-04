@@ -1,25 +1,40 @@
 <x-guest-layout>
-    <div class="main-wrapper">
-        <div class="page-wrapper full-page">
-            <div class="page-content d-flex align-items-center justify-content-center">
-
-                <div class="row w-100 mx-0 auth-page">
-                    <div class="col-md-8 col-xl-6 mx-auto">
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-md-4 pe-md-0">
-                                    <div class="auth-side-wrapper">
-
+    <main class="main" id="top">
+        <div class="container-fluid">
+            <div class="row min-vh-100 flex-center g-0">
+                <div class="col-lg-8 col-xxl-5 py-3 position-relative">
+                    <img class="bg-auth-circle-shape" src="{{asset('assets/img/icons/spot-illustrations/bg-shape.png')}}" alt="" width="250">
+                    <img class="bg-auth-circle-shape-2" src="{{asset('assets/img/icons/spot-illustrations/shape-1.png')}}" alt="" width="150">
+                    <div class="card overflow-hidden z-index-1">
+                        <div class="card-body p-0">
+                            <div class="row g-0 h-100">
+                                <div class="col-md-5 text-center bg-card-gradient">
+                                    <div class="position-relative p-4 pt-md-5 pb-md-7 light">
+                                        <div class="bg-holder bg-auth-card-shape" style="background-image:url(assets/img/icons/spot-illustrations/half-circle.png);"></div>
+                                        <!--/.bg-holder-->
+                                        <div class="z-index-1 position-relative">
+                                            <a class="link-light mb-4 font-sans-serif fs-4 d-inline-block fw-bolder" href="{{ route('welcome') }}">
+                                                <img src="{{ asset('images/logo.png') }}" alt="logo">
+                                                {{-- {{__('exam succes')}} --}}
+                                            </a>
+                                            <p class="opacity-75 text-white">{{__('Hello, Friend! New here? Join us today! It takes only few steps. Enter your personal details and start journey with us')}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3 mb-4 mt-md-4 mb-md-5 light">
+                                        <p class="pt-3 text-white">
+                                            {{__('Have an account?')}}
+                                            <br>
+                                            <a class="btn btn-outline-light mt-2 px-4" href="{{ route('login') }}">
+                                                {{__('Log In')}}
+                                            </a>
+                                        </p>
                                     </div>
                                 </div>
-                                <div class="col-md-8 ps-md-0">
-                                    <div class="auth-form-wrapper px-4 py-5">
-                                        <img class="mb-5" src="{{ asset('images/logo.png') }}" alt="logo" width="40%">
-                                        <h5 class="text-muted fw-normal mb-4">{{__('New here? Join us today! It takes only few steps')}}</h5>
-
-                                        <form class="forms-sample" method="POST" action="{{ route('register') }}">
+                                <div class="col-md-7 d-flex flex-center">
+                                    <div class="p-4 p-md-5 flex-grow-1">
+                                        <h3>{{__('Register')}}</h3>
+                                        <form method="POST" action="{{ route('register') }}">
                                             @csrf
-
                                             <div class="mb-3">
                                                 <label class="form-label" for="name">{{ __('Name') }}</label>
                                                 <input type="text" class="@error('name') is-invalid @enderror form-control" id="name" placeholder="{{ __('Name') }}" name="name" :value="old('name')" required autofocus>
@@ -64,42 +79,45 @@
                                                 @enderror
                                             </div>
 
-                                            <div class="mb-3">
-                                                <label class="form-label" for="password">{{ __('Password') }}</label>
-                                                <input type="password" class="@error('password') is-invalid @enderror form-control" id="password" placeholder="{{ __('Password') }}" name="password" :value="old('password')" required autofocus>
+                                            <div class="row gx-2">
+                                                <div class="mb-3 col-sm-6">
+                                                    <label class="form-label" for="password">{{ __('Password') }}</label>
+                                                    <input type="password" class="@error('password') is-invalid @enderror form-control" id="password" placeholder="{{ __('Password') }}" name="password" :value="old('password')" required autofocus>
 
-                                                @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                                @enderror
+                                                    @error('password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="mb-3 col-sm-6">
+                                                    <label class="form-label" for="password_confirmation">{{ __('Confirm Password') }}</label>
+                                                    <input type="password" class="@error('password_confirmation') is-invalid @enderror form-control" id="password_confirmation" placeholder="{{ __('Confirm') }}" name="password_confirmation" :value="old('password_confirmation')" required autofocus>
+
+                                                    @error('password_confirmation')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
                                             </div>
 
-                                            <div class="mb-3">
-                                                <label class="form-label" for="password_confirmation">{{ __('Confirm Password') }}</label>
-                                                <input type="password" class="@error('password_confirmation') is-invalid @enderror form-control" id="password_confirmation" placeholder="{{ __('Confirm Password') }}" name="password_confirmation" :value="old('password_confirmation')" required autofocus>
-
-                                                @error('password_confirmation')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                                @enderror
-                                            </div>
-
-                                            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                                            <div class="form-check mb-3">
+                                            {{-- @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature()) --}}
+                                            <div class="form-check">
                                                 <input type="checkbox" class="form-check-input" id="terms" type="checkbox" name="terms">
                                                 <label class="form-check-label" for="terms">
-                                                    !! __('I agree to the :terms_of_service and :privacy_policy', ['terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                                    'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',]) !!}
+                                                    {{__('I accept the')}}
+                                                    <a target="_blank" target="_blank" href="'.route('terms.show').'">{{__('Terms of Service')}}</a>
+                                                    {{__('and')}}
+                                                    <a target="_blank" href="'.route('policy.show').'">{{__('Privacy Policy')}} </a>
                                                 </label>
                                             </div>
-                                            @endif
+                                            {{-- @endif --}}
 
-                                            <div>
-                                                <button class="btn btn-primary text-white me-2 mb-2 mb-md-0">{{ __('Sign Up') }}</button>
+                                            <div class="mb-3">
+                                                <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">{{__('Register')}}</button>
                                             </div>
-                                            <a href="{{ route('login') }}" class="d-block mt-3">{{__('Already have an account? Log In')}}</a>
                                         </form>
                                     </div>
                                 </div>
@@ -107,9 +125,7 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-    </div>
-
+    </main>
 </x-guest-layout>

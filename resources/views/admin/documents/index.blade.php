@@ -1,131 +1,173 @@
 <x-app-layout>
 
-    <div class="row">
+    <div class="card mb-3">
+        <div class="card-header border-bottom">
+            <div class="row flex-between-end">
+                <div class="col-auto align-self-center">
+                    <h5 class="mb-0 fw-bold">{{__('Table of Documents')}}</h5>
+                    <p class="mb-0 mt-2 mb-0 fs--1 fw-medium">{{$dataPaper}} {{__('paper(s)')}} {{__('and')}} {{$dataBook}} {{__('book(s)')}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-body pt-0">
+            <div class="tab-content">
 
-        @if(session('status'))
-            <script>
-                window.addEventListener("load", function () {
-                    Toastify({
-                        text: "{{ session('status') }}",
-                        duration: 5000,
-                        close: true,
-                        gravity: "top",
-                        position: "right",
-                        backgroundColor: "#198754",
-                    }).showToast();
-                });
-            </script>
-        @endif
+                <div id="bulk-select-replace-element" class="mt-4">
+                    <a class="btn btn-falcon-success btn-sm" type="button" href="{{ route('documents.create') }}">
+                        <span class="fas fa-plus" data-fa-transform="shrink-3 down-2"></span>
+                        <span class="ms-1">{{__('Add New Document')}}</span>
+                    </a>
+                </div>
 
-        <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row mb-5">
-                        <div class="col">
-                            <h6 class="card-title">Table of Documents</h6>
-                            <p class="text-muted mb-3">{{$dataPaper}} {{__('paper(s)')}} {{__('and')}} {{$dataBook}} {{__('book(s)')}}</p>
-                        </div>
-                        <div class="col text-end">
-                            @can('document_create')
-                            <a class="btn btn-outline-primary" href="{{ route('documents.create')}}" document="button">
-                                <i class="link-icon" data-feather="plus"></i>
-                                {{__('Add new document')}}
-                            </a>
-                            @endcan
-                        </div>
-                    </div>
+                <div class="tab-pane preview-tab-pane active mt-4" role="tabpanel" aria-labelledby="tab-dom-f1f635ad-27f6-4e4f-8ac8-ea1fd3f4edd8" id="dom-f1f635ad-27f6-4e4f-8ac8-ea1fd3f4edd8">
+                    <div id="tableRoles" data-list='{"valueNames":["type", "exam", "subject", "serie", "price", "updated_at"], "page":10, "pagination":true}'>
+                        <div class="table-responsive scrollbar">
+                            <table class="table table-striped overflow-hidden fs--1 mb-0">
+                                <thead class="bg-200 fw-bold">
+                                    <tr class="align-middle py-3">
+                                        <th class="text-start">#</th>
+                                        <th class="sort" data-sort="type">{{__('Type')}}</th>
+                                        <th class="sort" data-sort="exam">{{__('Exam')}}</th>
+                                        <th class="sort" data-sort="subject">{{__('Subject')}}</th>
+                                        <th class="sort" data-sort="serie">{{__('Serie')}}</th>
+                                        <th class="sort" data-sort="price">{{__('Price')}}</th>
+                                        <th class="sort" data-sort="updated_at">{{__('Updated at')}}</th>
+                                        <th class="sort">{{__('Actions')}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="list align-middle text-nowrap" id="table-recent-leads-body">
+                                    @foreach($documents as $key => $document)
+                                    <tr class="hover-actions-trigger btn-reveal-trigger hover-bg-100">
+                                        <td class="text-start">{{ $loop->iteration }}</td>
 
-                    <div class="table-responsive">
-                        <table id="dataTableExample" class="table table-hover text-center">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>{{__('Type')}}</th>
-                                    <th>{{__('Exam')}}</th>
-                                    <th>{{__('Subject')}}</th>
-                                    <th>{{__('Serie')}}</th>
-                                    <th>{{__('Price')}}</th>
-                                    <th>{{__('Updated at')}}</th>
-                                    <th>{{__('Actions')}}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                                        <td class="type">
+                                            {{ ucwords($document->document_type) ?? '' }}
+                                        </td>
 
-                                @foreach($documents as $key => $document)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ ucwords($document->document_type) ?? '' }}</td>
-                                    <td>{{ ucwords($document->exam->exam_name) ?? '' }}</td>
-                                    <td lass="text-wrap" width="10%">
-                                        @foreach ($document->subjects as $key => $item)
-                                        {{ ucwords($item->subject_name) ?? '' }}
-                                        @endforeach
-                                    </td>
-                                    <td class="text-wrap" width="15%">
-                                        @foreach ($document->classrooms as $key => $item)
-                                        {{ ucwords($item->classroom_name) ?? '' }}
-                                        @endforeach
-                                    </td>
-                                    <td>{{ $document->document_price ?? '' }}</td>
-                                    <td>{{ $document->updated_at ?? '' }}</td>
-                                    <td>
-                                        <div class="dropdown mb-2">
-                                            <button class="btn p-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                @can('document_show')
-                                                <a class="dropdown-item d-flex align-items-center" href="{{ route('documents.show', $document->id) }}">
-                                                    <i data-feather="eye" class="icon-sm me-2"></i>
-                                                    <span class="">{{__(' Show')}}</span>
-                                                </a>
+                                        <td class="exam">
+                                            {{ ucwords($document->exam->exam_name) ?? '' }}
+                                        </td>
 
-                                                @endcan
-                                                @can('document_edit')
-                                                <a class="dropdown-item d-flex align-items-center" href="{{ route('documents.edit', $document->id) }}">
-                                                    <i data-feather="edit-2" class="icon-sm me-2"></i>
-                                                    <span class="">{{__(' Edit')}}</span>
-                                                </a>
-                                                @endcan
+                                        <td class="subject text-wrap" width="15%">
+                                            @foreach ($document->subjects as $key => $item)
+                                            <small class="badge fw-semi-bold rounded-pill status badge-soft-primary">
+                                            {{ ucwords($item->subject_name) ?? '' }}
+                                            </small>
+                                            @endforeach
+                                        </td>
 
-                                                @can('document_delete')
-                                                <a role="button" class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#modal{{ $document->id }}">
-                                                    <i data-feather="trash" class="icon-sm me-2"></i>
-                                                    <span class="">{{__(' Delete')}}</span>
-                                                </a>
-                                                @endcan
-                                            </div>
-                                        </div>
+                                        <td class="serie text-wrap" width="20%">
+                                            @foreach ($document->classrooms as $key => $item)
+                                            <small class="badge fw-semi-bold rounded-pill status badge-soft-secondary">
+                                            {{ ucwords($item->classroom_name) ?? '' }}
+                                            </small>
+                                            @endforeach
+                                        </td>
 
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="modal{{ $document->id }}" tabindex="-1" aria-labelledby="ModalDeleteUser" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <form action="{{ route( 'documents.destroy', $document->id) }}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="ModalDeleteUser">{{__('Confirm Deletion')}}</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            {{__('Do you want to delete the document ')}}<span class="fw-bold">{{ ucwords($document->document_title ?? $document->document_type) }}</span> ?
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('Close')}}</button>
-                                                            <input type="hidden" name="_method" value="DELETE">
-                                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                            <button type="submit" class="btn btn-primary">{{ __('Confirm') }}</button>
-                                                        </div>
-                                                    </form>
+                                        <td class="price">
+                                            {{ ucwords($document->document_price) ?? '' }}
+                                        </td>
+
+                                        <td class="updated_at">
+                                            {{ $document->created_at }}
+                                        </td>
+
+                                        <td class="">
+                                            <div class="d-none d-md-block mb-4">
+                                                <div class="hover-actions bg-100">
+                                                    @can('document_show')
+                                                    <a role="button" type="button" class="btn icon-item rounded-3 me-2 fs--2 icon-item-sm" href="{{ route('documents.show', $document->id) }}">
+                                                        <span class="far fa-eye"></span>
+                                                    </a>
+                                                    @endcan
+
+                                                    @can('document_edit')
+                                                    <a role="button" type="button" class="btn icon-item rounded-3 me-2 fs--2 icon-item-sm" href="{{ route('documents.edit', $document->id) }}">
+                                                        <span class="far fa-edit"></span>
+                                                    </a>
+                                                    @endcan
+
+                                                    @can('document_delete')
+                                                    <button class="btn icon-item rounded-3 me-2 fs--2 icon-item-sm" data-bs-toggle="modal" data-bs-target="#modal{{ $document->id }}">
+                                                        <span class="far fa-trash-alt"></span>
+                                                    </button>
+                                                    @endcan
                                                 </div>
                                             </div>
+
+                                            <div class="dropdown font-sans-serif btn-reveal-trigger 	d-md-none">
+                                                <button class="btn btn-link text-600 btn-sm dropdown-toggle dropdown-caret-none btn-reveal-sm transition-none" type="button" id="crm-recent-leads-4" data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false">
+                                                    <span class="fas fa-ellipsis-h fs--2"></span>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-end border py-2" aria-labelledby="crm-recent-leads-4">
+                                                    @can('document_show')
+                                                    <a class="dropdown-item" href="{{ route('documents.show', $document->id) }}">{{__('View')}}</a>
+                                                    @endcan
+
+                                                    @can('document_edit')
+                                                    <a class="dropdown-item" href="{{ route('documents.edit', $document->id) }}">{{__('Edit')}}</a>
+                                                    @endcan
+
+                                                    @can('document_delete')
+                                                    <div class="dropdown-divider"></div>
+
+                                                    <a class="dropdown-item text-danger" data-bs-toggle="modal" data-bs-target="#modal{{ $document->id }}">{{__('Delete')}}</a>
+                                                    @endcan
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <div class="modal fade" id="modal{{ $document->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px">
+                                            <form action="{{ route('documents.destroy', $document->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <div class="modal-content position-relative">
+                                                    <div class="position-absolute top-0 end-0 mt-2 me-2 z-index-1">
+                                                        <button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body p-0">
+                                                        <div class="rounded-top-lg py-3 ps-4 pe-6 bg-light">
+                                                            <h4 class="mb-1" id="modalDeleteDocument">{{__('Confirm Deletion')}}</h4>
+                                                        </div>
+                                                        <div class="p-4 pb-0">
+
+                                                            <div class="mb-3">
+                                                                <p class="fs--1">
+                                                                    {{__('Do you want to delete document ')}}<span class="fw-bold">{{ ucwords($document->document_type) }}</span> ?
+                                                                </p>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">{{__('Close')}}</button>
+                                                        <input type="hidden" name="_method" value="DELETE">
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                        <button class="btn btn-falcon-danger" type="submmit">{{ __('Confirm') }}</button>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                    </div>
+
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="d-flex justify-content-center mt-3">
+                            <button class="btn btn-sm btn-falcon-default me-1" type="button" title="Previous" data-list-pagination="prev">
+                                <span class="fas fa-chevron-left"></span>
+                            </button>
+
+                            <ul class="pagination mb-0"></ul>
+
+                            <button class="btn btn-sm btn-falcon-default ms-1" type="button" title="Next" data-list-pagination="next">
+                                <span class="fas fa-chevron-right"></span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

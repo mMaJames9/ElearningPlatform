@@ -1,53 +1,78 @@
 <x-app-layout>
 
-    <div class="row">
-        <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row mb-5">
-                        <div class="col">
-                            <h6 class="card-title">Table of Roles</h6>
-                            <p class="text-muted mb-3">{{$data}} {{__('role(s)')}}</p>
+    <div class="card mb-3">
+        <div class="card-header border-bottom">
+            <div class="row flex-between-end">
+                <div class="col-auto align-self-center">
+                    <h5 class="mb-0 fw-bold">{{__('Table of Roles')}}</h5>
+                    <p class="mb-0 mt-2 mb-0 fs--1 fw-medium">{{$data}} {{__('role(s)')}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-body pt-0">
+            <div class="tab-content">
+
+                {{-- <div id="bulk-select-replace-element" class="mt-4">
+                    <a class="btn btn-falcon-success btn-sm" type="button" href="{{ route('roles.create') }}">
+                        <span class="fas fa-plus" data-fa-transform="shrink-3 down-2"></span>
+                        <span class="ms-1">{{__('Add New role')}}</span>
+                    </a>
+                </div> --}}
+
+                <div class="tab-pane preview-tab-pane active mt-4" role="tabpanel" aria-labelledby="tab-dom-f1f635ad-27f6-4e4f-8ac8-ea1fd3f4edd8" id="dom-f1f635ad-27f6-4e4f-8ac8-ea1fd3f4edd8">
+                    <div id="tableRoles" data-list='{"valueNames":["name","permissions", "updated_at"], "page":10, "pagination":true}'>
+                        <div class="table-responsive scrollbar">
+                            <table class="table table-striped overflow-hidden fs--1 mb-0">
+                                <thead class="bg-200 fw-bold">
+                                    <tr class="align-middle py-3">
+                                        <th class="text-start">#</th>
+                                        <th class="sort" data-sort="name">{{__('Name')}}</th>
+                                        <th class="sort" data-sort="permissions">{{__('Permissions')}}</th>
+                                        <th class="sort" data-sort="updated_at">{{__('Updated at')}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="list align-middle text-nowrap" id="table-recent-leads-body">
+
+                                    @foreach($roles as $key => $role)
+                                    <tr class="hover-actions-trigger btn-reveal-trigger hover-bg-100">
+                                        <td class="text-start">{{ $loop->iteration }}</td>
+
+                                        <td class="name">
+                                            <div class="d-flex align-items-center">
+                                                <h6 class="mb-0 ps-2 text-800">{{ $role->name }}</h6>
+                                            </div>
+                                        </td>
+
+                                        <td class="permissions text-wrap" width="50%">
+                                            @foreach($role->permissions as $key => $item)
+                                            <small class="badge fw-semi-bold rounded-pill status badge-soft-primary">{{ $item->name }}</small>
+                                            @endforeach
+                                        </td>
+
+                                        <td class="updated_at">
+                                            {{ $role->created_at }}
+                                        </td>
+                                    </tr>
+                                    @endforeach
+
+                                </tbody>
+                            </table>
                         </div>
-                        <!-- <div class="col text-end">
-                            @can('role_create')
-                            <a class="btn btn-outline-primary" href="{{ route('roles.create')}}" role="button">
-                                <i class="link-icon" data-feather="plus"></i>
-                                {{__('Add new role')}}
-                            </a>
-                            @endcan
-                        </div> -->
-                    </div>
+                        <div class="d-flex justify-content-center mt-3">
+                            <button class="btn btn-sm btn-falcon-default me-1" type="button" title="Previous" data-list-pagination="prev">
+                                <span class="fas fa-chevron-left"></span>
+                            </button>
 
-                    <div class="table-responsive">
-                        <table id="dataTableExample" class="table table-hover text-center">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>{{__('Name')}}</th>
-                                    <th>{{__('Permissions')}}</th>
-                                    <th>{{__('Updated at')}}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                            <ul class="pagination mb-0"></ul>
 
-                                @foreach($roles as $key => $role)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $role->name ?? '' }}</td>
-                                    <td class="text-center text-wrap" width="40%">
-                                        @foreach($role->permissions as $key => $item)
-                                        <span class="badge bg-dark">{{ $item->name }}</span>
-                                        @endforeach
-                                    </td>
-                                    <td>{{ $role->created_at }}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                            <button class="btn btn-sm btn-falcon-default ms-1" type="button" title="Next" data-list-pagination="next">
+                                <span class="fas fa-chevron-right"></span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 </x-app-layout>

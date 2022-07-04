@@ -1,5 +1,12 @@
-{{-- partial:partials/_footer --}}
-<footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between px-4 py-3 border-top small">
-    <p class="text-muted mb-1 mb-md-0">Copyright © 2022 <a href="{{ route('dashboard') }}">ExamSucces</a>.</p>
+<footer class="footer">
+    <div class="row g-0 justify-content-between fs--1 mt-4 mb-3">
+        <div class="col-12 col-sm-auto text-center">
+            <p class="mb-0 text-600">Thank you for creating with Falcon <span class="d-none d-sm-inline-block">| </span>
+                <br class="d-sm-none" /> 2021 &copy; <a href="https://themewagon.com">Themewagon</a>
+            </p>
+        </div>
+        <div class="col-12 col-sm-auto text-center">
+            <p class="mb-0 text-600">v3.4.0</p>
+        </div>
+    </div>
 </footer>
-{{-- partial --}}

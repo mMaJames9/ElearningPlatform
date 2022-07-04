@@ -44,7 +44,7 @@ class TransactionController extends Controller
         abort_if(Gate::denies('transaction_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $transactions = DocumentUser::where('created_at', '>',now()->subMonth(1))->orderBy('created_at', 'desc')->get();
-        $data = DocumentUser::where('created_at', '>',now()->subDay(1))->count();
+        $data = DocumentUser::where('created_at', '>',now()->subMonth(1))->count();
 
         $status = 'this month';
 
@@ -56,7 +56,7 @@ class TransactionController extends Controller
         abort_if(Gate::denies('transaction_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $transactions = DocumentUser::where('created_at', '>',now()->subYear(1))->orderBy('created_at', 'desc', 'status')->get();
-        $data = DocumentUser::where('created_at', '>',now()->subDay(1))->count();
+        $data = DocumentUser::where('created_at', '>',now()->subYear(1))->count();
 
         $status = 'this year';
 
