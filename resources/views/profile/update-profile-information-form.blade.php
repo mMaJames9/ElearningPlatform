@@ -1,4 +1,5 @@
 <x-jet-form-section submit="updateProfileInformation">
+
     <x-slot name="form">
 
         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
@@ -43,7 +44,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-lg-6">
+                            <div class="col-12 col-lg">
                                 <label class="form-label" for="email">{{ __('Email') }}</label>
                                 <input type="email" class="@error('email') is-invalid @enderror form-control" id="email" name="email" :value="old('email')" placeholder="{{ __('Email') }}" required autofocus wire:model.defer="state.email">
 
@@ -70,7 +71,7 @@
                                 @endif
                             </div>
 
-                            <div class="col-lg-6">
+                            <div class="col-12 col-lg">
                                 <label class="form-label" for="phone_number">{{ __('Phone Number') }}</label>
                                 <input type="text" class="@error('phone_number') is-invalid @enderror form-control" id="phone_number" phone_number="phone_number" :value="old('Phone Number')" placeholder="{{ __('phone_number') }}" required autofocus data-inputmask-alias="+237 699 999 999" wire:model.defer="state.phone_number">
 
@@ -80,6 +81,28 @@
                                 </span>
                                 @enderror
                             </div>
+
+                            @foreach(Auth::user()->roles as $key => $item)
+                            @if($item->name == "Member")
+
+                            <div class="col-12 col-lg" wire:model.defer="state.classroom_id">
+                                <label class="form-label" for="classroom_id">{{ __('Classroom') }}</label>
+                                <select class="form-select @error('classroom_id') is-invalid @enderror" data-width="100%" id="classroom_id" name="classroom_id" :value="old('classroom_id')" required autofocus data-options='{"removeItemButton":true,"placeholder":true}'>
+                                    {{-- <option value="" disabled selected hidden>{{__('Select the corresponding classroom')}}...</option> --}}
+                                    @foreach($classrooms as $id => $classroom)
+                                    <option value="{{ $id }}" @if ($id == Auth::user()->classroom_id) selected="selected" @endif>{{ ucwords($classroom) }}</option>
+                                    @endforeach
+                                </select>
+
+                                @error('classroom_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+
+                            @endif
+                            @endforeach
                         </div>
 
                         <div class="d-flex align-items-center mt-5">

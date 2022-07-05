@@ -19,7 +19,7 @@
                     </a>
                 </div>
 
-                <div class="tab-pane preview-tab-pane active mt-4" role="tabpanel" aria-labelledby="tab-dom-f1f635ad-27f6-4e4f-8ac8-ea1fd3f4edd8" id="dom-f1f635ad-27f6-4e4f-8ac8-ea1fd3f4edd8">
+                <div class="tab-pane preview-tab-pane active mt-4" role="tabpanel">
                     <div id="tableRoles" data-list='{"valueNames":["name", "updated_at"], "page":10, "pagination":true}'>
                         <div class="table-responsive scrollbar">
                             <table class="table table-striped overflow-hidden fs--1 mb-0">
@@ -76,7 +76,7 @@
                                                     <a class="dropdown-item" href="{{ route('subjects.edit', $subject->id) }}">{{__('Edit')}}</a>
                                                     <div class="dropdown-divider"></div>
                                                     @endcan
-                                                    
+
                                                     @can('subject_delete')
                                                     <a class="dropdown-item text-danger" data-bs-toggle="modal" data-bs-target="#modal{{ $subject->id }}">{{__('Delete')}}</a>
                                                     @endcan

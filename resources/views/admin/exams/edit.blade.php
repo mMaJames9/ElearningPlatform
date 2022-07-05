@@ -1,66 +1,59 @@
 <x-app-layout>
-    <div class="row">
 
-        @if(session('error'))
-            <script>
-                window.addEventListener("load", function () {
-                    Toastify({
-                        text: "{{ session('error') }}",
-                        duration: 5000,
-                        close: true,
-                        gravity: "top",
-                        position: "right",
-                        backgroundColor: "#dc3545",
-                    }).showToast();
-                });
-            </script>
-        @endif
-
-        <div class="card">
-            <div class="col-md-6 grid-margin stretch-card">
-                <div class="card-body">
-
-                    <h6 class="card-title mb-5">{{__('Update the Exam')}}</h6>
-
-                    <form class="forms-sample" method="POST" action="{{ route("exams.update", [$exam->id]) }}" enctype="multipart/form-data">
-                        @method('PUT')
-                        @csrf
-
-                        <div class="mb-3">
-                            <label class="form-label" for="exam_section">{{ __('Section') }}</label>
-                            <select class="js-example-basic-single form-select @error('exam_section') is-invalid @enderror" data-width="100%" id="exam_section" name="exam_section" required autofocus>
-                                <option value="Fr" @if(($exam->exam_section) === 'Fr') selected @endif>Francophone</option>
-                                <option value="En" @if(($exam->exam_section) === 'En') selected @endif>Anglophone</option>
-                            </select>
-
-                            @error('exam_section')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label" for="exam_name">{{ __('Name') }}</label>
-                            <input type="exam_name" class="@error('exam_name') is-invalid @enderror form-control" id="exam_name" placeholder="{{ __('Name of the exam') }}" name="exam_name" value="{{ old('exam_name', $exam->exam_name) }}" required autofocus>
-
-                            @error('exam_name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-
-                        <div class="mt-5">
-                            <button type="submit" class="btn btn-primary me-2">{{ __('Submit') }}</button>
-                            <a role="button" class="btn btn-dark" href="{{ route('exams.index') }}">
-                                {{ __('Back to the Table') }}
-                            </a>
-                        </div>
-                    </form>
-
+    <div class="card mb-3">
+        <div class="card-header border-bottom">
+            <div class="row flex-between-end">
+                <div class="col-auto align-self-center">
+                    <h5 class="mb-0 fw-bold">{{__('Update the Exam')}}</h5>
                 </div>
             </div>
         </div>
+        <div class="card-body pt-0 col-12 col-xxl-6 grid-margin">
+
+            <div class="tab-content mt-4">
+
+                <form method="POST" action="{{ route("exams.update", [$exam->id]) }}" enctype="multipart/form-data">
+                    @method('PUT')
+                    @csrf
+
+                    <div class="form-floating mb-3">
+                        <select class="form-select js-choice  @error('exam_section') is-invalid @enderror" id="exam_section" size="1" name="exam_section" data-options='{"removeItemButton":true,"placeholder":true}'>
+                            <option value="Fr" @if(($exam->exam_section) === 'Fr') selected @endif>{{__('Francophone')}}</option>
+                            <option value="En" @if(($exam->exam_section) === 'En') selected @endif>{{__('Anglophone')}}</option>
+                        </select>
+
+                        @error('exam_section')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+
+                        <label class="form-label" for="exam_section">{{ __('Section') }}</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="@error('exam_name') is-invalid @enderror form-control" id="exam_name" placeholder="{{ __('Name of the exam') }}" name="exam_name" value="{{ old('exam_name', $exam->exam_name) }}" required autofocus>
+
+                        @error('exam_name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+
+                        <label class="form-label" for="exam_name">{{ __('Name') }}</label>
+                    </div>
+
+                    <div class="mt-5">
+                        <button type="submit" class="btn btn-falcon-primary me-1 mb-1">{{ __('Submit') }}</button>
+                        <a role="button" class="btn btn-outline-dark me-1 mb-1" href="{{ route('exams.index') }}">
+                            {{ __('Back to the Table') }}
+                        </a>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
     </div>
+
 </x-app-layout>

@@ -213,7 +213,7 @@ class DocumentController extends Controller
         $document->classrooms()->sync($request->input('classrooms', []));
 
 
-        $status = 'A new document was added successfully.';
+        $status = 'The document was updated successfully.';
 
         return redirect()->route('documents.index')->with([
             'status' => $status,

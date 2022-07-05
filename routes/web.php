@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Classroom;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 // Route::redirect('/', 'login');
 
 Route::get('/', function () {
-    return view('welcome');
+    $classrooms = Classroom::all()->pluck('classroom_name', 'id');
+    return view('welcome', compact('classrooms'));
 })->name('welcome');
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])
@@ -26,9 +28,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
             return view('dashboard');
         })->name('dashboard');
 
-        Route::get('/admin/ressources/transactions/transactionsDay', 'App\Http\Controllers\TransactionController@indexDay')->name('transactionsDay');
-        Route::get('/admin/ressources/transactions/transactionsMonth', 'App\Http\Controllers\TransactionController@indexMonth')->name('transactionsMonth');
-        Route::get('/admin/ressources/transactions/transactionsYear', 'App\Http\Controllers\TransactionController@indexYear')->name('transactionsYear');
+        Route::get('/admin/ressources/subscriptions/subscriptionsDay', 'App\Http\Controllers\SubscriptionController@indexDay')->name('subscriptionsDay');
+        Route::get('/admin/ressources/subscriptions/subscriptionsMonth', 'App\Http\Controllers\SubscriptionController@indexMonth')->name('subscriptionsMonth');
+        Route::get('/admin/ressources/subscriptions/subscriptionsYear', 'App\Http\Controllers\SubscriptionController@indexYear')->name('subscriptionsYear');
 
         // User Management
         Route::resource('/admin/usermanagement/users', 'App\Http\Controllers\UserController');
@@ -41,6 +43,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         Route::resource('/admin/exammanagement/documents', 'App\Http\Controllers\DocumentController');
 
         // Ressources
-        Route::resource('/admin/ressources/transactions', 'App\Http\Controllers\TransactionController');
+        Route::resource('/admin/ressources/subscriptions', 'App\Http\Controllers\SubscriptionController');
 
 });

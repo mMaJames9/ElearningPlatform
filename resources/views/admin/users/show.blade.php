@@ -69,7 +69,7 @@
             </div>
         </div>
 
-        {{-- Transactions --}}
+        {{-- Subscriptions --}}
         <div class="col-xl-8">
             <div class="row">
 
@@ -79,8 +79,8 @@
                         <div class="card-body">
                             <div class="row mb-5">
                                 <div class="col">
-                                    <h6 class="card-title">Latest Transactions</h6>
-                                    <p class="text-muted mb-3">{{$data}} {{__('transaction(s)')}}</p>
+                                    <h6 class="card-title">Latest Subscriptions</h6>
+                                    <p class="text-muted mb-3">{{$data}} {{__('subscription(s)')}}</p>
                                 </div>
                             </div>
 
@@ -91,24 +91,24 @@
                                             <th>#</th>
                                             <th>{{__('User Name')}}</th>
                                             <th>{{__('Document Type')}}</th>
-                                            <th>{{__('Transaction Amounnt')}}</th>
+                                            <th>{{__('Subscription Amounnt')}}</th>
                                             <th>{{__('Updated at')}}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
-                                        @foreach($transactions as $key => $transaction)
+                                        @foreach($subscriptions as $key => $subscription)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $transaction->user->name ?? '' }}</td>
+                                            <td>{{ $subscription->user->name ?? '' }}</td>
                                             <td>
                                                 <a class="preview_hover">
-                                                    {{ ucwords($transaction->document->document_type) ?? '' }}
-                                                    <iframe onload="hideNavbar()" id="description_frame" class="description_frame" src="{{ route('documents.show', $transaction->document->id) }}" scrolling="no" frameborder="0" marginheight="0%" marginwidth="0%" width="100%" height="100%"></iframe>
+                                                    {{ ucwords($subscription->document->document_type) ?? '' }}
+                                                    <iframe onload="hideNavbar()" id="description_frame" class="description_frame" src="{{ route('documents.show', $subscription->document->id) }}" scrolling="no" frameborder="0" marginheight="0%" marginwidth="0%" width="100%" height="100%"></iframe>
                                                 </a>
                                             </td>
-                                            <td>{{ $transaction->transaction_amount ?? '' }}</td>
-                                            <td>{{ $transaction->updated_at ?? '' }}</td>
+                                            <td>{{ $subscription->subscription_type ?? '' }}</td>
+                                            <td>{{ $subscription->updated_at ?? '' }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>

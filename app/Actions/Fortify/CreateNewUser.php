@@ -20,7 +20,9 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
+
         Validator::make($input, [
+            'classroom_id' => ['required', 'integer'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'username' => ['required', 'string', 'max:255', 'unique:users'],
@@ -30,6 +32,7 @@ class CreateNewUser implements CreatesNewUsers
         ])->validate();
 
         $user = User::create([
+            'classroom_id' => $input['classroom_id'],
             'name' => $input['name'],
             'email' => $input['email'],
             'username' => $input['username'],
@@ -38,6 +41,7 @@ class CreateNewUser implements CreatesNewUsers
         ]);
 
         $user->assignRole("Member");
+
         return $user;
 
     }

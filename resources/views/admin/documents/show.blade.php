@@ -33,7 +33,7 @@
 
                     <div class="row">
                         <div class="col-md-4 col-4 mb-4 text-center" id="document_thumbnail">
-                            <img class="align-middle rounded img-fluid border-1 w-100" src="{{url("/storage/uploads/documents/thumbnails/$document->document_thumbnail")}}" alt="{{ ucwords($document->document_type) ?? '' }}">
+                            <img class="align-middle rounded img-fluid border-1 w-100" src="{{url("/storage/uploads/documents/thumbnails/$document->document_thumbnail")}}" alt="{{ ucwords($document->document_type) ?? '' }}" style="background-color:white;">
                         </div>
                         <div class="col-md-8 col-8 d-flex flex-column justify" id="document_text">
 

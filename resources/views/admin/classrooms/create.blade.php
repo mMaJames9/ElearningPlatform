@@ -8,15 +8,15 @@
                 </div>
             </div>
         </div>
-        <div class="card-body pt-0 col-md-6 grid-margin">
+        <div class="card-body pt-0 col-12 col-xxl-6 grid-margin">
 
             <div class="tab-content mt-4">
 
-                <form class="forms-sample" method="POST" action="{{ route('classrooms.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('classrooms.store') }}" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-floating mb-3">
-                        <input type="classroom_name" class="@error('classroom_name') is-invalid @enderror form-control" id="classroom_name" placeholder="{{ __('Name of the classroom') }}" name="classroom_name" :value="old('classroom_name')" required autofocus>
+                        <input type="text" class="@error('classroom_name') is-invalid @enderror form-control" id="classroom_name" placeholder="{{ __('Name of the classroom') }}" name="classroom_name" :value="old('classroom_name')" required autofocus>
 
                         @error('classroom_name')
                         <span class="invalid-feedback" role="alert">

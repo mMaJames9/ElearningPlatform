@@ -37,6 +37,7 @@ class User extends Authenticatable
     ];
 
     protected $fillable = [
+        'classroom_id',
         'name',
         'email',
         'username',
@@ -83,7 +84,12 @@ class User extends Authenticatable
     public function documents()
     {
         return $this->belongsToMany(Document::class, DocumentUser::class)
-            ->withPivot('transaction_amount')
+            ->withPivot('subscription_type')
             ->withTimestamps();
+    }
+
+    public function classroom()
+    {
+        return $this->belongsTo(Exam::class, 'classroom_id', 'id');
     }
 }

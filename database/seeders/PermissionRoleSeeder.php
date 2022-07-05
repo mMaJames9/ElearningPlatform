@@ -63,9 +63,9 @@ class PermissionRoleSeeder extends Seeder
         Permission::create(['name' => 'permission_show']);
         Permission::create(['name' => 'permission_access']);
 
-        // create permissions (transaction)
-        Permission::create(['name' => 'transaction_show']);
-        Permission::create(['name' => 'transaction_access']);
+        // create permissions (subscription)
+        Permission::create(['name' => 'subscription_show']);
+        Permission::create(['name' => 'subscription_access']);
 
         // create roles and assign existing permissions
         $role1 = Role::create(['name' => 'Admin']);
@@ -98,9 +98,9 @@ class PermissionRoleSeeder extends Seeder
         $role1->givePermissionTo('document_delete');
         $role1->givePermissionTo('document_access');
 
-        // create permissions (transaction)
-        $role1->givePermissionTo('transaction_show');
-        $role1->givePermissionTo('transaction_access');
+        // create permissions (subscription)
+        $role1->givePermissionTo('subscription_show');
+        $role1->givePermissionTo('subscription_access');
 
 
         // create roles and assign existing permissions

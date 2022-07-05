@@ -50,8 +50,6 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
         <script src="{{ asset('js/core.js') }}" defer></script>
         <script src="{{ asset('vendors/inputmask/jquery.inputmask.bundle.js') }}" defer></script>
-        {{-- <script src="{{ asset('vendors/popper/popper.min.js') }}" defer></script> --}}
-        {{-- <script src="{{ asset('vendors/bootstrap/bootstrap.min.js') }}" defer></script> --}}
         <script src="{{ asset('vendors/anchorjs/anchor.min.js') }}" defer></script>
         <script src="{{ asset('vendors/is/is.min.js') }}" defer></script>
         <script src="{{ asset('vendors/swiper/swiper-bundle.min.js') }}" defer> </script>
@@ -227,7 +225,7 @@
                                     @enderror
                                 </div>
                                 <div class="row gx-2">
-                                    <div class="mb-3 col-sm-6">
+                                    <div class="mb-3 col-sm">
                                         <input type="password" class="@error('password') is-invalid @enderror form-control" id="password" placeholder="{{ __('Password') }}" name="password" :value="old('password')" required autofocus>
 
                                         @error('password')
@@ -236,7 +234,7 @@
                                         </span>
                                         @enderror
                                     </div>
-                                    <div class="mb-3 col-sm-6">
+                                    <div class="mb-3 col-sm">
                                         <input type="password" class="@error('password_confirmation') is-invalid @enderror form-control" id="password_confirmation" placeholder="{{ __('Confirm') }}" name="password_confirmation" :value="old('password_confirmation')" required autofocus>
 
                                         @error('password_confirmation')
@@ -245,6 +243,20 @@
                                         </span>
                                         @enderror
                                     </div>
+                                </div>
+                                <div class="mb-4 col-sm">
+                                    <select class="form-select @error('classroom_id') is-invalid @enderror" data-width="100%" id="classroom_id" name="classroom_id" :value="old('classroom_id')" required autofocus data-options='{"removeItemButton":true,"placeholder":true}'>
+                                        <option value="" disabled selected hidden>{{__('Select your classroom')}}...</option>
+                                        @foreach($classrooms as $id => $classroom)
+                                        <option value="{{ $id }}">{{ ucwords($classroom) }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    @error('classroom_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
 
                                 {{-- @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature()) --}}

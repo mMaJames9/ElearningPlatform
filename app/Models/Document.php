@@ -64,7 +64,7 @@ class Document extends Model
     public function users()
     {
         return $this->belongsToMany(User::class, DocumentUser::class)
-        ->withPivot('transaction_amount')
+        ->withPivot('subscription_type')
         ->withTimestamps();
     }
 }

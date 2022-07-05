@@ -29,20 +29,25 @@
         <meta name="theme-color" content="#ffffff">
 
         <script src="{{ asset('assets/js/config.js') }}" defer></script>
+        <script src="{{ asset('assets/js/toastify.js') }}" defer></script>
+        <script src="{{ asset('assets/js/dropify.js') }}" defer></script>
+
         <script src="{{ asset('vendors/overlayscrollbars/OverlayScrollbars.min.js') }}" defer></script>
 
         <!-- ===============================================-->
         <!--    Stylesheets-->
         <!-- ===============================================-->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+        @yield('styles')
+
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap">
-
-        {{-- <link rel="stylesheet" href="{{ asset('vendors/leaflet/leaflet.css') }}">
-        <link rel="stylesheet" href="{{ asset('vendors/leaflet.markercluster/MarkerCluster.css') }}">
-        <link rel="stylesheet" href="{{ asset('vendors/leaflet.markercluster/MarkerCluster.Default.css') }}"> --}}
         <link rel="stylesheet" href="{{ asset('vendors/flatpickr/flatpickr.min.css') }}">
         <link rel="stylesheet" href="{{ asset('vendors/overlayscrollbars/OverlayScrollbars.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendors/choices/choices.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendors/toastify/toastify.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendors/dropzone/dropzone.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendors/prism/prism-okaidia.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/theme-rtl.min.css') }}" id="style-rtl">
         <link rel="stylesheet" href="{{ asset('assets/css/theme.min.css') }}" id="style-default">
         <link rel="stylesheet" href="{{ asset('assets/css/user-rtl.min.css') }}" id="user-style-rtl">
@@ -62,6 +67,11 @@
         <script src="{{ asset('vendors/leaflet/leaflet.js') }}" defer></script>
         <script src="{{ asset('vendors/leaflet.markercluster/leaflet.markercluster.js') }}" defer></script>
         <script src="{{ asset('vendors/leaflet.tilelayer.colorfilter/leaflet-tilelayer-colorfilter.min.js') }}" defer></script>
+        <script src="{{ asset('vendors/choices/choices.min.js') }}" defer></script>
+        <script src="{{ asset('vendors/toastify/toastify.js') }}" defer></script>
+        <script src="{{ asset('vendors/dropzone/dropzone.min.js') }}" defer></script>
+        <script src="{{ asset('vendors/tinymce/tinymce.min.js') }}" defer></script>
+        <script src="{{ asset('vendors/prism/prism.js') }}" defer></script>
         <script src="{{ asset('vendors/countup/countUp.umd.js') }}" defer></script>
         <script src="{{ asset('vendors/echarts/echarts.min.js') }}" defer></script>
         <script src="{{ asset('assets/data/world.js') }}" defer></script>
@@ -110,7 +120,6 @@
 
                 @include('partials._navbar-vertical')
 
-
                 <div class="content">
                     <nav class="navbar navbar-light navbar-glass navbar-top navbar-expand" style="display: none;">
                         @include('partials._logo-toogle')
@@ -158,6 +167,8 @@
         @include('partials._settings-panel')
 
         @yield('scripts')
+
+        @include('partials._notifications')
 
         @livewireScripts
 

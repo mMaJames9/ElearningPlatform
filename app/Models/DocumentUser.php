@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * @property int $user_id
  * @property int $document_id
- * @property int $transaction_amount
+ * @property int $subscription_type
  * @property string $created_at
  * @property string $updated_at
  */
@@ -29,7 +29,7 @@ class DocumentUser extends Model
     protected $fillable = [
         'user_id',
         'document_id',
-        'transaction_amount',
+        'subscription_type',
         'created_at',
         'updated_at',
     ];

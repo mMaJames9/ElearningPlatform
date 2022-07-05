@@ -80,7 +80,7 @@
                                             </div>
 
                                             <div class="row gx-2">
-                                                <div class="mb-3 col-sm-6">
+                                                <div class="mb-3 col-sm">
                                                     <label class="form-label" for="password">{{ __('Password') }}</label>
                                                     <input type="password" class="@error('password') is-invalid @enderror form-control" id="password" placeholder="{{ __('Password') }}" name="password" :value="old('password')" required autofocus>
 
@@ -91,7 +91,7 @@
                                                     @enderror
                                                 </div>
 
-                                                <div class="mb-3 col-sm-6">
+                                                <div class="mb-3 col-sm">
                                                     <label class="form-label" for="password_confirmation">{{ __('Confirm Password') }}</label>
                                                     <input type="password" class="@error('password_confirmation') is-invalid @enderror form-control" id="password_confirmation" placeholder="{{ __('Confirm') }}" name="password_confirmation" :value="old('password_confirmation')" required autofocus>
 
@@ -103,8 +103,24 @@
                                                 </div>
                                             </div>
 
+                                            <div class="mb-4 col-sm">
+                                                <label class="form-label" for="exam_id">{{ __('Classroom') }}</label>
+                                                <select class="form-select @error('classroom_id') is-invalid @enderror" data-width="100%" id="classroom_id" name="classroom_id" :value="old('classroom_id')" required autofocus data-options='{"removeItemButton":true,"placeholder":true}'>
+                                                    <option value="" disabled selected hidden>{{__('Select your classroom')}}...</option>
+                                                    @foreach($classrooms as $id => $classroom)
+                                                    <option value="{{ $id }}">{{ ucwords($classroom) }}</option>
+                                                    @endforeach
+                                                </select>
+
+                                                @error('classroom_id')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+
                                             {{-- @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature()) --}}
-                                            <div class="form-check">
+                                            <div class="mb-5 form-check">
                                                 <input type="checkbox" class="form-check-input" id="terms" type="checkbox" name="terms">
                                                 <label class="form-check-label" for="terms">
                                                     {{__('I accept the')}}

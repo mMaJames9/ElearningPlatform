@@ -131,7 +131,7 @@
                 </li>
                 @endcan
 
-                @can('transaction_access')
+                @can('subscription_access')
                 <li class="nav-item">
                     <!-- label-->
                     <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
@@ -142,12 +142,12 @@
                     </div>
 
                     <!-- parent pages-->
-                    <a class="nav-link {{ request()->is('admin/ressources/transactions') || request()->is('admin/ressources/transactions/*') ? 'active' : '' }}" href="{{ route('transactions.index') }}" role="button" aria-expanded="false">
+                    <a class="nav-link {{ request()->is('admin/ressources/subscriptions') || request()->is('admin/ressources/subscriptions/*') ? 'active' : '' }}" href="{{ route('subscriptions.index') }}" role="button" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
-                                <span class="fas fa-exchange-alt"></span>
+                                <span class="fas fa-rocket"></span>
                             </span>
-                            <span class="nav-link-text ps-1">{{__('Transactions')}}</span>
+                            <span class="nav-link-text ps-1">{{__('Subscriptions')}}</span>
                         </div>
                     </a>
                 </li>

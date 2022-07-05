@@ -77,11 +77,11 @@ class UserController extends Controller
     {
         abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $transactions = DocumentUser::where('user_id', $user->id)->get();
+        $subscriptions = DocumentUser::where('user_id', $user->id)->get();
         $data = DocumentUser::where('user_id', $user->id)->count();
         $user->load('documents');
 
-        return view('admin.users.show', compact('user', 'data', 'transactions'));
+        return view('admin.users.show', compact('user', 'data', 'subscriptions'));
     }
 
     /**

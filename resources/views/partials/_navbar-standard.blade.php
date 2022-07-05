@@ -11,7 +11,7 @@
             <div class="dropdown-menu dropdown-menu-card border-0 mt-0" aria-labelledby="apps">
                 <div class="card navbar-card-app shadow-none dark__bg-1000">
                     <div class="card-body scrollbar max-h-dropdown">
-                        <img class="img-dropdown" src="{{ asset('assets/img/icons/spot-illustrations/authentication-corner.png') }}" width="130" alt="" />
+                        <img class="img-dropdown" src="{{ asset('assets/img/icons/spot-illustrations/authentication-corner.png') }}" width="90" alt="" />
                         <div class="nav flex-column">
 
                             @can('role_access')
@@ -36,7 +36,7 @@
             <div class="dropdown-menu dropdown-menu-card border-0 mt-0" aria-labelledby="apps">
                 <div class="card navbar-card-app shadow-none dark__bg-1000">
                     <div class="card-body scrollbar max-h-dropdown">
-                        <img class="img-dropdown" src="{{ asset('assets/img/icons/spot-illustrations/authentication-corner.png') }}" width="130" alt="" />
+                        <img class="img-dropdown" src="{{ asset('assets/img/icons/spot-illustrations/authentication-corner.png') }}" width="150" alt="" />
                         <div class="nav flex-column">
 
                             <a class="nav-link py-1 link-600 fw-medium" href="{{ route('exams.index') }}">{{__('Exams')}}</a>
@@ -60,9 +60,9 @@
         </li>
         @endcan
 
-        @can('transaction_access')
+        @can('subscription_access')
         <li class="nav-item dropdown">
-            <a class="nav-link {{ request()->is('admin/ressources/transactions') || request()->is('admin/ressources/transactions/*') ? 'active' : '' }}" href="{{ route('transactions.index') }}" role="button" >{{__('Transactions')}}</a>
+            <a class="nav-link {{ request()->is('admin/ressources/subscriptions') || request()->is('admin/ressources/subscriptions/*') ? 'active' : '' }}" href="{{ route('subscriptions.index') }}" role="button" >{{__('Subscriptions')}}</a>
         </li>
         @endcan
     </ul>

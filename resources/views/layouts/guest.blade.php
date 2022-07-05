@@ -27,7 +27,7 @@
         <link rel="manifest" href="{{ asset('assets/img/favicons/manifest.json') }}">
         <meta name="msapplication-TileImage" content="{{ asset('assets/img/favicons/mstile-150x150.png') }}">
         <meta name="theme-color" content="#ffffff">
-        
+
         <script src="{{ asset('assets/js/config.js') }}" defer></script>
         <script src="{{ asset('vendors/overlayscrollbars/OverlayScrollbars.min.js') }}" defer></script>
 
@@ -37,12 +37,14 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap">
 
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        @yield('styles')
+        
         <link rel="stylesheet" href="{{ asset('vendors/overlayscrollbars/OverlayScrollbars.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/theme-rtl.min.css') }}" id="style-rtl">
         <link rel="stylesheet" href="{{ asset('assets/css/theme.min.css') }}" id="style-default">
         <link rel="stylesheet" href="{{ asset('assets/css/user-rtl.min.css') }}" id="user-style-rtl">
         <link rel="stylesheet" href="{{ asset('assets/css/user.min.css') }}" id="user-style-default">
+        <link rel="stylesheet" href="{{ asset('vendors/choices/choices.min.css') }}">
 
         <!-- ===============================================-->
         <!--    JavaScripts-->
@@ -57,6 +59,7 @@
         <script src="{{ asset('vendors/list.js/list.min.js') }}" defer></script>
         <script src="{{ asset('assets/js/theme.js') }}" defer></script>
         <script src="{{ asset('assets/js/inputmask.js') }}" defer></script>
+        <script src="{{ asset('vendors/choices/choices.min.js') }}" defer></script>
 
         <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
 
