@@ -23,8 +23,8 @@
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/img/favicons/apple-touch-icon.png') }}">
         <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/img/favicons/favicon-32x32.png') }}">
         <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/img/favicons/favicon-16x16.png') }}">
-        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}">
-        <link rel="manifest" href="{{ asset('assets/img/favicons/manifest.json') }}">
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicons/favicon.ico') }}">
+        {{-- <link rel="manifest" href="{{ asset('assets/img/favicons/manifest.json') }}"> --}}
         <meta name="msapplication-TileImage" content="{{ asset('assets/img/favicons/mstile-150x150.png') }}">
         <meta name="theme-color" content="#ffffff">
 
@@ -38,13 +38,16 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap">
 
         @yield('styles')
-        
+
         <link rel="stylesheet" href="{{ asset('vendors/overlayscrollbars/OverlayScrollbars.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/theme-rtl.min.css') }}" id="style-rtl">
-        <link rel="stylesheet" href="{{ asset('assets/css/theme.min.css') }}" id="style-default">
-        <link rel="stylesheet" href="{{ asset('assets/css/user-rtl.min.css') }}" id="user-style-rtl">
-        <link rel="stylesheet" href="{{ asset('assets/css/user.min.css') }}" id="user-style-default">
         <link rel="stylesheet" href="{{ asset('vendors/choices/choices.min.css') }}">
+
+        <link rel="stylesheet" href="{{ asset('assets/css/theme.min.css') }}" id="style-default">
+        <link rel="stylesheet" href="{{ asset('assets/css/user.min.css') }}" id="user-style-default">
+
+        <link rel="stylesheet" href="{{ asset('assets/css/user-rtl.min.css') }}" id="user-style-rtl">
+        <link rel="stylesheet" href="{{ asset('assets/css/theme-rtl.min.css') }}" id="style-rtl">
+
 
         <!-- ===============================================-->
         <!--    JavaScripts-->

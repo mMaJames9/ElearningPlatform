@@ -23,8 +23,8 @@
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/img/favicons/apple-touch-icon.png') }}">
         <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/img/favicons/favicon-32x32.png') }}">
         <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/img/favicons/favicon-16x16.png') }}">
-        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}">
-        <link rel="manifest" href="{{ asset('assets/img/favicons/manifest.json') }}">
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicons/favicon.ico') }}">
+        {{-- <link rel="manifest" href="{{ asset('assets/img/favicons/manifest.json') }}"> --}}
         <meta name="msapplication-TileImage" content="{{ asset('assets/img/favicons/mstile-150x150.png') }}">
         <meta name="theme-color" content="#ffffff">
         <script src="{{ asset('assets/js/config.js') }}" defer></script>
@@ -39,10 +39,12 @@
 
         <link rel="stylesheet" href="{{ asset('vendors/swiper/swiper-bundle.min.css') }}">
         <link rel="stylesheet" href="{{ asset('vendors/overlayscrollbars/OverlayScrollbars.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/theme-rtl.min.css') }}" id="style-rtl">
+
         <link rel="stylesheet" href="{{ asset('assets/css/theme.min.css') }}" id="style-default">
-        <link rel="stylesheet" href="{{ asset('assets/css/user-rtl.min.css') }}" id="user-style-rtl">
         <link rel="stylesheet" href="{{ asset('assets/css/user.min.css') }}" id="user-style-default">
+
+        <link rel="stylesheet" href="{{ asset('assets/css/theme-rtl.min.css') }}" id="style-rtl">
+        <link rel="stylesheet" href="{{ asset('assets/css/user-rtl.min.css') }}" id="user-style-rtl">
 
         <!-- ===============================================-->
         <!--    JavaScripts-->
@@ -89,8 +91,7 @@
                 <div class="container">
                     <a class="navbar-brand" href="{{ route('welcome') }}">
                         <span class="text-white dark__text-white">
-                            <img src="{{ asset('images/logo.png') }}" alt="logo">
-                            {{-- {{__('Exam Succes')}} --}}
+                            <img class="" src="{{ asset('assets/img/icons/spot-illustrations/falcon.png') }}" alt="logo" width="120" />
                         </span>
                     </a>
                     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarStandard" aria-controls="navbarStandard" aria-expanded="false" aria-label="Toggle navigation">
@@ -125,7 +126,7 @@
                                                     @enderror
                                                 </div>
                                                 <div class="mb-3">
-                                                    <input type="password" class="@error('password') is-invalid @enderror form-control" id="password" placeholder="{{ __('Password') }}" name="password" autocomplete="current-password" required>
+                                                    <input type="password" class="@error('password') is-invalid @enderror form-control" id="login-password" placeholder="{{ __('Password') }}" name="password" autocomplete="current-password" required>
 
                                                     @error('password')
                                                     <span class="invalid-feedback" role="alert">
@@ -331,7 +332,7 @@
                             <img class="landing-cta-img" height="40" src="{{ asset('assets/img/logos/b&w/10.png') }}" alt="" />
                         </div>
                         <div class="col-3 col-sm-auto my-1 my-sm-3 px-card">
-                            <img class="landing-cta-img" height="40" src="{{ asset('assets/img/logos/b&amp;w/12.png') }}" alt="" />
+                            <img class="landing-cta-img" height="40" src="{{ asset('assets/img/logos/b&w/12.png') }}" alt="" />
                         </div>
                     </div>
                 </div>

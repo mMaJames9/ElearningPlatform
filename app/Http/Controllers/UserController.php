@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
 use App\Actions\Fortify\PasswordValidationRules;
+use App\Models\Classroom;
 use App\Models\DocumentUser;
 use App\Models\Exam;
 
@@ -79,9 +80,10 @@ class UserController extends Controller
 
         $subscriptions = DocumentUser::where('user_id', $user->id)->get();
         $data = DocumentUser::where('user_id', $user->id)->count();
-        $user->load('documents');
 
-        return view('admin.users.show', compact('user', 'data', 'subscriptions'));
+        $classrooms = Exam::all()->pluck('classroom_name', 'id');
+
+        return view('admin.users.show', compact('user', 'data', 'subscriptions', 'classrooms'));
     }
 
     /**

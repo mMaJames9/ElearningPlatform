@@ -1026,7 +1026,7 @@
                                         <small class="badge fw-semi-bold rounded-pill status badge-soft-primary"> New Lead</small>
                                     </td>
                                     <td class="align-middle white-space-nowrap text-end position-relative">
-                                        <div class="hover-actions bg-100">
+                                        <div class="hover-actions bg-100 justify-content-center">
                                             <button class="btn icon-item rounded-3 me-2 fs--2 icon-item-sm">
                                                 <span class="far fa-edit">
 
@@ -1078,7 +1078,7 @@
                                         <small class="badge fw-semi-bold rounded-pill status badge-soft-primary"> New Lead</small>
                                     </td>
                                     <td class="align-middle white-space-nowrap text-end position-relative">
-                                        <div class="hover-actions bg-100">
+                                        <div class="hover-actions bg-100 justify-content-center">
                                             <button class="btn icon-item rounded-3 me-2 fs--2 icon-item-sm">
                                                 <span class="far fa-edit">
 
@@ -1130,7 +1130,7 @@
                                         <small class="badge fw-semi-bold rounded-pill status badge-soft-warning"> Cold Lead</small>
                                     </td>
                                     <td class="align-middle white-space-nowrap text-end position-relative">
-                                        <div class="hover-actions bg-100">
+                                        <div class="hover-actions bg-100 justify-content-center">
                                             <button class="btn icon-item rounded-3 me-2 fs--2 icon-item-sm">
                                                 <span class="far fa-edit">
 
@@ -1182,7 +1182,7 @@
                                         <small class="badge fw-semi-bold rounded-pill status badge-soft-warning"> New Lead</small>
                                     </td>
                                     <td class="align-middle white-space-nowrap text-end position-relative">
-                                        <div class="hover-actions bg-100">
+                                        <div class="hover-actions bg-100 justify-content-center">
                                             <button class="btn icon-item rounded-3 me-2 fs--2 icon-item-sm">
                                                 <span class="far fa-edit">
 
@@ -1234,7 +1234,7 @@
                                         <small class="badge fw-semi-bold rounded-pill status badge-soft-success"> Won Lead</small>
                                     </td>
                                     <td class="align-middle white-space-nowrap text-end position-relative">
-                                        <div class="hover-actions bg-100">
+                                        <div class="hover-actions bg-100 justify-content-center">
                                             <button class="btn icon-item rounded-3 me-2 fs--2 icon-item-sm">
                                                 <span class="far fa-edit">
 

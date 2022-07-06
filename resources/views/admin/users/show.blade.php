@@ -1,131 +1,138 @@
 <x-app-layout>
 
-    <div class="row">
-        {{-- Profile Photos --}}
-        <div class="col-xl-12">
-            <div class="card mb-4 pt-6 profile-cover">
-                <div class="card-body pt-6 d-flex justify-content-between">
+    <div class="card mb-3">
+        <div class="card-header position-relative min-vh-25 mb-7">
+            <div class="bg-holder rounded-3 rounded-bottom-0" style="background-image:url(../../../../../assets/img/generic/4.jpg);"></div>
 
-                    <!-- Current Profile Photo -->
-                    <div class="my-auto">
-                        <div class="d-flex justify-content-between">
-                            <div class=" px-0 text-md-end">
-                                <img class="wd-70 ht-70 rounded-circle" src="{{ $user->profile_photo_url }}" alt="{{ $user->name }}">
-                            </div>
-                            <div class="my-auto text-start">
-                                <span class="ms-2 h4 text-white">{{ $user->name }}</span>
-                            </div>
+            <div class="avatar avatar-5xl avatar-profile">
+                <img class="rounded-circle img-thumbnail shadow-sm" src="{{ $user->profile_photo_url }}" alt="{{ $user->name }}" width="200" />
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h4 class="mb-1">
+                        {{ $user->name }}
+                        {{-- <span data-bs-toggle="tooltip" data-bs-placement="right" title="Verified">
+                            <small class="fa fa-check-circle text-primary" data-fa-transform="shrink-4 down-2"></small>
+                        </span> --}}
+                    </h4>
+                    <h5 class="fs-0 fw-normal">{{ $user->email }}</h5>
+                    <p class="mb-5 text-500">
+                        @foreach($user->roles as $key => $item)
+                        @if($item->name == "Super Admin")
+                        <small class="badge fw-semi-bold rounded-pill status badge-soft-primary">{{ $item->name }}</small>
+                        @elseif ($item->name == "Admin")
+                        <small class="badge fw-semi-bold rounded-pill status badge-soft-info">{{ $item->name }}</small>
+                        @else
+                        <small class="badge fw-semi-bold rounded-pill status badge-soft-success">{{ $item->name }}</small>
+                        @endif
+                        @endforeach
+                    </p>
+
+                    <a class="btn btn-falcon-default btn-sm px-3 ms-2" role="button" href="{{ route('users.index') }}">{{ __('Back to the Table') }}</a>
+
+                    <div class="border-dashed-bottom my-4 d-lg-none"></div>
+                </div>
+                <div class="col ps-2 ps-lg-3">
+                    <a class="d-flex justify-content-start mb-3">
+                        <span class="far fa-user me-3 text-700" data-fa-transform="grow-1"></span>
+                        <div class="flex-1">
+                            <h6 class="mb-0">{{ $user->username }}</h6>
                         </div>
-                    </div>
+                    </a>
+                    <a class="d-flex justify-content-start mb-3">
+                        <span class="fas fa-mobile-alt me-3 text-700" data-fa-transform="grow-1"></span>
+                        <div class="flex-1">
+                            <h6 class="mb-0">{{ $user->phone_number }}</h6>
+                        </div>
+                    </a>
+                    <a class="d-flex justify-content-start mb-3">
+                        <span class="fas fa-school me-3 text-700" data-fa-transform="grow-1"></span>
 
-
+                        <div class="flex-1">
+                            <h6 class="mb-0">{{ $user->classroom->classroom_name }}</h6>
+                        </div>
+                    </a>
+                    <a class="d-flex justify-content-start mb-3">
+                        <span class="far fa-handshake me-3 text-700" data-fa-transform="grow-1"></span>
+                        <div class="flex-1">
+                            <h6 class="mb-0">{{__('Since')}} {{ date_format($user->created_at,'M Y') }}</h6>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
+    </div>
 
-        {{-- User Informations --}}
-        <div class="col-md-8 col-xl-4 middle-wrapper">
-            <div class="row">
-                <div class="col-md-12 grid-margin">
-                    <div class="card">
-                        <div class="card-body">
-                            <h6 class="card-title mb-5">{{__('About')}}</h6>
-                            <div class="mt-3">
-                                <label class="tx-11 fw-bolder mb-0 text-uppercase">{{__('Name')}}:</label>
-                                <p class="text-muted">{{ $user->name }}</p>
-                            </div>
-                            <div class="mt-3">
-                                <label class="tx-11 fw-bolder mb-0 text-uppercase">{{__('Username')}}:</label>
-                                <p class="text-muted">{{ $user->username }}</p>
-                            </div>
-                            <div class="mt-3">
-                                <label class="tx-11 fw-bolder mb-0 text-uppercase">{{__('Email')}}:</label>
-                                <p class="text-muted">{{ $user->email }}</p>
-                            </div>
-                            <div class="mt-3">
-                                <label class="tx-11 fw-bolder mb-0 text-uppercase">{{__('Phone Number')}}:</label>
-                                <p class="text-muted">{{ $user->phone_number }}</p>
-                            </div>
-                            <div class="mt-3">
-                                <label class="tx-11 fw-bolder mb-0 text-uppercase">{{__('Role')}}:</label>
-                                @foreach($user->roles as $key => $item)
-                                <p class="text-muted">
-                                    @foreach($user->roles as $key => $item)
-                                    @if($item->name == "Super Admin")
-                                    <span class="badge bg-primary">{{ $item->name }}</span>
-                                    @elseif ($item->name == "Admin")
-                                    <span class="badge bg-info">{{ $item->name }}</span>
-                                    @else
-                                    <span class="badge bg-success">{{ $item->name }}</span>
-                                    @endif
+    <div class="card mb-3">
+        <div class="card-header border-bottom">
+            <div class="d-flex justify-content-between">
+                <div class="align-self-center">
+                    <h5 class="mb-0 fw-bold">{{__('Table of Subscriptions')}}</h5>
+                    <p class="mb-0 fs--1 fw-medium">{{$data}} {{__('subscription(s)')}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-body pt-0">
+            <div class="tab-content">
+
+                <div class="tab-pane preview-tab-pane active mt-4" subscription="tabpanel">
+                    <div id="tableSubscriptions" data-list='{"valueNames":["name", "type", "updated_at"], "page":10, "pagination":true}'>
+                        <div class="table-responsive scrollbar">
+                            <table class="table table-striped fs--1 mb-0">
+                                <thead class="bg-200 fw-bold">
+                                    <tr class="align-middle py-3">
+                                        <th class="text-start">#</th>
+                                        <th class="sort" data-sort="name">{{__('Name')}}</th>
+                                        <th class="sort" data-sort="type">{{__('Subscription Type')}}</th>
+                                        <th class="sort" data-sort="updated_at">{{__('Date')}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="list align-middle text-nowrap" id="table-recent-leads-body">
+
+                                    @foreach($subscriptions as $key => $subscription)
+                                    <tr class="hover-actions-trigger btn-reveal-trigger hover-bg-100">
+                                        <td class="text-start">{{ $loop->iteration }}</td>
+
+                                        <td class="name">
+                                            <div class="d-flex align-items-center">
+                                                <div class="avatar avatar-xl">
+                                                    <img class="rounded-circle" src="{{ $subscription->user->profile_photo_url }}" alt="{{ $subscription->user->username }}" />
+                                                </div>
+                                                <h6 class="mb-0 ps-2 text-800">{{  ucwords($subscription->user->name) }}</h6>
+                                            </div>
+                                        </td>
+
+                                        <td class="type">
+                                            {{ ucwords($subscription->subscription_type) ?? '' }}
+                                        </td>
+
+
+                                        <td class="updated_at">
+                                            {{ $subscription->created_at }}
+                                        </td>
+                                    </tr>
                                     @endforeach
-                                </p>
-                                @endforeach
-                            </div>
+
+                                </tbody>
+                            </table>
                         </div>
-                    </div>
-                </div>
+                        <div class="d-flex justify-content-center mt-3">
+                            <button class="btn btn-sm btn-falcon-default me-1" type="button" title="Previous" data-list-pagination="prev">
+                                <span class="fas fa-chevron-left"></span>
+                            </button>
 
-            </div>
-        </div>
+                            <ul class="pagination mb-0"></ul>
 
-        {{-- Subscriptions --}}
-        <div class="col-xl-8">
-            <div class="row">
-
-                <div class="col-md-12 grid-margin stretch-card">
-
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row mb-5">
-                                <div class="col">
-                                    <h6 class="card-title">Latest Subscriptions</h6>
-                                    <p class="text-muted mb-3">{{$data}} {{__('subscription(s)')}}</p>
-                                </div>
-                            </div>
-
-                            <div class="table-responsive">
-                                <table id="dataTableExample" class="table table-hover text-center">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>{{__('User Name')}}</th>
-                                            <th>{{__('Document Type')}}</th>
-                                            <th>{{__('Subscription Amounnt')}}</th>
-                                            <th>{{__('Updated at')}}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        @foreach($subscriptions as $key => $subscription)
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $subscription->user->name ?? '' }}</td>
-                                            <td>
-                                                <a class="preview_hover">
-                                                    {{ ucwords($subscription->document->document_type) ?? '' }}
-                                                    <iframe onload="hideNavbar()" id="description_frame" class="description_frame" src="{{ route('documents.show', $subscription->document->id) }}" scrolling="no" frameborder="0" marginheight="0%" marginwidth="0%" width="100%" height="100%"></iframe>
-                                                </a>
-                                            </td>
-                                            <td>{{ $subscription->subscription_type ?? '' }}</td>
-                                            <td>{{ $subscription->updated_at ?? '' }}</td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                            <button class="btn btn-sm btn-falcon-default ms-1" type="button" title="Next" data-list-pagination="next">
+                                <span class="fas fa-chevron-right"></span>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="mt-4">
-            <a role="button" class="btn btn-dark" href="{{ route('users.index') }}">
-                {{ __('Back to the Table') }}
-            </a>
-        </div>
-
     </div>
 
     @section('scripts')

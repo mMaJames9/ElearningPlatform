@@ -5,7 +5,7 @@
             <div class="d-flex justify-content-between">
                 <div class="align-self-center">
                     <h5 class="mb-0 fw-bold">{{__('Table of Subscriptions')}}</h5>
-                    <p class="mb-0 mt-2 mb-0 fs--1 fw-medium">{{$data}} {{__('subscription(s)')}} {{$status}}</p>
+                    <p class="mb-0 fs--1 fw-medium">{{$data}} {{__('subscription(s)')}} {{$status}}</p>
                 </div>
                 <div class="ms-auto text-center">
                     <div class="nav nav-pills nav-pills-falcon flex-grow-1" role="tablist">
@@ -29,7 +29,7 @@
                 <div class="tab-pane preview-tab-pane active mt-4" subscription="tabpanel">
                     <div id="tableSubscriptions" data-list='{"valueNames":["name", "type", "updated_at"], "page":10, "pagination":true}'>
                         <div class="table-responsive scrollbar">
-                            <table class="table table-striped overflow-hidden fs--1 mb-0">
+                            <table class="table table-striped fs--1 mb-0">
                                 <thead class="bg-200 fw-bold">
                                     <tr class="align-middle py-3">
                                         <th class="text-start">#</th>

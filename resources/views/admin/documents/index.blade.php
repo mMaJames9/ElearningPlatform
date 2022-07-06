@@ -5,7 +5,7 @@
             <div class="row flex-between-end">
                 <div class="col-auto align-self-center">
                     <h5 class="mb-0 fw-bold">{{__('Table of Documents')}}</h5>
-                    <p class="mb-0 mt-2 mb-0 fs--1 fw-medium">{{$dataPaper}} {{__('paper(s)')}} {{__('and')}} {{$dataBook}} {{__('book(s)')}}</p>
+                    <p class="mb-0 fs--1 fw-medium">{{$dataPaper}} {{__('paper(s)')}} {{__('and')}} {{$dataBook}} {{__('book(s)')}}</p>
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
                 <div class="tab-pane preview-tab-pane active mt-4" role="tabpanel">
                     <div id="tableRoles" data-list='{"valueNames":["type", "exam", "subject", "serie", "price", "updated_at"], "page":10, "pagination":true}'>
                         <div class="table-responsive scrollbar">
-                            <table class="table table-striped overflow-hidden fs--1 mb-0">
+                            <table class="table table-striped fs--1 mb-0">
                                 <thead class="bg-200 fw-bold">
                                     <tr class="align-middle py-3">
                                         <th class="text-start">#</th>
@@ -32,7 +32,7 @@
                                         <th class="sort" data-sort="serie">{{__('Serie')}}</th>
                                         <th class="sort" data-sort="price">{{__('Price')}}</th>
                                         <th class="sort" data-sort="updated_at">{{__('Updated at')}}</th>
-                                        <th class="sort">{{__('Actions')}}</th>
+                                        <th class="sort text-center">{{__('Actions')}}</th>
                                     </tr>
                                 </thead>
                                 <tbody class="list align-middle text-nowrap" id="table-recent-leads-body">
@@ -72,9 +72,9 @@
                                             {{ $document->created_at }}
                                         </td>
 
-                                        <td class="">
-                                            <div class="d-none d-md-block mb-4">
-                                                <div class="hover-actions bg-100">
+                                        <td class="text-wrap" width="15%">
+                                            <div class="d-none d-lg-block">
+                                                <div class="hover-actions bg-100 justify-content-center">
                                                     @can('document_show')
                                                     <a role="button" type="button" class="btn icon-item rounded-3 me-2 fs--2 icon-item-sm" href="{{ route('documents.show', $document->id) }}">
                                                         <span class="far fa-eye"></span>
@@ -95,7 +95,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="dropdown font-sans-serif btn-reveal-trigger 	d-md-none">
+                                            <div class="dropdown font-sans-serif btn-reveal-trigger d-lg-none">
                                                 <button class="btn btn-link text-600 btn-sm dropdown-toggle dropdown-caret-none btn-reveal-sm transition-none" type="button" id="crm-recent-leads-4" data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false">
                                                     <span class="fas fa-ellipsis-h fs--2"></span>
                                                 </button>

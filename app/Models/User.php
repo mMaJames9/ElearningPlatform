@@ -90,6 +90,6 @@ class User extends Authenticatable
 
     public function classroom()
     {
-        return $this->belongsTo(Exam::class, 'classroom_id', 'id');
+        return $this->belongsTo(Classroom::class, 'classroom_id', 'id');
     }
 }

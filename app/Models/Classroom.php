@@ -33,4 +33,9 @@ class Classroom extends Model
         return $this->belongsToMany(Document::class, ClassroomDocument::class)
             ->withTimestamps();
     }
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

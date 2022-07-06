@@ -5,7 +5,7 @@
             <div class="row flex-between-end">
                 <div class="col-auto align-self-center">
                     <h5 class="mb-0 fw-bold">{{__('Table of Roles')}}</h5>
-                    <p class="mb-0 mt-2 mb-0 fs--1 fw-medium">{{$data}} {{__('role(s)')}}</p>
+                    <p class="mb-0 fs--1 fw-medium">{{$data}} {{__('role(s)')}}</p>
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
                 <div class="tab-pane preview-tab-pane active mt-4" role="tabpanel">
                     <div id="tableRoles" data-list='{"valueNames":["name","permissions", "updated_at"], "page":10, "pagination":true}'>
                         <div class="table-responsive scrollbar">
-                            <table class="table table-striped overflow-hidden fs--1 mb-0">
+                            <table class="table table-striped fs--1 mb-0">
                                 <thead class="bg-200 fw-bold">
                                     <tr class="align-middle py-3">
                                         <th class="text-start">#</th>

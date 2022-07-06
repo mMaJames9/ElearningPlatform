@@ -5,7 +5,7 @@
             <div class="row flex-between-end">
                 <div class="col-auto align-self-center">
                     <h5 class="mb-0 fw-bold">{{__('Table of Users')}}</h5>
-                    <p class="mb-0 mt-2 mb-0 fs--1 fw-medium">{{$data}} {{__('user(s)')}}</p>
+                    <p class="mb-0 fs--1 fw-medium">{{$data}} {{__('user(s)')}}</p>
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
                 <div class="tab-pane preview-tab-pane active mt-4" role="tabpanel">
                     <div id="tableRoles" data-list='{"valueNames":["name","email", "phone_number", "role", "updated_at"], "page":10, "pagination":true}'>
                         <div class="table-responsive scrollbar">
-                            <table class="table table-striped overflow-hidden fs--1 mb-0">
+                            <table class="table table-striped fs--1 mb-0">
                                 <thead class="bg-200 fw-bold">
                                     <tr class="align-middle py-3">
                                         <th class="text-start">#</th>
@@ -31,7 +31,7 @@
                                         <th class="sort" data-sort="phone_number">{{__('Phone Number')}}</th>
                                         <th class="sort" data-sort="role">{{__('Role')}}</th>
                                         <th class="sort" data-sort="updated_at">{{__('Updated at')}}</th>
-                                        <th class="sort">{{__('Actions')}}</th>
+                                        <th class="sort text-center">{{__('Actions')}}</th>
                                     </tr>
                                 </thead>
                                 <tbody class="list align-middle text-nowrap" id="table-recent-leads-body">
@@ -70,9 +70,7 @@
                                             {{ Auth::user()->created_at }}
                                         </td>
 
-                                        <td class="position-relative">
-
-                                        </td>
+                                        <td class="text-wrap" width="15%"></td>
                                     </tr>
 
                                     @foreach($users as $key => $user)
@@ -111,11 +109,11 @@
                                             {{ $user->created_at }}
                                         </td>
 
-                                        <td class="">
+                                        <td class="text-wrap" width="15%">
                                             @foreach($user->roles as $key => $item)
                                             @if($item->name != "Super Admin")
-                                            <div class="d-none d-md-block mb-4">
-                                                <div class="hover-actions bg-100">
+                                            <div class="d-none d-lg-block">
+                                                <div class="hover-actions bg-100 justify-content-center">
 
                                                     @foreach($user->roles as $key => $item)
                                                     @if($item->name == "Member")
@@ -143,7 +141,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="dropdown font-sans-serif btn-reveal-trigger 	d-md-none">
+                                            <div class="dropdown font-sans-serif btn-reveal-trigger d-lg-none">
                                                 <button class="btn btn-link text-600 btn-sm dropdown-toggle dropdown-caret-none btn-reveal-sm transition-none" type="button" id="crm-recent-leads-4" data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false">
                                                     <span class="fas fa-ellipsis-h fs--2"></span>
                                                 </button>
