@@ -18,4 +18,10 @@
     font-weight: 400;
     font-size:1rem;
 }
+.profile-cover {
+    width:100%;
+    background-image: url(../img/generic/4.jpg);
+    background-repeat: no-repeat;background-position: 50% 50%;
+    background-size:cover
+}
 /*# sourceMappingURL=theme.min.css.map */

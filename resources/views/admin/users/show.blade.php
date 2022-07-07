@@ -2,7 +2,7 @@
 
     <div class="card mb-3">
         <div class="card-header position-relative min-vh-25 mb-7">
-            <div class="bg-holder rounded-3 rounded-bottom-0" style="background-image:url(../../../../../assets/img/generic/4.jpg);"></div>
+            <div class="bg-holder rounded-3 rounded-bottom-0 profile-cover"></div>
 
             <div class="avatar avatar-5xl avatar-profile">
                 <img class="rounded-circle img-thumbnail shadow-sm" src="{{ $user->profile_photo_url }}" alt="{{ $user->name }}" width="200" />
@@ -30,36 +30,36 @@
                         @endforeach
                     </p>
 
-                    <a class="btn btn-falcon-default btn-sm px-3 ms-2" role="button" href="{{ route('users.index') }}">{{ __('Back to the Table') }}</a>
+                    <a class="btn btn-falcon-default btn-sm px-3" role="button" href="{{ route('users.index') }}">{{ __('Back to the Table') }}</a>
 
                     <div class="border-dashed-bottom my-4 d-lg-none"></div>
                 </div>
                 <div class="col ps-2 ps-lg-3">
-                    <a class="d-flex justify-content-start mb-3">
+                    <div class="d-flex justify-content-start mb-3">
                         <span class="far fa-user me-3 text-700" data-fa-transform="grow-1"></span>
                         <div class="flex-1">
                             <h6 class="mb-0">{{ $user->username }}</h6>
                         </div>
-                    </a>
-                    <a class="d-flex justify-content-start mb-3">
+                    </div>
+                    <div class="d-flex justify-content-start mb-3">
                         <span class="fas fa-mobile-alt me-3 text-700" data-fa-transform="grow-1"></span>
                         <div class="flex-1">
                             <h6 class="mb-0">{{ $user->phone_number }}</h6>
                         </div>
-                    </a>
-                    <a class="d-flex justify-content-start mb-3">
+                    </div>
+                    <div class="d-flex justify-content-start mb-3">
                         <span class="fas fa-school me-3 text-700" data-fa-transform="grow-1"></span>
 
                         <div class="flex-1">
                             <h6 class="mb-0">{{ $user->classroom->classroom_name }}</h6>
                         </div>
-                    </a>
-                    <a class="d-flex justify-content-start mb-3">
+                    </div>
+                    <div class="d-flex justify-content-start mb-3">
                         <span class="far fa-handshake me-3 text-700" data-fa-transform="grow-1"></span>
                         <div class="flex-1">
-                            <h6 class="mb-0">{{__('Since')}} {{ date_format($user->created_at,'M Y') }}</h6>
+                            <h6 class="mb-0">{{__('Since')}} {{ date('F Y', strtotime($user->created_at)) }}</h6>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
         </div>

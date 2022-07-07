@@ -3,7 +3,7 @@
         <div class="card mb-3 btn-reveal-trigger">
             <div class="card-header position-relative min-vh-25 mb-8">
                 <div class="cover-image">
-                    <div class="bg-holder rounded-3 rounded-bottom-0" style="background-image:url(../assets/img/generic/4.jpg);"></div>
+                    <div class="bg-holder rounded-3 rounded-bottom-0 profile-cover"></div>
                 </div>
 
                 <div class="d-flex justify-content-between" x-data="{photoName: null, photoPreview: null}">
