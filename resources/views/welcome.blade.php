@@ -139,9 +139,9 @@
                                                     <div class="col-auto">
                                                         <div class="form-check mb-0">
                                                             <input class="form-check-input" type="checkbox" id="remember_me" name="remember" />
-                                                            <label class="form-check-label mb-0" for="remember_me">
+                                                            <span class="form-check-label mb-0" for="remember_me">
                                                                 {{ __('Remember me') }}
-                                                            </label>
+                                                            </span>
                                                         </div>
                                                     </div>
                                                     <div class="col-auto">
