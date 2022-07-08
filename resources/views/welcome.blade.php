@@ -281,7 +281,7 @@
                 </div>
             </div>
 
-            <section class="py-0 overflow-hidden light" id="banner">
+            {{-- <section class="py-0 overflow-hidden light" id="banner">
                 <div class="bg-holder overlay" style="background-image:url(assets/img/generic/bg-1.jpg);background-position: center bottom;">
 
                 </div>
@@ -619,10 +619,10 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> --}}
 
 
-            <section class="py-0 bg-dark light">
+            {{-- <section class="py-0 bg-dark light">
                 <div>
                     <hr class="my-0 text-600 opacity-25" />
                     <div class="container py-3">
@@ -638,7 +638,7 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> --}}
         </main>
 
         <!-- ===============================================-->
