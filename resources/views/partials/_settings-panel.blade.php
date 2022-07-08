@@ -1,4 +1,4 @@
-<div class="offcanvas offcanvas-end settings-panel border-0" id="settings-offcanvas" tabindex="-1" aria-labelledby="settings-offcanvas">
+<div class="offcanvas offcanvas-end settings-panel border-0 d-none" id="settings-offcanvas" tabindex="-1" aria-labelledby="settings-offcanvas">
     <div class="offcanvas-header settings-panel-header bg-shape">
         <div class="z-index-1 py-1 light">
             <h5 class="text-white">
@@ -104,7 +104,7 @@
         </div>
     </div>
 </div>
-<a class="card setting-toggle" href="#settings-offcanvas" data-bs-toggle="offcanvas">
+<a class="card setting-toggle d-none" href="#settings-offcanvas" data-bs-toggle="offcanvas">
     <div class="card-body d-flex align-items-center py-md-2 px-2 py-1">
         <div class="bg-soft-primary position-relative rounded-start" style="height:34px;width:28px">
             <div class="settings-popover">

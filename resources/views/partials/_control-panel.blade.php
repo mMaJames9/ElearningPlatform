@@ -17,7 +17,7 @@
             </label>
         </div>
     </li>
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link px-0 notification-indicator notification-indicator-warning notification-indicator-fill fa-icon-wait" href="app/e-commerce/shopping-cart.html">
             <span class="fas fa-shopping-cart" data-fa-transform="shrink-7" style="font-size: 33px;">
 
@@ -140,7 +140,7 @@
                 </div>
             </div>
         </div>
-    </li>
+    </li> --}}
 
     <li class="nav-item dropdown">
         <a class="nav-link pe-0" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
