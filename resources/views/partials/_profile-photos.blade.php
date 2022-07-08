@@ -39,7 +39,7 @@
                             </div>
                             @if ($this->user->profile_photo_path)
                             <div class="text-start my-auto px-0 d-none d-md-block">
-                                <button class="btn btn-outline-danger" wire:click="deleteProfilePhoto">
+                                <button class="btn btn-danger" wire:click="deleteProfilePhoto">
                                     <span class="fas fa-times-circle me-2"></span>
                                     <span>{{ __('Remove Photo') }}</span>
                                 </button>

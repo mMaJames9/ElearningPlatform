@@ -34,7 +34,7 @@
 
                     <div class="border-dashed-bottom my-4 d-lg-none"></div>
                 </div>
-                <div class="col ps-2 ps-lg-3">
+                <div class="col px-3 ps-lg-3">
                     <div class="d-flex justify-content-start mb-3">
                         <span class="far fa-user me-3 text-700" data-fa-transform="grow-1"></span>
                         <div class="flex-1">
