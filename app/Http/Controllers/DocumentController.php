@@ -65,7 +65,7 @@ class DocumentController extends Controller
 
             $pdfThumb = new Pdf($docPath . '/' . $nameDocument);
             $thumbnailPath = public_path('storage/uploads/documents/thumbnails');
-            $thumbName = "thumb-" . strtolower(str_replace(['.pdf', ''], ['', '-'], $nameDocument)) . ".png";
+            $thumbName = "thumb-" . strtolower(str_replace(['.pdf', ' '], ['', '-'], $nameDocument)) . ".png";
             $thumbnail = $pdfThumb->setPage(1)
             ->setOutputFormat('png')
             ->setResolution(32)
@@ -171,7 +171,7 @@ class DocumentController extends Controller
 
             $pdfThumb = new Pdf($docPath . '/' . $nameDocument);
             $thumbnailPath = public_path('storage/uploads/documents/thumbnails');
-            $thumbName = "thumb-" . strtolower(str_replace(['.pdf', ''], ['', '-'], $nameDocument)) . ".png";
+            $thumbName = "thumb-" . strtolower(str_replace(['.pdf', ' '], ['', '-'], $nameDocument)) . ".png";
             $thumbnail = $pdfThumb
             ->setPage(1)
             ->setOutputFormat('png')
