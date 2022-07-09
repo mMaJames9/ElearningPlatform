@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use BaconQrCode\Renderer\Path\Close;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,12 +13,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(PermissionRoleSeeder::class);
-        $this->call(UserSeeder::class);
-        $this->call(ModelHasRoles::class);
-        $this->call(ExamSeeder::class);
-        $this->call(ClassroomSeeder::class);
-        $this->call(SubjectSeeder::class);
+        $this->call([
+            FeatureSeeder::class,
+            PlanSeeder::class,
+            PermissionRoleSeeder::class,
+            ExamSeeder::class,
+            ClassroomSeeder::class,
+            SubjectSeeder::class,
+            UserSeeder::class,
+            ModelHasRoles::class,
+        ]);
 
     }
 }

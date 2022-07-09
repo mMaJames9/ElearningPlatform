@@ -162,6 +162,13 @@
                 <div class="dropdown-divider"></div>
 
                 <a class="dropdown-item" href="{{ route('profile.show') }}">{{ __('My Profile') }}</a>
+
+                {{-- @foreach($user->roles as $key => $item)
+                @if($item->name == "Member") --}}
+                <a class="dropdown-item" href="{{ route('plans.index') }}">{{ __('My Plan') }}</a>
+                {{-- @endif
+                @endforeach --}}
+
                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     {{ __('Logout') }}
                     <form method="POST" id="logout-form" action="{{ route('logout') }}">

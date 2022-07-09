@@ -4,7 +4,7 @@
         <div class="card-header border-bottom">
             <div class="row flex-between-end">
                 <div class="col-auto align-self-center">
-                    <h5 class="mb-0 fw-bold">{{__('Create a New Classroom')}}</h5>
+                    <h5 class="mb-0 fw-bold">{{__('Create a New Exam')}}</h5>
                 </div>
             </div>
         </div>
@@ -12,12 +12,14 @@
 
             <div class="tab-content mt-4">
 
-                <form method="POST" action="{{ route('classrooms.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('exams.store') }}" enctype="multipart/form-data">
                     @csrf
 
-                    <div class="form-floating mb-3">
-                        <select class="form-select js-choice  @error('exam_section') is-invalid @enderror" id="exam_section" size="1" name="exam_section" data-options='{"removeItemButton":true,"placeholder":true}'>
-                            <option disabled selected hidden>{{__('Select section')}}...</option>
+                    <div class="mb-3">
+                        <label class="form-label" for="exam_section">{{ __('Section') }}</label>
+
+                        <select class="form-select js-choice @error('exam_section') is-invalid @enderror" id="exam_section" name="exam_section" data-options='{"removeItemButton":true,"placeholder":true}'>
+                            <<option value="" selected disabled hidden>{{__('Select section')}}...</option>
                             <option value="Fr">{{__('Francophone')}}</option>
                             <option value="En">{{__('Anglophone')}}</option>
                         </select>
@@ -27,25 +29,23 @@
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
-
-                        <label class="form-label" for="exam_section">{{ __('Section') }}</label>
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="@error('classroom_name') is-invalid @enderror form-control" id="classroom_name" placeholder="{{ __('Name of the classroom') }}" name="classroom_name" :value="old('classroom_name')" required autofocus>
+                        <input type="text" class="@error('exam_name') is-invalid @enderror form-control" id="exam_name" placeholder="{{ __('Name of the exam') }}" name="exam_name" :value="old('exam_name')" required autofocus>
 
-                        @error('classroom_name')
+                        @error('exam_name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
 
-                        <label class="form-label" for="classroom_name">{{ __('Name') }}</label>
+                        <label class="form-label" for="exam_name">{{ __('Name') }}</label>
                     </div>
 
                     <div class="mt-5">
                         <button type="submit" class="btn btn-falcon-primary me-1 mb-1">{{ __('Submit') }}</button>
-                        <a role="button" class="btn btn-outline-dark me-1 mb-1" href="{{ route('classrooms.index') }}">
+                        <a role="button" class="btn btn-outline-dark me-1 mb-1" href="{{ route('exams.index') }}">
                             {{ __('Back to the Table') }}
                         </a>
                     </div>

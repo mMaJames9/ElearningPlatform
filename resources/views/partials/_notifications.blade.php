@@ -3,9 +3,12 @@
     window.addEventListener("load", function() {
         Toastify({
             text: "{{ session('message') }}",
-            duration: 5000,
-            close:true,
-            gravity:"top",
+            offset: {
+                x: '2rem',
+                y: '2rem'
+            },
+            duration: 3000,
+            gravity: "bottom",
             position: "right",
             backgroundColor: "#198754",
         }).showToast();
@@ -19,9 +22,12 @@
         window.addEventListener("load", function() {
             Toastify({
                 text: "{{ $error }}",
-                duration: 5000,
-                close:true,
-                gravity:"top",
+                offset: {
+                x: '2rem',
+                y: '2rem'
+            },
+                duration: 3000,
+                gravity: "bottom",
                 position: "right",
                 backgroundColor: "#dc3545",
             }).showToast();
@@ -35,9 +41,12 @@
     window.addEventListener("load", function () {
         Toastify({
             text: "{{ session('status') }}",
-            duration: 5000,
-            close: true,
-            gravity: "top",
+            offset: {
+                x: '2rem',
+                y: '2rem'
+            },
+            duration: 3000,
+            gravity: "bottom",
             position: "right",
             backgroundColor: "#198754",
         }).showToast();

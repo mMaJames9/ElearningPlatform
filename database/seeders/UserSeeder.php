@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use LucasDotVin\Soulbscription\Models\Plan;
 
 class UserSeeder extends Seeder
 {
@@ -42,7 +44,7 @@ class UserSeeder extends Seeder
                 'username' => 'm.maj9',
                 'phone_number' => '+237 696 638 725',
                 'email_verified_at' => null,
-                'password' => Hash::make('anthonyjames@1234'),
+                'password' => Hash::make('1234@1234'),
                 'remember_token' => null,
                 'current_team_id' => null,
                 'profile_photo_path' => null,
@@ -71,5 +73,9 @@ class UserSeeder extends Seeder
                 'two_factor_recovery_codes' => null,
             ],
         ]);
+
+        User::find(1)->subscribeTo(Plan::where('name', 'Trial')->first());
+        User::find(2)->subscribeTo(Plan::where('name', 'Trial')->first());
+        User::find(3)->subscribeTo(Plan::where('name', 'Trial')->first());
     }
 }

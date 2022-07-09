@@ -34,15 +34,18 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 
         // User Management
         Route::resource('/admin/usermanagement/users', 'App\Http\Controllers\UserController');
-        Route::resource('/admin/usermanagement/roles', 'App\Http\Controllers\RoleController');
+        Route::resource('/admin/usermanagement/roles', 'App\Http\Controllers\RoleController', ['except' => ['create', 'store', 'show', 'edit', 'update', 'destroy']]);
 
         // Paper Management
-        Route::resource('/admin/exammanagement/exams', 'App\Http\Controllers\ExamController');
-        Route::resource('/admin/exammanagement/classrooms', 'App\Http\Controllers\ClassroomController');
-        Route::resource('/admin/exammanagement/subjects', 'App\Http\Controllers\SubjectController');
+        Route::resource('/admin/exammanagement/exams', 'App\Http\Controllers\ExamController', ['except' => ['show']]);
+        Route::resource('/admin/exammanagement/classrooms', 'App\Http\Controllers\ClassroomController', ['except' => ['show']]);
+        Route::resource('/admin/exammanagement/subjects', 'App\Http\Controllers\SubjectController', ['except' => ['show']]);
         Route::resource('/admin/exammanagement/documents', 'App\Http\Controllers\DocumentController');
 
         // Ressources
-        Route::resource('/admin/ressources/subscriptions', 'App\Http\Controllers\SubscriptionController');
+        Route::resource('/admin/ressources/subscriptions', 'App\Http\Controllers\SubscriptionController', ['except' => ['create', 'store', 'show', 'edit', 'update', 'destroy']]);
+
+        // Plan
+        Route::resource('user/plans', 'App\Http\Controllers\PlanController');
 
 });

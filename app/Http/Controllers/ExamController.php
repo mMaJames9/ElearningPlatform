@@ -34,6 +34,7 @@ class ExamController extends Controller
     public function create()
     {
         abort_if(Gate::denies('exam_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         return view('admin.exams.create');
     }
 

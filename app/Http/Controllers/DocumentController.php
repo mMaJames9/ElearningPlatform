@@ -11,6 +11,7 @@ use App\Models\Classroom;
 use App\Models\Document;
 use App\Models\Exam;
 use App\Models\Subject;
+use Illuminate\Http\Response as HttpResponse;
 use Spatie\PdfToImage\Pdf;
 
 class DocumentController extends Controller
@@ -59,7 +60,7 @@ class DocumentController extends Controller
         if ($request->hasFile('document_path'))
         {
             $documentPath =  $request->document_path;
-            $nameDocument = $documentPath->getClientOriginalName();
+            $nameDocument = $documentPath->hashName();
             $docPath = public_path('storage/uploads/documents');
             $documentPath->move($docPath, $nameDocument);
 
@@ -75,7 +76,7 @@ class DocumentController extends Controller
         if ($request->hasFile('correction_path'))
         {
             $correctionPath =  $request->correction_path;
-            $nameCorrection = $correctionPath->getClientOriginalName();
+            $nameCorrection = $correctionPath->hashName();
             $corrPath = public_path('storage/uploads/corrections');
             $correctionPath->move($corrPath, $nameCorrection);
         }
@@ -165,7 +166,7 @@ class DocumentController extends Controller
             }
 
             $documentPath =  $request->document_path;
-            $nameDocument = $documentPath->getClientOriginalName();
+            $nameDocument = $documentPath->hashName();
             $docPath = public_path('storage/uploads/documents');
             $documentPath->move($docPath, $nameDocument);
 
@@ -194,7 +195,7 @@ class DocumentController extends Controller
             }
 
             $correctionPath =  $request->correction_path;
-            $nameCorrection = $correctionPath->getClientOriginalName();
+            $nameCorrection = $correctionPath->hashName();
             $corrPath = public_path('storage/uploads/corrections');
             $correctionPath->move($corrPath, $nameCorrection);
 
@@ -253,5 +254,52 @@ class DocumentController extends Controller
         return redirect()->route('documents.index')->with([
             'status' => $status,
         ]);
+    }
+
+    /**
+     * Download the specified resource from the public_path.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getDownload()
+    {
+        abort_if(Gate::denies('document_donwload'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $subscriptionPlan = auth()->user()->subscription->plan->name ?? null;
+
+        if ($subscriptionPlan === null) {
+            return redirect()->back()->with('status', 'You have no active plan.');
+        }
+
+        $feature = match ($subscriptionPlan) {
+            'Silver Monthly', 'Silver Yearly', 'Trial' => 'download-documents-limited',
+            'Gold Monthly', 'Gold Yearly'              => 'download-documents-unlimited',
+        };
+
+        if (auth()->user()->cantConsume($feature, 1)) {
+            $message = match ($subscriptionPlan)
+            {
+                'Silver Monthly', 'Silver Yearly' => 'You can download only 10 documents on Silver plan',
+                'Trial'                           => "You can download only 3 documents on Free Trial, please [<a href='/user/plans/' class='hover:underline'>choose your plan</a>]",
+            };
+
+            return redirect()->back()->with('status', $message);
+        }
+
+        $document = public_path('storage/uploads/documents');
+
+        $headers = ['Content-Type: application/pdf'];
+
+        if (file_exists($document)) {
+            return HttpResponse::download($document, 'plugin.pdf', $headers);
+        }
+        else
+        {
+            $status = 'Sorry! But... Document not found.';
+
+            return redirect()->back()->with([
+                'status' => $status,
+            ]);
+        }
     }
 }

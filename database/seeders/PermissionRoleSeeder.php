@@ -53,6 +53,7 @@ class PermissionRoleSeeder extends Seeder
         Permission::create(['name' => 'document_edit']);
         Permission::create(['name' => 'document_show']);
         Permission::create(['name' => 'document_delete']);
+        Permission::create(['name' => 'document_download']);
         Permission::create(['name' => 'document_access']);
 
         // create permissions (role)
@@ -106,17 +107,10 @@ class PermissionRoleSeeder extends Seeder
         // create roles and assign existing permissions
         $role2 = Role::create(['name' => 'Member']);
 
-        // create permissions (exam)
-        $role2->givePermissionTo('exam_access');
-
-        // create permissions (classroom)
-        $role2->givePermissionTo('classroom_access');
-
-        // create permissions (subject)
-        $role2->givePermissionTo('subject_access');
-
         // create permissions (document)
         $role2->givePermissionTo('document_access');
+        $role2->givePermissionTo('document_show');
+        $role2->givePermissionTo('document_download');
 
         $role3 = Role::create(['name' => 'Super Admin']);
         // gets all permissions via Gate::before rule; see AuthServiceProvider
