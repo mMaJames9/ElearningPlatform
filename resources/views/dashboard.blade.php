@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="row mb-3">
     <div class="col">
-        <div class="card bg-100 shadow-none border">
+        <div class="card bg-white shadow-none border">
             <div class="row gx-0 flex-between-center">
                 <div class="col-sm-auto d-flex align-items-center">
                     <img class="ms-n2" src="{{ asset('assets/img/illustrations/crm-bar-chart.png') }}" alt="" width="90" />
