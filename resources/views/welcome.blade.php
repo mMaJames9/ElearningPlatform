@@ -43,9 +43,6 @@
         <link rel="stylesheet" href="{{ asset('assets/css/theme.min.css') }}" id="style-default">
         <link rel="stylesheet" href="{{ asset('assets/css/user.min.css') }}" id="user-style-default">
 
-        <link rel="stylesheet" href="{{ asset('assets/css/theme-rtl.min.css') }}" id="style-rtl">
-        <link rel="stylesheet" href="{{ asset('assets/css/user-rtl.min.css') }}" id="user-style-rtl">
-
         <!-- ===============================================-->
         <!--    JavaScripts-->
         <!-- ===============================================-->
@@ -63,22 +60,6 @@
         <script src="{{ asset('assets/js/inputmask.js') }}" defer></script>
 
         <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
-
-        <script>
-            var isRTL = JSON.parse(localStorage.getItem('isRTL'));
-            if (isRTL) {
-                var linkDefault = document.getElementById('style-default');
-                var userLinkDefault = document.getElementById('user-style-default');
-                linkDefault.setAttribute('disabled', true);
-                userLinkDefault.setAttribute('disabled', true);
-                document.querySelector('html').setAttribute('dir', 'rtl');
-            } else {
-                var linkRTL = document.getElementById('style-rtl');
-                var userLinkRTL = document.getElementById('user-style-rtl');
-                linkRTL.setAttribute('disabled', true);
-                userLinkRTL.setAttribute('disabled', true);
-            }
-        </script>
 
     </head>
 
