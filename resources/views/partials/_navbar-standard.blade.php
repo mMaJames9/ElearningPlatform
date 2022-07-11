@@ -1,3 +1,6 @@
+@foreach(Auth::user()->roles as $key => $item)
+@if($item->name == "Member")
+
 <div class="collapse navbar-collapse scrollbar" id="navbarStandard">
     <ul class="navbar-nav" data-top-nav-dropdowns="data-top-nav-dropdowns">
         <li class="nav-item dropdown">
@@ -67,5 +70,9 @@
         @endcan
     </ul>
 </div>
+
+
+@endif
+@endforeach
 
 @include('partials._control-panel')

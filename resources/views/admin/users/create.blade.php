@@ -53,7 +53,7 @@
 
                     <div class="mt-5">
                         <button type="submit" class="btn btn-falcon-primary me-1 mb-1">{{ __('Submit') }}</button>
-                        <a role="button" class="btn btn-outline-dark me-1 mb-1" href="{{ route('users.index') }}">
+                        <a role="button" class="btn btn-outline-secondary me-1 mb-1" href="{{ route('users.index') }}">
                             {{ __('Back to the Table') }}
                         </a>
                     </div>

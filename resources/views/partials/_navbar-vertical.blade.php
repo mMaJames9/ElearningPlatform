@@ -1,3 +1,6 @@
+@foreach(Auth::user()->roles as $key => $item)
+@if($item->name == "Admin" || $item->name == "Super Admin")
+
 <nav class="navbar navbar-light navbar-vertical navbar-expand-xl" style="display: none;">
     <script>
         var navbarStyle = localStorage.getItem("navbarStyle");
@@ -154,3 +157,6 @@
         </div>
     </div>
 </nav>
+
+@endif
+@endforeach
