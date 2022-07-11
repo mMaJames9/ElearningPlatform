@@ -50,7 +50,7 @@
         <link rel="stylesheet" href="{{ asset('vendors/prism/prism-okaidia.css') }}">
 
         <link rel="stylesheet" href="{{ asset('assets/css/theme.min.css') }}" id="style-default">
-        <link rel="stylesheet" href="{{ asset('assets/css/user.min.css') }}" id="user-style-default">
+
 
         <!-- ===============================================-->
         <!--    JavaScripts-->
