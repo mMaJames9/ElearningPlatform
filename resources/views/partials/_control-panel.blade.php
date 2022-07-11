@@ -2,7 +2,7 @@
 
     @include('partials._search-bar')
 
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <div class="theme-control-toggle fa-icon-wait px-2">
             <input class="form-check-input ms-0 theme-control-toggle-input" id="themeControlToggle" type="checkbox" data-theme-control="theme" value="dark" />
             <label class="mb-0 theme-control-toggle-label theme-control-toggle-light" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch to light theme">
@@ -16,7 +16,7 @@
                 </span>
             </label>
         </div>
-    </li>
+    </li> --}}
     {{-- <li class="nav-item">
         <a class="nav-link px-0 notification-indicator notification-indicator-warning notification-indicator-fill fa-icon-wait" href="app/e-commerce/shopping-cart.html">
             <span class="fas fa-shopping-cart" data-fa-transform="shrink-7" style="font-size: 33px;">
