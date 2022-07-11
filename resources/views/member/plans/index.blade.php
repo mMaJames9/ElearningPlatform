@@ -5,7 +5,7 @@
             <div class="row justify-content-center">
                 <div class="col-12 text-center mb-4">
                     <div class="fs-1">{{__('Pricing')}}</div>
-                    <h3 class="fs-2 fs-md-3">{{__('Silver planwith limited downloads')}}. <br class="d-none d-md-block" />{{__('Gold plan with unlimited downloads')}}</h3>
+                    <h3 class="fs-2 fs-md-3">{{__('Silver plan with limited downloads')}}. <br class="d-none d-md-block" />{{__('Gold plan with unlimited downloads')}}</h3>
 
                     <div class="d-flex justify-content-center">
                         <label class="form-check-label me-2" for="pricingPlan">{{__('Monthly')}}</label>
@@ -33,9 +33,9 @@
                                     @endif
                                 </p>
                             </div>
-                            <div class="col-12 col-lg d-flex align-items-center">
+                            <div class="col-12 col-lg d-flex align-items-center my-3">
                                 {{-- @if($currentSubscription !== null && $currentSubscription?->plan->name !== 'Trial') --}}
-                                <p class="flex-1 my-3">
+                                <p class="flex-1">
                                     <form method="POST" action="{{ route('plans.destroy', $currentSubscription->plan) }}">
                                         @csrf
                                         @method('DELETE')
