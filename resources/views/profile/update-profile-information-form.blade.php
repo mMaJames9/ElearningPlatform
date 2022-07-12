@@ -86,9 +86,8 @@
                             @if($item->name == "Member")
 
                             <div class="col-12 col-lg" wire:model.defer="state.classroom_id">
-                                <label class="form-label" for="classroom_id">{{ __('Classroom') }}</label>
+                                <label class="form-label" for="classroom_id">{{ __('classroom') }}</label>
                                 <select class="form-select @error('classroom_id') is-invalid @enderror" data-width="100%" id="classroom_id" name="classroom_id" :value="old('classroom_id')" required autofocus data-options='{"removeItemButton":true,"placeholder":true}'>
-                                    {{-- <option value="" disabled selected hidden>{{__('Select the corresponding classroom')}}...</option> --}}
                                     @foreach($classrooms as $id => $classroom)
                                     <option value="{{ $id }}" @if ($id == Auth::user()->classroom_id) selected="selected" @endif>{{ ucwords($classroom) }}</option>
                                     @endforeach
