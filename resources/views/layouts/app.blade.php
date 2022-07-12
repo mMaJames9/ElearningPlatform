@@ -116,29 +116,44 @@
                         @include('partials._navbar-standard')
                     </nav>
 
+                    @foreach(Auth::user()->roles as $key => $item)
+                    @if($item->name == "Member")
                     <script>
-                        var navbarPosition = localStorage.getItem('navbarPosition');
-                        var navbarVertical = document.querySelector('.content [data-navbar-top="combo"]');
-                        var navbarTopVertical = document.querySelector('.content [data-navbar-top="combo"]');
-                        var navbarTop = document.querySelector('.content [data-navbar-top="combo"]');
-                        var navbarTopCombo = document.querySelector('.content [data-navbar-top="combo"]');
+                        var navbarPosition = 'top';
+                        var navbarVertical = document.querySelector('.navbar-vertical');
+                        var navbarTopVertical = document.querySelector('.content .navbar-top');
+                        var navbarTop = document.querySelector('[data-layout] .navbar-top');
+                        var navbarTopCombo = document.querySelector('[data-navbar-top="combo"]');
+
                         if (navbarPosition === 'top') {
-                            navbarTop.removeAttribute('style');
-                            navbarTopVertical.remove(navbarTopVertical);
-                            navbarVertical.remove(navbarVertical);
-                            navbarTopCombo.remove(navbarTopCombo);
-                        } else if (navbarPosition === 'combo') {
-                            navbarVertical.removeAttribute('style');
-                            navbarTopCombo.removeAttribute('style');
-                            navbarTop.remove(navbarTop);
-                            navbarTopVertical.remove(navbarTopVertical);
-                        } else {
-                            navbarVertical.removeAttribute('style');
-                            navbarTopVertical.removeAttribute('style');
-                            navbarTop.remove(navbarTop);
-                            navbarTopCombo.remove(navbarTopCombo);
+                        navbarTop.removeAttribute('style');
+                        navbarTopVertical.remove(navbarTopVertical);
+                        navbarVertical.remove(navbarVertical);
+                        navbarTopCombo.remove(navbarTopCombo);
                         }
                     </script>
+                    @endif
+                    @endforeach
+
+                    @foreach(Auth::user()->roles as $key => $item)
+                    @if($item->name == "Super Admin" || $item->name == "Admin")
+                    <script>
+                        var navbarPosition = 'vertical';
+                        var navbarVertical = document.querySelector('.navbar-vertical');
+                        var navbarTopVertical = document.querySelector('.content .navbar-top');
+                        var navbarTop = document.querySelector('[data-layout] .navbar-top');
+                        var navbarTopCombo = document.querySelector('.content [data-navbar-top="combo"]');
+                        if (navbarPosition === 'vertical') {
+                        navbarVertical.removeAttribute('style');
+                        navbarTopVertical.removeAttribute('style');
+                        navbarTop.remove(navbarTop);
+                        navbarTopCombo.remove(navbarTopCombo);
+                        }
+                    </script>
+                    @endif
+                    @endforeach
+
+
 
                     {{ $slot }}
 
