@@ -118,15 +118,15 @@
 
                     <script>
                         var navbarPosition = localStorage.getItem('navbarPosition');
-                        var navbarVertical = document.querySelector('.navbar-vertical');
-                        var navbarTopVertical = document.querySelector('.content .navbar-top');
-                        var navbarTop = document.querySelector('[data-layout] .navbar-top');
+                        var navbarVertical = document.querySelector('.content [data-navbar-top="combo"]');
+                        var navbarTopVertical = document.querySelector('.content [data-navbar-top="combo"]');
+                        var navbarTop = document.querySelector('.content [data-navbar-top="combo"]');
                         var navbarTopCombo = document.querySelector('.content [data-navbar-top="combo"]');
                         if (navbarPosition === 'top') {
-                            navbarVertical.removeAttribute('style');
-                            navbarTopCombo.removeAttribute('style');
-                            navbarTop.remove(navbarTop);
+                            navbarTop.removeAttribute('style');
                             navbarTopVertical.remove(navbarTopVertical);
+                            navbarVertical.remove(navbarVertical);
+                            navbarTopCombo.remove(navbarTopCombo);
                         } else if (navbarPosition === 'combo') {
                             navbarVertical.removeAttribute('style');
                             navbarTopCombo.removeAttribute('style');
@@ -134,9 +134,9 @@
                             navbarTopVertical.remove(navbarTopVertical);
                         } else {
                             navbarVertical.removeAttribute('style');
-                            navbarTopCombo.removeAttribute('style');
+                            navbarTopVertical.removeAttribute('style');
                             navbarTop.remove(navbarTop);
-                            navbarTopVertical.remove(navbarTopVertical);
+                            navbarTopCombo.remove(navbarTopCombo);
                         }
                     </script>
 
