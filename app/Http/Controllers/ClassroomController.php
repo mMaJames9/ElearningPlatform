@@ -22,6 +22,7 @@ class ClassroomController extends Controller
 
         $classrooms = Classroom::all()->sortByDesc("created_at");
         $data = Classroom::all()->count();
+        
         return view('admin.classrooms.index', compact('classrooms', 'data'));
     }
 
