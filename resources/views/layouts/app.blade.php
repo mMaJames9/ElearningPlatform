@@ -89,15 +89,17 @@
     <body>
 
         <main class="main" id="top">
+            @foreach(Auth::user()->roles as $key => $item)
+            @if($item->name == "Member")
             <div class="container" data-layout="container">
-                <script>
-                    var isFluid = JSON.parse(localStorage.getItem('isFluid'));
-                    if (isFluid) {
-                        var container = document.querySelector('[data-layout]');
-                        container.classList.remove('container');
-                        container.classList.add('container-fluid');
-                    }
-                </script>
+            @endif
+            @endforeach
+
+            @foreach(Auth::user()->roles as $key => $item)
+            @if($item->name == "Super Admin" || $item->name == "Admin")
+            <div class="container-fluid" data-layout="container">
+            @endif
+            @endforeach
 
                 @livewire('navigation-menu')
 
