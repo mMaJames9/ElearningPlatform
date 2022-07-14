@@ -270,19 +270,8 @@ class DocumentController extends Controller
         }
 
         $feature = match ($subscriptionPlan) {
-            'Silver Monthly', 'Silver Yearly', 'Trial' => 'download-documents-limited',
-            'Gold Monthly', 'Gold Yearly'              => 'download-documents-unlimited',
+            'Academic Year' => 'download-documents-unlimited',
         };
-
-        if (auth()->user()->cantConsume($feature, 1)) {
-            $message = match ($subscriptionPlan)
-            {
-                'Silver Monthly', 'Silver Yearly' => 'You can download only 10 documents on Silver plan',
-                'Trial'                           => "You can download only 3 documents on Free Trial, please [<a href='/user/plans/' class='hover:underline'>choose your plan</a>]",
-            };
-
-            return redirect()->back()->with('status', $message);
-        }
 
         $document = public_path('storage/uploads/documents');
 

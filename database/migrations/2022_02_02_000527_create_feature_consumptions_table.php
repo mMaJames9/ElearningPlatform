@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use LucasDotVin\Soulbscription\Models\Feature;
 
 return new class() extends Migration {
     /**
@@ -16,7 +17,7 @@ return new class() extends Migration {
             $table->id();
             $table->unsignedDecimal('consumption')->nullable();
             $table->timestamp('expired_at')->nullable();
-            $table->foreignIdFor(\LucasDotVin\Soulbscription\Models\Feature::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Feature::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
 
             if (config('soulbscription.models.subscriber.uses_uuid')) {

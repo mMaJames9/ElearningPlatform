@@ -73,7 +73,7 @@ class PlanController extends Controller
     {
         auth()->user()->subscribeTo($plan);
 
-        return redirect()->route('member.plans.index');
+        return redirect()->route('plans.index');
     }
 
     /**
@@ -86,6 +86,6 @@ class PlanController extends Controller
     {
         auth()->user()->subscription->cancel();
 
-        return redirect()->route('member.plans.index');
+        return redirect()->route('plans.index');
     }
 }

@@ -11,45 +11,15 @@ class PlanSeeder extends Seeder
 {
     public function run()
     {
-        $silverMonthly = Plan::create([
-            'name'             => 'Silver Monthly',
-            'periodicity_type' => PeriodicityType::Month,
-            'periodicity'      => 1,
-        ]);
 
-        $silverYearly = Plan::create([
-            'name'             => 'Silver Yearly',
+        $academicYear = Plan::create([
+            'name'             => 'Academic Year',
             'periodicity_type' => PeriodicityType::Year,
             'periodicity'      => 1,
         ]);
 
-        $goldMonthly = Plan::create([
-            'name'             => 'Gold Monthly',
-            'periodicity_type' => PeriodicityType::Month,
-            'periodicity'      => 1,
-        ]);
-
-        $goldYearly = Plan::create([
-            'name'             => 'Gold Yearly',
-            'periodicity_type' => PeriodicityType::Year,
-            'periodicity'      => 1,
-        ]);
-
-        $trialPlan = Plan::create([
-            'name'             => 'Trial',
-            'periodicity_type' => PeriodicityType::Week,
-            'periodicity'      => 1,
-        ]);
-
-        $limitedFeature = Feature::where('name', 'download-documents-limited')->first();
         $unlimitedFeature = Feature::where('name', 'download-documents-unlimited')->first();
 
-        $silverMonthly->features()->attach($limitedFeature, ['charges' => 10]);
-        $silverYearly->features()->attach($limitedFeature, ['charges' => 10]);
-
-        $goldMonthly->features()->attach($unlimitedFeature);
-        $goldYearly->features()->attach($unlimitedFeature);
-
-        $trialPlan->features()->attach($limitedFeature, ['charges' => 3]);
+        $academicYear->features()->attach($unlimitedFeature);
     }
 }

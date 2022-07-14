@@ -73,9 +73,5 @@ class UserSeeder extends Seeder
                 'two_factor_recovery_codes' => null,
             ],
         ]);
-
-        User::find(1)->subscribeTo(Plan::where('name', 'Trial')->first());
-        User::find(2)->subscribeTo(Plan::where('name', 'Trial')->first());
-        User::find(3)->subscribeTo(Plan::where('name', 'Trial')->first());
     }
 }

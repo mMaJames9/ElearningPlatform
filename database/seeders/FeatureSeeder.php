@@ -11,13 +11,6 @@ class FeatureSeeder extends Seeder
     public function run()
     {
         Feature::create([
-            'consumable'       => true,
-            'name'             => 'download-documents-limited',
-            'periodicity_type' => PeriodicityType::Month,
-            'periodicity'      => 10,
-        ]);
-
-        Feature::create([
             'consumable'       => false,
             'name'             => 'download-documents-unlimited',
         ]);

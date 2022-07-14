@@ -33,6 +33,7 @@ class SubjectController extends Controller
     public function create()
     {
         abort_if(Gate::denies('subject_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         return view('admin.subjects.create');
     }
 
@@ -48,7 +49,7 @@ class SubjectController extends Controller
 
         $status = 'A new subject was added successfully.';
 
-        return redirect()->route('subjects.create')->with([
+        return redirect()->route('subjects.index')->with([
             'status' => $status,
         ]);
     }
