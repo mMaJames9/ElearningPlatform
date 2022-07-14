@@ -36,7 +36,6 @@ class UpdateDocumentRequest extends FormRequest
             'document_session' => ['nullable', 'string', 'max:255'],
             'document_title' => ['nullable', 'string', 'max:255', 'unique:documents,document_title,' . request()->route('document')->id],
             'document_description' => ['nullable', 'string', 'max:10000'],
-            'document_price' => ['required', 'string', 'max:255'],
         ];
     }
 }

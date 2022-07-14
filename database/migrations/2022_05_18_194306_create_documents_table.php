@@ -19,7 +19,6 @@ class CreateDocumentsTable extends Migration
             $table->string('document_title')->nullable();
             $table->string('document_type')->nullable();
             $table->longText('document_description')->nullable();
-            $table->integer('document_price')->nullable();
             $table->string('document_path')->nullable();
             $table->string('document_thumbnail', 2048)->nullable();
             $table->string('correction_path')->nullable();

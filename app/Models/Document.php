@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $document_title
  * @property string $document_type
  * @property string $document_description
- * @property int $document_price
  * @property string $document_path
  * @property string $document_thumbnail
  * @property string $correction_path
@@ -35,7 +34,6 @@ class Document extends Model
         'document_title',
         'document_type',
         'document_description',
-        'document_price',
         'document_path',
         'document_thumbnail',
         'correction_path',

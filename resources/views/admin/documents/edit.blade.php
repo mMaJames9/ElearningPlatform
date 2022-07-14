@@ -121,7 +121,7 @@
                     <div id="docDescr" class="mb-3">
                         <label class="form-label" for="document_description">{{ __('Description') }}</label>
                         <textarea class="tinymce @error('document_description') is-invalid @enderror form-control" placeholder="{{ __('Description of the document') }}" name="document_description" autofocus>
-                            {{ old('document_price', $document->document_description) }}
+                            {{ old('document_description', $document->document_description) }}
                         </textarea>
 
                         @error('document_description')
@@ -131,17 +131,6 @@
                         @enderror
                     </div>
                     @endif
-
-                    <div class="mb-3">
-                        <label class="form-label" for="document_price">{{ __('Price') }}</label>
-                        <input type="text" data-inputmask="'alias': 'currency'" class="@error('document_price') is-invalid @enderror form-control py-2" id="document_price" name="document_price" value="{{ old('document_price', $document->document_price) }}" required autofocus>
-
-                        @error('document_price')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
 
                     <div class="mt-5">
                         <button type="submit" class="btn btn-falcon-primary me-1 mb-1">{{ __('Submit') }}</button>

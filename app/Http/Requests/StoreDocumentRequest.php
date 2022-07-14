@@ -37,7 +37,6 @@ class StoreDocumentRequest extends FormRequest
             'document_title' => ['nullable', 'string', 'max:255', 'unique:documents'],
             'document_type' => ['required', 'string', 'max:255'],
             'document_description' => ['nullable', 'string', 'max:10000'],
-            'document_price' => ['required', 'string', 'max:255'],
             'document_path' => ['required', 'mimes:pdf', 'max:12288'],
             'correction_path' => ['nullable', 'mimes:pdf', 'max:12288'],
         ];

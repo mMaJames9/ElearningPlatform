@@ -100,15 +100,6 @@
                         </div>
                     </div>
                     @endif
-
-                    @if (isset($document->document_price))
-                    <div class="mb-3">
-                        <span class="text-uppercase me-3 text-400 fs--1 fw-bold" data-fa-transform="grow-1">{{__('Price')}}:</span>
-                        <div class="flex-1">
-                            <h6 class="fw-bold mb-0">{{ $document->document_price }}</h6>
-                        </div>
-                    </div>
-                    @endif
                 </div>
             </div>
         </div>

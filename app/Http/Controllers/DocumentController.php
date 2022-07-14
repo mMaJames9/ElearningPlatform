@@ -87,7 +87,6 @@ class DocumentController extends Controller
             'document_title' => $request['document_title'] ?? null,
             'document_type' => $request['document_type'],
             'document_description' => $request['document_description'] ?? null,
-            'document_price' => $request['document_price'],
             'document_path' => $nameDocument,
             'document_thumbnail' => $thumbName,
             'correction_path' => $nameCorrection ?? null,
@@ -206,7 +205,6 @@ class DocumentController extends Controller
         $document->document_session = $request->document_session ?? null;
         $document->document_title = $request->document_title ?? null;
         $document->document_description = $request->document_description ?? null;
-        $document->document_price = $request->document_price;
 
         $document->save();
 

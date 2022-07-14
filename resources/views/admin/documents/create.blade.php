@@ -135,17 +135,6 @@
                         @enderror
                     </div>
 
-                    <div class="mb-3">
-                        <label class="form-label" for="document_price">{{ __('Price') }}</label>
-                        <input type="text" data-inputmask="'alias': 'currency'" class="@error('document_price') is-invalid @enderror form-control py-2" id="document_price" name="document_price" :value="old('document_price')" required autofocus>
-
-                        @error('document_price')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-
                     <div class="mt-5">
                         <button type="submit" class="btn btn-falcon-primary me-1 mb-1">{{ __('Submit') }}</button>
                         <a role="button" class="btn btn-outline-secondary me-1 mb-1" href="{{ route('documents.index') }}">
