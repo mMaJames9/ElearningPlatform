@@ -10,11 +10,11 @@
                             <div class="row g-0 h-100">
                                 <div class="col-md-5 text-center bg-card-gradient">
                                     <div class="position-relative p-4 pt-md-5 pb-md-7 light">
-                                        <div class="bg-holder bg-auth-card-shape" style="background-image:url(assets/img/icons/spot-illustrations/half-circle.png);;"></div>
+                                        <div class="bg-holder bg-auth-card-shape" style="background-image:url(assets/img/icons/spot-illustrations/half-circle.png);"></div>
                                         {{-- /.bg-holder --}}
                                         <div class="z-index-1 position-relative">
                                             <a class="link-light mb-4 font-sans-serif fs-4 d-inline-block fw-bolder" href="{{ route('welcome') }}">
-                                               <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/falcon.png') }}" alt="logo" width="120" />
+                                               <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/falcon-white.png') }}" alt="logo" width="120" />
                                             </a>
                                             <p class="opacity-75 text-white">{{__('Welcome back! Happy to see you again! To connect with us, you can log in with your email address, phone number or username and your password.')}}</p>
                                         </div>
@@ -26,14 +26,14 @@
                                                 {{__('Get started!')}}
                                             </a>
                                         </p>
-                                        {{-- @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature()) --}}
+                                        @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                                         <p class="mb-0 mt-4 mt-md-5 fs--1 fw-semi-bold text-white opacity-75">
                                             {{__('Read our')}}
                                             <a class="text-decoration-underline text-white" target="_blank" href="'.route('terms.show').'">{{__('Terms of Service')}}</a>
                                             {{__('and')}}
                                             <a class="text-decoration-underline text-white" target="_blank" href="'.route('policy.show').'">{{__('Privacy Policy')}} </a>
                                         </p>
-                                        {{-- @endif --}}
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-md-7 d-flex flex-center">

@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
-use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\StoreDocumentRequest;
 use App\Http\Requests\UpdateDocumentRequest;
 use App\Models\Classroom;
 use App\Models\Document;
 use App\Models\Exam;
 use App\Models\Subject;
-use Illuminate\Http\Response as HttpResponse;
+use Illuminate\Support\Facades\Response as DonwloadResponse;
 use Spatie\PdfToImage\Pdf;
+use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Gate;
 
 class DocumentController extends Controller
 {
@@ -259,9 +259,9 @@ class DocumentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getDownload()
+    public function getDownload(Document $document)
     {
-        abort_if(Gate::denies('document_donwload'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        // abort_if(Gate::denies('document_donwload'), Response::HTTP_FORBIDDEN, 'Accès Interdit');
 
         $subscriptionPlan = auth()->user()->subscription->plan->name ?? null;
 
@@ -273,12 +273,11 @@ class DocumentController extends Controller
             'Academic Year' => 'download-documents-unlimited',
         };
 
-        $document = public_path('storage/uploads/documents');
-
-        $headers = ['Content-Type: application/pdf'];
+        $documentPath = $document->document_path;
+        $document = public_path('storage/uploads/documents/') . $documentPath;
 
         if (file_exists($document)) {
-            return HttpResponse::download($document, 'plugin.pdf', $headers);
+            return DonwloadResponse::download($document);
         }
         else
         {
@@ -289,4 +288,6 @@ class DocumentController extends Controller
             ]);
         }
     }
+
+
 }

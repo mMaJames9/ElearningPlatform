@@ -13,9 +13,6 @@
                 <div class="col-lg-8">
                     <h4 class="mb-1">
                         {{ $user->name }}
-                        {{-- <span data-bs-toggle="tooltip" data-bs-placement="right" title="Verified">
-                            <small class="fa fa-check-circle text-primary" data-fa-transform="shrink-4 down-2"></small>
-                        </span> --}}
                     </h4>
                     <h5 class="fs-0 fw-normal">{{ $user->email }}</h5>
                     <p class="mb-5 text-500">
@@ -57,7 +54,7 @@
                     <div class="d-flex justify-content-start mb-3">
                         <span class="far fa-handshake me-3 text-700" data-fa-transform="grow-1"></span>
                         <div class="flex-1">
-                            <h6 class="mb-0">{{__('Since')}} {{ date('F Y', strtotime($user->created_at)) }}</h6>
+                            <h6 class="mb-0">{{__('Since')}} {{ date('d F Y', strtotime($user->created_at)) }}</h6>
                         </div>
                     </div>
                 </div>
@@ -69,48 +66,38 @@
         <div class="card-header border-bottom">
             <div class="d-flex justify-content-between">
                 <div class="align-self-center">
-                    <h5 class="mb-0 fw-bold">{{__('Table of Subscriptions')}}</h5>
-                    <p class="mb-0 fs--1 fw-medium">{{$data}} {{__('subscription(s)')}}</p>
+                    <h5 class="mb-0 fw-bold">{{__('Table of Downloads')}}</h5>
+                    <p class="mb-0 fs--1 fw-medium">{{$data}} {{__('download(s)')}}</p>
                 </div>
             </div>
         </div>
         <div class="card-body pt-0">
             <div class="tab-content">
 
-                <div class="tab-pane preview-tab-pane active mt-4" subscription="tabpanel">
-                    <div id="tableSubscriptions" data-list='{"valueNames":["name", "type", "updated_at"], "page":10, "pagination":true}'>
+                <div class="tab-pane preview-tab-pane active mt-4" role="tabpanel">
+                    <div id="tableSubscriptions" data-list='{"valueNames":["name", "type", "created_at"], "page":10, "pagination":true}'>
                         <div class="table-responsive scrollbar">
                             <table class="table table-striped fs--1 mb-0">
                                 <thead class="bg-200 fw-bold">
                                     <tr class="align-middle py-3">
                                         <th class="text-start">#</th>
-                                        <th class="sort" data-sort="name">{{__('Name')}}</th>
-                                        <th class="sort" data-sort="type">{{__('Subscription Type')}}</th>
-                                        <th class="sort" data-sort="updated_at">{{__('Date')}}</th>
+                                        <th class="sort" data-sort="type">{{__('Document')}}</th>
+                                        <th class="sort" data-sort="created_at">{{__('Date')}}</th>
                                     </tr>
                                 </thead>
                                 <tbody class="list align-middle text-nowrap" id="table-recent-leads-body">
 
-                                    @foreach($subscriptions as $key => $subscription)
+                                    @foreach($downloads as $key => $download)
                                     <tr class="hover-actions-trigger btn-reveal-trigger hover-bg-100">
                                         <td class="text-start">{{ $loop->iteration }}</td>
 
-                                        <td class="name">
-                                            <div class="d-flex align-items-center">
-                                                <div class="avatar avatar-xl">
-                                                    <img class="rounded-circle" src="{{ $subscription->user->profile_photo_url }}" alt="{{ $subscription->user->username }}" />
-                                                </div>
-                                                <h6 class="mb-0 ps-2 text-800">{{  ucwords($subscription->user->name) }}</h6>
-                                            </div>
-                                        </td>
-
                                         <td class="type">
-                                            {{ ucwords($subscription->subscription_type) ?? '' }}
+                                            {{ ucwords($download->document->document_type) ?? '' }}
                                         </td>
 
 
-                                        <td class="updated_at">
-                                            {{ $subscription->created_at }}
+                                        <td class="created_at">
+                                            {{ $download->created_at }}
                                         </td>
                                     </tr>
                                     @endforeach
@@ -134,24 +121,5 @@
             </div>
         </div>
     </div>
-
-    @section('scripts')
-    <script>
-        $(".preview_hover").mouseover(function() {
-        $(this).children(".description_frame").show();
-        }).mouseout(function() {
-        $(this).children(".description_frame").hide();
-        });
-
-        function hideNavbar() {
-            $("#description_frame").contents().find("#navbar").remove();
-            $("#description_frame").contents().find("#page-content").removeClass("page-content");
-            $("#description_frame").contents().find("#stretch-card").removeClass("col-md-6");
-            $("#description_frame").contents().find("#document_thumbnail").removeClass("col-md-4");
-            $("#description_frame").contents().find("#document_text").removeClass("col-md-8");
-        }
-
-    </script>
-    @endsection
 
 </x-app-layout>

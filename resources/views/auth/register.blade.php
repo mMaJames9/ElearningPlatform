@@ -14,7 +14,7 @@
                                         <!--/.bg-holder-->
                                         <div class="z-index-1 position-relative">
                                             <a class="link-light mb-4 font-sans-serif fs-4 d-inline-block fw-bolder" href="{{ route('welcome') }}">
-                                                <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/falcon.png') }}" alt="logo" width="120" />
+                                                <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/falcon-white.png') }}" alt="logo" width="120" />
                                             </a>
                                             <p class="opacity-75 text-white">{{__('Hello, Friend! New here? Join us today! It takes only few steps. Enter your personal details and start journey with us')}}</p>
                                         </div>
@@ -118,8 +118,8 @@
                                                 @enderror
                                             </div>
 
-                                            {{-- @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature()) --}}
-                                            <div class="mb-5 form-check">
+                                            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
+                                            <div class="form-check">
                                                 <input type="checkbox" class="form-check-input" id="terms" type="checkbox" name="terms">
                                                 <label class="form-check-label" for="terms">
                                                     {{__('I accept the')}}
@@ -128,9 +128,9 @@
                                                     <a target="_blank" href="'.route('policy.show').'">{{__('Privacy Policy')}} </a>
                                                 </label>
                                             </div>
-                                            {{-- @endif --}}
+                                            @endif
 
-                                            <div class="mb-3">
+                                            <div class="mt-5 mb-3">
                                                 <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">{{__('Register')}}</button>
                                             </div>
                                         </form>

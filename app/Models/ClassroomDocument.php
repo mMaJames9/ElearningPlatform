@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
 /**
  * @property int $document_id
@@ -12,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $updated_at
  */
 
-class ClassroomDocument extends Model
+class ClassroomDocument extends Pivot
 {
     use HasFactory;
 

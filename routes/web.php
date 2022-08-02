@@ -25,12 +25,16 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     ->group(function() {
 
         Route::get('/dashboard', function () {
+
             return view('dashboard');
+
         })->name('dashboard');
 
         Route::get('/admin/ressources/subscriptions/subscriptionsDay', 'App\Http\Controllers\SubscriptionController@indexDay')->name('subscriptionsDay');
         Route::get('/admin/ressources/subscriptions/subscriptionsMonth', 'App\Http\Controllers\SubscriptionController@indexMonth')->name('subscriptionsMonth');
         Route::get('/admin/ressources/subscriptions/subscriptionsYear', 'App\Http\Controllers\SubscriptionController@indexYear')->name('subscriptionsYear');
+
+        Route::get("documents/getDownload/{document}", "App\Http\Controllers\DocumentController@getDownload")->name("getDownload");
 
         // User Management
         Route::resource('/admin/usermanagement/users', 'App\Http\Controllers\UserController');
@@ -47,5 +51,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 
         // Plan
         Route::resource('user/plans', 'App\Http\Controllers\PlanController');
+
+        // Member - Document Management
+        Route::resource('/documents/books', 'App\Http\Controllers\BookController');
+        Route::resource('/documents/papers', 'App\Http\Controllers\PaperController');
 
 });

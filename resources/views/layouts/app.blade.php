@@ -40,8 +40,10 @@
 
         @yield('styles')
 
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
         <link rel="stylesheet" href="{{ asset('vendors/flatpickr/flatpickr.min.css') }}">
         <link rel="stylesheet" href="{{ asset('vendors/overlayscrollbars/OverlayScrollbars.min.css') }}">
         <link rel="stylesheet" href="{{ asset('vendors/choices/choices.min.css') }}">
@@ -89,37 +91,44 @@
     <body>
 
         <main class="main" id="top">
-            @foreach(Auth::user()->roles as $key => $item)
-            @if($item->name == "Member")
+            @role('Member')
             <div class="container" data-layout="container">
-            @endif
-            @endforeach
+            @endrole
 
-            @foreach(Auth::user()->roles as $key => $item)
-            @if($item->name == "Super Admin" || $item->name == "Admin")
+            @role('Super Admin')
             <div class="container-fluid" data-layout="container">
-            @endif
-            @endforeach
+            @endrole
 
-                @livewire('navigation-menu')
+            @role('Admin')
+            <div class="container-fluid" data-layout="container">
+            @endrole
+            @livewire('navigation-menu')
 
                 @include('partials._navbar-vertical')
 
+                @role('Admin')
                 <div class="content">
+                @endrole
+
+                @role('Super Admin')
+                <div class="content">
+                @endrole
+
+                @role('Member')
+                <div class="content min-vh-90">
+                @endrole
+
                     <nav class="navbar navbar-light navbar-glass navbar-top navbar-expand" style="display: none;">
                         @include('partials._logo-toogle')
                         @include('partials._control-panel')
                     </nav>
 
                     <nav class="navbar navbar-light navbar-glass navbar-top navbar-expand-lg" style="display: none;" data-move-target="#navbarVerticalNav" data-navbar-top="combo">
-
                         @include('partials._logo-toogle')
-
                         @include('partials._navbar-standard')
                     </nav>
 
-                    @foreach(Auth::user()->roles as $key => $item)
-                    @if($item->name == "Member")
+                    @role('Member')
                     <script>
                         var navbarPosition = 'top';
                         var navbarVertical = document.querySelector('.navbar-vertical');
@@ -134,17 +143,16 @@
                         navbarTopCombo.remove(navbarTopCombo);
                         }
                     </script>
-                    @endif
-                    @endforeach
+                    @endrole
 
-                    @foreach(Auth::user()->roles as $key => $item)
-                    @if($item->name == "Super Admin" || $item->name == "Admin")
+                    @role('Super Admin')
                     <script>
                         var navbarPosition = 'vertical';
                         var navbarVertical = document.querySelector('.navbar-vertical');
                         var navbarTopVertical = document.querySelector('.content .navbar-top');
                         var navbarTop = document.querySelector('[data-layout] .navbar-top');
                         var navbarTopCombo = document.querySelector('.content [data-navbar-top="combo"]');
+
                         if (navbarPosition === 'vertical') {
                         navbarVertical.removeAttribute('style');
                         navbarTopVertical.removeAttribute('style');
@@ -152,10 +160,24 @@
                         navbarTopCombo.remove(navbarTopCombo);
                         }
                     </script>
-                    @endif
-                    @endforeach
+                    @endrole
 
+                    @role('Admin')
+                    <script>
+                        var navbarPosition = 'vertical';
+                        var navbarVertical = document.querySelector('.navbar-vertical');
+                        var navbarTopVertical = document.querySelector('.content .navbar-top');
+                        var navbarTop = document.querySelector('[data-layout] .navbar-top');
+                        var navbarTopCombo = document.querySelector('.content [data-navbar-top="combo"]');
 
+                        if (navbarPosition === 'vertical') {
+                        navbarVertical.removeAttribute('style');
+                        navbarTopVertical.removeAttribute('style');
+                        navbarTop.remove(navbarTop);
+                        navbarTopCombo.remove(navbarTopCombo);
+                        }
+                    </script>
+                    @endrole
 
                     {{ $slot }}
 

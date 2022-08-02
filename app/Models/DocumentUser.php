@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
 /**
  * @property int $user_id
@@ -12,7 +13,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property string $created_at
  * @property string $updated_at
  */
-class DocumentUser extends Model
+class DocumentUser extends Pivot
 {
     use HasFactory;
 

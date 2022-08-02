@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DocumentUser;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,8 +18,8 @@ class SubscriptionController extends Controller
     {
         abort_if(Gate::denies('subscription_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $subscriptions = DocumentUser::all()->sortByDesc("created_at");
-        $data = DocumentUser::all()->count();
+        $subscriptions = Subscription::all()->sortByDesc("created_at");
+        $data = Subscription::all()->count();
 
         $status = null;
 
@@ -30,8 +30,8 @@ class SubscriptionController extends Controller
     {
         abort_if(Gate::denies('subscription_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $subscriptions = DocumentUser::where('created_at', '>',now()->subDay(1))->orderBy('created_at', 'desc')->get();
-        $data = DocumentUser::where('created_at', '>',now()->subDay(1))->count();
+        $subscriptions = Subscription::whereDay('created_at', date('d'))->orderBy('created_at', 'desc')->get();
+        $data = Subscription::whereDay('created_at', date('d'))->count();
 
         $status = 'today';
 
@@ -43,8 +43,8 @@ class SubscriptionController extends Controller
     {
         abort_if(Gate::denies('subscription_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $subscriptions = DocumentUser::where('created_at', '>',now()->subMonth(1))->orderBy('created_at', 'desc')->get();
-        $data = DocumentUser::where('created_at', '>',now()->subMonth(1))->count();
+        $subscriptions = Subscription::whereMonth('created_at', date('m'))->orderBy('created_at', 'desc')->get();
+        $data = Subscription::whereMonth('created_at', date('m'))->count();
 
         $status = 'this month';
 
@@ -55,8 +55,8 @@ class SubscriptionController extends Controller
     {
         abort_if(Gate::denies('subscription_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $subscriptions = DocumentUser::where('created_at', '>',now()->subYear(1))->orderBy('created_at', 'desc', 'status')->get();
-        $data = DocumentUser::where('created_at', '>',now()->subYear(1))->count();
+        $subscriptions = Subscription::whereYear('created_at', date('Y'))->orderBy('created_at', 'desc', 'status')->get();
+        $data = Subscription::whereYear('created_at', date('Y'))->count();
 
         $status = 'this year';
 

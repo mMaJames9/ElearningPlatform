@@ -33,9 +33,9 @@
         <!-- ===============================================-->
         <!--    Stylesheets-->
         <!-- ===============================================-->
-        {{-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
         <link rel="stylesheet" href="{{ asset('vendors/swiper/swiper-bundle.min.css') }}">
         <link rel="stylesheet" href="{{ asset('vendors/overlayscrollbars/OverlayScrollbars.min.css') }}">
@@ -262,7 +262,7 @@
                 </div>
             </div>
 
-            {{-- <section class="py-0 overflow-hidden light" id="banner">
+            <section class="py-0 overflow-hidden light" id="banner">
                 <div class="bg-holder overlay" style="background-image:url(assets/img/generic/bg-1.jpg);background-position: center bottom;">
 
                 </div>
@@ -284,7 +284,7 @@
                         </div>
                         <div class="col-xl-7 offset-xl-1 align-self-end mt-4 mt-xl-0">
                             <a class="img-landing-banner rounded" href="{{ route('welcome') }}">
-                                <img class="img-fluid" src="{{ asset('assets/img/generic/dashboard-alt.jpg') }}" alt="" />
+                                <img class="img-fluid" src="{{ asset('assets/img/generic/learning-concept.png') }}" alt="" />
                             </a>
                         </div>
                     </div>
@@ -600,7 +600,7 @@
                         </div>
                     </div>
                 </div>
-            </section> --}}
+            </section>
 
 
             {{-- <section class="py-0 bg-dark light">

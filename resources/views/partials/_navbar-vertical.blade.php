@@ -25,7 +25,7 @@
 
                 <li class="nav-item mt-3">
                     <!-- parent pages-->
-                    <a class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}" role="button" aria-expanded="false">
+                    <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}" role="button" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
                                 <span class="fas fa-chart-pie"></span>
@@ -47,7 +47,7 @@
 
                     @can('role_access')
                     <!-- parent pages-->
-                    <a class="nav-link {{ request()->is('admin/usermanagement/roles') || request()->is('admin/usermanagement/roles/*') ? 'active' : '' }}" href="{{ route('roles.index') }}" role="button" aria-expanded="false">
+                    <a class="nav-link {{ request()->routeIs('roles*') ? 'active' : '' }}" href="{{ route('roles.index') }}" role="button" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
                                 <span class="fas fa-user-check"></span>
@@ -59,7 +59,7 @@
 
                     @can('user_access')
                     <!-- parent pages-->
-                    <a class="nav-link {{ request()->is('admin/usermanagement/users') || request()->is('admin/usermanagement/users/*') ? 'active' : '' }}" href="{{ route('users.index') }}" role="button" aria-expanded="false">
+                    <a class="nav-link {{ request()->routeIs('users*') ? 'active' : '' }}" href="{{ route('users.index') }}" role="button" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
                                 <span class="fas fa-users"></span>
@@ -82,7 +82,7 @@
                     </div>
 
                     <!-- parent pages-->
-                    <a class="nav-link {{ request()->is('admin/exammanagement/exams') || request()->is('admin/exammanagement/exams/*') ? 'active' : '' }}" href="{{ route('exams.index') }}" role="button" aria-expanded="false">
+                    <a class="nav-link {{ request()->routeIs('exams*') ? 'active' : '' }}" href="{{ route('exams.index') }}" role="button" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
                                 <span class="fas fa-folder"></span>
@@ -93,7 +93,7 @@
 
                     @can('classroom_access')
                     <!-- parent pages-->
-                    <a class="nav-link {{ request()->is('admin/exammanagement/classrooms') || request()->is('admin/exammanagement/classrooms/*') ? 'active' : '' }}" href="{{ route('classrooms.index') }}" role="button" aria-expanded="false">
+                    <a class="nav-link {{ request()->routeIs('classrooms*') ? 'active' : '' }}" href="{{ route('classrooms.index') }}" role="button" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
                                 <span class="fas fa-school"></span>
@@ -105,7 +105,7 @@
 
                     @can('subject_access')
                     <!-- parent pages-->
-                    <a class="nav-link {{ request()->is('admin/exammanagement/subjects') || request()->is('admin/exammanagement/subjects/*') ? 'active' : '' }}" href="{{ route('subjects.index') }}" role="button" aria-expanded="false">
+                    <a class="nav-link {{ request()->routeIs('subjects*') ? 'active' : '' }}" href="{{ route('subjects.index') }}" role="button" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
                                 <span class="fas fa-book-open"></span>
@@ -117,7 +117,7 @@
 
                     @can('document_access')
                     <!-- parent pages-->
-                    <a class="nav-link {{ request()->is('admin/exammanagement/documents') || request()->is('admin/exammanagement/documents/*') ? 'active' : '' }}" href="{{ route('documents.index') }}" role="button" aria-expanded="false">
+                    <a class="nav-link {{ request()->routeIs('documents*') ? 'active' : '' }}" href="{{ route('documents.index') }}" role="button" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
                                 <span class="fas fa-file-alt"></span>
@@ -140,7 +140,7 @@
                     </div>
 
                     <!-- parent pages-->
-                    <a class="nav-link {{ request()->is('admin/ressources/subscriptions') || request()->is('admin/ressources/subscriptions/*') ? 'active' : '' }}" href="{{ route('subscriptions.index') }}" role="button" aria-expanded="false">
+                    <a class="nav-link {{ request()->routeIs('subscriptions*') ? 'active' : '' }}" href="{{ route('subscriptions.index') }}" role="button" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
                                 <span class="fas fa-rocket"></span>

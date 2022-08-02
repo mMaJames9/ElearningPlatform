@@ -9,9 +9,9 @@
                 </div>
                 <div class="ms-auto text-center">
                     <div class="nav nav-pills nav-pills-falcon flex-grow-1" role="tablist">
-                        <a class="d-none d-md-block btn btn-sm {{request()->is('admin/ressources/subscriptions/subscriptionsDay') ? 'active' : '' }}" href="{{ route('subscriptionsDay') }}">{{__('Today')}}</a>
-                        <a class="btn btn-sm {{request()->is('admin/ressources/subscriptions/subscriptionsMonth') ? 'active' : '' }}" href="{{ route('subscriptionsMonth') }}">{{__('Month')}}</a>
-                        <a class="btn btn-sm {{request()->is('admin/ressources/subscriptions/subscriptionsYear') ? 'active' : '' }}" href="{{ route('subscriptionsYear') }}">{{__('Year')}}</a>
+                        <a class="d-none d-md-block btn btn-sm {{ request()->routeIs('subscriptionsDay') ? 'active' : '' }}" href="{{ route('subscriptionsDay') }}">{{__('Today')}}</a>
+                        <a class="btn btn-sm {{ request()->routeIs('subscriptionsMonth') ? 'active' : '' }}" href="{{ route('subscriptionsMonth') }}">{{__('Month')}}</a>
+                        <a class="btn btn-sm {{ request()->routeIs('subscriptionsYear') ? 'active' : '' }}" href="{{ route('subscriptionsYear') }}">{{__('Year')}}</a>
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                     </a>
                 </div> --}}
 
-                <div class="tab-pane preview-tab-pane active mt-4" subscription="tabpanel">
+                <div class="tab-pane preview-tab-pane active mt-4" role="tabpanel">
                     <div id="tableSubscriptions" data-list='{"valueNames":["name", "type", "updated_at"], "page":10, "pagination":true}'>
                         <div class="table-responsive scrollbar">
                             <table class="table table-striped fs--1 mb-0">
@@ -54,7 +54,7 @@
                                         </td>
 
                                         <td class="type">
-                                            {{ ucwords($subscription->subscription_type) ?? '' }}
+                                            {{ ucwords($subscription->plan->name) ?? '' }}
                                         </td>
 
 
