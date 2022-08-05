@@ -226,7 +226,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="mb-4 col-sm">
+                                <div class="mb-5 col-sm">
                                     <select class="form-select @error('classroom_id') is-invalid @enderror" data-width="100%" id="classroom_id" name="classroom_id" :value="old('classroom_id')" required autofocus data-options='{"removeItemButton":true,"placeholder":true}'>
                                         <option value="" disabled selected hidden>{{__('Select your classroom')}}...</option>
                                         @foreach($classrooms as $id => $classroom)
@@ -241,7 +241,7 @@
                                     @enderror
                                 </div>
 
-                                {{-- @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature()) --}}
+                                @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input" id="terms" type="checkbox" name="terms">
                                     <label class="form-check-label" for="terms">
@@ -251,7 +251,7 @@
                                         <a target="_blank" href="'.route('policy.show').'">{{__('Privacy Policy')}} </a>
                                     </label>
                                 </div>
-                                {{-- @endif --}}
+                                @endif
 
                                 <div class="mb-3">
                                     <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">{{__('Register')}}</button>
@@ -270,16 +270,16 @@
                 <div class="container">
                     <div class="row flex-center pt-8 pt-lg-10 pb-lg-9 pb-xl-0">
                         <div class="col-md-11 col-lg-8 col-xl-4 pb-7 pb-xl-9 text-center text-xl-start">
-                            <a class="btn btn-outline-danger mb-4 fs--1 border-2 rounded-pill" href="#!">
-                                <span class="me-2" role="img" aria-label="Gift">🎁</span>Become a pro</a>
-                                <h1 class="text-white fw-light">Bring <span class="typed-text fw-bold" data-typed-text='["design","beauty","elegance","perfection"]'>
-
-                                </span>
-                                <br />to your webapp</h1>
-                                <p class="lead text-white opacity-75">With the power of Falcon, you can now focus only on functionaries for your digital products, while leaving the UI design on us!</p>
-                                <a class="btn btn-outline-light border-2 rounded-pill btn-lg mt-4 fs-0 py-2" href="{{ route('register') }}">Start building with the falcon<span class="fas fa-play ms-2" data-fa-transform="shrink-6 down-1">
-
-                                </span>
+                            <h1 class="text-white fw-light">
+                                Maecenas
+                                <span class="typed-text fw-bold" data-typed-text='["lorem","ipsum","dolor","dolor"]'></span>
+                                <br />
+                                consequat tesque.
+                            </h1>
+                            <p class="lead text-white opacity-75">Ut lacinia justo non consequat efficitur. Sed iaculis ligula sed augue convallis cursus!</p>
+                            <a class="btn btn-outline-light border-2 rounded-pill btn-lg mt-4 fs-0 py-2" href="{{ route('register') }}">
+                                Join us now !
+                                <span class="fas fa-play ms-2" data-fa-transform="shrink-6 down-1"></span>
                             </a>
                         </div>
                         <div class="col-xl-7 offset-xl-1 align-self-end mt-4 mt-xl-0">
@@ -415,46 +415,6 @@
                 </div>
             </section>
 
-            <section class="bg-200 text-center">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-9 col-xl-8">
-                            <div class="swiper-container theme-slider" data-swiper='{"autoplay":true,"spaceBetween":5,"loop":true,"loopedSlides":5,"slideToClickedSlide":true}'>
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <div class="px-5 px-sm-6">
-                                            <p class="fs-sm-1 fs-md-2 fst-italic text-dark">Falcon is the best option if you are looking for a theme built with Bootstrap. On top of that, Falcon&apos;s creators and support staff are very brilliant and attentive to users&apos; needs.</p>
-                                            <p class="fs-0 text-600">- Scott Tolinski, Web Developer</p>
-                                            <img class="w-auto mx-auto" src="{{ asset('assets/img/logos/google.png') }}" alt="" height="45" />
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="px-5 px-sm-6">
-                                            <p class="fs-sm-1 fs-md-2 fst-italic text-dark">We&apos;ve become fanboys! Easy to change the modular design, great dashboard UI, enterprise-class support, fast loading time. What else do you want from a Bootstrap Theme?</p>
-                                            <p class="fs-0 text-600">- Jeff Escalante, Developer</p>
-                                            <img class="w-auto mx-auto" src="{{ asset('assets/img/logos/netflix.png') }}" alt="" height="30" />
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="px-5 px-sm-6">
-                                            <p class="fs-sm-1 fs-md-2 fst-italic text-dark">When I first saw Falcon, I was totally blown away by the care taken in the interface. It felt like something that I&apos;d really want to use and something I could see being a true modern replacement to the current class of Bootstrap themes.</p>
-                                            <p class="fs-0 text-600">- Liam Martens, Designer</p>
-                                            <img class="w-auto mx-auto" src="{{ asset('assets/img/logos/paypal.png') }}" alt="" height="45" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-nav">
-                                    <div class="swiper-button-next swiper-button-white">
-
-                                    </div>
-                                    <div class="swiper-button-prev swiper-button-white"> </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <section class="light">
                 <div class="bg-holder overlay" style="background-image:url(assets/img/generic/bg-2.jpg);background-position: center top;">
 
@@ -462,8 +422,8 @@
                 <div class="container">
                     <div class="row justify-content-center text-center">
                         <div class="col-lg-8">
-                            <p class="fs-3 fs-sm-4 text-white">Join our community of 20,000+ developers and content creators on their mission to build better sites and apps.</p>
-                            <button class="btn btn-outline-light border-2 rounded-pill btn-lg mt-4 fs-0 py-2" type="button">Start your webapp</button>
+                            <p class="fs-3 fs-sm-4 text-white">Pellentesque sit amet sapien vel dolor venenatis accumsan. Quisque feugiat suscipit congue. Maecenas bibendum porta tortor, id mollis dolor tempus eu.</p>
+                            <button class="btn btn-outline-light border-2 rounded-pill btn-lg mt-4 fs-0 py-2" type="button">Lorem Ipsum</button>
                         </div>
                     </div>
                 </div>
@@ -481,7 +441,7 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <h5 class="text-uppercase text-white opacity-85 mb-3">Our Mission</h5>
-                            <p class="text-600">Falcon enables front end developers to build custom streamlined user interfaces in a matter of hours, while it gives backend developers all the UI elements they need to develop their web app.And it's rich design can be easily integrated with backends whether your app is based on ruby on rails, laravel, express or any other server side system.</p>
+                            <p class="text-600">Phasellus semper finibus nisi, non vestibulum eros sollicitudin tincidunt. Aliquam eu quam tortor. Nullam quam enim, eleifend vitae rutrum et, pharetra sed nibh. Donec vulputate tristique nibh, sit amet maximus quam pellentesque vitae. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Cras aliquam non magna vel rhoncus. Curabitur nisl purus, lacinia vitae ligula nec, posuere bibendum metus.</p>
                             <div class="icon-group mt-4">
                                 <a class="icon-item bg-white text-facebook" href="#!">
                                     <span class="fab fa-facebook-f">
@@ -603,23 +563,21 @@
             </section>
 
 
-            {{-- <section class="py-0 bg-dark light">
+            <section class="py-0 bg-dark light">
                 <div>
                     <hr class="my-0 text-600 opacity-25" />
                     <div class="container py-3">
                         <div class="row justify-content-between fs--1">
                             <div class="col-12 col-sm-auto text-center">
-                                <p class="mb-0 text-600 opacity-85">Thank you for creating with Falcon <span class="d-none d-sm-inline-block">| </span>
-                                    <br class="d-sm-none" /> 2021 &copy; <a class="text-white opacity-85" href="https://themewagon.com">Themewagon</a>
+                                <p class="mb-0 text-600 opacity-85"><span class="d-none d-sm-inline-block">| </span>
+                                    <br class="d-sm-none" /> 2022 &copy; <a href="https://examsucces.com">Exam Success</a>
                                 </p>
-                            </div>
-                            <div class="col-12 col-sm-auto text-center">
-                                <p class="mb-0 text-600 opacity-85">v3.4.0</p>
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section> --}}
+            </section>
         </main>
 
         <!-- ===============================================-->
