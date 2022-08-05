@@ -16,10 +16,10 @@
                         <div class="p-3">
                             <a class="h5 fs-md-2 text-success mb-0 d-flex align-items-center mb-3">{{__('Books')}}</a>
                             <h5 class="fs-0">
-                                <a class="text-dark">Apple iMac Pro (27-inch with Retina 5K Display, 3.0GHz 10-core Intel Xeon W, 1TB SSD)</a>
+                                <a class="text-dark">Morbi sed lorem quis dolor maximus lobortis eu eu justo.</a>
                             </h5>
                             <p class="fs--1 mb-3">
-                                <a class="text-500">Computer &amp; Accessories</a>
+                                <a class="text-500">Donec eu nibh tempus ex rutrum cursus</a>
                             </p>
                         </div>
                     </div>
@@ -44,10 +44,10 @@
                         <div class="p-3">
                             <a class="h5 fs-md-2 text-success mb-0 d-flex align-items-center mb-3" href="{{ route('papers.index') }}">{{__('Papers')}}</a>
                             <h5 class="fs-0">
-                                <a class="text-dark">Apple iMac Pro (27-inch with Retina 5K Display, 3.0GHz 10-core Intel Xeon W, 1TB SSD)</a>
+                                <a class="text-dark">Proin pretium sapien ac turpis tempus posuere eget et sem</a>
                             </h5>
                             <p class="fs--1 mb-3">
-                                <a class="text-500">Computer &amp; Accessories</a>
+                                <a class="text-500">Suspendisse ut nulla et velit interdum elementum</a>
                             </p>
                         </div>
                     </div>
