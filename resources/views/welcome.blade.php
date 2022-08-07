@@ -285,9 +285,9 @@
                             </a>
                         </div>
                         <div class="col-xl-7 offset-xl-1 align-self-end mt-4 mt-xl-0">
-                            <a class="img-landing-banner rounded" href="{{ route('welcome') }}">
+                            <div class="img-landing-banner">
                                 <img class="img-fluid" src="{{ asset('assets/img/generic/learning-concept.png') }}" alt="" />
-                            </a>
+                            </div>
                         </div>
                     </div>
                 </div>
