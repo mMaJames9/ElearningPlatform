@@ -7,8 +7,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="Responsive HTML Admin Dashboard Template based on Bootstrap 5">
-        <meta name="author" content="ExamSucces">
+        <meta name="description" content="{{__('The examsuccess.com web application is a digital library that allows students in general and technical secondary education in exam classes to better prepare for their exam by benefiting from a range of exam-type tests with their various answers. .') }}">
+        <meta name="author" content="Exam Success">
         <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -68,21 +68,24 @@
         <!--    Main Content-->
         <!-- ===============================================-->
         <main class="main" id="top">
-            <nav class="navbar navbar-standard navbar-expand-lg fixed-top navbar-dark" data-navbar-darken-on-scroll="data-navbar-darken-on-scroll">
+            <nav class="navbar navbar-standard navbar-expand-lg fixed-top navbar-dark py-3" data-navbar-darken-on-scroll="data-navbar-darken-on-scroll">
                 <div class="container">
                     <a class="navbar-brand" href="{{ route('welcome') }}">
                         <span class="text-white dark__text-white">
-                            <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/falcon.png') }}" alt="logo" width="120" />
+                            <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/falcon-white.png') }}" alt="logo" width="120" />
                         </span>
                     </a>
                     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarStandard" aria-controls="navbarStandard" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                        <span class="fas fa-bars text-white"></span>
                     </button>
 
                     <div class="collapse navbar-collapse scrollbar" id="navbarStandard">
                         <ul class="navbar-nav ms-auto">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownLogin" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{__('Login')}}</a>
+
+                        </ul>
+                        <div class="my-3 d-flex justify-content-end">
+                            <div class="me-2">
+                                <a class="nav-link dropdown-toggle text-light fs-0" id="navbarDropdownLogin" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{__('Login')}}</a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-card" aria-labelledby="navbarDropdownLogin">
                                     <div class="card shadow-none navbar-card-login">
                                         <div class="card-body fs--1 p-4 fw-normal">
@@ -143,14 +146,13 @@
                                         </div>
                                     </div>
                                 </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#!" data-bs-toggle="modal" data-bs-target="#registerModal">{{__('Register')}}</a>
-                            </li>
-                        </ul>
+                            </div>
+                            <a class="btn btn-outline-light rounded-pill" href="#!" data-bs-toggle="modal" data-bs-target="#registerModal">{{__('Register')}}</a>
+                        </div>
                     </div>
                 </div>
             </nav>
+
             <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -263,22 +265,22 @@
             </div>
 
             <section class="py-0 overflow-hidden light" id="banner">
-                <div class="bg-holder overlay" style="background-image:url(assets/img/generic/bg-1.jpg);background-position: center bottom;">
+                <div class="bg-holder bg-no-repeat bg-center bg-cover mh-100 mw-100" style="background-image:url(assets/img/generic/bg-1.jpg)">
 
                 </div>
                 <!--/.bg-holder-->
                 <div class="container">
                     <div class="row flex-center pt-8 pt-lg-10 pb-lg-9 pb-xl-0">
                         <div class="col-md-11 col-lg-8 col-xl-4 pb-7 pb-xl-9 text-center text-xl-start">
-                            <h1 class="text-white fw-light">
-                                Maecenas
-                                <span class="typed-text fw-bold" data-typed-text='["lorem","ipsum","dolor","dolor"]'></span>
+                            <h1 class="text-light fw-light">
+                                <span class="typed-text fw-bold" data-typed-text='["General","Technical"]'></span>
+                                <span>{{__('Education')}}.</span>
                                 <br />
-                                consequat tesque.
+                                {{__('Preparation for the official exams')}}.
                             </h1>
-                            <p class="lead text-white opacity-75">Ut lacinia justo non consequat efficitur. Sed iaculis ligula sed augue convallis cursus!</p>
+                            <p class="lead text-light opacity-75">{{__('Subscribe and discover all the documentation you need to pass your exam')}}!</p>
                             <a class="btn btn-outline-light border-2 rounded-pill btn-lg mt-4 fs-0 py-2" href="{{ route('register') }}">
-                                Join us now !
+                                {{__('Join us now')}} !
                                 <span class="fas fa-play ms-2" data-fa-transform="shrink-6 down-1"></span>
                             </a>
                         </div>
@@ -291,100 +293,16 @@
                 </div>
             </section>
 
-            <section class="py-3 bg-light shadow-sm">
+            <section class="py-3 bg-light shadow-sm text-center">
                 <div class="container">
-                    <div class="row flex-center">
-                        <div class="col-3 col-sm-auto my-1 my-sm-3 px-card">
-                            <img class="landing-cta-img" height="40" src="{{ asset('assets/img/logos/b&w/6.png') }}" alt="" />
-                        </div>
-                        <div class="col-3 col-sm-auto my-1 my-sm-3 px-card">
-                            <img class="landing-cta-img" height="45" src="{{ asset('assets/img/logos/b&w/11.png') }}" alt="" />
-                        </div>
-                        <div class="col-3 col-sm-auto my-1 my-sm-3 px-card">
-                            <img class="landing-cta-img" height="30" src="{{ asset('assets/img/logos/b&w/2.png') }}" alt="" />
-                        </div>
-                        <div class="col-3 col-sm-auto my-1 my-sm-3 px-card">
-                            <img class="landing-cta-img" height="30" src="{{ asset('assets/img/logos/b&w/4.png') }}" alt="" />
-                        </div>
-                        <div class="col-3 col-sm-auto my-1 my-sm-3 px-card">
-                            <img class="landing-cta-img" height="35" src="{{ asset('assets/img/logos/b&w/1.png') }}" alt="" />
-                        </div>
-                        <div class="col-3 col-sm-auto my-1 my-sm-3 px-card">
-                            <img class="landing-cta-img" height="40" src="{{ asset('assets/img/logos/b&w/10.png') }}" alt="" />
-                        </div>
-                        <div class="col-3 col-sm-auto my-1 my-sm-3 px-card">
-                            <img class="landing-cta-img" height="40" src="{{ asset('assets/img/logos/b&w/12.png') }}" alt="" />
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <div class="container">
-                    <div class="row justify-content-center text-center">
-                        <div class="col-lg-8 col-xl-7 col-xxl-6">
-                            <h1 class="fs-2 fs-sm-4 fs-md-5">WebApp theme of the future</h1>
-                            <p class="lead">Built on top of Bootstrap 5, super modular Falcon provides you gorgeous design &amp; streamlined UX for your WebApp.</p>
-                        </div>
-                    </div>
-                    <div class="row flex-center mt-8">
-                        <div class="col-md col-lg-5 col-xl-4 ps-lg-6">
-                            <img class="img-fluid px-6 px-md-0" src="{{  asset('assets/img/icons/spot-illustrations/50.png') }}" alt="" />
-                        </div>
-                        <div class="col-md col-lg-5 col-xl-4 mt-4 mt-md-0">
-                            <h5 class="text-danger">
-                                <span class="far fa-lightbulb me-2"></span>
-                                PLAN
-                            </h5>
-                            <h3>Blueprint &amp; design </h3>
-                            <p>With Falcon as your guide, now you have a fine-tuned state of the earth tool to make your wireframe a reality.</p>
-                        </div>
-                    </div>
-                    <div class="row flex-center mt-7">
-                        <div class="col-md col-lg-5 col-xl-4 pe-lg-6 order-md-2">
-                            <img class="img-fluid px-6 px-md-0" src="{{ asset('assets/img/icons/spot-illustrations/49.png') }}" alt="" />
-                        </div>
-                        <div class="col-md col-lg-5 col-xl-4 mt-4 mt-md-0">
-                            <h5 class="text-info">
-                                <span class="far fa-object-ungroup me-2"></span>
-                                BUILD
-                            </h5>
-                            <h3>38 Sets of components</h3>
-                            <p>Build any UI effortlessly with Falcon's robust set of layouts, 38 sets of built-in elements, carefully chosen colors, typography, and css helpers.</p>
-                        </div>
-                    </div>
-                    <div class="row flex-center mt-7">
-                        <div class="col-md col-lg-5 col-xl-4 ps-lg-6">
-                            <img class="img-fluid px-6 px-md-0" src="{{ asset('assets/img/icons/spot-illustrations/48.png') }}" alt="" />
-                        </div>
-                        <div class="col-md col-lg-5 col-xl-4 mt-4 mt-md-0">
-                            <h5 class="text-success">
-                                <span class="far fa-paper-plane me-2"></span>
-                                DEPLOY
-                            </h5>
-                            <h3>Review and test</h3>
-                            <p>From IE to iOS, rigorously tested and optimized Falcon will give the near perfect finishing to your webapp; from the landing page to the logout screen.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="bg-light text-center">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <h1 class="fs-2 fs-sm-4 fs-md-5">Here's what's in it for you</h1>
-                            <p class="lead">Things you will get right out of the box with Falcon.</p>
-                        </div>
-                    </div>
-                    <div class="row mt-6">
+                    <div class="row my-6">
                         <div class="col-lg-4">
                             <div class="card card-span h-100">
                                 <div class="card-span-img">
                                     <span class="fab fa-sass fs-4 text-info"></span>
                                 </div>
                                 <div class="card-body pt-6 pb-4">
-                                    <h5 class="mb-2">Bootstrap 5.x</h5>
+                                    <h5 class="mb-2">{{__('Exam-typed Papers')}}</h5>
                                     <p>Build your webapp with the world's most popular front-end component library along with Falcon's 32 sets of carefully designed elements.</p>
                                 </div>
                             </div>
@@ -395,7 +313,7 @@
                                     <span class="fab fa-node-js fs-5 text-success"></span>
                                 </div>
                                 <div class="card-body pt-6 pb-4">
-                                    <h5 class="mb-2">SCSS &amp; Javascript files</h5>
+                                    <h5 class="mb-2">{{__('Past Exam Questions')}}</h5>
                                     <p>With your purchased copy of Falcon, you will get all the uncompressed & documented SCSS and Javascript source code files.</p>
                                 </div>
                             </div>
@@ -406,7 +324,7 @@
                                     <span class="fab fa-gulp fs-6 text-danger"></span>
                                 </div>
                                 <div class="card-body pt-6 pb-4">
-                                    <h5 class="mb-2">Gulp based workflow</h5>
+                                    <h5 class="mb-2">{{__('Books')}}</h5>
                                     <p>All the painful or time-consuming tasks in your development workflow such as compiling the SCSS or transpiring the JS are automated.</p>
                                 </div>
                             </div>
@@ -416,20 +334,20 @@
             </section>
 
             <section class="light">
-                <div class="bg-holder overlay" style="background-image:url(assets/img/generic/bg-2.jpg);background-position: center top;">
+                <div class="bg-holder bg-no-repeat bg-center bg-cover mh-100 mw-100" style="background-image:url(assets/img/generic/bg-2.jpg)">
 
                 </div>
                 <div class="container">
-                    <div class="row justify-content-center text-center">
-                        <div class="col-lg-8">
-                            <p class="fs-3 fs-sm-4 text-white">Pellentesque sit amet sapien vel dolor venenatis accumsan. Quisque feugiat suscipit congue. Maecenas bibendum porta tortor, id mollis dolor tempus eu.</p>
-                            <button class="btn btn-outline-light border-2 rounded-pill btn-lg mt-4 fs-0 py-2" type="button">Lorem Ipsum</button>
+                    <div class="row justify-content-start text-left">
+                        <div class="col-9 col-md-8">
+                            <p class="fs-3 fs--1 text-white">{{__('With Exam Success, exams no longer have any secrets')}}.</p>
+                            <a class="btn btn-outline-light border-2 rounded-pill fs--1 py-2" type="button" ref="#!" data-bs-toggle="modal" data-bs-target="#registerModal">{{__('Discover')}}</a>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="bg-dark pt-8 pb-4 light">
+            <section class="bg-dark pt-8 pb-4 dark">
                 <div class="container">
                     <div class="position-absolute btn-back-to-top bg-dark">
                         <a class="text-600" data-bs-offset-top="0" data-scroll-to="#banner">
@@ -439,67 +357,25 @@
                         </a>
                     </div>
                     <div class="row">
-                        <div class="col-lg-4">
-                            <h5 class="text-uppercase text-white opacity-85 mb-3">Our Mission</h5>
-                            <p class="text-600">Phasellus semper finibus nisi, non vestibulum eros sollicitudin tincidunt. Aliquam eu quam tortor. Nullam quam enim, eleifend vitae rutrum et, pharetra sed nibh. Donec vulputate tristique nibh, sit amet maximus quam pellentesque vitae. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Cras aliquam non magna vel rhoncus. Curabitur nisl purus, lacinia vitae ligula nec, posuere bibendum metus.</p>
+                        <div class="col-lg-6">
+                            <h5 class="text-uppercase text-white opacity-85 mb-3">{{__('About Us')}}</h5>
+                            <p class="text-600">{{__('The Exam Success web application is a digital library that allows students in general and technical secondary education in exam classes to better prepare their exam by benefitting, after an annual subscription, from a great range of exam-typed papers proposed by all major schools in Cameroon and also from the past exam questions with the different answers. But Exam Success does not stop there, because it gives subscribers the opportunity to freshen their memories in the book section regarding the different rules and theorems learned in class as revision.')}}</p>
                             <div class="icon-group mt-4">
-                                <a class="icon-item bg-white text-facebook" href="#!">
-                                    <span class="fab fa-facebook-f">
-
-                                    </span>
+                                <a class="icon-item bg-dark text-facebook" href="#!">
+                                    <span class="fab fa-facebook-f"></span>
                                 </a>
-                                <a class="icon-item bg-white text-twitter" href="#!">
-                                    <span class="fab fa-twitter">
-
-                                    </span>
+                                <a class="icon-item bg-dark text-twitter" href="#!">
+                                    <span class="fab fa-twitter"></span>
                                 </a>
-                                <a class="icon-item bg-white text-google-plus" href="#!">
-                                    <span class="fab fa-google-plus-g">
-
-                                    </span>
-                                </a>
-                                <a class="icon-item bg-white text-linkedin" href="#!">
-                                    <span class="fab fa-linkedin-in">
-
-                                    </span>
-                                </a>
-                                <a class="icon-item bg-white" href="#!">
-                                    <span class="fab fa-medium-m">
-
-                                    </span>
+                                <a class="icon-item bg-dark text-linkedin" href="#!">
+                                    <span class="fab fa-instagram"></span>
                                 </a>
                             </div>
                         </div>
-                        <div class="col ps-lg-6 ps-xl-8">
+                        <div class="col ps-lg-4 ps-xl-8">
                             <div class="row mt-5 mt-lg-0">
                                 <div class="col-6 col-md-3">
-                                    <h5 class="text-uppercase text-white opacity-85 mb-3">Company</h5>
-                                    <ul class="list-unstyled">
-                                        <li class="mb-1">
-                                            <a class="link-600" href="#!">About</a>
-                                        </li>
-                                        <li class="mb-1">
-                                            <a class="link-600" href="#!">Contact</a>
-                                        </li>
-                                        <li class="mb-1">
-                                            <a class="link-600" href="#!">Careers</a>
-                                        </li>
-                                        <li class="mb-1">
-                                            <a class="link-600" href="#!">Blog</a>
-                                        </li>
-                                        <li class="mb-1">
-                                            <a class="link-600" href="#!">Terms</a>
-                                        </li>
-                                        <li class="mb-1">
-                                            <a class="link-600" href="#!">Privacy</a>
-                                        </li>
-                                        <li>
-                                            <a class="link-600" href="#!">Imprint</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-6 col-md-3">
-                                    <h5 class="text-uppercase text-white opacity-85 mb-3">Product</h5>
+                                    <h5 class="text-uppercase text-white opacity-85 mb-3">{{__('Contact Us')}}</h5>
                                     <ul class="list-unstyled">
                                         <li class="mb-1">
                                             <a class="link-600" href="#!">Features</a>
@@ -527,35 +403,6 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="col mt-5 mt-md-0">
-                                    <h5 class="text-uppercase text-white opacity-85 mb-3">From the Blog</h5>
-                                    <ul class="list-unstyled">
-                                        <li>
-                                            <h5 class="fs-0 mb-0">
-                                                <a class="link-600" href="#!"> Interactive graphs and charts</a>
-                                            </h5>
-                                            <p class="text-600 opacity-50">Jan 15 &bull; 8min read </p>
-                                        </li>
-                                        <li>
-                                            <h5 class="fs-0 mb-0">
-                                                <a class="link-600" href="#!"> Lifetime free updates</a>
-                                            </h5>
-                                            <p class="text-600 opacity-50">Jan 5 &bull; 3min read &starf;</p>
-                                        </li>
-                                        <li>
-                                            <h5 class="fs-0 mb-0">
-                                                <a class="link-600" href="#!"> Merry Christmas From us</a>
-                                            </h5>
-                                            <p class="text-600 opacity-50">Dec 25 &bull; 2min read</p>
-                                        </li>
-                                        <li>
-                                            <h5 class="fs-0 mb-0">
-                                                <a class="link-600" href="#!"> The New Falcon Theme</a>
-                                            </h5>
-                                            <p class="text-600 opacity-50">Dec 23 &bull; 10min read </p>
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -563,7 +410,7 @@
             </section>
 
 
-            <section class="py-0 bg-dark light">
+            <section class="py-0 bg-dark dark">
                 <div>
                     <hr class="my-0 text-600 opacity-25" />
                     <div class="container py-3">

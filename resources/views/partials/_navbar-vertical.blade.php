@@ -8,7 +8,7 @@
     <div class="d-flex align-items-center">
         <div class="toggle-icon-wrapper">
             <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Toggle Navigation">
-                <span class="navbar-toggle-icon">
+                <span class="fas fa-bars text-primary">
                     <span class="toggle-line"></span>
                 </span>
             </button>
