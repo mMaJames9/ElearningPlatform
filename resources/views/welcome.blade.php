@@ -299,33 +299,33 @@
                         <div class="col-lg-4">
                             <div class="card card-span h-100">
                                 <div class="card-span-img">
-                                    <span class="fab fa-sass fs-4 text-info"></span>
+                                    <span class="fa-solid fa-file-circle-question fs-4 text-info"></span>
                                 </div>
                                 <div class="card-body pt-6 pb-4">
                                     <h5 class="mb-2">{{__('Exam-typed Papers')}}</h5>
-                                    <p>Build your webapp with the world's most popular front-end component library along with Falcon's 32 sets of carefully designed elements.</p>
+                                    <p>{{__('In this section you have a multitude of tests with answers from major schools in Cameroon. This is in order to multiply the efforts by becoming familiar with various forms of test and a timing that may be different from your own establishment.')}}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 mt-6 mt-lg-0">
                             <div class="card card-span h-100">
                                 <div class="card-span-img">
-                                    <span class="fab fa-node-js fs-5 text-success"></span>
+                                    <span class="fas fa-file-lines fs-4 text-success"></span>
                                 </div>
                                 <div class="card-body pt-6 pb-4">
                                     <h5 class="mb-2">{{__('Past Exam Questions')}}</h5>
-                                    <p>With your purchased copy of Falcon, you will get all the uncompressed & documented SCSS and Javascript source code files.</p>
+                                    <p>{{__('This section is an encyclopedia of old exam subjects with as many answers as possible for a better understanding of the student.')}}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 mt-6 mt-lg-0">
                             <div class="card card-span h-100">
                                 <div class="card-span-img">
-                                    <span class="fab fa-gulp fs-6 text-danger"></span>
+                                    <span class="fas fa-book fs-4 text-danger"></span>
                                 </div>
                                 <div class="card-body pt-6 pb-4">
                                     <h5 class="mb-2">{{__('Books')}}</h5>
-                                    <p>All the painful or time-consuming tasks in your development workflow such as compiling the SCSS or transpiring the JS are automated.</p>
+                                    <p>{{__('The book section is notably made up of a wide range of documents which summarize in a way the methods and rules learned in class, but it also holds complete books of different subjects. This makes it more removable and less tedious for a student who wants to revise while traveling.')}}</p>
                                 </div>
                             </div>
                         </div>
@@ -340,7 +340,7 @@
                 <div class="container">
                     <div class="row justify-content-start text-left">
                         <div class="col-9 col-md-8">
-                            <p class="fs-3 fs--1 text-white">{{__('With Exam Success, exams no longer have any secrets')}}.</p>
+                            <p class="fs-3 fs--1 text-white">{{__('Forgot your notebooks? No more worries, Exam Success follows you everywhere! With Exam Success, exams no longer have any secrets')}}.</p>
                             <a class="btn btn-outline-light border-2 rounded-pill fs--1 py-2" type="button" ref="#!" data-bs-toggle="modal" data-bs-target="#registerModal">{{__('Discover')}}</a>
                         </div>
                     </div>

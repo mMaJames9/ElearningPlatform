@@ -62,7 +62,7 @@
                     <a class="nav-link {{ request()->routeIs('users*') ? 'active' : '' }}" href="{{ route('users.index') }}" role="button" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
-                                <span class="fas fa-users"></span>
+                                <span class="fas fa-user-group"></span>
                             </span>
                             <span class="nav-link-text ps-1">{{__('Users')}}</span>
                         </div>
