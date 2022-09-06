@@ -43,7 +43,7 @@
                                     <span>{{ __('Back to the List') }}</span>
                                 </a>
                                 @if($currentSubscription != null)
-                                <a class="btn btn-sm btn-success me-2" href="{{ route('getDownload', $paper->id) }}">
+                                <a class="btn btn-sm btn-success me-2" href="{{ route('download', $paper->id) }}">
                                     <span class="fas fa-cloud-download-alt"></span>
                                     <span>{{__('Download')}}</span>
                                 </a>
@@ -164,7 +164,7 @@
                                     <span>{{ __('Back to the List') }}</span>
                                 </a>
                                 @if($currentSubscription != null)
-                                <a class="btn btn-sm btn-success me-2" href="{{ route('getDownload', $paper->id) }}">
+                                <a class="btn btn-sm btn-success me-2" href="{{ route('download', $paper->id) }}">
                                     <span class="fas fa-cloud-download-alt"></span>
                                     <span>{{__('Download')}}</span>
                                 </a>

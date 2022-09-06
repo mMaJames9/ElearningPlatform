@@ -254,40 +254,5 @@ class DocumentController extends Controller
         ]);
     }
 
-    /**
-     * Download the specified resource from the public_path.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getDownload(Document $document)
-    {
-        // abort_if(Gate::denies('document_donwload'), Response::HTTP_FORBIDDEN, 'Accès Interdit');
-
-        $subscriptionPlan = auth()->user()->subscription->plan->name ?? null;
-
-        if ($subscriptionPlan === null) {
-            return redirect()->back()->with('status', 'You have no active plan.');
-        }
-
-        $feature = match ($subscriptionPlan) {
-            'Academic Year' => 'download-documents-unlimited',
-        };
-
-        $documentPath = $document->document_path;
-        $document = public_path('storage/uploads/documents/') . $documentPath;
-
-        if (file_exists($document)) {
-            return DonwloadResponse::download($document);
-        }
-        else
-        {
-            $status = 'Sorry! But... Document not found.';
-
-            return redirect()->back()->with([
-                'status' => $status,
-            ]);
-        }
-    }
-
 
 }

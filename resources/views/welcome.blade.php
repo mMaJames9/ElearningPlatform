@@ -72,7 +72,7 @@
                 <div class="container">
                     <a class="navbar-brand" href="{{ route('welcome') }}">
                         <span class="text-white dark__text-white">
-                            <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/falcon-white.png') }}" alt="logo" width="120" />
+                            <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/falcon-white.png') }}" alt="logo" width="180" />
                         </span>
                     </a>
                     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarStandard" aria-controls="navbarStandard" aria-expanded="false" aria-label="Toggle navigation">
@@ -340,7 +340,7 @@
                 <div class="container">
                     <div class="row justify-content-start text-left">
                         <div class="col-9 col-md-8">
-                            <p class="fs-3 fs--1 text-white">{{__('Forgot your notebooks? No more worries, Exam Success follows you everywhere! With Exam Success, exams no longer have any secrets')}}.</p>
+                            <p class="fs-3 fs--1 text-white">{{__('Exam Success, Un pas vers mon diplôme')}} !</p>
                             <a class="btn btn-outline-light border-2 rounded-pill fs--1 py-2" type="button" ref="#!" data-bs-toggle="modal" data-bs-target="#registerModal">{{__('Discover')}}</a>
                         </div>
                     </div>
@@ -357,54 +357,31 @@
                         </a>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <h5 class="text-uppercase text-white opacity-85 mb-3">{{__('About Us')}}</h5>
-                            <p class="text-600">{{__('The Exam Success web application is a digital library that allows students in general and technical secondary education in exam classes to better prepare their exam by benefitting, after an annual subscription, from a great range of exam-typed papers proposed by all major schools in Cameroon and also from the past exam questions with the different answers. But Exam Success does not stop there, because it gives subscribers the opportunity to freshen their memories in the book section regarding the different rules and theorems learned in class as revision.')}}</p>
-                            <div class="icon-group mt-4">
-                                <a class="icon-item bg-dark text-facebook" href="#!">
-                                    <span class="fab fa-facebook-f"></span>
-                                </a>
-                                <a class="icon-item bg-dark text-twitter" href="#!">
-                                    <span class="fab fa-twitter"></span>
-                                </a>
-                                <a class="icon-item bg-dark text-linkedin" href="#!">
-                                    <span class="fab fa-instagram"></span>
-                                </a>
-                            </div>
+                            <p class="text-600">{{__('The Exam Success web application is a digital library that allows students in general and technical secondary education in exam classes to better prepare their exam by benefitting, after an annual subscription, from a great range of exam-typed papers proposed by all major schools in Cameroon and also from the past exam questions with the different answers.')}}</p>
+                            <p class="text-600">{{__('But Exam Success does not stop there, because it gives subscribers the opportunity to freshen their memories in the book section regarding the different rules and theorems learned in class as revision.')}}</p>
                         </div>
-                        <div class="col ps-lg-4 ps-xl-8">
-                            <div class="row mt-5 mt-lg-0">
-                                <div class="col-6 col-md-3">
-                                    <h5 class="text-uppercase text-white opacity-85 mb-3">{{__('Contact Us')}}</h5>
-                                    <ul class="list-unstyled">
-                                        <li class="mb-1">
-                                            <a class="link-600" href="#!">Features</a>
-                                        </li>
-                                        <li class="mb-1">
-                                            <a class="link-600" href="#!">Roadmap</a>
-                                        </li>
-                                        <li class="mb-1">
-                                            <a class="link-600" href="#!">Changelog</a>
-                                        </li>
-                                        <li class="mb-1">
-                                            <a class="link-600" href="#!">Pricing</a>
-                                        </li>
-                                        <li class="mb-1">
-                                            <a class="link-600" href="#!">Docs</a>
-                                        </li>
-                                        <li class="mb-1">
-                                            <a class="link-600" href="#!">System Status</a>
-                                        </li>
-                                        <li class="mb-1">
-                                            <a class="link-600" href="#!">Agencies</a>
-                                        </li>
-                                        <li class="mb-1">
-                                            <a class="link-600" href="#!">Enterprise</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+
+                        <div class="col-lg-6">
+                            <h5 class="text-uppercase text-white opacity-85 mb-3">{{__('Our Mission')}}</h5>
+                            <p class="text-600">{{__('Il est évident que tout succès, aussi petit soit-il, est le fruit d\'une dose de volonté et d\'efforts consentis. Parfois et malheureusement, ces deux éléments ne sont pas assez. Mon équipe et moi avons travaillé laborieusement des mois durant pour mettre sur pieds  ette application efficace et digeste. Ceci est une cave dans laquelle vous trouverez le necessaire pour votre réussite.')}}</p>
+                            <p class="text-600">{{__('Quelque soit l\'examen et surtout les matières que vous aurez, vous avez certainement fait le bon choix en souscrivant à ce projet.')}}</p>
+                            <p class="text-600">{{__('Nous nous engageons à actualiser quotidiennement le contenu de cette application afin de rester toujours à la pointe. Nous avons la ferme conviction que cette application vous aidera avant et pendant la préparation à votre examen officiel.')}}</p>
                         </div>
+
+                        <div class="icon-group mt-4">
+                            <a class="icon-item bg-dark text-facebook" href="#!">
+                                <span class="fab fa-facebook-f"></span>
+                            </a>
+                            <a class="icon-item bg-dark text-twitter" href="#!">
+                                <span class="fab fa-twitter"></span>
+                            </a>
+                            <a class="icon-item bg-dark text-linkedin" href="#!">
+                                <span class="fab fa-instagram"></span>
+                            </a>
+                        </div>
+                        
                     </div>
                 </div>
             </section>

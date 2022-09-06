@@ -53,3 +53,21 @@
     });
 </script>
 @endif
+
+@if(session('error'))
+<script>
+    window.addEventListener("load", function () {
+        Toastify({
+            text: "{{ session('error') }}",
+            offset: {
+                x: '2rem',
+                y: '2rem'
+            },
+            duration: 3000,
+            gravity: "bottom",
+            position: "right",
+            backgroundColor: "#dc3545",
+        }).showToast();
+    });
+</script>
+@endif

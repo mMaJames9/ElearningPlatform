@@ -9,6 +9,36 @@
     {{-- </x-slot>
 </x-jet-form-section> --}}
 
+<div class="alert alert-info border-2" role="alert">
+    <div class="d-flex justify-content-between">
+        @if($currentSubscription == null)
+        <div class="d-flex align-items-center">
+            <div class="bg-info me-3 icon-item">
+                <span class="fas fa-info-circle text-white fs-3"></span>
+            </div>
+            <p class="mb-0 flex-1">
+                <span class="fw-bold">{{ $currentSubscription->plan->name ?? 'No active' }} {{__('plan')}}</span>
+            </p>
+        </div>
+        <div class="d-flex align-items-center">
+            <a href="{{ route('plans.index') }}" class="btn btn-falcon-info me-1 mb-1">{{__('Subscribe')}}</a>
+        </div>
+        @else
+        <div class="d-flex align-items-center">
+            <div class="bg-info me-3 icon-item">
+                <span class="fas fa-info-circle text-white fs-3"></span>
+            </div>
+            <p class="mb-0 flex-1">
+                <span class="fw-light">{{__('To Modify your Classroom you must cancel your subscription to the current Classroom')}}</span>
+            </p>
+        </div>
+        <div class="d-flex align-items-center">
+            <a href="{{ route('plans.index') }}" class="btn btn-falcon-info me-1 mb-1">{{__('Cancel current plan')}}</a>
+        </div>
+        @endif
+    </div>
+</div>
+
 <div class="row g-0">
 
     <div class="col-lg-8 pe-lg-2">
@@ -73,7 +103,7 @@
 
                             <div class="col-12 col-lg">
                                 <label class="form-label" for="phone_number">{{ __('Phone Number') }}</label>
-                                <input type="text" class="@error('phone_number') is-invalid @enderror form-control" id="phone_number" phone_number="phone_number" :value="old('Phone Number')" placeholder="{{ __('phone_number') }}" required autofocus data-inputmask-alias="+237 699 999 999" wire:model.defer="state.phone_number">
+                                <input type="text" data-inputmask-alias="+237 699 999 999" class="@error('phone_number') is-invalid @enderror form-control" id="phone_number" name="phone_number" :value="old('phone_number')" placeholder="{{ __('Phone Number') }}" required autofocus wire:model.defer="state.phone_number">
 
                                 @error('phone_number')
                                 <span class="invalid-feedback" role="alert">
@@ -82,9 +112,8 @@
                                 @enderror
                             </div>
 
-                            @foreach(Auth::user()->roles as $key => $item)
-                            @if($item->name == "Member")
-
+                            @role('Member')
+                            @if($currentSubscription == null)
                             <div class="col-12 col-lg" wire:model.defer="state.classroom_id">
                                 <label class="form-label" for="classroom_id">{{ __('classroom') }}</label>
                                 <select class="form-select @error('classroom_id') is-invalid @enderror" data-width="100%" id="classroom_id" name="classroom_id" :value="old('classroom_id')" required autofocus data-options='{"removeItemButton":true,"placeholder":true}'>
@@ -99,9 +128,9 @@
                                 </span>
                                 @enderror
                             </div>
-
                             @endif
-                            @endforeach
+                            @endrole
+
                         </div>
 
                         <div class="d-flex align-items-center mt-5">

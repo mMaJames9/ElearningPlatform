@@ -43,14 +43,14 @@
                                     <span>{{ __('Back to the List') }}</span>
                                 </a>
                                 @if($currentSubscription != null)
-                                <a class="btn btn-sm btn-success me-2" href="{{ route('getDownload', $book->id) }}">
+                                <a class="btn btn-sm btn-success me-2" href="{{ route('download', $book->id) }}">
                                     <span class="fas fa-cloud-download-alt"></span>
                                     <span>{{__('Download')}}</span>
                                 </a>
                                 @endif
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
 

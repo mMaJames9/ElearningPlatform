@@ -6,7 +6,7 @@
     </button>
     <a class="navbar-brand me-1 me-sm-3" href="index.html">
         <div class="d-flex align-items-center">
-           <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/falcon.png') }}" alt="logo" width="120" />
+           <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/falcon.png') }}" alt="logo" width="180" />
         </div>
     </a>
 

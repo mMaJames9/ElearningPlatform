@@ -195,8 +195,6 @@
 
         @livewireScripts
 
-        <script type="text/javascript" src="https://www.monetbil.com/widget/v2/monetbil.min.js"></script>
-
     </body>
 
 </html>

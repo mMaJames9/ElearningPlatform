@@ -14,7 +14,7 @@
                                         <!--/.bg-holder-->
                                         <div class="z-index-1 position-relative">
                                             <a class="link-light mb-4 font-sans-serif fs-4 d-inline-block fw-bolder" href="{{ route('welcome') }}">
-                                                <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/falcon-white.png') }}" alt="logo" width="120" />
+                                                <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/falcon-white.png') }}" alt="logo" width="180" />
                                             </a>
                                             <p class="opacity-75 text-white">{{__('Hello, Friend! New here? Join us today! It takes only few steps. Enter your personal details and start journey with us')}}</p>
                                         </div>

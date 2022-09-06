@@ -15,7 +15,7 @@
         </div>
         <a class="navbar-brand" href="{{ route('dashboard') }}">
             <div class="d-flex align-items-center py-3">
-               <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/falcon.png') }}" alt="logo" width="120" />
+               <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/falcon.png') }}" alt="logo" width="180" />
             </div>
         </a>
     </div>

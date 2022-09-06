@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Request as FacadesRequest;
+use Illuminate\Support\Facades\Response as DonwloadResponse;
 
 class BookController extends Controller
 {
@@ -48,9 +49,26 @@ class BookController extends Controller
 
         $subjects = Subject::orderBy('subject_name', 'asc')->get();
 
+        $classStudent = Auth::user()->classroom->classroom_name;
+
+        if (str_starts_with($classStudent, '3ième'))
+        {
+            $amount = 8000;
+        } else if (str_starts_with($classStudent, 'Première'))
+        {
+            $amount = 10000;
+        } else if (str_starts_with($classStudent, 'Tle'))
+        {
+            $amount = 12000;
+        }
+        else
+        {
+            $amount = null;
+        }
+
         return view('member.documents.books.index', [
             'currentSubscription' => auth()->user()->subscription
-        ], compact('books', 'subjects'));
+        ], compact('books', 'subjects','amount'));
     }
 
     /**
@@ -128,5 +146,40 @@ class BookController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Download the specified resource from the public_path.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function download(Document $book)
+    {
+        // abort_if(Gate::denies('document_download'), Response::HTTP_FORBIDDEN, 'Accès Interdit');
+
+        $subscriptionPlan = auth()->user()->subscription->plan->name ?? null;
+
+        if ($subscriptionPlan === null) {
+            return redirect()->back()->with('status', 'You have no active plan.');
+        }
+
+        $feature = match ($subscriptionPlan) {
+            'Academic Year' => 'download-documents-unlimited',
+        };
+
+        $bookPath = $book->document_path;
+        $book = public_path('storage/uploads/documents/') . $bookPath;
+
+        if (file_exists($book)) {
+            return DonwloadResponse::download($book);
+        }
+        else
+        {
+            $status = 'Sorry! But... Document not found.';
+
+            return redirect()->back()->with([
+                'status' => $status,
+            ]);
+        }
     }
 }

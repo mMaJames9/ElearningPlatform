@@ -23,9 +23,9 @@
 
                 <a class="dropdown-item" href="{{ route('profile.show') }}">{{ __('My Profile') }}</a>
 
-                {{-- @role('Member')
+                @role('Member')
                 <a class="dropdown-item" href="{{ route('plans.index') }}">{{ __('My Plan') }}</a>
-                @endrole --}}
+                @endrole
 
                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     {{ __('Logout') }}

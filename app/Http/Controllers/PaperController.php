@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Request as FacadesRequest;
+use Illuminate\Support\Facades\Response as DonwloadResponse;
 
 class PaperController extends Controller
 {
@@ -68,11 +69,28 @@ class PaperController extends Controller
             ->paginate(12);
         }
 
+        $classStudent = Auth::user()->classroom->classroom_name;
+
+        if (str_starts_with($classStudent, '3ième'))
+        {
+            $amount = 8000;
+        } else if (str_starts_with($classStudent, 'Première'))
+        {
+            $amount = 10000;
+        } else if (str_starts_with($classStudent, 'Tle'))
+        {
+            $amount = 12000;
+        }
+        else
+        {
+            $amount = null;
+        }
+
         $subjects = Subject::orderBy('subject_name', 'asc')->get();
 
         return view('member.documents.papers.index', [
             'currentSubscription' => auth()->user()->subscription
-        ], compact('papers', 'subjects', 'years'));
+        ], compact('papers', 'subjects', 'years', 'amount'));
     }
 
     /**
@@ -150,5 +168,40 @@ class PaperController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Download the specified resource from the public_path.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function download(Document $paper)
+    {
+        // abort_if(Gate::denies('document_download'), Response::HTTP_FORBIDDEN, 'Accès Interdit');
+
+        $subscriptionPlan = auth()->user()->subscription->plan->name ?? null;
+
+        if ($subscriptionPlan === null) {
+            return redirect()->back()->with('status', 'You have no active plan.');
+        }
+
+        $feature = match ($subscriptionPlan) {
+            'Academic Year' => 'download-documents-unlimited',
+        };
+
+        $paperPath = $paper->document_path;
+        $paper = public_path('storage/uploads/documents/') . $paperPath;
+
+        if (file_exists($paper)) {
+            return DonwloadResponse::download($paper);
+        }
+        else
+        {
+            $status = 'Sorry! But... Document not found.';
+
+            return redirect()->back()->with([
+                'status' => $status,
+            ]);
+        }
     }
 }
