@@ -18,7 +18,7 @@ return new class() extends Migration {
             $table->id();
             $table->foreignIdFor(Plan::class);
             $table->timestamp('canceled_at')->nullable();
-            $table->timestamp('expired_at');
+            $table->timestamp('expired_at')->default(null);
             $table->timestamp('grace_days_ended_at')->nullable();
             $table->date('started_at');
             $table->timestamp('suppressed_at')->nullable();
