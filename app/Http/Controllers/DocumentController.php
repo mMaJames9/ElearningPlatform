@@ -81,6 +81,7 @@ class DocumentController extends Controller
             $correctionPath->move($corrPath, $nameCorrection);
         }
 
+        
         $document = Document::create([
             'exam_id' => $request['exam_id'],
             'document_session' => $request['document_session'] ?? null,
