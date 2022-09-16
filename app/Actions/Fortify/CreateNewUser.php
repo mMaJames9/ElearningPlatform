@@ -2,6 +2,7 @@
 
 namespace App\Actions\Fortify;
 
+use App\Events\UserReferred;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -39,6 +40,8 @@ class CreateNewUser implements CreatesNewUsers
             'phone_number' => $input['phone_number'],
             'password' => Hash::make($input['password']),
         ]);
+
+        event(new UserReferred(request()->cookie('ref'), $user));
 
         $user->assignRole("Member");
 
