@@ -86,7 +86,7 @@
                             @if($subject->books->count() == 0) disabled="" @endif />
 
                             <label class="form-check-label" for="{{ $subject->subject_name }}">
-                                {{  ucwords($subject->subject_name) }} ({{ $subject->books->count() }})
+                                {{  ucwords($subject->subject_name) }}
                             </label>
                         </div>
 
@@ -220,6 +220,11 @@
             </div>
         </div>
     </div>
+
+    <div class="d-lg-none d-md-block">
+        @include('member.documents.books.filter')
+    </div>
+
     @endif
 
     @section('scripts')

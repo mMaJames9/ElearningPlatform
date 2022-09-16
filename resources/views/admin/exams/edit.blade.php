@@ -16,8 +16,10 @@
                     @method('PUT')
                     @csrf
 
-                    <div class="form-floating mb-3">
-                        <select class="form-select js-choice  @error('exam_section') is-invalid @enderror" id="exam_section" size="1" name="exam_section" data-options='{"removeItemButton":true,"placeholder":true}'>
+                    <div class="mb-3">
+                        <label class="form-label" for="exam_section">{{ __('Section') }}</label>
+
+                        <select class="form-select js-choice @error('exam_section') is-invalid @enderror" id="exam_section" name="exam_section" data-options='{"removeItemButton":true,"placeholder":true}'>
                             <option value="Fr" @if(($exam->exam_section) === 'Fr') selected @endif>{{__('Francophone')}}</option>
                             <option value="En" @if(($exam->exam_section) === 'En') selected @endif>{{__('Anglophone')}}</option>
                         </select>
@@ -27,8 +29,6 @@
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
-
-                        <label class="form-label" for="exam_section">{{ __('Section') }}</label>
                     </div>
 
                     <div class="form-floating mb-3">

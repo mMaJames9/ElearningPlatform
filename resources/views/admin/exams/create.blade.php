@@ -19,7 +19,7 @@
                         <label class="form-label" for="exam_section">{{ __('Section') }}</label>
 
                         <select class="form-select js-choice @error('exam_section') is-invalid @enderror" id="exam_section" name="exam_section" data-options='{"removeItemButton":true,"placeholder":true}'>
-                            <<option value="" selected disabled hidden>{{__('Select section')}}...</option>
+                            <option value="" selected disabled hidden>{{__('Select section')}}...</option>
                             <option value="Fr">{{__('Francophone')}}</option>
                             <option value="En">{{__('Anglophone')}}</option>
                         </select>

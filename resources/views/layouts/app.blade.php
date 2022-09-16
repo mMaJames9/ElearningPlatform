@@ -187,7 +187,7 @@
             </div>
         </main>
 
-        @include('partials._settings-panel')
+        {{-- @include('partials._settings-panel') --}}
 
         @yield('scripts')
 

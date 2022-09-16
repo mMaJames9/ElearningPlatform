@@ -86,7 +86,39 @@
                             @if($subject->papers->count() == 0) disabled="" @endif />
 
                             <label class="form-check-label" for="{{ $subject->subject_name }}">
-                                {{  ucwords($subject->subject_name) }} ({{ $subject->papers->count() }})
+                                {{  ucwords($subject->subject_name) }}
+                            </label>
+                        </div>
+
+                        @endforeach
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header border-1">
+                    <h6 class="mb-0">{{__('Exam Type')}}</h6>
+                </div>
+                <div class="card-body scrollbar-overlay pb-3" style="height:10rem">
+
+                    <form action="{{ URL::current() }}" method="GET">
+                        @foreach ($exams->unique('exam_name') as $key => $exam)
+                        @php
+                        $checked = [];
+                        if(isset($_GET['exam']))
+                        {
+                            $checked = $_GET['exam'];
+                        }
+                        @endphp
+
+                        <div class="form-check">
+                            <input class="form-check-input" id="{{ $exam->exam_name }}" name="exam[]" type="checkbox" value="{{ $exam->id }}" onChange="this.form.submit()"
+                            @if(in_array($exam->id, $checked)) checked @endif
+                            @if($exam->count() == 0) disabled="" @endif />
+
+                            <label class="form-check-label" for="{{ $exam->exam_name }}">
+                                {{  ucwords($exam->exam_name) }}
                             </label>
                         </div>
 
@@ -103,9 +135,9 @@
                 <div class="card-body scrollbar-overlay pb-3" style="height:10rem">
 
                     <form action="{{ URL::current() }}" method="GET">
-                        @foreach ($years->unique('document_session') as $key => $year)
+                        @foreach ($years as $key => $year)
                         @php
-                        $year_session = date('Y', strtotime($year->document_session));
+                        $year_session = date('Y', strtotime($year->first()->document_session));
                         $checked = [];
                         if(isset($_GET['year']))
                         {
@@ -114,12 +146,12 @@
                         @endphp
 
                         <div class="form-check">
-                            <input class="form-check-input" id="{{ $year->document_session }}" name="year[]" type="checkbox" value="{{ $year_session }}" onChange="this.form.submit()"
+                            <input class="form-check-input" id="{{ $year->first()->document_session }}" name="year[]" type="checkbox" value="{{ $year_session }}" onChange="this.form.submit()"
                             @if(in_array($year_session, $checked)) checked @endif
                             />
 
-                            <label class="form-check-label" for="{{ $year->document_session }}">
-                                {{  $year_session }} ({{ $years->where('document_session', $year->document_session)->count() }})
+                            <label class="form-check-label" for="{{ $year->first()->document_session }}">
+                                {{  $year_session }}
                             </label>
                         </div>
 
@@ -140,6 +172,7 @@
 
                     <div class="row">
                         @foreach ($papers as $key => $paper)
+
                         <div class="mb-4 col-md-6 col-xl-4">
                             <div class="border rounded-1 h-100 d-flex flex-column justify-content-between pb-3">
                                 <div class="overflow-hidden">
@@ -254,6 +287,11 @@
             </div>
         </div>
     </div>
+
+    <div class="d-lg-none d-md-block">
+        @include('member.documents.papers.filter')
+    </div>
+
     @endif
 
     @section('scripts')

@@ -15,7 +15,7 @@
                         };
                         reader.readAsDataURL($refs.photo.files[0]);" />
 
-                    <div class="avatar avatar-md avatar-profile shadow-sm img-thumbnail rounded-circle" x-show="! photoPreview">
+                    <div class="avatar avatar-5xl avatar-profile shadow-sm img-thumbnail rounded-circle" x-show="! photoPreview">
                         {{-- Current Profile Photo --}}
                         <div class="h-100 w-100 rounded-circle overflow-hidden position-relative" >
                             <img src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}" width="200" data-dz-thumbnail="data-dz-thumbnail" />

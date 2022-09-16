@@ -377,11 +377,11 @@
                             <a class="icon-item bg-dark text-twitter" href="#!">
                                 <span class="fab fa-twitter"></span>
                             </a>
-                            <a class="icon-item bg-dark text-linkedin" href="#!">
+                            <a class="icon-item bg-dark text-linkedin" href="https://www.instagram.com/invites/contact/?i=9jndawrxvdl7&utm_content=p808kg9" target="_blank">
                                 <span class="fab fa-instagram"></span>
                             </a>
                         </div>
-                        
+
                     </div>
                 </div>
             </section>
