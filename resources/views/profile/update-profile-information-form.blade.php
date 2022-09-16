@@ -8,7 +8,7 @@
 
     {{-- </x-slot>
 </x-jet-form-section> --}}
-@role('Member')
+
 <div class="alert alert-info border-2" role="alert">
     <div class="d-flex justify-content-between">
         @if($currentSubscription == null)
@@ -38,7 +38,6 @@
         @endif
     </div>
 </div>
-@endrole
 
 <div class="row g-0">
 
@@ -147,6 +146,7 @@
             </x-slot>
         </x-jet-form-section>
 
+
         {{-- Brower Sessions --}}
         @livewire('profile.logout-other-browser-sessions-form')
 
@@ -170,83 +170,3 @@
         @endif
     </div>
 </div>
-
-<div class="card mb-3">
-    <div class="card-header">
-        <h5 class="mb-3">{{__('Referred Users')}}</h5>
-        @forelse(auth()->user()->getReferrals() as $referral)
-        <p class="mb-0 fs--1 fw-medium">{{__('Referral Code')}}:
-        </p>
-
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" id="myInput" name="myInput" disabled readonly value="{{ $referral->link }}">
-
-            <span class="btn btn-success" onclick="myFunction()">
-                <span class="fas far fa-clipboard me-1" data-fa-transform="shrink-3"></span>
-                {{__('Copy Link')}}
-            </span>
-        </div>
-
-        @empty
-        No referrals
-        @endforelse
-    </div>
-    <div class="card-body bg-light p-0">
-        <div class="tab-pane preview-tab-pane active" role="tabpanel">
-            <div id="tableReferrals" data-list='{"valueNames":["name","email", "phone_number"], "page":10, "pagination":true}'>
-                <div class="table-responsive scrollbar">
-                    <table class="table table-bordered fs--1 mb-0">
-                        <thead class="bg-200 fw-bold">
-                            <tr class="align-middle py-3">
-                                <th class="text-start">#</th>
-                                <th class="sort" data-sort="name">{{__('Name')}}</th>
-                                <th class="sort" data-sort="email">{{__('Email')}}</th>
-                                <th class="sort" data-sort="phone_number">{{__('Phone Number')}}</th>
-                            </tr>
-                        </thead>
-                        <tbody class="list align-middle text-nowrap" id="table-recent-leads-body">
-
-                            @foreach($referral->relationships as $key => $relationship)
-
-                            <tr class="hover-actions-trigger btn-reveal-trigger hover-bg-100">
-                                <td class="text-start">{{ $loop->iteration }}</td>
-
-                                <td class="name">
-                                    <div class="d-flex align-items-center">
-                                        <div class="avatar avatar-xl">
-                                            <img class="rounded-circle" src="{{ $relationship->user->profile_photo_url }}" alt="{{ $relationship->user->username }}" />
-                                        </div>
-                                        <h6 class="mb-0 ps-2 text-800">{{  ucwords($relationship->user->name) }}</h6>
-                                    </div>
-                                </td>
-
-                                <td class="text-primary email">
-                                    <a href="mailto:{{ $relationship->user->email }}">{{ $relationship->user->email }}</a>
-                                </td>
-                                <td class="phone_number">
-                                    {{ $relationship->user->phone_number }}
-                                </td>
-                            </tr>
-
-                            @endforeach
-
-                        </tbody>
-                    </table>
-                </div>
-                <div class="d-flex justify-content-center my-3">
-                    <button class="btn btn-sm btn-falcon-default me-1" type="button" title="Previous" data-list-pagination="prev">
-                        <span class="fas fa-chevron-left"></span>
-                    </button>
-
-                    <ul class="pagination mb-0"></ul>
-
-                    <button class="btn btn-sm btn-falcon-default ms-1" type="button" title="Next" data-list-pagination="next">
-                        <span class="fas fa-chevron-right"></span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-

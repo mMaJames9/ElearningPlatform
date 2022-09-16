@@ -94,11 +94,4 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Classroom::class, 'classroom_id', 'id');
     }
-
-    public function getReferrals()
-    {
-        return ReferralProgram::all()->map(function ($program){
-            return ReferralLink::getReferral($this, $program);
-        });
-    }
 }

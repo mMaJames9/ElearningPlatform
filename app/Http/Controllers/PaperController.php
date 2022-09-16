@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Document;
 use App\Models\Exam;
 use App\Models\Subject;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -32,18 +31,7 @@ class PaperController extends Controller
         })
         ->where('document_type', 'Paper')
         ->orderBy('document_session', 'desc')
-        ->get()
-        ->groupBy(function($item) {
-            return Carbon::createFromFormat('Y-m', $item->document_session)->format('Y');
-       });
-
-        $exams = Exam::whereHas('documents', function($query) use ($classroomId) {
-            $query->whereHas('classrooms', function($query) use ($classroomId) {
-                $query->where("id", $classroomId);
-            })
-            ->where('document_type', 'Paper')
-            ->orderBy('document_session', 'desc');
-        })->get();
+        ->get();
 
         if(FacadesRequest::get('subject'))
         {
@@ -71,18 +59,6 @@ class PaperController extends Controller
             ->orderBy('document_session', 'desc')
             ->paginate(12);
         }
-        else if(FacadesRequest::get('exam'))
-        {
-            $checked = $_GET['exam'];
-
-            $papers = Document::whereHas('classrooms', function($query) use ($classroomId) {
-                $query->where("id", $classroomId);
-            })
-            ->where('document_type', 'Paper')
-            ->whereIn('exam_id', $checked)
-            ->orderBy('document_session', 'desc')
-            ->paginate(12);
-        }
         else
         {
             $papers = Document::whereHas('classrooms', function($query) use ($classroomId) {
@@ -95,13 +71,13 @@ class PaperController extends Controller
 
         $classStudent = Auth::user()->classroom->classroom_name;
 
-        if (str_starts_with($classStudent, '3'))
+        if (str_starts_with($classStudent, '3ième'))
         {
             $amount = 8000;
-        } else if (str_starts_with($classStudent, 'P'))
+        } else if (str_starts_with($classStudent, 'Première'))
         {
             $amount = 10000;
-        } else if (str_starts_with($classStudent, 'T'))
+        } else if (str_starts_with($classStudent, 'Tle'))
         {
             $amount = 12000;
         }
@@ -114,7 +90,7 @@ class PaperController extends Controller
 
         return view('member.documents.papers.index', [
             'currentSubscription' => auth()->user()->subscription
-        ], compact('papers', 'subjects', 'years', 'exams', 'amount'));
+        ], compact('papers', 'subjects', 'years', 'amount'));
     }
 
     /**

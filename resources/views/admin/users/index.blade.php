@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="tab-pane preview-tab-pane active mt-4" role="tabpanel">
-                    <div id="tableRoles" data-list='{"valueNames":["name","email", "phone_number", "role", "parrainage", "updated_at"], "page":10, "pagination":true}'>
+                    <div id="tableRoles" data-list='{"valueNames":["name","email", "phone_number", "role", "updated_at"], "page":10, "pagination":true}'>
                         <div class="table-responsive scrollbar">
                             <table class="table table-striped fs--1 mb-0">
                                 <thead class="bg-200 fw-bold">
@@ -30,7 +30,6 @@
                                         <th class="sort" data-sort="email">{{__('Email')}}</th>
                                         <th class="sort" data-sort="phone_number">{{__('Phone Number')}}</th>
                                         <th class="sort" data-sort="role">{{__('Role')}}</th>
-                                        <th class="sort" data-sort="parrainage">{{__('Nb. Parrainage')}}</th>
                                         <th class="sort" data-sort="updated_at">{{__('Updated at')}}</th>
                                         <th class="sort text-center">{{__('Actions')}}</th>
                                     </tr>
@@ -65,14 +64,6 @@
                                             <small class="badge fw-semi-bold rounded-pill status badge-soft-success">{{ $item->name }}</small>
                                             @endif
                                             @endforeach
-                                        </td>
-
-                                        <td class="parrainage">
-                                            @forelse(Auth::user()->getReferrals() as $referral)
-                                            {{ $referral->relationships()->count() }}
-                                            @empty
-                                            -
-                                            @endforelse
                                         </td>
 
                                         <td class="updated_at">
@@ -112,14 +103,6 @@
                                             <small class="badge fw-semi-bold rounded-pill status badge-soft-success">{{ $item->name }}</small>
                                             @endif
                                             @endforeach
-                                        </td>
-
-                                        <td class="parrainage">
-                                            @forelse($user->getReferrals() as $referral)
-                                            {{ $referral->relationships()->count() }}
-                                            @empty
-                                            -
-                                            @endforelse
                                         </td>
 
                                         <td class="updated_at">

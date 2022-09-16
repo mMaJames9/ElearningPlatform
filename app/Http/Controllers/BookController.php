@@ -51,13 +51,13 @@ class BookController extends Controller
 
         $classStudent = Auth::user()->classroom->classroom_name;
 
-        if (str_starts_with($classStudent, '3'))
+        if (str_starts_with($classStudent, '3ième'))
         {
             $amount = 8000;
-        } else if (str_starts_with($classStudent, 'P'))
+        } else if (str_starts_with($classStudent, 'Première'))
         {
             $amount = 10000;
-        } else if (str_starts_with($classStudent, 'T'))
+        } else if (str_starts_with($classStudent, 'Tle'))
         {
             $amount = 12000;
         }

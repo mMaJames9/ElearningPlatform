@@ -18,14 +18,14 @@ class ClassroomSeeder extends Seeder
         DB::table('classrooms')->insert([
             [
                 'id' => 1,
-                'classroom_name' => '3ème ALL',
+                'classroom_name' => '3ième ALL',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
                 'deleted_at' => null,
             ],
             [
                 'id' => 2,
-                'classroom_name' => '3ème ESP',
+                'classroom_name' => '3ième ESP',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
                 'deleted_at' => null,
