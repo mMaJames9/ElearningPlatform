@@ -99,6 +99,7 @@ class PlanController extends Controller
 
         // $classStudent = Auth::user()->classroom->classroom_name;
 
+<<<<<<< HEAD
         // if (str_starts_with($classStudent, '3'))
         // {
         //     $amount = 8000;
@@ -113,6 +114,22 @@ class PlanController extends Controller
         // {
         //     $amount = null;
         // }
+=======
+        if (str_starts_with($classStudent, '3'))
+        {
+            $amount = 8000;
+        } else if (str_starts_with($classStudent, 'P'))
+        {
+            $amount = 10000;
+        } else if (str_starts_with($classStudent, 'T'))
+        {
+            $amount = 12000;
+        }
+        else
+        {
+            $amount = null;
+        }
+>>>>>>> 19c137c15d9545849075ce558cbaa2bc8d6bcb86
 
         // $phone_number = $request['phone_number'];
 
