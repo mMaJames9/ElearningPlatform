@@ -4,16 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\Pivot;
 
 /**
  * @property int $user_id
  * @property int $document_id
- * @property int $subscription_type
  * @property string $created_at
  * @property string $updated_at
  */
-class DocumentUser extends Pivot
+class DocumentUser extends Model
 {
     use HasFactory;
 
@@ -30,7 +28,6 @@ class DocumentUser extends Pivot
     protected $fillable = [
         'user_id',
         'document_id',
-        'subscription_type',
         'created_at',
         'updated_at',
     ];

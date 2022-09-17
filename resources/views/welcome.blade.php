@@ -371,13 +371,13 @@
                         </div>
 
                         <div class="icon-group mt-4">
-                            <a class="icon-item bg-dark text-facebook" href="#!">
+                            <a class="icon-item bg-dark text-facebook" target="_blank" href="#!">
                                 <span class="fab fa-facebook-f"></span>
                             </a>
-                            <a class="icon-item bg-dark text-twitter" href="#!">
+                            <a class="icon-item bg-dark text-twitter" target="_blank" href="#!">
                                 <span class="fab fa-twitter"></span>
                             </a>
-                            <a class="icon-item bg-dark text-linkedin" href="https://www.instagram.com/invites/contact/?i=9jndawrxvdl7&utm_content=p808kg9" target="_blank">
+                            <a class="icon-item bg-dark text-linkedin" href="https://www.instagram.com/invites/contact/?i=9jndawrxvdl7&utm_content=p808kg9">
                                 <span class="fab fa-instagram"></span>
                             </a>
                         </div>

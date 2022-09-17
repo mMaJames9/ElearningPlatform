@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Document;
+use App\Models\DocumentUser;
 use App\Models\Exam;
 use App\Models\Subject;
 use Illuminate\Http\Request;
@@ -47,17 +48,17 @@ class BookController extends Controller
             ->paginate(12);
         }
 
-        $subjects = Subject::orderBy('subject_name', 'asc')->get();
+        $subjects = Subject::whereHas('books')->get();
 
         $classStudent = Auth::user()->classroom->classroom_name;
 
-        if (str_starts_with($classStudent, '3ième'))
+        if (str_starts_with($classStudent, '3'))
         {
             $amount = 8000;
-        } else if (str_starts_with($classStudent, 'Première'))
+        } else if (str_starts_with($classStudent, 'P'))
         {
             $amount = 10000;
-        } else if (str_starts_with($classStudent, 'Tle'))
+        } else if (str_starts_with($classStudent, 'T'))
         {
             $amount = 12000;
         }
@@ -168,10 +169,16 @@ class BookController extends Controller
         };
 
         $bookPath = $book->document_path;
-        $book = public_path('storage/uploads/documents/') . $bookPath;
+        $bookFile = public_path('storage/uploads/documents/') . $bookPath;
 
-        if (file_exists($book)) {
-            return DonwloadResponse::download($book);
+        if (file_exists($bookFile)) {
+
+            DocumentUser::create([
+                'user_id' => Auth::user()->id,
+                'document_id' => $book->id,
+            ]);
+
+            return DonwloadResponse::download($bookFile);
         }
         else
         {
