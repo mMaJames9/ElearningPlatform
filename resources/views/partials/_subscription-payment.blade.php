@@ -23,6 +23,7 @@
                         <div class="mb-3">
                             <label class="col-form-label" for="amount">{{__('Amount')}}</label>
                             <input class="form-control" id="amount" type="text" readonly value="{{ $amount }} XAF"/>
+                            <span>{{__('Make sure your account balance is sufficient before initiating the payment. Otherwise the request will fail.')}}</span>
                         </div>
                         <div class="mb-3">
                             <label class="col-form-label" for="phone_number">{{__('Orange Money or MTN MoMo Number')}}</label>

@@ -95,26 +95,10 @@ class PlanController extends Controller
     public function update(Request $request, Plan $plan)
     {
 
-        // ini_set('max_execution_time', -1);
+        ini_set('max_execution_time', -1);
 
-        // $classStudent = Auth::user()->classroom->classroom_name;
+        $classStudent = Auth::user()->classroom->classroom_name;
 
-<<<<<<< HEAD
-        // if (str_starts_with($classStudent, '3'))
-        // {
-        //     $amount = 8000;
-        // } else if (str_starts_with($classStudent, 'P'))
-        // {
-        //     $amount = 10000;
-        // } else if (str_starts_with($classStudent, 'T'))
-        // {
-        //     $amount = 12000;
-        // }
-        // else
-        // {
-        //     $amount = null;
-        // }
-=======
         if (str_starts_with($classStudent, '3'))
         {
             $amount = 8000;
@@ -129,106 +113,105 @@ class PlanController extends Controller
         {
             $amount = null;
         }
->>>>>>> 19c137c15d9545849075ce558cbaa2bc8d6bcb86
 
-        // $phone_number = $request['phone_number'];
+        $phone_number = $request['phone_number'];
 
-        // $client = new Client();
+        $client = new Client();
 
-        // // Get access token
-        // $headers = [
-        //     'Content-Type' => 'application/json'
-        // ];
-        // $body = '{
-        //     "username": "d7AVPxga0WNGxUovZr32qy1rckdqUa4DfrdXBZN4gyJrYJ3dExEABcGfLRYcYzbPlljDsqTO7hBGdswmcg71fQ",
-        //     "password": "2hcFswPlJ0rUt84n4SwtxaKfqdx8j2AW1RLJ64LVeTnipKheCnq-9q7V4RK9j7VI6d6T218l47cdLVWveE_-RA"
-        // }';
-        // $request = new Psr7Request('POST', 'https://campay.net/api/token/', $headers, $body);
-        // $res = $client->sendAsync($request)->wait();
-        // $obj = json_decode($res->getBody());
-        // $token = $obj->token;
-
-
-        // // Request Payment
-        // $headers1 = [
-        //     'Authorization' => "Token $token",
-        //     'Content-Type' => 'application/json'
-        // ];
-        // $body1 = '{
-        //     "amount": "'.$amount.'",
-        //     "from": "'.preg_replace("/[^0-9]/", "", "$phone_number" ).'"
-        // }';
-
-        // try
-        // {
-        //     $request1 = new Psr7Request('POST', 'https://campay.net/api/collect/', $headers1, $body1);
-        //     $res1 = $client->sendAsync($request1)->wait();
-        // }
-        // catch (BadResponseException $e) {
-        //     $response = $e->getResponse();
-        //     $output = json_decode($response->getBody());
-        //     $error_code = $output->error_code;
-
-        //     if($error_code == "ER101")
-        //     {
-        //         $error = 'Invalid phone number. Ensure the number starts with the country code.';
-
-        //         return redirect()->back()->with([
-        //             'error' => $error,
-        //         ]);
-        //     }
-        //     else if($error_code == "ER102")
-        //     {
-        //         $error = 'Unsupported Carrier phone number. Currently, only MTN and Orange phone numbers are accepted for mobile money.';
-
-        //         return redirect()->back()->with([
-        //             'error' => $error,
-        //         ]);
-        //     }
-        //     else if($error_code == "ER201")
-        //     {
-        //         $error = 'Invalid amount. Decimal numbers are NOT allowed. Amount can been sent as integer or string.';
-
-        //         return redirect()->back()->with([
-        //             'error' => $error,
-        //         ]);
-        //     }
-        //     else if($error_code == "ER301")
-        //     {
-        //         $error = 'Insufficient balance. Trying to withdraw an amount which is above your current balance for the specific carrier.';
-
-        //         return redirect()->back()->with([
-        //             'error' => $error,
-        //         ]);
-        //     }
-        //     else
-        //     {
-        //         $error = 'An error occurred during the operation. Please try again..';
-
-        //         return redirect()->back()->with([
-        //             'error' => $error,
-        //         ]);
-        //     }
-        // }
-
-        // $obj1 = json_decode($res1->getBody());
-        // $reference = $obj1->reference;
-
-        // // Transaction Status
-        // do
-        // {
-        //     $request = new Psr7Request('GET', "https://campay.net/api/transaction/".$reference."/", $headers1);
-        //     $res = $client->sendAsync($request)->wait();
-        //     // echo $res->getBody();
-        //     $obj = json_decode($res->getBody());
-        //     $statut = $obj->status;
-
-        // }
-        // while($statut == "PENDING");
+        // Get access token
+        $headers = [
+            'Content-Type' => 'application/json'
+        ];
+        $body = '{
+            "username": "d7AVPxga0WNGxUovZr32qy1rckdqUa4DfrdXBZN4gyJrYJ3dExEABcGfLRYcYzbPlljDsqTO7hBGdswmcg71fQ",
+            "password": "2hcFswPlJ0rUt84n4SwtxaKfqdx8j2AW1RLJ64LVeTnipKheCnq-9q7V4RK9j7VI6d6T218l47cdLVWveE_-RA"
+        }';
+        $request = new Psr7Request('POST', 'https://campay.net/api/token/', $headers, $body);
+        $res = $client->sendAsync($request)->wait();
+        $obj = json_decode($res->getBody());
+        $token = $obj->token;
 
 
-        // if($statut === "SUCCESSFUL")
-        // {
+        // Request Payment
+        $headers1 = [
+            'Authorization' => "Token $token",
+            'Content-Type' => 'application/json'
+        ];
+        $body1 = '{
+            "amount": "'.$amount.'",
+            "from": "'.preg_replace("/[^0-9]/", "", "$phone_number" ).'"
+        }';
+
+        try
+        {
+            $request1 = new Psr7Request('POST', 'https://campay.net/api/collect/', $headers1, $body1);
+            $res1 = $client->sendAsync($request1)->wait();
+        }
+        catch (BadResponseException $e) {
+            $response = $e->getResponse();
+            $output = json_decode($response->getBody());
+            $error_code = $output->error_code;
+
+            if($error_code == "ER101")
+            {
+                $error = 'Invalid phone number. Ensure the number starts with the country code.';
+
+                return redirect()->back()->with([
+                    'error' => $error,
+                ]);
+            }
+            else if($error_code == "ER102")
+            {
+                $error = 'Unsupported Carrier phone number. Currently, only MTN and Orange phone numbers are accepted for mobile money.';
+
+                return redirect()->back()->with([
+                    'error' => $error,
+                ]);
+            }
+            else if($error_code == "ER201")
+            {
+                $error = 'Invalid amount. Decimal numbers are NOT allowed. Amount can been sent as integer or string.';
+
+                return redirect()->back()->with([
+                    'error' => $error,
+                ]);
+            }
+            else if($error_code == "ER301")
+            {
+                $error = 'Insufficient balance. Trying to withdraw an amount which is above your current balance for the specific carrier.';
+
+                return redirect()->back()->with([
+                    'error' => $error,
+                ]);
+            }
+            else
+            {
+                $error = 'An error occurred during the operation. Please try again..';
+
+                return redirect()->back()->with([
+                    'error' => $error,
+                ]);
+            }
+        }
+
+        $obj1 = json_decode($res1->getBody());
+        $reference = $obj1->reference;
+
+        // Transaction Status
+        do
+        {
+            $request = new Psr7Request('GET', "https://campay.net/api/transaction/".$reference."/", $headers1);
+            $res = $client->sendAsync($request)->wait();
+            // echo $res->getBody();
+            $obj = json_decode($res->getBody());
+            $statut = $obj->status;
+
+        }
+        while($statut == "PENDING");
+
+
+        if($statut === "SUCCESSFUL")
+        {
             auth()->user()->subscribeTo($plan);
 
             $status = 'Annual subscription completed successfully.';
@@ -236,15 +219,15 @@ class PlanController extends Controller
             return redirect()->back()->with([
                 'status' => $status,
             ]);
-        // }
-        // else
-        // {
-        //     $error = 'Your payment transaction has failed.';
+        }
+        else
+        {
+            $error = 'Your payment transaction has failed.';
 
-        //     return redirect()->back()->with([
-        //         'error' => $error,
-        //     ]);
-        // }
+            return redirect()->back()->with([
+                'error' => $error,
+            ]);
+        }
     }
 
     /**
