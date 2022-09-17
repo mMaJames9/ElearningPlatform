@@ -86,8 +86,8 @@
                                     <div>
                                         <h3 class="fw-light text-primary fs-5 mb-0">{{__('Subscribe')}}</h3>
                                         <h2 class="fw-light text-primary mt-0">
-                                            <span class="fs-3">99</span>
-                                            <span class="fs--2 mt-1">/ m</span>
+                                            <span class="fs-3">{{ $amount }} XAF</span>
+                                            <span class="fs--2 mt-1">/ {{__('year')}}</span>
                                         </h2>
                                     </div>
 
