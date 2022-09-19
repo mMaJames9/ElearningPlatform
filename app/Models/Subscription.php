@@ -35,4 +35,11 @@ class Subscription extends Model
     {
         return $this->belongsTo(User::class, 'subscriber_id', 'id');
     }
+
+    public function subscriptionPrices()
+    {
+        return $this->belongsToMany(User::class, SubscriptionUser::class)
+        ->withPivot('subscription_price')
+        ->withTimestamps();
+    }
 }

@@ -78,8 +78,11 @@ class UserController extends Controller
     {
         abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $downloads = DocumentUser::where('user_id', $user->id)->get();
-        $data = DocumentUser::where('user_id', $user->id)->count();
+        $downloads = DocumentUser::where('user_id', $user->id)
+        ->groupBy('document_id')->get();
+
+        $data = DocumentUser::where('user_id', $user->id)
+        ->distinct('document_id')->count();
 
         $classrooms = Exam::all()->pluck('classroom_name', 'id');
 

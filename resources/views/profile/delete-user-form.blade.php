@@ -1,6 +1,6 @@
 <x-jet-action-section>
     <x-slot name="content">
-        <div class="card">
+        <div class="card mb-3">
             <div class="card-header">
                 <h5 class="mb-0">{{__('Delete this account')}}</h5>
             </div>
@@ -29,7 +29,7 @@
                     </x-slot>
 
                 </x-jet-dialog-modal>
-                
+
             </div>
         </div>
     </x-slot>

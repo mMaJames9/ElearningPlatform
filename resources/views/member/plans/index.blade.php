@@ -26,12 +26,43 @@
                             <div class="d-flex align-items-center">
                                 @if($currentSubscription !== null && $currentSubscription?->plan->name !== 'Trial')
                                 <p class="flex-1">
-                                    <form method="POST" action="{{ route('plans.destroy', $currentSubscription->plan) }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-falcon-info me-1 mb-1">{{__('Cancel plan')}}</button>
-                                    </form>
+                                    <div>
+                                        <button class="btn btn-falcon-info me-1 mb-1" data-bs-toggle="modal" data-bs-target="#CancelPlan">{{__('Cancel plan')}}</button>
+                                    </div>
                                 </p>
+
+                                <div class="modal fade" id="CancelPlan" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px">
+                                        <div class="modal-content position-relative">
+                                            <div class="position-absolute top-0 end-0 mt-2 me-2 z-index-1">
+                                                <button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <form method="POST" action="{{ route('plans.destroy', $currentSubscription->plan) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <div class="modal-body p-0">
+                                                    <div class="rounded-top-lg py-3 ps-4 pe-6 bg-light">
+                                                        <h4 class="mb-1" id="modalDeleteUser">{{__('Cancel plan')}}</h4>
+                                                    </div>
+                                                    <div class="p-4 pb-0">
+
+                                                        <div class="mb-3">
+                                                            <p class="fs--1">
+                                                                {{__('Are you sure you want to cancel your subscription')}} ?
+                                                            </p>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-falcon-secondary" type="button" data-bs-dismiss="modal">{{__('Close')}}</button>
+                                                    <button class="btn btn-danger" type="submit">{{ __('Confirm') }}</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                
                                 @endif
                             </div>
                         </div>

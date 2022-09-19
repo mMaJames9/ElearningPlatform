@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             SubjectSeeder::class,
             UserSeeder::class,
             ModelHasRoles::class,
+            ReferralProgramSeeder::class,
         ]);
 
     }

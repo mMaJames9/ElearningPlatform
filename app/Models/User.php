@@ -94,4 +94,23 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Classroom::class, 'classroom_id', 'id');
     }
+
+    public function subscriptions()
+    {
+        return $this->HasMany(Subscription::class, 'subscriber_id', 'id');
+    }
+
+    public function subscriptionPrices()
+    {
+        return $this->belongsToMany(Subscription::class, SubscriptionUser::class)
+        ->withPivot('subscription_price')
+        ->withTimestamps();
+    }
+
+    public function getReferrals()
+    {
+        return ReferralProgram::all()->map(function ($program){
+            return ReferralLink::getReferral($this, $program);
+        });
+    }
 }

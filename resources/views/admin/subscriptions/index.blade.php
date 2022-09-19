@@ -27,14 +27,15 @@
                 </div> --}}
 
                 <div class="tab-pane preview-tab-pane active mt-4" role="tabpanel">
-                    <div id="tableSubscriptions" data-list='{"valueNames":["name", "type", "updated_at"], "page":10, "pagination":true}'>
+                    <div id="tableSubscriptions" data-list='{"valueNames":["name", "subscription", "price", "updated_at"], "page":10, "pagination":true}'>
                         <div class="table-responsive scrollbar">
                             <table class="table table-striped fs--1 mb-0">
                                 <thead class="bg-200 fw-bold">
                                     <tr class="align-middle py-3">
                                         <th class="text-start">#</th>
                                         <th class="sort" data-sort="name">{{__('Name')}}</th>
-                                        <th class="sort" data-sort="type">{{__('Subscription Type')}}</th>
+                                        <th class="sort" data-sort="subscription">{{__('Subscription')}}</th>
+                                        <th class="sort" data-sort="price">{{__('Price')}}</th>
                                         <th class="sort" data-sort="updated_at">{{__('Date')}}</th>
                                     </tr>
                                 </thead>
@@ -53,8 +54,22 @@
                                             </div>
                                         </td>
 
-                                        <td class="type">
-                                            {{ ucwords($subscription->plan->name) ?? '' }}
+                                        <td class="subscription">
+                                            @if ($subscription->suppressed_at == null)
+                                            <span class="badge badge rounded-pill badge-soft-success">
+                                                {{__('Active')}}
+                                                <span class="ms-1 fas fa-check" data-fa-transform="shrink-2"></span>
+                                            </span>
+                                            @else
+                                            <span class="badge badge rounded-pill badge-soft-danger">
+                                                {{__('Canceled')}}
+                                                <span class="ms-1 fas fa-ban" data-fa-transform="shrink-2"></span>
+                                            </span>
+                                            @endif
+                                        </td>
+
+                                        <td class="price">
+                                            {{ ucwords($subscription->subscriptionPrices->last()->pivot->subscription_price) ?? ''  }} XAF
                                         </td>
 
 

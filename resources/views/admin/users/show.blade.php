@@ -62,59 +62,168 @@
         </div>
     </div>
 
-    <div class="card mb-3">
-        <div class="card-header border-bottom">
-            <div class="d-flex justify-content-between">
-                <div class="align-self-center">
-                    <h5 class="mb-0 fw-bold">{{__('Table of Downloads')}}</h5>
-                    <p class="mb-0 fs--1 fw-medium">{{$data}} {{__('download(s)')}}</p>
+    <div class="row g-0 d-flex">
+        <div class="col pe-lg-2 flex-1">
+            <div class="card mb-3">
+                <div class="card-header border-bottom">
+                    <div class="d-flex justify-content-between">
+                        <div class="align-self-center">
+                            <h5 class="mb-0 fw-bold">{{__('Table of Referred Users')}}</h5>
+                            @forelse($user->getReferrals() as $referral)
+                            <p class="mb-0 fs--1 fw-medium">{{ $referral->relationships->count() }} {{__('referred users')}}</p>
+                            @empty
+                            <p class="mb-0 fs--1 fw-medium">{{__('No referrals')}}</p>
+                            @endforelse
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body pt-0">
+                    <div class="tab-content">
+
+                        <div class="tab-pane preview-tab-pane active mt-4" role="tabpanel">
+                            <div id="tableReferrals" data-list='{"valueNames":["name", "phone_number", "subscription", "price"], "page":10, "pagination":true}'>
+                                <div class="table-responsive scrollbar">
+                                    <table class="table table-striped fs--1 mb-0">
+                                        <thead class="bg-200 fw-bold">
+                                            <tr class="align-middle py-3">
+                                                <th class="text-start">#</th>
+                                                <th class="sort" data-sort="name">{{__('Name')}}</th>
+                                                <th class="sort" data-sort="phone_number">{{__('Phone Number')}}</th>
+                                                <th class="sort" data-sort="subscription">{{__('Subscription')}}</th>
+                                                <th class="sort" data-sort="price">{{__('Price')}}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="list align-middle text-nowrap" id="table-recent-leads-body">
+
+                                            @foreach($referral->relationships as $key => $relationship)
+
+                                            <tr class="hover-actions-trigger btn-reveal-trigger hover-bg-100">
+                                                <td class="text-start">{{ $loop->iteration }}</td>
+
+                                                <td class="name">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar avatar-xl">
+                                                            <img class="rounded-circle" src="{{ $relationship->user->profile_photo_url }}" alt="{{ $relationship->user->username }}" />
+                                                        </div>
+                                                        <h6 class="mb-0 ps-2 text-800">{{  ucwords($relationship->user->name) }}</h6>
+                                                    </div>
+                                                </td>
+
+                                                <td class="phone_number">
+                                                    {{ $relationship->user->phone_number }}
+                                                </td>
+
+                                                <td class="subscription">
+                                                    @if ($relationship->user->subscriptions->isNotEmpty())
+                                                    @if ($relationship->user->subscriptions->first()->suppressed_at == null)
+                                                    <span class="badge badge rounded-pill badge-soft-success">
+                                                        {{__('Active')}}
+                                                        <span class="ms-1 fas fa-check" data-fa-transform="shrink-2"></span>
+                                                    </span>
+                                                    @else
+                                                    <span class="badge badge rounded-pill badge-soft-danger">
+                                                        {{__('Canceled')}}
+                                                        <span class="ms-1 fas fa-ban" data-fa-transform="shrink-2"></span>
+                                                    </span>
+                                                    @endif
+                                                    @else
+                                                    <span class="badge badge rounded-pill badge-soft-secondary">
+                                                        {{__('Pending')}}
+                                                        <span class="ms-1 fas fa-stream" data-fa-transform="shrink-2"></span>
+                                                    </span>
+                                                    @endif
+                                                </td>
+
+                                                <td class="price text-center">
+                                                    @if ($relationship->user->subscriptions->isNotEmpty())
+                                                    {{ $relationship->user->subscriptionPrices->first()->pivot->subscription_price }} XAF
+                                                    @else
+                                                    -
+                                                    @endif
+                                                </td>
+                                            </tr>
+
+                                            @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="d-flex justify-content-center mt-3">
+                                    <button class="btn btn-sm btn-falcon-default me-1" type="button" title="Previous" data-list-pagination="prev">
+                                        <span class="fas fa-chevron-left"></span>
+                                    </button>
+
+                                    <ul class="pagination mb-0"></ul>
+
+                                    <button class="btn btn-sm btn-falcon-default ms-1" type="button" title="Next" data-list-pagination="next">
+                                        <span class="fas fa-chevron-right"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="card-body pt-0">
-            <div class="tab-content">
 
-                <div class="tab-pane preview-tab-pane active mt-4" role="tabpanel">
-                    <div id="tableSubscriptions" data-list='{"valueNames":["name", "type", "created_at"], "page":10, "pagination":true}'>
-                        <div class="table-responsive scrollbar">
-                            <table class="table table-striped fs--1 mb-0">
-                                <thead class="bg-200 fw-bold">
-                                    <tr class="align-middle py-3">
-                                        <th class="text-start">#</th>
-                                        <th class="sort" data-sort="type">{{__('Document')}}</th>
-                                        <th class="sort" data-sort="created_at">{{__('Date')}}</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="list align-middle text-nowrap" id="table-recent-leads-body">
-
-                                    @foreach($downloads as $key => $download)
-                                    <tr class="hover-actions-trigger btn-reveal-trigger hover-bg-100">
-                                        <td class="text-start">{{ $loop->iteration }}</td>
-
-                                        <td class="type">
-                                            {{ ucwords($download->document->document_type) ?? '' }}
-                                        </td>
-
-
-                                        <td class="created_at">
-                                            {{ $download->created_at }}
-                                        </td>
-                                    </tr>
-                                    @endforeach
-
-                                </tbody>
-                            </table>
+        <div class="col-lg-5 ps-lg-2 flex-2">
+            <div class="card mb-3">
+                <div class="card-header border-bottom">
+                    <div class="d-flex justify-content-between">
+                        <div class="align-self-center">
+                            <h5 class="mb-0 fw-bold">{{__('Table of Downloads')}}</h5>
+                            <p class="mb-0 fs--1 fw-medium">{{$data}} {{__('download(s)')}}</p>
                         </div>
-                        <div class="d-flex justify-content-center mt-3">
-                            <button class="btn btn-sm btn-falcon-default me-1" type="button" title="Previous" data-list-pagination="prev">
-                                <span class="fas fa-chevron-left"></span>
-                            </button>
+                    </div>
+                </div>
+                <div class="card-body pt-0">
+                    <div class="tab-content">
 
-                            <ul class="pagination mb-0"></ul>
+                        <div class="tab-pane preview-tab-pane active mt-4" role="tabpanel">
+                            <div id="tableDownloads" data-list='{"valueNames":["name", "type", "created_at"], "page":10, "pagination":true}'>
+                                <div class="table-responsive scrollbar">
+                                    <table class="table table-striped fs--1 mb-0">
+                                        <thead class="bg-200 fw-bold">
+                                            <tr class="align-middle py-3">
+                                                <th class="text-start">#</th>
+                                                <th class="sort" data-sort="type">{{__('Document')}}</th>
+                                                <th class="sort" data-sort="created_at">{{__('Date')}}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="list align-middle text-nowrap" id="table-recent-leads-body">
 
-                            <button class="btn btn-sm btn-falcon-default ms-1" type="button" title="Next" data-list-pagination="next">
-                                <span class="fas fa-chevron-right"></span>
-                            </button>
+                                            @foreach($downloads as $key => $download)
+                                            <tr class="hover-actions-trigger btn-reveal-trigger hover-bg-100">
+                                                <td class="text-start">{{ $loop->iteration }}</td>
+
+                                                <td class="type">
+                                                    <a href="{{ route('documents.show', $download->document->id) }}">
+                                                        {{ ucwords($download->document->document_type) ?? '' }}
+                                                    </a>
+                                                </td>
+
+
+                                                <td class="created_at">
+                                                    {{ $download->created_at }}
+                                                </td>
+                                            </tr>
+                                            @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="d-flex justify-content-center mt-3">
+                                    <button class="btn btn-sm btn-falcon-default me-1" type="button" title="Previous" data-list-pagination="prev">
+                                        <span class="fas fa-chevron-left"></span>
+                                    </button>
+
+                                    <ul class="pagination mb-0"></ul>
+
+                                    <button class="btn btn-sm btn-falcon-default ms-1" type="button" title="Next" data-list-pagination="next">
+                                        <span class="fas fa-chevron-right"></span>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

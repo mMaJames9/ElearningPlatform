@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SubscriptionUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use LucasDotVin\Soulbscription\Models\Plan;
@@ -212,7 +213,13 @@ class PlanController extends Controller
 
         if($statut === "SUCCESSFUL")
         {
-            auth()->user()->subscribeTo($plan);
+            $subscription = auth()->user()->subscribeTo($plan);
+
+            $price = new SubscriptionUser;
+            $price->user_id = Auth::user()->id;
+            $price->subscription_price = $amount;
+            $price->subscription_id = $subscription->id;
+            $price->save();
 
             $status = 'Annual subscription completed successfully.';
 
@@ -239,6 +246,7 @@ class PlanController extends Controller
     public function destroy(Plan $plan)
     {
         auth()->user()->subscription->suppress();
+        auth()->user()->subscriptionPrices->last()->pivot->delete();
 
         return redirect()->back();
     }
