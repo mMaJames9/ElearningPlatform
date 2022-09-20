@@ -1014,68 +1014,7 @@
         </div>
     </div>
 
-    <div class="col-xxl-4 col-md-6">
-        <div class="card h-100">
-            <div class="card-header bg-light">
-                <div class="row justify-content-between">
-                    <div class="col-auto">
-                        <h6>Returning Customer Rate</h6>
-                        <div class="d-flex align-items-center">
-                            <h4 class="text-primary mb-0">$59.09%</h4>
-                            <span class="badge rounded-pill ms-3 badge-soft-primary">
-                                <span class="fas fa-caret-up"></span>
-                                3.5%
-                            </span>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <select class="form-select form-select-sm pe-4" id="select-returning-customer-month">
-                            <option value="0">Jan</option>
-                            <option value="1">Feb</option>
-                            <option value="2">Mar</option>
-                            <option value="3">Apr</option>
-                            <option value="4">May</option>
-                            <option value="5">Jun</option>
-                            <option value="6">Jul</option>
-                            <option value="7">Aug</option>
-                            <option value="8">Sep</option>
-                            <option value="9">Oct</option>
-                            <option value="10">Nov</option>
-                            <option value="11">Dec</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card-body">
-            <div class="echart-line-returning-customer-rate h-100" data-echart-responsive="true" data-options='{"target":"returning-customer-rate-footer","monthSelect":"select-returning-customer-month","optionOne":"newMonth","optionTwo":"returningMonth"}'></div>
-            <div class="card-footer border-top py-2">
-                <div class="row align-items-center gx-0" id="returning-customer-rate-footer">
-                    <div class="col-auto me-2">
-                        <div class="btn btn-sm btn-text d-flex align-items-center p-0 shadow-none" id="newMonth">
-                            <span class="fas fa-circle text-primary fs--2 me-1"></span>
-                            New
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <div class="btn btn-sm btn-text d-flex align-items-center p-0 shadow-none" id="returningMonth">
-                            <span class="fas fa-circle text-warning fs--2 me-1"></span>
-                            Returning
-                        </div>
-                    </div>
-                    <div class="col text-end">
-                        <a class="btn btn-link btn-sm px-0 fw-medium" href="#!">
-                            View report
-                            <span class="fas fa-chevron-right ms-1 fs--2"></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-xxl-4 col-md-6">
+    <div class="col-xxl col-md-6">
         <div class="card h-100">
             <div class="card-header bg-light py-2">
                 <div class="d-flex flex-between-center">
