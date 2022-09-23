@@ -9,7 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="description" content="{{__('The examsuccess.com web application is a digital library that allows students in general and technical secondary education in exam classes to better prepare for their exam by benefiting from a range of exam-type tests with their various answers. .') }}">
         <meta name="author" content="Exam Success">
-        <meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+        <meta name="keywords" content="examsuces.com, 237, Exam Succes">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- ===============================================-->
