@@ -1,6 +1,6 @@
 <ul class="navbar-nav navbar-nav-icons ms-auto flex-row align-items-center">
 
-    @include('partials._search-bar')
+    {{-- @include('partials._search-bar') --}}
 
     <li class="nav-item dropdown">
         <a class="nav-link pe-0" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
