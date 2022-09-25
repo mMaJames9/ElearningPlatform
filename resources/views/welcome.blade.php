@@ -8,8 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="description" content="{{__('The examsuccess.com web application is a digital library that allows students in general and technical secondary education in exam classes to better prepare for their exam by benefiting from a range of exam-type tests with their various answers. .') }}">
-        <meta name="author" content="Exam Success">
-        <meta name="keywords" content="examsuces.com, 237, Exam Succes">
+        <meta name="author" content="237 Exam Succes">
+        <meta name="keywords" content="examsuces.com, 237, 237 Exam Succes">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- ===============================================-->
@@ -340,7 +340,7 @@
                 <div class="container">
                     <div class="row justify-content-start text-left">
                         <div class="col-9 col-md-8">
-                            <p class="fs-3 fs--1 text-white">{{__('Exam Success, Un pas vers mon diplôme')}} !</p>
+                            <p class="fs-3 fs--1 text-white">{{__('237 Exam Succes, Un pas vers mon diplôme')}} !</p>
                             <a class="btn btn-outline-light border-2 rounded-pill fs--1 py-2" type="button" ref="#!" data-bs-toggle="modal" data-bs-target="#registerModal">{{__('Discover')}}</a>
                         </div>
                     </div>
@@ -359,8 +359,8 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <h5 class="text-uppercase text-white opacity-85 mb-3">{{__('About Us')}}</h5>
-                            <p class="text-600">{{__('The Exam Success web application is a digital library that allows students in general and technical secondary education in exam classes to better prepare their exam by benefitting, after an annual subscription, from a great range of exam-typed papers proposed by all major schools in Cameroon and also from the past exam questions with the different answers.')}}</p>
-                            <p class="text-600">{{__('But Exam Success does not stop there, because it gives subscribers the opportunity to freshen their memories in the book section regarding the different rules and theorems learned in class as revision.')}}</p>
+                            <p class="text-600">{{__('The 237 Exam Succes web application is a digital library that allows students in general and technical secondary education in exam classes to better prepare their exam by benefitting, after an annual subscription, from a great range of exam-typed papers proposed by all major schools in Cameroon and also from the past exam questions with the different answers.')}}</p>
+                            <p class="text-600">{{__('But 237 Exam Succes does not stop there, because it gives subscribers the opportunity to freshen their memories in the book section regarding the different rules and theorems learned in class as revision.')}}</p>
                         </div>
 
                         <div class="col-lg-6">
@@ -394,7 +394,7 @@
                         <div class="row justify-content-between fs--1">
                             <div class="col-12 col-sm-auto text-center">
                                 <p class="mb-0 text-600 opacity-85"><span class="d-none d-sm-inline-block">| </span>
-                                    <br class="d-sm-none" /> 2022 &copy; <a href="https://examsucces.com">Exam Success</a>
+                                    <br class="d-sm-none" /> 2022 &copy; <a href="https://examsucces.com">237 Exam Succes</a>
                                 </p>
                                 </p>
                             </div>

@@ -8,8 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="description" content="{{__('The examsuccess.com web application is a digital library that allows students in general and technical secondary education in exam classes to better prepare for their exam by benefiting from a range of exam-type tests with their various answers. .') }}">
-        <meta name="author" content="Exam Success">
-        <meta name="keywords" content="examsuces.com, 237, Exam Succes">
+        <meta name="author" content="237 Exam Succes">
+        <meta name="keywords" content="examsuces.com, 237, 237 Exam Succes">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- ===============================================-->
