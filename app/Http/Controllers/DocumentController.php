@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\StoreDocumentRequest;
 use App\Http\Requests\UpdateDocumentRequest;
 use App\Models\Classroom;
 use App\Models\Document;
 use App\Models\Exam;
 use App\Models\Subject;
-use Illuminate\Support\Facades\Response as DonwloadResponse;
 use Spatie\PdfToImage\Pdf;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Gate;
@@ -59,6 +57,7 @@ class DocumentController extends Controller
     {
         if ($request->hasFile('document_path'))
         {
+
             $documentPath =  $request->document_path;
             $nameDocument = $documentPath->hashName();
             $docPath = public_path('storage/uploads/documents');
@@ -81,7 +80,7 @@ class DocumentController extends Controller
             $correctionPath->move($corrPath, $nameCorrection);
         }
 
-        
+
         $document = Document::create([
             'exam_id' => $request['exam_id'],
             'document_session' => $request['document_session'] ?? null,

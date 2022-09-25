@@ -16,6 +16,7 @@
         "livewire/livewire": "^2.5",
         "lucasdotvin/laravel-soulbscription": "^2.2",
         "spatie/laravel-permission": "^5.5",
+        "ramsey/uuid": "^4.4",
         "spatie/pdf-to-image": "^1.2"
     },
     "require-dev": {
