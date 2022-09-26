@@ -7,7 +7,7 @@
             <div class="modal-body p-0">
                 <div class="rounded-top-lg py-3 ps-4 pe-6 bg-light">
                     <h4 class="mb-1" id="title">
-                        <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/falcon.png') }}" alt="logo" width="180" />
+                        <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/exam-succes.png') }}" alt="logo" width="180" />
                     </h4>
                 </div>
                 <form id="subForm" method="POST" action="{{ route('plans.update', 1) }}" onsubmit="ShowLoading()">

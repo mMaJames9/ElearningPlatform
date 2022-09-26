@@ -72,7 +72,7 @@
                 <div class="container">
                     <a class="navbar-brand" href="{{ route('welcome') }}">
                         <span class="text-white dark__text-white">
-                            <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/falcon-white.png') }}" alt="logo" width="180" />
+                            <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/exam-succes-white.png') }}" alt="logo" width="180" />
                         </span>
                     </a>
                     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarStandard" aria-controls="navbarStandard" aria-expanded="false" aria-label="Toggle navigation">

@@ -14,7 +14,7 @@
 
                                         <div class="z-index-1 position-relative">
                                             <a class="link-light mb-4 font-sans-serif fs-4 d-inline-block fw-bolder" href="{{ route('welcome') }}">
-                                                <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/falcon-white.png') }}" alt="logo" width="180" />
+                                                <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/exam-succes-white.png') }}" alt="logo" width="180" />
                                              </a>
                                             <p class="opacity-75 text-white">
                                                 {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}

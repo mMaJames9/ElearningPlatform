@@ -14,7 +14,7 @@
 
                                         <div class="z-index-1 position-relative">
                                             <a class="link-light mb-4 font-sans-serif fs-4 d-inline-block fw-bolder" href="{{ route('welcome') }}">
-                                                <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/falcon-white.png') }}" alt="logo" width="180" />
+                                                <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/exam-succes-white.png') }}" alt="logo" width="180" />
                                              </a>
                                             <p class="opacity-75 text-white">
                                                 {{ __('Before continuing, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
@@ -28,7 +28,7 @@
                                             <a class="text-decoration-underline text-white me-2" href="{{ route('profile.show') }}">{{ __('Edit Profile') }}</a>
                                         </p>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="col-md-7 d-flex flex-center">
                                     <div class="p-4 p-md-5 flex-grow-1">

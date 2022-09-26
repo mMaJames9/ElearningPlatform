@@ -5,6 +5,6 @@
 </button>
 <a class="navbar-brand me-1 me-sm-3" href="{{ route('dashboard') }}">
     <div class="d-flex align-items-center">
-       <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/falcon.png') }}" alt="logo" width="180" />
+       <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/exam-succes.png') }}" alt="logo" width="180" />
     </div>
 </a>

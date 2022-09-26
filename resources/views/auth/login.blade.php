@@ -14,7 +14,7 @@
                                         {{-- /.bg-holder --}}
                                         <div class="z-index-1 position-relative">
                                             <a class="link-light mb-4 font-sans-serif fs-4 d-inline-block fw-bolder" href="{{ route('welcome') }}">
-                                               <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/falcon-white.png') }}" alt="logo" width="180" />
+                                               <img class="my-2" src="{{ asset('assets/img/icons/spot-illustrations/exam-succes-white.png') }}" alt="logo" width="180" />
                                             </a>
                                             <p class="opacity-75 text-white">{{__('Welcome back! Happy to see you again! To connect with us, you can log in with your email address, phone number or username and your password.')}}</p>
                                         </div>
