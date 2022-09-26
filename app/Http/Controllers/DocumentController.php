@@ -58,15 +58,16 @@ class DocumentController extends Controller
         if ($request->hasFile('document_path'))
         {
 
-            $documentPath =  $request->document_path;
+            $documentPath =  $request->file('document_path');
             $nameDocument = $documentPath->hashName();
-            $docPath = public_path('storage/uploads/documents');
-            $documentPath->move($docPath, $nameDocument);
+            $documentPath->store('public/uploads/documents');
 
+            $docPath = public_path('storage/uploads/documents');
             $pdfThumb = new Pdf($docPath . '/' . $nameDocument);
             $thumbnailPath = public_path('storage/uploads/documents/thumbnails');
             $thumbName = "thumb-" . strtolower(str_replace(['.pdf', ' '], ['', '-'], $nameDocument)) . ".png";
-            $thumbnail = $pdfThumb->setPage(1)
+            $thumbnail = $pdfThumb
+            ->setPage(1)
             ->setOutputFormat('png')
             ->setResolution(32)
             ->saveImage($thumbnailPath . '/' . "$thumbName");
@@ -74,10 +75,9 @@ class DocumentController extends Controller
 
         if ($request->hasFile('correction_path'))
         {
-            $correctionPath =  $request->correction_path;
+            $correctionPath =  $request->file('correction_path');
             $nameCorrection = $correctionPath->hashName();
-            $corrPath = public_path('storage/uploads/corrections');
-            $correctionPath->move($corrPath, $nameCorrection);
+            $correctionPath->store('public/uploads/corrections');   
         }
 
 
@@ -164,11 +164,11 @@ class DocumentController extends Controller
                 unlink(public_path('storage/uploads/documents/thumbnails/') . $oldThumbFile);
             }
 
-            $documentPath =  $request->document_path;
+            $documentPath =  $request->file('document_path');
             $nameDocument = $documentPath->hashName();
-            $docPath = public_path('storage/uploads/documents');
-            $documentPath->move($docPath, $nameDocument);
+            $documentPath->store('public/uploads/documents');
 
+            $docPath = public_path('storage/uploads/documents');
             $pdfThumb = new Pdf($docPath . '/' . $nameDocument);
             $thumbnailPath = public_path('storage/uploads/documents/thumbnails');
             $thumbName = "thumb-" . strtolower(str_replace(['.pdf', ' '], ['', '-'], $nameDocument)) . ".png";
@@ -193,10 +193,9 @@ class DocumentController extends Controller
                 unlink(public_path('storage/uploads/corrections/') . $oldCorrectionPath);
             }
 
-            $correctionPath =  $request->correction_path;
+            $correctionPath =  $request->file('correction_path');
             $nameCorrection = $correctionPath->hashName();
-            $corrPath = public_path('storage/uploads/corrections');
-            $correctionPath->move($corrPath, $nameCorrection);
+            $correctionPath->store('public/uploads/corrections');   
 
             $document->correction_path = $nameCorrection;
         }
