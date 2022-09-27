@@ -77,7 +77,7 @@ class DocumentController extends Controller
         {
             $correctionPath =  $request->file('correction_path');
             $nameCorrection = $correctionPath->hashName();
-            $correctionPath->store('public/uploads/corrections');   
+            $correctionPath->store('public/uploads/corrections');
         }
 
 
@@ -195,7 +195,7 @@ class DocumentController extends Controller
 
             $correctionPath =  $request->file('correction_path');
             $nameCorrection = $correctionPath->hashName();
-            $correctionPath->store('public/uploads/corrections');   
+            $correctionPath->store('public/uploads/corrections');
 
             $document->correction_path = $nameCorrection;
         }

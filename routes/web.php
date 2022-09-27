@@ -24,11 +24,7 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])
     ->group(function() {
 
-        Route::get('/dashboard', function () {
-
-            return view('dashboard');
-
-        })->name('dashboard');
+        Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
 
         Route::get('/admin/ressources/subscriptions/subscriptionsDay', 'App\Http\Controllers\SubscriptionController@indexDay')->name('subscriptionsDay');
         Route::get('/admin/ressources/subscriptions/subscriptionsMonth', 'App\Http\Controllers\SubscriptionController@indexMonth')->name('subscriptionsMonth');
