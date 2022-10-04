@@ -40,7 +40,7 @@
                         @endphp
 
                         <div class="form-check">
-                            <input class="form-check-input" id="{{ $subject->subject_name }}" name="subject[]" type="checkbox" value="{{ $subject->id }}" onChange="this.form.submit()"
+                            <input class="form-check-input" id="{{ $subject->subject_name }}" name="subject[]" type="checkbox" value="{{ $subject->id }}" onchange="this.form.submit()"
                             @if(in_array($subject->id, $checked)) checked @endif
                             @if($subject->books->count() == 0) disabled="" @endif />
 

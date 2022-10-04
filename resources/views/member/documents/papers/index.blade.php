@@ -40,7 +40,7 @@
                         @endphp
 
                         <div class="form-check">
-                            <input class="form-check-input" id="{{ $subject->subject_name }}" name="subject[]" type="checkbox" value="{{ $subject->id }}" onChange="this.form.submit()"
+                            <input class="form-check-input" id="{{ $subject->subject_name }}" name="subject[]" type="checkbox" value="{{ $subject->id }}" onchange="this.form.submit()"
                             @if(in_array($subject->id, $checked)) checked @endif
                             @if($subject->papers->count() == 0) disabled="" @endif />
 
@@ -72,7 +72,7 @@
                         @endphp
 
                         <div class="form-check">
-                            <input class="form-check-input" id="{{ $exam->exam_name }}" name="exam[]" type="checkbox" value="{{ $exam->id }}" onChange="this.form.submit()"
+                            <input class="form-check-input" id="{{ $exam->exam_name }}" name="exam[]" type="checkbox" value="{{ $exam->id }}" onchange="this.form.submit()"
                             @if(in_array($exam->id, $checked)) checked @endif
                             @if($exam->count() == 0) disabled="" @endif />
 
@@ -105,7 +105,7 @@
                         @endphp
 
                         <div class="form-check">
-                            <input class="form-check-input" id="{{ $year->first()->document_session }}" name="year[]" type="checkbox" value="{{ $year_session }}" onChange="this.form.submit()"
+                            <input class="form-check-input" id="{{ $year->first()->document_session }}" name="year[]" type="checkbox" value="{{ $year_session }}" onchange="this.form.submit()"
                             @if(in_array($year_session, $checked)) checked @endif
                             />
 

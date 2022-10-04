@@ -98,13 +98,13 @@ class PaperController extends Controller
 
         if (str_starts_with($classStudent, '3'))
         {
-            $amount = 8000;
+            $amount = 5000;
         } else if (str_starts_with($classStudent, 'P'))
         {
-            $amount = 10000;
+            $amount = 8000;
         } else if (str_starts_with($classStudent, 'T'))
         {
-            $amount = 12000;
+            $amount = 8000;
         }
         else
         {

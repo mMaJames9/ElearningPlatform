@@ -116,7 +116,7 @@
 
                                         <td class="parrainage text-center">
                                             @forelse($user->getReferrals() as $referral)
-                                            {{ $referral->relationships()->count() }}
+                                            {{ $referral->relationships->count() }}
                                             @empty
                                             -
                                             @endforelse
