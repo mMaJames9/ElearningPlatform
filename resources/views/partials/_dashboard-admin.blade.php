@@ -9,7 +9,7 @@
     const last_subscriptionArr = @json($last_subscriptionArr);
 </script>
 
-<script src="{{ asset('assets/js/statistics.js') }}"></script>
+<script src="{{ asset('assets/js/statistics.js') }}?v=1"></script>
 @endsection
 
 <div class="row g-3 mb-3">
