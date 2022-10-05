@@ -347,7 +347,12 @@
                                     @php
                                     $array = array();
                                     foreach ($referral->relationships as $key => $relationship) {
-                                        $array[] = $relationship->user->subscriptionPrices->first()->pivot->subscription_price;
+                                        if ($relationship->user->subscriptionPrices->isNotEmpty()) {
+                                            $array[] = $relationship->user->subscriptionPrices->first()->pivot->subscription_price;
+                                        }
+                                        else {
+                                            $array[] = null;
+                                        }
                                     }
                                     $total = array_sum($array);
                                     @endphp
