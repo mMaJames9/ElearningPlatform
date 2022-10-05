@@ -302,7 +302,7 @@
                                         <option value="5" {{ $percentage == 5 ? 'selected' : '' }}>5%</option>
                                     </select>
                                 </form>
-                                <button class="btn btn-falcon-primary btn-sm ms-2" type="button">{{__('Confirm payment')}}</button>
+                                <button class="btn btn-primary btn-sm ms-2" type="button">{{__('Pay')}}</button>
                             </div>
                         </div>
                     </div>
@@ -311,33 +311,24 @@
 
             <div class="card-body px-0 py-0">
                 <div class="table-responsive scrollbar">
-                    <table class="table table-sm fs--1 mb-0 overflow-hidden">
+                    <table class="table fs--1 mb-0">
                         <thead class="bg-200 text-900">
-                            <tr>
-                                <th class="white-space-nowrap">
-                                    <div class="form-check mb-0 d-flex align-items-center">
-                                        <input class="form-check-input" id="checkbox-bulk-purchases-select" type="checkbox" data-bulk-select='{"body":"table-purchase-body","actions":"table-purchases-actions","replacedElement":"table-purchases-replace-element"}' />
-                                    </div>
-                                </th>
-                                <th class="sort pe-1 align-middle white-space-nowrap" data-sort="referrer">{{__('Referrer')}}</th>
-                                <th class="sort pe-1 align-middle white-space-nowrap" data-sort="phone_number">{{__('Phone Number')}}</th>
-                                <th class="sort pe-1 align-middle white-space-nowrap" data-sort="referrals">{{__('Referrals')}}</th>
-                                <th class="sort pe-1 align-middle white-space-nowrap" data-sort="sub_amount">{{__('Total subscription amount')}}</th>
-                                <th class="sort pe-1 align-middle white-space-nowrap" data-sort="payment_amount">{{__('Referrer payment amount')}}</th>
-                                <th class="sort pe-1 align-middle white-space-nowrap" data-sort="status">{{__('Status')}}</th>
+                            <tr class="align-middle py-3">
+                                <th class="text-start">#</th>
+                                <th class="sort" data-sort="referrer">{{__('Referrer')}}</th>
+                                <th class="sort" data-sort="referrals">{{__('Referrals')}}</th>
+                                <th class="sort" data-sort="sub_amount">{{__('Total subscription amount')}}</th>
+                                <th class="sort" data-sort="payment_amount">{{__('Referrer payment amount')}}</th>
+                                <th class="sort text-center" data-sort="status">{{__('Status')}}</th>
                             </tr>
                         </thead>
-                        <tbody class="list" id="table-purchase-body">
+                        <tbody class="list align-middle text-nowrap" id="table-purchase-body">
                             @foreach ($users as $key => $user)
                             @foreach ($user->getReferrals() as $key => $referral)
                             @if ($referral->relationships->count() > 0)
                             <tr class="btn-reveal-trigger">
-                                <td class="align-middle" style="width: 28px;">
-                                    <div class="form-check mb-0">
-                                        <input class="form-check-input" type="checkbox" id="recent-purchase-0" data-bulk-select-row="data-bulk-select-row" />
-                                    </div>
-                                </td>
-                                <th class="align-middle white-space-nowrap referrer">
+                                <td class="text-start">{{ $loop->iteration }}</td>
+                                <th class="referrer">
                                     <div class="d-flex align-items-center">
                                         <div class="avatar avatar-xl">
                                             <img class="rounded-circle" src="{{ $user->profile_photo_url }}" alt="{{ $user->username }}" />
@@ -345,17 +336,14 @@
                                         <h6 class="mb-0 ps-2 text-800">{{ ucwords($user->name) }}</h6>
                                     </div>
                                 </th>
-                                <td class="align-middle white-space-nowrap phone_number">
-                                    {{ $user->phone_number }}
-                                </td>
-                                <td class="align-middle white-space-nowrap referrals">
+                                <td class="referrals">
                                     @if ($referral->relationships->count() == 1)
                                     {{$referral->relationships->count() }} {{__('referral')}}
                                     @else
                                     {{$referral->relationships->count() }} {{__('referrals')}}
                                     @endif
                                 </td>
-                                <td class="align-middle fs-0 white-space-nowrap sub_amount">
+                                <td class="sub_amount">
                                     @php
                                     $array = array();
                                     foreach ($referral->relationships as $key => $relationship) {
@@ -365,7 +353,7 @@
                                     @endphp
                                     {{ number_format($total, 0, ',', ' ') }} XAF
                                 </td>
-                                <td class="align-middle payment_amount">
+                                <td class="payment_amount">
                                     @if(isset($percentage) && $percentage !== null)
                                     @php
                                         $ref_payment = ($percentage / 100) * $total;
@@ -375,8 +363,8 @@
                                     --
                                     @endif
                                 </td>
-                                <td class="align-middle white-space-nowrap status">
-                                    
+                                <td class="status text-center">
+
                                 </td>
                             </tr>
                             @endif
