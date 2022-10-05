@@ -285,7 +285,7 @@
 <div class="row g-3 mb-3">
 
     <div class="col-12">
-        <div class="card z-index-1" id="recentPurchaseTable" data-list='{"valueNames":["referrer","phone_number","referrals","sub_amount","payment_amount", "status"],"page":7,"pagination":true}'>
+        <div class="card z-index-1" id="recentPurchaseTable" data-list='{"valueNames":["referrer","phone_number","referrals","sub_amount","payment_amount"],"page":7,"pagination":true}'>
             <div class="card-header">
                 <div class="row flex-between-center">
                     <div class="col-6 col-sm-auto d-flex align-items-center pe-0">
@@ -319,7 +319,6 @@
                                 <th class="sort" data-sort="referrals">{{__('Referrals')}}</th>
                                 <th class="sort" data-sort="sub_amount">{{__('Total subscription amount')}}</th>
                                 <th class="sort" data-sort="payment_amount">{{__('Referrer payment amount')}}</th>
-                                <th class="sort text-center" data-sort="status">{{__('Status')}}</th>
                             </tr>
                         </thead>
                         <tbody class="list align-middle text-nowrap" id="table-purchase-body">
@@ -367,9 +366,6 @@
                                     @else
                                     --
                                     @endif
-                                </td>
-                                <td class="status text-center">
-
                                 </td>
                             </tr>
                             @endif
