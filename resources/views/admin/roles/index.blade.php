@@ -31,7 +31,7 @@
                                         <th class="sort" data-sort="updated_at">{{__('Updated at')}}</th>
                                     </tr>
                                 </thead>
-                                <tbody class="list align-middle text-nowrap" id="table-recent-leads-body">
+                                <tbody class="list align-middle text-nowrap">
 
                                     @foreach($roles as $key => $role)
                                     <tr class="hover-actions-trigger btn-reveal-trigger hover-bg-100">

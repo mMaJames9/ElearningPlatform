@@ -158,6 +158,12 @@
                     $('#pathCorr').addClass("visually-hidden");
                     $('#docDescr').removeClass("visually-hidden");
                     $('#docTitle').removeClass("visually-hidden");
+
+                    $('#document_title').attr('required', '');
+                    $('#exam_id').attr('required', '');
+
+                    $('#document_session').removeAttr('required');
+                    $('#correction_path').removeAttr('required');
                 }
                 else
                 {
@@ -165,6 +171,11 @@
                     $('#pathCorr').removeClass("visually-hidden");
                     $('#docDescr').addClass("visually-hidden");
                     $('#docTitle').addClass("visually-hidden");
+
+                    $('#document_session').attr('required', '');
+                    $('#correction_path').attr('required', '');
+
+                    $('#document_title').removeAttr('required');
                 }
             });
         })

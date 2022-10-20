@@ -206,7 +206,7 @@
                                         <th class="sort text-center" data-sort="price">{{__('Price')}}</th>
                                     </tr>
                                 </thead>
-                                <tbody class="list align-middle text-nowrap" id="table-recent-leads-body">
+                                <tbody class="list align-middle text-nowrap">
 
                                     @foreach($referral->relationships as $key => $relationship)
 
@@ -303,7 +303,7 @@
                                             <th class="sort" data-sort="created_at">{{__('Date')}}</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="list align-middle text-nowrap" id="table-recent-leads-body">
+                                    <tbody class="list align-middle text-nowrap">
 
                                         @foreach($downloads as $key => $download)
                                         <tr class="hover-actions-trigger btn-reveal-trigger hover-bg-100">

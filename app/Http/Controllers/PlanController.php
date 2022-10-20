@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SubscriptionUser;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use LucasDotVin\Soulbscription\Models\Plan;
@@ -61,7 +62,39 @@ class PlanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $users = User::all();
+
+        // foreach($users as $key => $user)
+        // {
+        //     foreach($user->getReferrals() as $key => $referral)
+        //     {
+        //         if($referral->relationship->count() > 0)
+        //         {
+        //             $array = array();
+        //             foreach ($referral->relationships as $key => $relationship)
+        //             {
+        //                 if ($relationship->user->subscriptionPrices->isNotEmpty())
+        //                 {
+        //                     $array[] = $relationship->user->subscriptionPrices->first()->pivot->subscription_price;
+        //                 }
+        //                 else
+        //                 {
+        //                     $array[] = null;
+        //                 }
+        //             }
+        //             $total = array_sum($array);
+
+        //             $percentage = $request['percentage'];
+
+        //             if(isset($percentage) && $percentage !== null)
+        //             {
+        //                 $ref_payment = ($percentage / 100) * $total;
+
+
+        //             }
+        //         }
+        //     }
+        // }
     }
 
     /**

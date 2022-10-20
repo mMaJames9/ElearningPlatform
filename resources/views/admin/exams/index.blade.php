@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="tab-pane preview-tab-pane active mt-4" role="tabpanel">
-                    <div id="tableRoles" data-list='{"valueNames":["name", "section", "updated_at"], "page":10, "pagination":true}'>
+                    <div id="tableExams" data-list='{"valueNames":["name", "section", "updated_at"], "page":10, "pagination":true}'>
                         <div class="table-responsive scrollbar">
                             <table class="table table-striped fs--1 mb-0">
                                 <thead class="bg-200 fw-bold">
@@ -32,7 +32,7 @@
                                         <th class="sort text-center">{{__('Actions')}}</th>
                                     </tr>
                                 </thead>
-                                <tbody class="list align-middle text-nowrap" id="table-recent-leads-body">
+                                <tbody class="list align-middle text-nowrap">
                                     @foreach($exams as $key => $exam)
                                     <tr class="hover-actions-trigger btn-reveal-trigger hover-bg-100">
                                         <td class="text-start">{{ $loop->iteration }}</td>

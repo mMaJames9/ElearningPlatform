@@ -39,7 +39,7 @@
                                         <th class="sort" data-sort="updated_at">{{__('Date')}}</th>
                                     </tr>
                                 </thead>
-                                <tbody class="list align-middle text-nowrap" id="table-recent-leads-body">
+                                <tbody class="list align-middle text-nowrap">
 
                                     @foreach($subscriptions as $key => $subscription)
                                     <tr class="hover-actions-trigger btn-reveal-trigger hover-bg-100">

@@ -32,7 +32,7 @@
 
                     <div class="mb-3">
                         <label class="form-label" for="subjects">{{ __('Subject(s)') }}</label>
-                        <select class="form-select js-choice @error('subjects') is-invalid @enderror" multiple="multiple" data-width="100%" id="subjects" name="subjects[]" :value="old('subjects')" required autofocus data-options='{"removeItemButton":true,"placeholder":true}'>
+                        <select class="form-select js-choice @error('subjects') is-invalid @enderror" multiple="multiple" data-width="100%" id="subjects" name="subjects[]" :value="old('subjects')" required autofocus data-options='{"removeItemButton":true,"placeholder":true}' required>
                             <option value="" disabled hidden>{{__('Select the subject(s)')}}...</option>
                             @foreach($subjects as $id => $subjects)
                             <option value="{{ $id }}" {{ in_array($id, old('subjects', [])) ? 'selected' : '' }}>{{ ucwords($subjects) }}</option>
@@ -161,6 +161,12 @@
                     $('#pathCorr').addClass("visually-hidden");
                     $('#docDescr').removeClass("visually-hidden");
                     $('#docTitle').removeClass("visually-hidden");
+
+                    $('#document_title').attr('required', '');
+                    $('#exam_id').attr('required', '');
+
+                    $('#document_session').removeAttr('required');
+                    $('#correction_path').removeAttr('required');
                 }
                 else
                 {
@@ -168,6 +174,11 @@
                     $('#pathCorr').removeClass("visually-hidden");
                     $('#docDescr').addClass("visually-hidden");
                     $('#docTitle').addClass("visually-hidden");
+
+                    $('#document_session').attr('required', '');
+                    $('#correction_path').attr('required', '');
+
+                    $('#document_title').removeAttr('required');
                 }
             });
         })

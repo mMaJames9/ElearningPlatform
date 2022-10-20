@@ -7,6 +7,12 @@
     const subs = @json($subs);
     const subscriptionArr = @json($subscriptionArr);
     const last_subscriptionArr = @json($last_subscriptionArr);
+
+    function submitForm()
+    {
+        var x = document.getElementsByName('referrer_form');
+        x[0].submit();
+    }
 </script>
 
 <script src="{{ asset('assets/js/statistics.js') }}?v=1"></script>
@@ -292,7 +298,9 @@
                                         <option value="5" {{ $percentage == 5 ? 'selected' : '' }}>5%</option>
                                     </select>
                                 </form>
-                                <button class="btn btn-primary btn-sm ms-2" type="button">{{__('Pay')}}</button>
+                                @if(isset($percentage) && $percentage !== null)
+                                <button class="btn btn-primary btn-sm ms-2" type="button" data-bs-toggle="modal" data-bs-target="#confirmPayout">{{__('Pay')}}</button>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -312,55 +320,67 @@
                             </tr>
                         </thead>
                         <tbody class="list align-middle text-nowrap" id="table-purchase-body">
-                            @foreach ($users as $key => $user)
-                            @foreach ($user->getReferrals() as $key => $referral)
-                            @if ($referral->relationships->count() > 0)
-                            <tr class="btn-reveal-trigger">
-                                <td class="text-start">{{ $loop->iteration }}</td>
-                                <th class="referrer">
-                                    <div class="d-flex align-items-center">
-                                        <div class="avatar avatar-xl">
-                                            <img class="rounded-circle" src="{{ $user->profile_photo_url }}" alt="{{ $user->username }}" />
+
+                            @php
+                                $totalPay = array();
+                            @endphp
+
+                            <form name="referrer_form" action="{{ route('plans.store') }}" method="POST">
+                                @csrf
+
+                                <input type="hidden" name="percentage" value="{{ $percentage }}">
+                                @foreach ($users as $key => $user)
+                                @foreach ($user->getReferrals() as $key => $referral)
+                                @if ($referral->relationships->count() > 0)
+                                <tr class="btn-reveal-trigger">
+                                    <td class="text-start">{{ $loop->iteration }}</td>
+                                    <th class="referrer">
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar avatar-xl">
+                                                <img class="rounded-circle" src="{{ $user->profile_photo_url }}" alt="{{ $user->username }}" />
+                                            </div>
+                                            <h6 class="mb-0 ps-2 text-800">{{ ucwords($user->name) }}</h6>
                                         </div>
-                                        <h6 class="mb-0 ps-2 text-800">{{ ucwords($user->name) }}</h6>
-                                    </div>
-                                </th>
-                                <td class="referrals">
-                                    @if ($referral->relationships->count() == 1)
-                                    {{$referral->relationships->count() }} {{__('referral')}}
-                                    @else
-                                    {{$referral->relationships->count() }} {{__('referrals')}}
-                                    @endif
-                                </td>
-                                <td class="sub_amount">
-                                    @php
-                                    $array = array();
-                                    foreach ($referral->relationships as $key => $relationship) {
-                                        if ($relationship->user->subscriptionPrices->isNotEmpty()) {
-                                            $array[] = $relationship->user->subscriptionPrices->first()->pivot->subscription_price;
+                                    </th>
+                                    <td class="referrals">
+                                        @if ($referral->relationships->count() == 1)
+                                        {{$referral->relationships->count() }} {{__('referral')}}
+                                        @else
+                                        {{$referral->relationships->count() }} {{__('referrals')}}
+                                        @endif
+                                    </td>
+                                    <td class="sub_amount">
+                                        @php
+                                        $array = array();
+                                        foreach ($referral->relationships as $key => $relationship) {
+                                            if ($relationship->user->subscriptionPrices->isNotEmpty()) {
+                                                $array[] = $relationship->user->subscriptionPrices->first()->pivot->subscription_price;
+                                            }
+                                            else {
+                                                $array[] = null;
+                                            }
                                         }
-                                        else {
-                                            $array[] = null;
-                                        }
-                                    }
-                                    $total = array_sum($array);
-                                    @endphp
-                                    {{ number_format($total, 0, ',', ' ') }} XAF
-                                </td>
-                                <td class="payment_amount">
-                                    @if(isset($percentage) && $percentage !== null)
-                                    @php
-                                        $ref_payment = ($percentage / 100) * $total;
-                                    @endphp
-                                    {{ number_format($ref_payment, 0, ',', ' ') }} XAF
-                                    @else
-                                    --
-                                    @endif
-                                </td>
-                            </tr>
-                            @endif
-                            @endforeach
-                            @endforeach
+                                        $total = array_sum($array);
+                                        @endphp
+                                        {{ number_format($total, 0, ',', ' ') }} XAF
+                                    </td>
+                                    <td class="payment_amount">
+                                        @if(isset($percentage) && $percentage !== null)
+                                        @php
+                                            $ref_payment = ($percentage / 100) * $total;
+                                            $totalPay[] = $ref_payment;
+                                        @endphp
+                                        <input type="hidden" name="percentage[]" value={{ $ref_payment }}>
+                                        {{ number_format($ref_payment, 0, ',', ' ') }} XAF
+                                        @else
+                                        --
+                                        @endif
+                                    </td>
+                                </tr>
+                                @endif
+                                @endforeach
+                                @endforeach
+                            </form>
                         </tbody>
                     </table>
                 </div>
@@ -387,3 +407,33 @@
     </div>
 
 </div>
+
+@if(isset($percentage) && $percentage !== null)
+<div class="modal fade" id="confirmPayout" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px">
+        <div class="modal-content position-relative">
+            <div class="position-absolute top-0 end-0 mt-2 me-2 z-index-1">
+                <button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+                <div class="rounded-top-lg py-3 ps-4 pe-6 bg-light">
+                    <h4 class="mb-1" id="modalExampleDemoLabel">{{__('Confirm referrers payment')}}</h4>
+                </div>
+                <div class="p-4 pb-0">
+
+                    <div class="mb-3">
+                        <p class="fs--1">
+                            {{__('You are about to pay a total amount of') }} {{ number_format(array_sum($totalPay), 0, ',', ' ') }} XAF {{__('for all the referrers from Exam succes. Please confirm payment.')}}
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">{{__('Close')}}</button>
+                <button class="btn btn-success" type="button" onclick="submitForm();">{{__('Confirm')}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endif

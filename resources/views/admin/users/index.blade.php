@@ -9,6 +9,7 @@
                 </div>
             </div>
         </div>
+
         <div class="card-body pt-0">
             <div class="tab-content">
 
@@ -19,8 +20,13 @@
                     </a>
                 </div>
 
+                {{-- <input class="search" placeholder="Search" />
+                <button class="sort" data-sort="name">
+                    Sort by name
+                </button> --}}
+
                 <div class="tab-pane preview-tab-pane active mt-4" role="tabpanel">
-                    <div id="tableRoles" data-list='{"valueNames":["name","email", "phone_number", "role", "parrainage", "updated_at"], "page":10, "pagination":true}'>
+                    <div id="tableUsers" data-list='{"valueNames":["name","email", "phone_number", "role", "parrainage", "updated_at"], "page":10, "pagination":true}'>
                         <div class="table-responsive scrollbar">
                             <table class="table table-striped fs--1 mb-0">
                                 <thead class="bg-200 fw-bold">
@@ -35,7 +41,7 @@
                                         <th class="sort text-center">{{__('Actions')}}</th>
                                     </tr>
                                 </thead>
-                                <tbody class="list align-middle text-nowrap" id="table-recent-leads-body">
+                                <tbody class="list align-middle text-nowrap">
                                     <tr class="hover-actions-trigger btn-reveal-trigger hover-bg-100">
                                         <td class="text-start">0</td>
 

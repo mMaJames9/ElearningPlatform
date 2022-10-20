@@ -82,7 +82,7 @@
         <script src="{{ asset('vendors/fontawesome/all.min.js') }}" defer></script>
         <script src="{{ asset('vendors/lodash/lodash.min.js') }}" defer></script>
         <script src="{{ asset('vendors/list.js/list.min.js') }}" defer></script>
-        <script src="{{ asset('assets/js/theme.js') }}?v=1" defer></script>
+        <script src="{{ asset('assets/js/theme.js') }}" defer></script>
         <script src="{{ asset('assets/js/inputmask.js') }}" defer></script>
 
         <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
