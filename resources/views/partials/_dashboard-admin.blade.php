@@ -15,7 +15,7 @@
     }
 </script>
 
-<script src="{{ asset('assets/js/statistics.js') }}?v=3"></script>
+<script src="{{ asset('assets/js/statistics.js') }}?v=4" defer></script>
 @endsection
 
 <div class="row g-3 mb-3">
