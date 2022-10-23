@@ -365,9 +365,9 @@
 
                         <div class="col-lg-6">
                             <h5 class="text-uppercase text-white opacity-85 mb-3">{{__('Our Mission')}}</h5>
-                            <p class="text-600">{{__('Il est évident que tout succès, aussi petit soit-il, est le fruit d\'une dose de volonté et d\'efforts consentis. Parfois et malheureusement, ces deux éléments ne sont pas assez. Mon équipe et moi avons travaillé laborieusement des mois durant pour mettre sur pieds  ette application efficace et digeste. Ceci est une cave dans laquelle vous trouverez le necessaire pour votre réussite.')}}</p>
-                            <p class="text-600">{{__('Quelque soit l\'examen et surtout les matières que vous aurez, vous avez certainement fait le bon choix en souscrivant à ce projet.')}}</p>
-                            <p class="text-600">{{__('Nous nous engageons à actualiser quotidiennement le contenu de cette application afin de rester toujours à la pointe. Nous avons la ferme conviction que cette application vous aidera avant et pendant la préparation à votre examen officiel.')}}</p>
+                            <p class="text-600">{{__('Il est évident que tout succès, aussi petit soit-il, est le fruit d\'une dose de volonté et d\'efforts consentis. Parfois et malheureusement, ces deux éléments ne sont pas assez. Mon équipe et moi avons travaillé de manière acharnée afin de mettre sur pieds cette application efficace et digeste. C\'est une bibliothèque numérique dans laquelle vous trouverez le nécessaire pour la réussite de votre examen.')}}</p>
+                            <p class="text-600">{{__('Quel que soit l\'examen et surtout les matières que vous aurez, vous avez certainement fait le bon choix en souscrivant à ce projet.')}}</p>
+                            <p class="text-600">{{__('Nous nous engageons à actualiser le contenu de cette bibliothèque afin de la rendre optimale dans vos recherches. Nous avons la ferme conviction que cette application vous aidera avant et pendant la préparation à votre examen officiel.')}}</p>
                         </div>
 
                         <div class="icon-group mt-4">
