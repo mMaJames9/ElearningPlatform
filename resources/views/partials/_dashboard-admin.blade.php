@@ -331,7 +331,7 @@
                                 <input type="hidden" name="percentage" value="{{ $percentage }}">
                                 @foreach ($users as $key => $user)
                                 @foreach ($user->getReferrals() as $key => $referral)
-                                @if ($referral->relationships->count() > 0)
+                                @if ($referral->relationships->count() > 0 && $referral->relationships->first()->user->subscriptionPrices->isNotEmpty())
                                 <tr class="btn-reveal-trigger">
                                     <td class="text-start">{{ $loop->iteration }}</td>
                                     <th class="referrer">
