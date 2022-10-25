@@ -374,7 +374,7 @@
                             <a class="icon-item bg-dark text-facebook" target="_blank" href="#!">
                                 <span class="fab fa-facebook-f"></span>
                             </a>
-                            <a class="icon-item bg-dark text-twitter" target="_blank" href="#!">
+                            <a class="icon-item bg-dark text-twitter" target="_blank" href="https://twitter.com/237examsucces?t=ReMmiIwqCdrE-VTo8d_8cw&s=08">
                                 <span class="fab fa-twitter"></span>
                             </a>
                             <a class="icon-item bg-dark text-linkedin" href="https://www.instagram.com/invites/contact/?i=9jndawrxvdl7&utm_content=p808kg9">
