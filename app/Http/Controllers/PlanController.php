@@ -10,7 +10,6 @@ use LucasDotVin\Soulbscription\Models\Plan;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Psr7\Request as Psr7Request;
-use Symfony\Component\ErrorHandler\Error\FatalError;
 
 class PlanController extends Controller
 {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subscription;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,8 +31,8 @@ class SubscriptionController extends Controller
     {
         abort_if(Gate::denies('subscription_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $subscriptions = Subscription::whereDay('created_at', date('d'))->orderBy('created_at', 'desc')->get();
-        $data = Subscription::whereDay('created_at', date('d'))->count();
+        $subscriptions = Subscription::whereDate('created_at', Carbon::today())->orderBy('created_at', 'desc')->get();
+        $data = Subscription::whereDate('created_at', Carbon::today())->count();
 
         $status = 'today';
 
@@ -43,8 +44,8 @@ class SubscriptionController extends Controller
     {
         abort_if(Gate::denies('subscription_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $subscriptions = Subscription::whereMonth('created_at', date('m'))->orderBy('created_at', 'desc')->get();
-        $data = Subscription::whereMonth('created_at', date('m'))->count();
+        $subscriptions = Subscription::whereMonth('created_at', Carbon::now()->month)->orderBy('created_at', 'desc')->get();
+        $data = Subscription::whereMonth('created_at', Carbon::now()->month)->count();
 
         $status = 'this month';
 
@@ -55,8 +56,8 @@ class SubscriptionController extends Controller
     {
         abort_if(Gate::denies('subscription_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $subscriptions = Subscription::whereYear('created_at', date('Y'))->orderBy('created_at', 'desc', 'status')->get();
-        $data = Subscription::whereYear('created_at', date('Y'))->count();
+        $subscriptions = Subscription::whereYear('created_at', Carbon::now()->year)->orderBy('created_at', 'desc', 'status')->get();
+        $data = Subscription::whereYear('created_at', Carbon::now()->year)->count();
 
         $status = 'this year';
 

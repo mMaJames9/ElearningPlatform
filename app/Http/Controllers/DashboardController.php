@@ -10,9 +10,13 @@ use App\Models\Subject;
 use App\Models\Subscription;
 use App\Models\SubscriptionUser;
 use App\Models\User;
+use App\Models\Visitor;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use GuzzleHttp\Psr7\Request as Psr7Request;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\BadResponseException;
 
 class DashboardController extends Controller
 {
@@ -207,6 +211,35 @@ class DashboardController extends Controller
         $new_user = User::whereDay('created_at', date('d'))->count();
         $new_subscribers = Subscription::whereDay('created_at', date('d'))->count();
 
+        $today_visitors = Visitor::whereDate('created_at', Carbon::today())->count();
+        $visitors = Visitor::count();
+
+        $client = new Client();
+
+        // Get access token
+        $headers = [
+            'Content-Type' => 'application/json'
+        ];
+        $body = '{
+            "username": "d7AVPxga0WNGxUovZr32qy1rckdqUa4DfrdXBZN4gyJrYJ3dExEABcGfLRYcYzbPlljDsqTO7hBGdswmcg71fQ",
+            "password": "2hcFswPlJ0rUt84n4SwtxaKfqdx8j2AW1RLJ64LVeTnipKheCnq-9q7V4RK9j7VI6d6T218l47cdLVWveE_-RA"
+        }';
+        $request = new Psr7Request('POST', 'https://campay.net/api/token/', $headers, $body);
+        $res = $client->sendAsync($request)->wait();
+        $obj = json_decode($res->getBody());
+        $token = $obj->token;
+
+        //get Application Balance
+        $headers1 = [
+            'Authorization' => "Token $token",
+            'Content-Type' => 'application/json'
+        ];
+
+        $request1 = new Psr7Request('GET', 'https://campay.net/api/balance/', $headers1);
+        $res1 = $client->sendAsync($request1)->wait();
+        $obj1 = json_decode($res1->getBody());
+        $balance = $obj1->total_balance;
+
 
         return view('dashboard', compact(
             'documents',
@@ -233,6 +266,9 @@ class DashboardController extends Controller
             'percentage',
             'new_user',
             'new_subscribers',
+            'today_visitors',
+            'visitors',
+            'balance',
         ));
     }
 

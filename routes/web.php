@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Classroom;
+use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,11 +16,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route::redirect('/', 'login');
+Route::middleware('visitor')->group(function() {
 
-Route::get('/', function () {
-    $classrooms = Classroom::all()->pluck('classroom_name', 'id');
-    return view('welcome', compact('classrooms'));
-})->name('welcome');
+    Route::get('/', function () {
+
+        $classrooms = Classroom::all()->pluck('classroom_name', 'id');
+
+        return view('welcome', compact('classrooms'));
+    })->name('welcome');
+});
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])
     ->group(function() {
